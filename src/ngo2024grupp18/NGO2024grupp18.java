@@ -23,6 +23,7 @@ public class NGO2024grupp18 {
         try {
             idb = new InfDB("ngo_2024", "3306", "dbAdmin2024", "dbAdmin2024PW");
             // new Inloggning(idb).setVisible(true);
+            new Inloggning().setVisible(true);
             System.out.println("funkar"); 
         } catch (InfException ex) {
             System.out.println(ex.getMessage());
