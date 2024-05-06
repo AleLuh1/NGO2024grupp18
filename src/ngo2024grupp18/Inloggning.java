@@ -46,6 +46,10 @@ public class Inloggning extends javax.swing.JFrame {
         lblFelmeddelande.setForeground(new java.awt.Color(255, 0, 51));
         lblFelmeddelande.setText("Felaktig epost eller lösenord");
 
+        tfEpost.setText("maria.g@example.com");
+
+        tfLösenord.setText("password123");
+
         btnLoggaIn.setText("Logga in");
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +107,7 @@ public class Inloggning extends javax.swing.JFrame {
        String losen = tfLösenord.getText();
        
        try{
-           String sqlFraga = "SELECT losenord FROM anstalld where epost = '" + ePost + "'";
+           String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
            System.out.println(sqlFraga);
            String dbLosen = idb.fetchSingle(sqlFraga);
            //Kom ihåg att kontrollera att användaren har skrivit in en epost
