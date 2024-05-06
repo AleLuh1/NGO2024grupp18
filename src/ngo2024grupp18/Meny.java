@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
-import java.util.ArrayList;
+
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -14,7 +14,6 @@ import oru.inf.InfException;
 public class Meny extends javax.swing.JFrame {
     private InfDB idb;
     private String inloggadAnvandare;
-    private ArrayList<String> personLista;
     
     /**
      * Creates new form Meny
@@ -23,8 +22,77 @@ public class Meny extends javax.swing.JFrame {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
         initComponents();
-        lblInloggadAnvandare.setText(inloggadAnvandare);
+        lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
+        lblRoll.setText("Roll: " + getRoll(inloggadAnvandare));
     }
+    
+    private String getRoll(String inloggadAnvandare) {
+        if(isAdmin(inloggadAnvandare) == true){
+            return "admin";
+        }
+        else if(isProjektledare(inloggadAnvandare) == true){
+            return "projektledare";
+        }
+        else {
+            return "handläggare";
+        }
+    }
+    
+    private boolean isAdmin(String inloggadAnvandare){
+        String aid = null;
+        
+        try{ 
+            String sqlFraga = "SELECT aid FROM admin WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            aid = idb.fetchSingle(sqlFraga);
+            System.out.println(aid);
+        }catch (Exception ex){
+              System.out.println(ex.getMessage());
+          }
+        
+        if(aid != null) {
+            return true;
+        }
+        
+        return false;
+    }
+            
+     private boolean isProjektledare(String inloggadAnvandare){
+         String aid = null;
+     
+        try{ 
+            String sqlFraga = "SELECT aid FROM ans_proj WHERE aid = " + inloggadAnvandare;
+              System.out.println(sqlFraga);
+              aid = idb.fetchSingle(sqlFraga);
+              System.out.println(aid);
+        }catch (Exception ex){
+              System.out.println(ex.getMessage());
+          }
+        
+        if(aid != null) {
+            return true;
+        }
+        
+        return false;} 
+     
+    private boolean isHandlaggare(String inloggadAnvandare) {
+        String aid = null;
+        
+        try {
+            String sqlFraga = "SELECT aid FROM handlaggare WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            aid = idb.fetchSingle(sqlFraga);
+            System.out.println(aid);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        if(aid != null) {
+            return true;
+        }
+        
+        return false;
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,6 +105,7 @@ public class Meny extends javax.swing.JFrame {
 
         lblInloggadAnvandare = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblRoll = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +118,8 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        lblRoll.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,14 +128,19 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(lblInloggadAnvandare))
-                .addContainerGap(260, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblInloggadAnvandare)
+                        .addGap(59, 59, 59)
+                        .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(lblInloggadAnvandare)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblInloggadAnvandare)
+                    .addComponent(lblRoll))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(198, Short.MAX_VALUE))
@@ -74,7 +150,8 @@ public class Meny extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("Arraylist: " + personLista);
+        // Händelsen som ska köras när användaren trycker på knappen
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -115,5 +192,6 @@ public class Meny extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JLabel lblRoll;
     // End of variables declaration//GEN-END:variables
 }

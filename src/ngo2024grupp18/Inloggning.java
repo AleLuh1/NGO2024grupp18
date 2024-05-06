@@ -107,21 +107,16 @@ public class Inloggning extends javax.swing.JFrame {
        String losen = tfLösenord.getText();
        
        try{
-           String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
-           System.out.println(sqlFraga);
-           String dbLosen = idb.fetchSingle(sqlFraga);
+           String sqlFraga1 = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+           System.out.println(sqlFraga1);
+           String dbLosen = idb.fetchSingle(sqlFraga1);
+           String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
+           System.out.println(sqlFraga2);
+           String dbAid = idb.fetchSingle(sqlFraga2);
            //Kom ihåg att kontrollera att användaren har skrivit in en epost
            if(losen.equals(dbLosen)){
-              //new Meny(idb, ePost).setVisible(true);
-              //this.setVisible(false);
-             if(isAdmin(ePost)){
-                System.out.println("administratör");
-             }else if(isProjektledare(ePost)){
-                System.out.println("projektledare");
-             }else {
-                System.out.println("handläggare");
-             }
-    
+                new Meny(idb, dbAid).setVisible(true);
+                this.setVisible(false);
            }
            else{
                lblFelmeddelande.setVisible(true);
@@ -131,43 +126,7 @@ public class Inloggning extends javax.swing.JFrame {
            System.out.println(ex.getMessage());
        }
     }//GEN-LAST:event_btnLoggaInActionPerformed
-    
-    private boolean isAdmin(String ePost){
-    String aid = null;
-        try{ 
-            String sqlFraga = "SELECT admin.aid FROM admin JOIN anstalld ON admin.aid = anstalld.aid WHERE anstalld.epost  = '" + ePost + "'";
-              System.out.println(sqlFraga);
-              aid = idb.fetchSingle(sqlFraga);
-              System.out.println(aid);
-        }catch (Exception ex){
-              System.out.println(ex.getMessage());
-          }
-        
-        if(aid != null) {
-            return true;
-        }
-        
-        return false;
-    }
-            
-     private boolean isProjektledare(String ePost){
-         String aid = null;
-     
-        try{ 
-            String sqlFraga = "SELECT ans_proj.aid FROM ans_proj JOIN anstalld ON ans_proj.aid = anstalld.aid WHERE anstalld.epost = '" + ePost + "'";
-              System.out.println(sqlFraga);
-              aid = idb.fetchSingle(sqlFraga);
-              System.out.println(aid);
-        }catch (Exception ex){
-              System.out.println(ex.getMessage());
-          }
-        
-        if(aid != null) {
-            return true;
-        }
-        
-        return false;}       
-            
+         
     /**
      * @param args the command line arguments
      */
