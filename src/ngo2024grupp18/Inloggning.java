@@ -115,10 +115,12 @@ public class Inloggning extends javax.swing.JFrame {
               //new Meny(idb, ePost).setVisible(true);
               //this.setVisible(false);
              if(isAdmin(ePost)){
-             System.out.println("administratör");
+                System.out.println("administratör");
+             }else if(isProjektledare(ePost)){
+                System.out.println("projektledare");
+             }else {
+                System.out.println("handläggare");
              }
-             else{
-             System.out.println("handläggare");}
     
            }
            else{
@@ -148,7 +150,23 @@ public class Inloggning extends javax.swing.JFrame {
         return false;
     }
             
-            
+     private boolean isProjektledare(String ePost){
+         String aid = null;
+     
+        try{ 
+            String sqlFraga = "SELECT ans_proj.aid from ans_proj join anstalld on ans_proj.aid = anstalld.aid where anstalld.epost = '" + ePost + "'";
+              System.out.println(sqlFraga);
+              aid = idb.fetchSingle(sqlFraga);
+              System.out.println(aid);
+        }catch (Exception ex){
+              System.out.println(ex.getMessage());
+          }
+        
+        if(aid != null) {
+            return true;
+        }
+        
+        return false;}       
             
     /**
      * @param args the command line arguments
