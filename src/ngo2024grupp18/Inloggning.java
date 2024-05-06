@@ -4,16 +4,18 @@
  */
 package ngo2024grupp18;
 
+import oru.inf.InfDB;
 /**
  *
  * @author alex
  */
 public class Inloggning extends javax.swing.JFrame {
-
+    private InfDB idb;
     /**
      * Creates new form Inloggning
      */
-    public Inloggning() {
+    public Inloggning(InfDB idb) {
+        this.idb = idb;
         initComponents();
     }
 
@@ -112,7 +114,6 @@ public class Inloggning extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inloggning().setVisible(true);
             }
         });
     }
