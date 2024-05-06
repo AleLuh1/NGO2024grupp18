@@ -6,12 +6,15 @@ package ngo2024grupp18;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
  *
  * @author alex
  */
 public class Inloggning extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
      * Creates new form Inloggning
      */
@@ -103,30 +106,29 @@ public class Inloggning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
-       String ePost = tfEpost.getText();
-       String losen = tfLösenord.getText();
-       
-       try{
-           String sqlFraga1 = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
-           System.out.println(sqlFraga1);
-           String dbLosen = idb.fetchSingle(sqlFraga1);
-           String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
-           System.out.println(sqlFraga2);
-           String dbAid = idb.fetchSingle(sqlFraga2);
-           //Kom ihåg att kontrollera att användaren har skrivit in en epost
-           if(losen.equals(dbLosen)){
+        String ePost = tfEpost.getText();
+        String losen = tfLösenord.getText();
+
+        try {
+            String sqlFraga1 = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+            System.out.println(sqlFraga1);
+            String dbLosen = idb.fetchSingle(sqlFraga1);
+            String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
+            System.out.println(sqlFraga2);
+            String dbAid = idb.fetchSingle(sqlFraga2);
+            //Kom ihåg att kontrollera att användaren har skrivit in en epost
+            if (losen.equals(dbLosen)) {
                 new Meny(idb, dbAid).setVisible(true);
                 this.setVisible(false);
-           }
-           else{
-               lblFelmeddelande.setVisible(true);
-           }
-           
-       } catch (Exception ex){
-           System.out.println(ex.getMessage());
-       }
+            } else {
+                lblFelmeddelande.setVisible(true);
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_btnLoggaInActionPerformed
-         
+
     /**
      * @param args the command line arguments
      */

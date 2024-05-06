@@ -12,87 +12,22 @@ import oru.inf.InfException;
  * @author marin
  */
 public class Meny extends javax.swing.JFrame {
+
     private InfDB idb;
     private String inloggadAnvandare;
-    
+    private Person enPerson;
+
     /**
      * Creates new form Meny
      */
     public Meny(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
+        enPerson = new Person(idb, inloggadAnvandare);
         initComponents();
         lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
-        lblRoll.setText("Roll: " + getRoll(inloggadAnvandare));
+        lblRoll.setText("Roll: " + enPerson.getRoll(inloggadAnvandare));
     }
-    
-    private String getRoll(String inloggadAnvandare) {
-        if(isAdmin(inloggadAnvandare) == true){
-            return "admin";
-        }
-        else if(isProjektledare(inloggadAnvandare) == true){
-            return "projektledare";
-        }
-        else {
-            return "handläggare";
-        }
-    }
-    
-    private boolean isAdmin(String inloggadAnvandare){
-        String aid = null;
-        
-        try{ 
-            String sqlFraga = "SELECT aid FROM admin WHERE aid = " + inloggadAnvandare;
-            System.out.println(sqlFraga);
-            aid = idb.fetchSingle(sqlFraga);
-            System.out.println(aid);
-        }catch (Exception ex){
-              System.out.println(ex.getMessage());
-          }
-        
-        if(aid != null) {
-            return true;
-        }
-        
-        return false;
-    }
-            
-     private boolean isProjektledare(String inloggadAnvandare){
-         String aid = null;
-     
-        try{ 
-            String sqlFraga = "SELECT aid FROM ans_proj WHERE aid = " + inloggadAnvandare;
-              System.out.println(sqlFraga);
-              aid = idb.fetchSingle(sqlFraga);
-              System.out.println(aid);
-        }catch (Exception ex){
-              System.out.println(ex.getMessage());
-          }
-        
-        if(aid != null) {
-            return true;
-        }
-        
-        return false;} 
-     
-    private boolean isHandlaggare(String inloggadAnvandare) {
-        String aid = null;
-        
-        try {
-            String sqlFraga = "SELECT aid FROM handlaggare WHERE aid = " + inloggadAnvandare;
-            System.out.println(sqlFraga);
-            aid = idb.fetchSingle(sqlFraga);
-            System.out.println(aid);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        if(aid != null) {
-            return true;
-        }
-        
-        return false;
-    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,7 +86,7 @@ public class Meny extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Händelsen som ska köras när användaren trycker på knappen
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -184,7 +119,7 @@ public class Meny extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
