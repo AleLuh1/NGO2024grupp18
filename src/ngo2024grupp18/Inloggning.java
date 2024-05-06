@@ -112,8 +112,14 @@ public class Inloggning extends javax.swing.JFrame {
            String dbLosen = idb.fetchSingle(sqlFraga);
            //Kom ihåg att kontrollera att användaren har skrivit in en epost
            if(losen.equals(dbLosen)){
-              new Meny(idb, ePost).setVisible(true);
-              this.setVisible(false);
+              //new Meny(idb, ePost).setVisible(true);
+              //this.setVisible(false);
+             if(isAdmin(ePost)){
+             System.out.println("administratör");
+             }
+             else{
+             System.out.println("handläggare");}
+    
            }
            else{
                lblFelmeddelande.setVisible(true);
@@ -123,7 +129,27 @@ public class Inloggning extends javax.swing.JFrame {
            System.out.println(ex.getMessage());
        }
     }//GEN-LAST:event_btnLoggaInActionPerformed
-
+    
+    private boolean isAdmin(String ePost){
+    String aid = null;
+        try{ 
+            String sqlFraga = "SELECT admin.aid from admin join anstalld on admin.aid = anstalld.aid where anstalld.epost  = '" + ePost + "'";
+              System.out.println(sqlFraga);
+              aid = idb.fetchSingle(sqlFraga);
+              System.out.println(aid);
+        }catch (Exception ex){
+              System.out.println(ex.getMessage());
+          }
+        
+        if(aid != null) {
+            return true;
+        }
+        
+        return false;
+    }
+            
+            
+            
     /**
      * @param args the command line arguments
      */

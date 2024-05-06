@@ -5,20 +5,16 @@
 package ngo2024grupp18;
 
 import oru.inf.InfDB;
-import oru.inf.InfException;
-
-import java.util.ArrayList;
 
 /**
  *
  * @author alex
  */
 public class Personuppgifter {
-    private ArrayList<String> personLista;
+    private String fornamn;
     private InfDB idb;
             
     public Personuppgifter(InfDB idb) {
-       personLista = new ArrayList<String>();
        this.idb = idb;
     }
     
@@ -27,9 +23,11 @@ public class Personuppgifter {
         try {
             String sqlFraga = "SELECT fornamn FROM anstalld";
             System.out.println(sqlFraga);
+            
             String dbFornamn = idb.fetchSingle(sqlFraga);
-            personLista.add(dbFornamn);
-            System.out.println("Arraylist: " + personLista);
+            fornamn = dbFornamn;
+            
+            System.out.println("Förnamn: " + fornamn);
         }
         catch (Exception ex){
            System.out.println(ex.getMessage());
