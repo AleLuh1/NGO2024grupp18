@@ -135,7 +135,7 @@ public class Inloggning extends javax.swing.JFrame {
     private boolean isAdmin(String ePost){
     String aid = null;
         try{ 
-            String sqlFraga = "SELECT admin.aid from admin join anstalld on admin.aid = anstalld.aid where anstalld.epost  = '" + ePost + "'";
+            String sqlFraga = "SELECT admin.aid FROM admin JOIN anstalld ON admin.aid = anstalld.aid WHERE anstalld.epost  = '" + ePost + "'";
               System.out.println(sqlFraga);
               aid = idb.fetchSingle(sqlFraga);
               System.out.println(aid);
@@ -154,7 +154,7 @@ public class Inloggning extends javax.swing.JFrame {
          String aid = null;
      
         try{ 
-            String sqlFraga = "SELECT ans_proj.aid from ans_proj join anstalld on ans_proj.aid = anstalld.aid where anstalld.epost = '" + ePost + "'";
+            String sqlFraga = "SELECT ans_proj.aid FROM ans_proj JOIN anstalld ON ans_proj.aid = anstalld.aid WHERE anstalld.epost = '" + ePost + "'";
               System.out.println(sqlFraga);
               aid = idb.fetchSingle(sqlFraga);
               System.out.println(aid);
