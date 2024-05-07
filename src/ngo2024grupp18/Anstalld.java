@@ -11,12 +11,12 @@ import oru.inf.InfException;
 // *
 // * @author alex
 // */
-public class Person {
+public class Anstalld {
 
     private InfDB idb;
     private String inloggadAnvandare;
 
-    public Person(InfDB idb, String inloggadAnvandare) {
+    public Anstalld(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
     }
