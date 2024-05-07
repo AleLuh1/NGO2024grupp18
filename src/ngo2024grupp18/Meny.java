@@ -16,18 +16,15 @@ public class Meny extends javax.swing.JFrame {
     private InfDB idb;
     private String inloggadAnvandare;
     private Anstalld enAnstalld;
-    private String fornamn; 
 
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb, String inloggadAnvandare, String fornamn) {
+    public Meny(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
-        this.fornamn = fornamn; 
+        enAnstalld = new Anstalld(idb, inloggadAnvandare);
         initComponents();
-        lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
-        lblRoll.setText("Roll: " + enAnstalld.getRoll(inloggadAnvandare));
     }
     
     /**
@@ -39,15 +36,9 @@ public class Meny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblInloggadAnvandare = new javax.swing.JLabel();
-        lblRoll = new javax.swing.JLabel();
         btnMinaUppgifter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblInloggadAnvandare.setText("jLabel1");
-
-        lblRoll.setText("jLabel1");
 
         btnMinaUppgifter.setText("Mina uppgifter");
         btnMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
@@ -63,31 +54,21 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(btnMinaUppgifter)
-                .addGap(155, 155, 155)
-                .addComponent(lblInloggadAnvandare)
-                .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblInloggadAnvandare)
-                    .addComponent(btnMinaUppgifter))
-                .addGap(18, 18, 18)
-                .addComponent(lblRoll)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addComponent(btnMinaUppgifter)
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
-        System.out.println("Hej");
+        new MinaUppgifter(enAnstalld).setVisible(true);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     /**
@@ -127,7 +108,5 @@ public class Meny extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMinaUppgifter;
-    private javax.swing.JLabel lblInloggadAnvandare;
-    private javax.swing.JLabel lblRoll;
     // End of variables declaration//GEN-END:variables
 }

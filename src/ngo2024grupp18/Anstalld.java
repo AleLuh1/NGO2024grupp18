@@ -4,7 +4,6 @@
  */
 package ngo2024grupp18;
 
-import java.util.ArrayList;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -16,26 +15,101 @@ public class Anstalld {
 
     private InfDB idb;
     private String inloggadAnvandare;
-    private String fornamn; 
 
-    public Anstalld(InfDB idb, String inloggadAnvandare, String fornamn) {
+    public Anstalld(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
-        this.fornamn = fornamn;
     }
-    
-    public void getFornamn(String inloggadAnvandare) {
+
+    public String getAID() {
+        return inloggadAnvandare;
+    }
+
+    public String getFornamn() {
         try {
             String sqlFraga = "SELECT fornamn FROM anstalld WHERE aid = " + inloggadAnvandare;
             System.out.println(sqlFraga);
             String fornamn = idb.fetchSingle(sqlFraga);
-            System.out.println(fornamn);
-        } catch(Exception ex) {
+            return fornamn;
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            return null;
         }
     }
 
-    public String getRoll(String inloggadAnvandare) {
+    public String getEfternamn() {
+        try {
+            String sqlFraga = "SELECT efternamn FROM anstalld WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            String efternamn = idb.fetchSingle(sqlFraga);
+            return efternamn;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
+    public String getAdress() {
+        try {
+            String sqlFraga = "SELECT adress FROM anstalld WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            String adress = idb.fetchSingle(sqlFraga);
+            return adress;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
+    public String getEpost() {
+        try {
+            String sqlFraga = "SELECT epost FROM anstalld WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            String epost = idb.fetchSingle(sqlFraga);
+            return epost;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
+    public String getTelefon() {
+        try {
+            String sqlFraga = "SELECT telefon FROM anstalld WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            String telefon = idb.fetchSingle(sqlFraga);
+            return telefon;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+    
+    public String getAnstallningsDatum() {
+        try {
+            String sqlFraga = "SELECT anstallningsdatum FROM anstalld WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            String anstallningsdatum = idb.fetchSingle(sqlFraga);
+            return anstallningsdatum;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+    
+    public String getAvdelning() {
+        try {
+            String sqlFraga = "SELECT avdelning FROM anstalld WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            String avdelning = idb.fetchSingle(sqlFraga);
+            return avdelning;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
+    public String getRoll() {
         if (isAdmin(inloggadAnvandare) == true) {
             return "admin";
         } else if (isProjektledare(inloggadAnvandare) == true) {
