@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
-import java.util.ArrayList;
+
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -12,18 +12,21 @@ import oru.inf.InfException;
  * @author marin
  */
 public class Meny extends javax.swing.JFrame {
+
     private InfDB idb;
     private String inloggadAnvandare;
-    private ArrayList<String> personLista;
-    
+    private Person enPerson;
+
     /**
      * Creates new form Meny
      */
     public Meny(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
+        enPerson = new Person(idb, inloggadAnvandare);
         initComponents();
-        lblInloggadAnvandare.setText(inloggadAnvandare);
+        lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
+        lblRoll.setText("Roll: " + enPerson.getRoll(inloggadAnvandare));
     }
 
     /**
@@ -37,6 +40,7 @@ public class Meny extends javax.swing.JFrame {
 
         lblInloggadAnvandare = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblRoll = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +53,8 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        lblRoll.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,14 +63,19 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(lblInloggadAnvandare))
-                .addContainerGap(260, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblInloggadAnvandare)
+                        .addGap(59, 59, 59)
+                        .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(lblInloggadAnvandare)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblInloggadAnvandare)
+                    .addComponent(lblRoll))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(198, Short.MAX_VALUE))
@@ -74,7 +85,8 @@ public class Meny extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("Arraylist: " + personLista);
+        // Händelsen som ska köras när användaren trycker på knappen
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -107,7 +119,7 @@ public class Meny extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
@@ -115,5 +127,6 @@ public class Meny extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JLabel lblRoll;
     // End of variables declaration//GEN-END:variables
 }
