@@ -84,7 +84,7 @@ public class Anstalld {
             return null;
         }
     }
-    
+
     public String getAnstallningsDatum() {
         try {
             String sqlFraga = "SELECT anstallningsdatum FROM anstalld WHERE aid = " + inloggadAnvandare;
@@ -96,7 +96,7 @@ public class Anstalld {
             return null;
         }
     }
-    
+
     public String getAvdelning() {
         try {
             String sqlFraga = "SELECT avdelning FROM anstalld WHERE aid = " + inloggadAnvandare;

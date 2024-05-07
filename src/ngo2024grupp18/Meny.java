@@ -26,7 +26,7 @@ public class Meny extends javax.swing.JFrame {
         enAnstalld = new Anstalld(idb, inloggadAnvandare);
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
