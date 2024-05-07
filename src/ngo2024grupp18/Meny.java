@@ -15,20 +15,21 @@ public class Meny extends javax.swing.JFrame {
 
     private InfDB idb;
     private String inloggadAnvandare;
-    private Anstalld enPerson;
+    private Anstalld enAnstalld;
+    private String fornamn; 
 
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb, String inloggadAnvandare) {
+    public Meny(InfDB idb, String inloggadAnvandare, String fornamn) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
-        enPerson = new Anstalld(idb, inloggadAnvandare);
+        this.fornamn = fornamn; 
         initComponents();
         lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
-        lblRoll.setText("Roll: " + enPerson.getRoll(inloggadAnvandare));
+        lblRoll.setText("Roll: " + enAnstalld.getRoll(inloggadAnvandare));
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

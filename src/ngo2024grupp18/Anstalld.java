@@ -4,6 +4,7 @@
  */
 package ngo2024grupp18;
 
+import java.util.ArrayList;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -15,10 +16,23 @@ public class Anstalld {
 
     private InfDB idb;
     private String inloggadAnvandare;
+    private String fornamn; 
 
-    public Anstalld(InfDB idb, String inloggadAnvandare) {
+    public Anstalld(InfDB idb, String inloggadAnvandare, String fornamn) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
+        this.fornamn = fornamn;
+    }
+    
+    public void getFornamn(String inloggadAnvandare) {
+        try {
+            String sqlFraga = "SELECT fornamn FROM anstalld WHERE aid = " + inloggadAnvandare;
+            System.out.println(sqlFraga);
+            String fornamn = idb.fetchSingle(sqlFraga);
+            System.out.println(fornamn);
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public String getRoll(String inloggadAnvandare) {

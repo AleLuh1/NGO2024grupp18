@@ -118,7 +118,7 @@ public class Inloggning extends javax.swing.JFrame {
             String dbAid = idb.fetchSingle(sqlFraga2);
             //Kom ihåg att kontrollera att användaren har skrivit in en epost
             if (losen.equals(dbLosen)) {
-                new Meny(idb, dbAid).setVisible(true);
+                new Meny(idb, dbAid, fornamn).setVisible(true);
                 this.setVisible(false);
             } else {
                 lblFelmeddelande.setVisible(true);
