@@ -110,16 +110,16 @@ public class Anstalld {
     }
 
     public String getRoll() {
-        if (isAdmin(inloggadAnvandare) == true) {
+        if (isAdmin() == true) {
             return "admin";
-        } else if (isProjektledare(inloggadAnvandare) == true) {
+        } else if (isProjektledare() == true) {
             return "projektledare";
         } else {
             return "handläggare";
         }
     }
 
-    public boolean isAdmin(String inloggadAnvandare) {
+    public boolean isAdmin() {
         String aid = null;
 
         try {
@@ -138,7 +138,7 @@ public class Anstalld {
         return false;
     }
 
-    public boolean isProjektledare(String inloggadAnvandare) {
+    public boolean isProjektledare() {
         String aid = null;
 
         try {
@@ -157,7 +157,7 @@ public class Anstalld {
         return false;
     }
 
-    public boolean isHandlaggare(String inloggadAnvandare) {
+    public boolean isHandlaggare() {
         String aid = null;
 
         try {

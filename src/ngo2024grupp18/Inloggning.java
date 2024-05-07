@@ -49,10 +49,6 @@ public class Inloggning extends javax.swing.JFrame {
         lblFelmeddelande.setForeground(new java.awt.Color(255, 0, 51));
         lblFelmeddelande.setText("Felaktig epost eller lösenord");
 
-        tfEpost.setText("maria.g@example.com");
-
-        tfLösenord.setText("password123");
-
         btnLoggaIn.setText("Logga in");
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
