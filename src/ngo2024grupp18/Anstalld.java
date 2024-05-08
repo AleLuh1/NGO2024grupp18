@@ -40,14 +40,17 @@ public class Anstalld {
         this.avdelning = avdelning;
 
     }
+    public String getAID(){
+        return inloggadAnvandare;
+    }
 
     public String getRoll() {
         if (isAdmin(inloggadAnvandare) == true) {
-            return "admin";
+            return "Admin";
         } else if (isProjektledare(inloggadAnvandare) == true) {
-            return "projektledare";
+            return "Projektledare";
         } else {
-            return "handläggare";
+            return "Handläggare";
         }
     }
 

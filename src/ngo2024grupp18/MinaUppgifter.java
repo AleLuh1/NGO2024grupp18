@@ -4,29 +4,23 @@
  */
 package ngo2024grupp18;
 
-import oru.inf.InfDB;
-import oru.inf.InfException;
-
 /**
  *
- * @author marin
+ * @author User
  */
-public class Meny extends javax.swing.JFrame {
-    
-    private InfDB idb;
-    private String inloggadAnvandare;
-    private Anstalld enAnstalld;
+public class MinaUppgifter extends javax.swing.JFrame {
 
+    private Anstalld enAnstalld;
+            
     /**
-     * Creates new form Meny
+     * Creates new form MinaUppgifter
      */
-    public Meny(InfDB idb, String inloggadAnvandare) {
-        this.idb = idb;
-        this.inloggadAnvandare = inloggadAnvandare;
-        enAnstalld = new Anstalld(idb);
+    public MinaUppgifter(Anstalld enAnstalld) {
         initComponents();
-        //   lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
-        // lblRoll.setText("Roll: " + enAnstalld.getRoll());
+        this.enAnstalld = enAnstalld;
+        lblRoll.setText("Roll: " + enAnstalld.getRoll());
+        lblAnstallningsId.setText("AnställningsID: " + enAnstalld.getAID());
+        
     }
 
     /**
@@ -38,56 +32,45 @@ public class Meny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblInloggadAnvandare = new javax.swing.JLabel();
+        lblFornamn = new javax.swing.JLabel();
+        lblAnstallningsId = new javax.swing.JLabel();
         lblRoll = new javax.swing.JLabel();
-        btnMinaUppgifter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblInloggadAnvandare.setText("jLabel1");
+        lblFornamn.setText("Förnamn");
 
-        lblRoll.setText("jLabel1");
+        lblAnstallningsId.setText("AnställningsID");
 
-        btnMinaUppgifter.setText("Mina uppgifter");
-        btnMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinaUppgifterActionPerformed(evt);
-            }
-        });
+        lblRoll.setText("Roll");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(btnMinaUppgifter)
-                .addGap(155, 155, 155)
-                .addComponent(lblInloggadAnvandare)
-                .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblAnstallningsId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblFornamn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblInloggadAnvandare)
-                    .addComponent(btnMinaUppgifter))
+                    .addComponent(lblAnstallningsId)
+                    .addComponent(lblRoll))
                 .addGap(18, 18, 18)
-                .addComponent(lblRoll)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addComponent(lblFornamn)
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
-        new MinaUppgifter(enAnstalld).setVisible(true);
-    }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,27 +89,26 @@ public class Meny extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Meny.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaUppgifter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Meny.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaUppgifter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Meny.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaUppgifter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Meny.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaUppgifter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMinaUppgifter;
-    private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JLabel lblAnstallningsId;
+    private javax.swing.JLabel lblFornamn;
     private javax.swing.JLabel lblRoll;
     // End of variables declaration//GEN-END:variables
 }
