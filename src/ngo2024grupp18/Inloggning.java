@@ -113,11 +113,12 @@ public class Inloggning extends javax.swing.JFrame {
             String sqlFraga1 = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
             System.out.println(sqlFraga1);
             String dbLosen = idb.fetchSingle(sqlFraga1);
-            String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
-            System.out.println(sqlFraga2);
-            String dbAid = idb.fetchSingle(sqlFraga2);
+
             //Kom ihåg att kontrollera att användaren har skrivit in en epost
             if (losen.equals(dbLosen)) {
+                String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
+                System.out.println(sqlFraga2);
+                String dbAid = idb.fetchSingle(sqlFraga2);
                 new Meny(idb, dbAid).setVisible(true);
                 this.setVisible(false);
             } else {

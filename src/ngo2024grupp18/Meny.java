@@ -15,7 +15,7 @@ public class Meny extends javax.swing.JFrame {
 
     private InfDB idb;
     private String inloggadAnvandare;
-    private Anstalld enPerson;
+    private Anstalld enAnstalld;
 
     /**
      * Creates new form Meny
@@ -23,10 +23,10 @@ public class Meny extends javax.swing.JFrame {
     public Meny(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
-        enPerson = new Anstalld(idb, inloggadAnvandare, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning);
+        enAnstalld = new Anstalld(idb);
         initComponents();
         lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
-        lblRoll.setText("Roll: " + enPerson.getRoll(inloggadAnvandare));
+        lblRoll.setText("Roll: " + enAnstalld.getRoll());
     }
 
     /**
