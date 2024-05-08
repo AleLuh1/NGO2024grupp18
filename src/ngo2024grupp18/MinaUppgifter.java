@@ -11,6 +11,7 @@ package ngo2024grupp18;
 public class MinaUppgifter extends javax.swing.JFrame {
 
     private Anstalld enAnstalld;
+    private String aid;
             
     /**
      * Creates new form MinaUppgifter
@@ -18,9 +19,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
     public MinaUppgifter(Anstalld enAnstalld) {
         initComponents();
         this.enAnstalld = enAnstalld;
+        //SQL frågan ska skrivas här och vi kan använda HashMap för att lagra resultatet
+        //Då kan man skriva + (resultatet av SQL frågan)
         lblRoll.setText("Roll: " + enAnstalld.getRoll());
         lblAnstallningsId.setText("AnställningsID: " + enAnstalld.getAID());
-        
+//        Anstalld enAnstalldsID = enAnstalld.getInloggad(aid);
+//        lblAnstallningsId.setText("AnställningsID: " + enAnstalldsID.getAID());
     }
 
     /**

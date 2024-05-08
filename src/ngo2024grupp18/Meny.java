@@ -23,7 +23,7 @@ public class Meny extends javax.swing.JFrame {
     public Meny(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
-        enAnstalld = new Anstalld(idb);
+        enAnstalld = new Anstalld(idb, inloggadAnvandare);
         initComponents();
         //   lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
         // lblRoll.setText("Roll: " + enAnstalld.getRoll());

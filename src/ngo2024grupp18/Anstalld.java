@@ -24,8 +24,9 @@ public class Anstalld {
     private String anstallningsdatum;
     private String avdelning;
 
-    public Anstalld(InfDB idb) {
+    public Anstalld(InfDB idb, String inloggadAnvandare) {
         this.idb = idb;
+        this.inloggadAnvandare = inloggadAnvandare;
     }
 
     public Anstalld(String fornamn, String efternamn, String adress, String epost, String telefon, String anstallningsdatum, String avdelning) {
@@ -113,9 +114,9 @@ public class Anstalld {
 
     public Anstalld getInloggad(String aid) {
         try {
-            String sqlFraga = "SELECT * FROM Anstalld WHERE aid = '" + aid + "'";
+            String sqlFraga = "SELECT * FROM Anstalld WHERE aid =" + aid;
             System.out.println(sqlFraga);
-            var anstalld = idb.fetchRow(sqlFraga);
+            HashMap<String, String> anstalld = idb.fetchRow(sqlFraga);
             Anstalld inloggadAnstalld = new Anstalld(anstalld.get("fornamn"), anstalld.get("efternamn"), anstalld.get("adress"), anstalld.get("epost"), anstalld.get("telefon"), anstalld.get("anstallningsdatum"), anstalld.get("avdelning"));
             return inloggadAnstalld;
         } catch (Exception ex) {
