@@ -97,6 +97,11 @@ public class MinaUppgifter extends javax.swing.JFrame {
         btnAndraUppgifter.setText("Ändra");
 
         btnTillbakaMU.setText("Tillbaka");
+        btnTillbakaMU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaMUActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +182,10 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTillbakaMUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMUActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
     /**
      * @param args the command line arguments

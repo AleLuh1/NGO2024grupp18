@@ -40,6 +40,7 @@ public class Meny extends javax.swing.JFrame {
         btnProjekt = new javax.swing.JButton();
         btnAvdelning = new javax.swing.JButton();
         btnHallbarhetsMal = new javax.swing.JButton();
+        lblMeny = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,9 @@ public class Meny extends javax.swing.JFrame {
 
         btnHallbarhetsMal.setText("Hållbarhetsmål");
 
+        lblMeny.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMeny.setText("Meny");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,29 +71,32 @@ public class Meny extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                        .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblMeny, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(21, 21, 21)
+                .addComponent(lblMeny)
+                .addGap(18, 18, 18)
                 .addComponent(btnMinaUppgifter)
                 .addGap(18, 18, 18)
                 .addComponent(btnProjekt)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnAvdelning)
                 .addGap(18, 18, 18)
                 .addComponent(btnHallbarhetsMal)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
-        //new MinaUppgifter(enAnstalld).setVisible(true);
         new MinaUppgifter(idb, aid).setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     /**
@@ -132,5 +139,6 @@ public class Meny extends javax.swing.JFrame {
     private javax.swing.JButton btnHallbarhetsMal;
     private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnProjekt;
+    private javax.swing.JLabel lblMeny;
     // End of variables declaration//GEN-END:variables
 }
