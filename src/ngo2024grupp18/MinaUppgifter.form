@@ -26,35 +26,40 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblFornamn" max="32767" attributes="0"/>
-                              <Component id="lblAID" pref="99" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="lblEfternamn" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                          <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                          <Component id="lblTelefon" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                          <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tfTelefon" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfEpost" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAdress" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfEfternamn" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
-                          <Component id="tfFornamn" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdelning" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="126" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblAnstallningsDatum" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="btnTillbakaMU" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnAndraUppgifter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lblFornamn" max="32767" attributes="0"/>
+                                      <Component id="lblAID" pref="99" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblEfternamn" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <Component id="lblTelefon" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="tfTelefon" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="tfEpost" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="tfAdress" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="tfEfternamn" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <Component id="tfFornamn" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="tfAvdelning" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="lblAnstallningsDatum" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="126" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -98,14 +103,16 @@
                   <Group type="102" attributes="0">
                       <Component id="lblAvdelning" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblAnstallningsDatum" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAndraUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblAnstallningsDatum" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="tfAvdelning" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAndraUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTillbakaMU" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -189,6 +196,11 @@
     <Component class="javax.swing.JButton" name="btnAndraUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTillbakaMU">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
       </Properties>
     </Component>
   </SubComponents>

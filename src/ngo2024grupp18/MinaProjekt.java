@@ -8,12 +8,12 @@ package ngo2024grupp18;
  *
  * @author alex
  */
-public class Projekt extends javax.swing.JFrame {
+public class MinaProjekt extends javax.swing.JFrame {
 
     /**
-     * Creates new form Projekt
+     * Creates new form MinaProjekt
      */
-    public Projekt() {
+    public MinaProjekt() {
         initComponents();
     }
 
@@ -26,46 +26,27 @@ public class Projekt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnMinaProjekt = new javax.swing.JButton();
-        btnAvdProjekt = new javax.swing.JButton();
-        btnAllaProjekt = new javax.swing.JButton();
-        btnTillbakaProj = new javax.swing.JButton();
+        btnTillbakaMinaProj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnMinaProjekt.setText("Mina projekt");
-
-        btnAvdProjekt.setText("Avdelningens projekt");
-
-        btnAllaProjekt.setText("Alla projekt");
-
-        btnTillbakaProj.setText("Tillbaka");
+        btnTillbakaMinaProj.setText("Tillbaka");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTillbakaProj)
-                    .addComponent(btnAllaProjekt)
-                    .addComponent(btnAvdProjekt)
-                    .addComponent(btnMinaProjekt))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(btnTillbakaMinaProj)
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(btnMinaProjekt)
-                .addGap(31, 31, 31)
-                .addComponent(btnAvdProjekt)
-                .addGap(35, 35, 35)
-                .addComponent(btnAllaProjekt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(btnTillbakaProj)
-                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(238, Short.MAX_VALUE)
+                .addComponent(btnTillbakaMinaProj)
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -88,28 +69,25 @@ public class Projekt extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Projekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Projekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Projekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Projekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinaProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Projekt().setVisible(true);
+                new MinaProjekt().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAllaProjekt;
-    private javax.swing.JButton btnAvdProjekt;
-    private javax.swing.JButton btnMinaProjekt;
-    private javax.swing.JButton btnTillbakaProj;
+    private javax.swing.JButton btnTillbakaMinaProj;
     // End of variables declaration//GEN-END:variables
 }

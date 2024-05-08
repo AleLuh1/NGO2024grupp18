@@ -9,7 +9,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author alex
+ * @author alexF
  */
 public class NGO2024grupp18 {
 
