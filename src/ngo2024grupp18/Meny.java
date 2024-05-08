@@ -12,7 +12,7 @@ import oru.inf.InfException;
  * @author marin
  */
 public class Meny extends javax.swing.JFrame {
-    
+
     private InfDB idb;
     private String aid;
 
@@ -38,6 +38,8 @@ public class Meny extends javax.swing.JFrame {
 
         btnMinaUppgifter = new javax.swing.JButton();
         btnProjekt = new javax.swing.JButton();
+        btnAvdelning = new javax.swing.JButton();
+        btnHallbarhetsMal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,16 +52,23 @@ public class Meny extends javax.swing.JFrame {
 
         btnProjekt.setText("Projekt");
 
+        btnAvdelning.setText("Avdelning");
+
+        btnHallbarhetsMal.setText("Hållbarhetsmål");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHallbarhetsMal)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,7 +77,11 @@ public class Meny extends javax.swing.JFrame {
                 .addComponent(btnMinaUppgifter)
                 .addGap(18, 18, 18)
                 .addComponent(btnProjekt)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAvdelning)
+                .addGap(18, 18, 18)
+                .addComponent(btnHallbarhetsMal)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,12 +122,14 @@ public class Meny extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvdelning;
+    private javax.swing.JButton btnHallbarhetsMal;
     private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnProjekt;
     // End of variables declaration//GEN-END:variables

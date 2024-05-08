@@ -7,14 +7,16 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.HashMap;
+
 /**
  *
  * @author alex
  */
 public class MinaUppgifter extends javax.swing.JFrame {
-    
+
     private InfDB idb;
     private String aid;
+
     /**
      * Creates new form MinaUppgifter
      */
@@ -29,7 +31,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
             tfFornamn.setText(anstalld.get("fornamn"));
             tfFornamn.setEditable(false);
         } catch (Exception ex) {
-            
+
         }
     }
 
