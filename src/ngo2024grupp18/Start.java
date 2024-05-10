@@ -4,6 +4,7 @@
  */
 package ngo2024grupp18;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -11,7 +12,7 @@ import oru.inf.InfException;
  *
  * @author alexF
  */
-public class NGO2024grupp18 {
+public class Start {
 
     private static InfDB idb;
 
@@ -24,7 +25,8 @@ public class NGO2024grupp18 {
             new Inloggning(idb).setVisible(true);
             System.out.println("funkar");
         } catch (InfException ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+            System.out.println("Internt felmeddelande" + ex.getMessage());
         }
     }
 }
