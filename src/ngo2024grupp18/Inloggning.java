@@ -117,28 +117,23 @@ public class Inloggning extends javax.swing.JFrame {
 
 // Kollar att användaren har angett text i rutorna för E-post och lösenord
         if (Validering.finnsText(tfEpost) && Validering.finnsText(tfLosenord)) {
-
-// Får ut användarens lösenord ur databasen om den stämmer överens med angiven e-post         
-            try {
-                String sqlFraga1 = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
-                System.out.println(sqlFraga1);
-                String dbLosen = idb.fetchSingle(sqlFraga1);
-
-// Kollar att lösenordet användaren har skrivit in i fältet matchar lösenordet i db
-// Nytt objekt av klassen Meny skapas om lösenordet är korrekt 
-                if (losen.equals(dbLosen)) {
-                    String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
-                    System.out.println(sqlFraga2);
-                    String dbAid = idb.fetchSingle(sqlFraga2);
-                    new Meny(idb, dbAid).setVisible(true);
-                    this.setVisible(false);
-                } else {
-                    lblFelmeddelande.setVisible(true);
-                }
-
-            } catch (Exception ex) {
+            try{
+                String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+                System.out.println(sqlFraga);
+                String dbLosen = idb.fetchSingle(sqlFraga);
+                    if(losen.equals(dbLosen)) {
+                        String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
+                        System.out.println(sqlFraga2); 
+                        String dbAid = idb.fetchSingle(sqlFraga2); 
+                        new Meny(idb, dbAid).setVisible(true);
+                        this.setVisible(false);
+                    } else {
+                        lblFelmeddelande.setVisible(true);
+                    }
+            } catch(Exception ex) {
                 System.out.println(ex.getMessage());
-            }
+            }       
+        
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
 

@@ -4,16 +4,21 @@
  */
 package ngo2024grupp18;
 
+import java.util.HashMap;
+import oru.inf.InfDB;
+
 /**
  *
  * @author alex
  */
 public class MinaProjekt extends javax.swing.JFrame {
-
+    
+    private InfDB idb;
+    private String pid;
     /**
      * Creates new form MinaProjekt
      */
-    public MinaProjekt() {
+    public MinaProjekt(InfDB idb, String pid) {
         initComponents();
     }
 

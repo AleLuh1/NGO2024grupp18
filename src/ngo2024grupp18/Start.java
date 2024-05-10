@@ -10,7 +10,7 @@ import oru.inf.InfException;
 
 /**
  *
- * @author alexF
+ * @author alex
  */
 public class Start {
 

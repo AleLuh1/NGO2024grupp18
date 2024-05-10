@@ -15,6 +15,7 @@ public class Meny extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
+    private String pid;
 
     /**
      * Creates new form Meny
@@ -52,6 +53,11 @@ public class Meny extends javax.swing.JFrame {
         });
 
         btnProjekt.setText("Projekt");
+        btnProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProjektActionPerformed(evt);
+            }
+        });
 
         btnAvdelning.setText("Avdelning");
 
@@ -98,6 +104,10 @@ public class Meny extends javax.swing.JFrame {
         new MinaUppgifter(idb, aid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
+
+    private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
+        new Projekt(idb, pid).setVisible(true);
+    }//GEN-LAST:event_btnProjektActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,17 +4,32 @@
  */
 package ngo2024grupp18;
 
+import java.util.HashMap;
+import oru.inf.InfDB;
+
 /**
  *
  * @author alex
  */
 public class Projekt extends javax.swing.JFrame {
-
+    private InfDB idb;
+    private String pid;
     /**
      * Creates new form Projekt
      */
-    public Projekt() {
+    public Projekt(InfDB idb, String pid) {
         initComponents();
+        this.idb = idb;
+        this.pid = pid;
+        try {
+            String sqlFraga = "SELECT * FROM projekt WHERE pid = " + pid;
+            System.out.println(sqlFraga);
+            HashMap<String, String> projekt = idb.fetchRow(sqlFraga);
+//            tfFornamn.setText(anstalld.get("fornamn"));
+//            tfFornamn.setEditable(false);
+        } catch (Exception ex) {
+
+        }
     }
 
     /**

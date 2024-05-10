@@ -27,7 +27,7 @@ public class Validering {
         return resultat;
     }
 
-    public static boolean isKorrektEpost(JTextField kontrolleraRuta) {
+    public static boolean isKorrektFormatEpost(JTextField kontrolleraRuta) {
         boolean resultat = true;
         
         try {
@@ -53,4 +53,5 @@ public class Validering {
 
         return resultat;
     }
+    
 }
