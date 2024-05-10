@@ -19,6 +19,7 @@ public class Start {
     /**
      * @param args the command line arguments
      */
+    // Databasuppkoppling, skapar nytt objekt Inloggning 
     public static void main(String[] args) {
         try {
             idb = new InfDB("ngo_2024", "3306", "dbAdmin2024", "dbAdmin2024PW");

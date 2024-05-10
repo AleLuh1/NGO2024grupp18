@@ -19,8 +19,8 @@ public class Inloggning extends javax.swing.JFrame {
      * Creates new form Inloggning
      */
     public Inloggning(InfDB idb) {
-        this.idb = idb;
         initComponents();
+        this.idb = idb;
         lblFelmeddelande.setVisible(false);
     }
 
@@ -37,7 +37,7 @@ public class Inloggning extends javax.swing.JFrame {
         lblLösenord = new javax.swing.JLabel();
         lblFelmeddelande = new javax.swing.JLabel();
         tfEpost = new javax.swing.JTextField();
-        tfLösenord = new javax.swing.JTextField();
+        tfLosenord = new javax.swing.JTextField();
         btnLoggaIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,7 +51,7 @@ public class Inloggning extends javax.swing.JFrame {
 
         tfEpost.setText("maria.g@example.com");
 
-        tfLösenord.setText("password123");
+        tfLosenord.setText("password123");
 
         btnLoggaIn.setText("Logga in");
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +77,7 @@ public class Inloggning extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tfLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -94,7 +94,7 @@ public class Inloggning extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLösenord)
-                    .addComponent(tfLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblFelmeddelande)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -107,26 +107,32 @@ public class Inloggning extends javax.swing.JFrame {
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         String ePost = tfEpost.getText();
-        String losen = tfLösenord.getText();
+        String losen = tfLosenord.getText();
 
-        try {
-            String sqlFraga1 = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
-            System.out.println(sqlFraga1);
-            String dbLosen = idb.fetchSingle(sqlFraga1);
+// Kollar att användaren har angett text i rutorna för E-post och lösenord
+        if (Validering.textFaltHarVarde(tfEpost) && Validering.textFaltHarVarde(tfLosenord)) {
 
-            //Kom ihåg att kontrollera att användaren har skrivit in en epost
-            if (losen.equals(dbLosen)) {
-                String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
-                System.out.println(sqlFraga2);
-                String dbAid = idb.fetchSingle(sqlFraga2);
-                new Meny(idb, dbAid).setVisible(true);
-                this.setVisible(false);
-            } else {
-                lblFelmeddelande.setVisible(true);
+// Får ut användarens lösenord ur databasen om den stämmer överens med angiven e-post         
+            try {
+                String sqlFraga1 = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+                System.out.println(sqlFraga1);
+                String dbLosen = idb.fetchSingle(sqlFraga1);
+
+// Kollar att lösenordet användaren har skrivit in i fältet matchar lösenordet i db
+// Nytt objekt av klassen Meny skapas om lösenordet är korrekt 
+                if (losen.equals(dbLosen)) {
+                    String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
+                    System.out.println(sqlFraga2);
+                    String dbAid = idb.fetchSingle(sqlFraga2);
+                    new Meny(idb, dbAid).setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    lblFelmeddelande.setVisible(true);
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
@@ -137,6 +143,6 @@ public class Inloggning extends javax.swing.JFrame {
     private javax.swing.JLabel lblFelmeddelande;
     private javax.swing.JLabel lblLösenord;
     private javax.swing.JTextField tfEpost;
-    private javax.swing.JTextField tfLösenord;
+    private javax.swing.JTextField tfLosenord;
     // End of variables declaration//GEN-END:variables
 }
