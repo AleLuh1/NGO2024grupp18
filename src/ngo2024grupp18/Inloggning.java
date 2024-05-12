@@ -4,6 +4,7 @@
  */
 package ngo2024grupp18;
 
+import javax.swing.JTextField;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -21,7 +22,7 @@ public class Inloggning extends javax.swing.JFrame {
     public Inloggning(InfDB idb) {
         initComponents();
         this.idb = idb;
-        lblFelmeddelande.setVisible(false);
+        lblFelLosenord.setVisible(false);
     }
 
     /**
@@ -35,20 +36,16 @@ public class Inloggning extends javax.swing.JFrame {
 
         lblEpost = new javax.swing.JLabel();
         lblLösenord = new javax.swing.JLabel();
-        lblFelmeddelande = new javax.swing.JLabel();
         tfEpost = new javax.swing.JTextField();
         tfLosenord = new javax.swing.JTextField();
         btnLoggaIn = new javax.swing.JButton();
-        lblKorrektEpost = new javax.swing.JLabel();
+        lblFelLosenord = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblEpost.setText("E-post");
 
         lblLösenord.setText("Lösenord");
-
-        lblFelmeddelande.setForeground(new java.awt.Color(255, 0, 51));
-        lblFelmeddelande.setText("Felaktig e-post eller lösenord");
 
         tfEpost.setText("maria.g@example.com");
 
@@ -61,32 +58,29 @@ public class Inloggning extends javax.swing.JFrame {
             }
         });
 
-        lblKorrektEpost.setForeground(new java.awt.Color(255, 0, 51));
-        lblKorrektEpost.setText("Vänligen ange korrekt e-post");
+        lblFelLosenord.setForeground(new java.awt.Color(255, 0, 0));
+        lblFelLosenord.setText("Vänligen ange korrekt e-post eller lösenord");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFelmeddelande)
-                            .addComponent(lblKorrektEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLoggaIn)))
-                .addContainerGap(189, Short.MAX_VALUE))
+                        .addComponent(lblFelLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoggaIn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(lblEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(lblLösenord, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                        .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(99, 99, 99))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,13 +93,11 @@ public class Inloggning extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLösenord)
                     .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(lblFelmeddelande)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLoggaIn)
-                    .addComponent(lblKorrektEpost))
-                .addContainerGap(146, Short.MAX_VALUE))
+                    .addComponent(lblFelLosenord))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,24 +108,25 @@ public class Inloggning extends javax.swing.JFrame {
         String losen = tfLosenord.getText();
 
 // Kollar att användaren har angett text i rutorna för E-post och lösenord
-        if (Validering.finnsText(tfEpost) && Validering.finnsText(tfLosenord)) {
-            try{
+        if (Validering.finnsText(tfEpost) && Validering.finnsText(tfLosenord)
+                && Validering.isKorrektFormatEpost(tfEpost)) {
+            try {
                 String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
                 System.out.println(sqlFraga);
                 String dbLosen = idb.fetchSingle(sqlFraga);
-                    if(losen.equals(dbLosen)) {
-                        String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
-                        System.out.println(sqlFraga2); 
-                        String dbAid = idb.fetchSingle(sqlFraga2); 
-                        new Meny(idb, dbAid).setVisible(true);
-                        this.setVisible(false);
-                    } else {
-                        lblFelmeddelande.setVisible(true);
-                    }
-            } catch(Exception ex) {
+                if (losen.equals(dbLosen)) {
+                    String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
+                    System.out.println(sqlFraga2);
+                    String dbAid = idb.fetchSingle(sqlFraga2);
+                    new Meny(idb, dbAid).setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    lblFelLosenord.setVisible(true);
+                }
+            } catch (Exception ex) {
                 System.out.println(ex.getMessage());
-            }       
-        
+            }
+
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
@@ -141,8 +134,7 @@ public class Inloggning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
     private javax.swing.JLabel lblEpost;
-    private javax.swing.JLabel lblFelmeddelande;
-    private javax.swing.JLabel lblKorrektEpost;
+    private javax.swing.JLabel lblFelLosenord;
     private javax.swing.JLabel lblLösenord;
     private javax.swing.JTextField tfEpost;
     private javax.swing.JTextField tfLosenord;

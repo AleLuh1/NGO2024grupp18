@@ -23,31 +23,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="lblLösenord" min="-2" pref="150" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="tfLosenord" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="lblEpost" min="-2" pref="75" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="tfEpost" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblFelmeddelande" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblKorrektEpost" min="-2" pref="167" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblFelLosenord" min="-2" pref="245" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblEpost" min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="tfEpost" min="-2" pref="195" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblLösenord" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace pref="112" max="32767" attributes="0"/>
+                      <Component id="tfLosenord" min="-2" pref="195" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="189" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,14 +59,12 @@
                   <Component id="lblLösenord" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="lblFelmeddelande" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnLoggaIn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblKorrektEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFelLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="146" max="32767" attributes="0"/>
+              <EmptySpace pref="168" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,14 +78,6 @@
     <Component class="javax.swing.JLabel" name="lblL&#xf6;senord">
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblFelmeddelande">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Felaktig e-post eller l&#xf6;senord"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEpost">
@@ -113,12 +98,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoggaInActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblKorrektEpost">
+    <Component class="javax.swing.JLabel" name="lblFelLosenord">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
+          <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="V&#xe4;nligen ange korrekt e-post"/>
+        <Property name="text" type="java.lang.String" value="V&#xe4;nligen ange korrekt e-post eller l&#xf6;senord"/>
       </Properties>
     </Component>
   </SubComponents>

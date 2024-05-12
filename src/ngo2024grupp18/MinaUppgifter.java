@@ -31,7 +31,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
             tfFornamn.setText(anstalld.get("fornamn"));
             tfFornamn.setEditable(false);
         } catch (Exception ex) {
-
+            System.out.println(ex.getMessage());
         }
     }
 
