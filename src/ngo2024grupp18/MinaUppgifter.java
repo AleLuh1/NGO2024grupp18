@@ -28,11 +28,88 @@ public class MinaUppgifter extends javax.swing.JFrame {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
             System.out.println(sqlFraga);
             HashMap<String, String> anstalld = idb.fetchRow(sqlFraga);
+            lblAID.setText(("AnställningsID: " + anstalld.get("aid")));
+            lblAID.requestFocus();
+            lblRoll.setText("Roll: " + getRoll());
             tfFornamn.setText(anstalld.get("fornamn"));
             tfFornamn.setEditable(false);
+            tfEfternamn.setText(anstalld.get("efternamn"));
+            tfEfternamn.setEditable(false);
+            tfAdress.setText(anstalld.get("adress"));
+            tfAdress.setEditable(false);
+            tfEpost.setText(anstalld.get("epost"));
+            tfEpost.setEditable(false);
+            tfTelefon.setText(anstalld.get("telefon"));
+            tfTelefon.setEditable(false);
+            tfAvdelning.setText(anstalld.get("avdelning"));
+            tfAvdelning.setEditable(false);
+            lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
+            if (isHandlaggare() || isProjektledare()) {
+                btnAndraUppgifter.setVisible(true);
+            } else {
+                btnAndraUppgifter.setVisible(false);
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public String getRoll() {
+        if (isAdmin() == true) {
+            return "Admin";
+        } else if (isProjektledare() == true) {
+            return "Projektledare";
+        } else {
+            return "Handläggare";
+        }
+    }
+
+    public boolean isAdmin() {
+        String aidSomKollas = null;
+        try {
+            String sqlFraga = "SELECT aid FROM admin WHERE aid = " + aid;
+            System.out.println(sqlFraga);
+            aidSomKollas = idb.fetchSingle(sqlFraga);
+            System.out.println("Aid som kollas: " + aidSomKollas);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        if (aidSomKollas != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isProjektledare() {
+        String aidSomKollas = null;
+        try {
+            String sqlFraga = "SELECT aid FROM anstalld JOIN projekt ON projektchef = anstalld.aid WHERE anstalld.aid = " + aid;
+            System.out.println(sqlFraga);
+            aidSomKollas = idb.fetchSingle(sqlFraga);
+            System.out.println("Aid som kollas: " + aidSomKollas);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        if (aidSomKollas != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isHandlaggare() {
+        String aidSomKollas = null;
+        try {
+            String sqlFraga = "SELECT aid FROM handlaggare WHERE aid = " + aid;
+            System.out.println(sqlFraga);
+            aidSomKollas = idb.fetchSingle(sqlFraga);
+            System.out.println("Aid som kollas: " + aidSomKollas);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        if (aidSomKollas != null) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -116,7 +193,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
                         .addComponent(btnAndraUppgifter)
                         .addGap(63, 63, 63))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblAnstallningsDatum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -128,16 +206,15 @@ public class MinaUppgifter extends javax.swing.JFrame {
                                     .addComponent(lblTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblAnstallningsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(126, Short.MAX_VALUE))))
+                                    .addComponent(tfAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                    .addComponent(tfEpost)
+                                    .addComponent(tfTelefon)
+                                    .addComponent(tfFornamn)
+                                    .addComponent(tfEfternamn)
+                                    .addComponent(tfAvdelning))))
+                        .addContainerGap(102, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,12 +245,11 @@ public class MinaUppgifter extends javax.swing.JFrame {
                     .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAvdelning)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblAnstallningsDatum))
+                    .addComponent(lblAvdelning)
                     .addComponent(tfAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lblAnstallningsDatum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAndraUppgifter)
                     .addComponent(btnTillbakaMU))
