@@ -25,26 +25,45 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnTillbakaMinaProj" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="lblProjektNamn" pref="114" max="32767" attributes="0"/>
-                          <Component id="lblProjektID" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblLand" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProjektchef" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPrioProjekt" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblKostnad" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStartdatum" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBeskrivningProjekt" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnTillbakaMinaProj" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblProjektID" min="-2" pref="114" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="tfProjektID" min="-2" pref="148" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="tfProjektID" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="lblProjektNamn" min="-2" pref="114" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblSlutdatum" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="tfProjektNamn" max="32767" attributes="0"/>
+                              <Component id="tfStartdatum" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="tfSlutdatum" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="tfKostnad" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="tfStatus" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="tfPrioProjekt" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="tfProjektchef" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="tfLand" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="tfBeskrivningProjekt" min="-2" pref="183" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace pref="128" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,16 +71,58 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblProjektID" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfProjektID" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblProjektID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfProjektID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tfProjektNamn" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProjektNamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblBeskrivningProjekt" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="tfBeskrivningProjekt" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblProjektNamn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfProjektNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="157" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="tfSlutdatum" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSlutdatum" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblPrioProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPrioProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblProjektchef" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfProjektchef" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfLand" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
               <Component id="btnTillbakaMinaProj" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
@@ -92,6 +153,86 @@
     <Component class="javax.swing.JTextField" name="tfProjektNamn">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBeskrivningProjekt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Beskrivning"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfBeskrivningProjekt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStartdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Startdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfStartdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSlutdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Slutdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfSlutdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKostnad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kostnad"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfKostnad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Status"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPrioProjekt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prioritet"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPrioProjekt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProjektchef">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Projektchef"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfProjektchef">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Land"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField2"/>
       </Properties>
     </Component>
   </SubComponents>
