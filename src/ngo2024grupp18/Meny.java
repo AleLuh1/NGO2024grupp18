@@ -68,6 +68,11 @@ public class Meny extends javax.swing.JFrame {
         });
 
         btnHallbarhetsMal.setText("Hållbarhetsmål");
+        btnHallbarhetsMal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHallbarhetsMalActionPerformed(evt);
+            }
+        });
 
         lblMeny.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblMeny.setText("Meny");
@@ -118,6 +123,10 @@ public class Meny extends javax.swing.JFrame {
     private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
         new Avdelning(idb, avdid).setVisible(true); 
     }//GEN-LAST:event_btnAvdelningActionPerformed
+
+    private void btnHallbarhetsMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarhetsMalActionPerformed
+       
+    }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
