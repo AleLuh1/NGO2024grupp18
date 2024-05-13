@@ -46,11 +46,6 @@ public class MinaUppgifter extends javax.swing.JFrame {
             tfAvdelning.setText(anstalld.get("avdelning"));
             tfAvdelning.setEditable(false);
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
-            if (isHandlaggare() || isProjektledare()) {
-                btnAndraUppgifter.setVisible(true);
-            } else {
-                btnAndraUppgifter.setVisible(false);
-            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -138,8 +133,9 @@ public class MinaUppgifter extends javax.swing.JFrame {
         lblAnstallningsDatum = new javax.swing.JLabel();
         lblAvdelning = new javax.swing.JLabel();
         tfAvdelning = new javax.swing.JTextField();
-        btnAndraUppgifter = new javax.swing.JButton();
+        btnAndraMinaUppgifter = new javax.swing.JButton();
         btnTillbakaMU = new javax.swing.JButton();
+        lblMinaUppgifterRuta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,7 +169,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         tfAvdelning.setText("jTextField1");
 
-        btnAndraUppgifter.setText("Ändra");
+        btnAndraMinaUppgifter.setText("Ändra");
 
         btnTillbakaMU.setText("Tillbaka");
         btnTillbakaMU.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +177,9 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 btnTillbakaMUActionPerformed(evt);
             }
         });
+
+        lblMinaUppgifterRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMinaUppgifterRuta.setText("Mina uppgifter");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,9 +189,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMinaUppgifterRuta)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnTillbakaMU)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAndraUppgifter)
+                        .addComponent(btnAndraMinaUppgifter)
                         .addGap(63, 63, 63))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -221,7 +223,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addComponent(lblMinaUppgifterRuta)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAID)
                     .addComponent(lblRoll))
@@ -251,9 +254,9 @@ public class MinaUppgifter extends javax.swing.JFrame {
                     .addComponent(tfAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblAnstallningsDatum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAndraUppgifter)
+                    .addComponent(btnAndraMinaUppgifter)
                     .addComponent(btnTillbakaMU))
                 .addGap(27, 27, 27))
         );
@@ -270,7 +273,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAndraUppgifter;
+    private javax.swing.JButton btnAndraMinaUppgifter;
     private javax.swing.JButton btnTillbakaMU;
     private javax.swing.JLabel lblAID;
     private javax.swing.JLabel lblAdress;
@@ -279,6 +282,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
     private javax.swing.JLabel lblEfternamn;
     private javax.swing.JLabel lblEpost;
     private javax.swing.JLabel lblFornamn;
+    private javax.swing.JLabel lblMinaUppgifterRuta;
     private javax.swing.JLabel lblRoll;
     private javax.swing.JLabel lblTelefon;
     private javax.swing.JTextField tfAdress;

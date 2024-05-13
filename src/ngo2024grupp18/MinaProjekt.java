@@ -89,10 +89,16 @@ public class MinaProjekt extends javax.swing.JFrame {
         lblLand = new javax.swing.JLabel();
         tfLand = new javax.swing.JTextField();
         btnAndraUppgifterMinaProjekt = new javax.swing.JButton();
+        lblMinaProjektRuta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnTillbakaMinaProj.setText("Tillbaka");
+        btnTillbakaMinaProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaMinaProjActionPerformed(evt);
+            }
+        });
 
         lblProjektID.setText("Projekt-ID");
 
@@ -136,6 +142,9 @@ public class MinaProjekt extends javax.swing.JFrame {
 
         btnAndraUppgifterMinaProjekt.setText("Ändra uppgifter");
 
+        lblMinaProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMinaProjektRuta.setText("Mina projekt");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,6 +152,9 @@ public class MinaProjekt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMinaProjektRuta)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLand)
@@ -184,7 +196,8 @@ public class MinaProjekt extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addComponent(lblMinaProjektRuta)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -225,7 +238,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLand)
                     .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaMinaProj)
                     .addComponent(btnAndraUppgifterMinaProjekt))
@@ -235,6 +248,13 @@ public class MinaProjekt extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnTillbakaMinaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMinaProjActionPerformed
+        this.toBack();
+        Projekt nyttProjekt = new Projekt(idb, pid, aid);
+        nyttProjekt.setVisible(true);
+        nyttProjekt.toFront();
+    }//GEN-LAST:event_btnTillbakaMinaProjActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraUppgifterMinaProjekt;
@@ -242,6 +262,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private javax.swing.JLabel lblBeskrivningProjekt;
     private javax.swing.JLabel lblKostnad;
     private javax.swing.JLabel lblLand;
+    private javax.swing.JLabel lblMinaProjektRuta;
     private javax.swing.JLabel lblPrioProjekt;
     private javax.swing.JLabel lblProjektID;
     private javax.swing.JLabel lblProjektNamn;

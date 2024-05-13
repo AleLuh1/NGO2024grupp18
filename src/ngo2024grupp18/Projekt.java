@@ -38,6 +38,7 @@ public class Projekt extends javax.swing.JFrame {
         btnAvdProjekt = new javax.swing.JButton();
         btnAllaProjekt = new javax.swing.JButton();
         btnTillbakaProj = new javax.swing.JButton();
+        lblProjektRuta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +54,14 @@ public class Projekt extends javax.swing.JFrame {
         btnAllaProjekt.setText("Alla projekt");
 
         btnTillbakaProj.setText("Tillbaka");
+        btnTillbakaProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaProjActionPerformed(evt);
+            }
+        });
+
+        lblProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblProjektRuta.setText("Projekt");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,6 +70,7 @@ public class Projekt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblProjektRuta)
                     .addComponent(btnTillbakaProj)
                     .addComponent(btnAllaProjekt)
                     .addComponent(btnAvdProjekt)
@@ -70,13 +80,15 @@ public class Projekt extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
+                .addComponent(lblProjektRuta)
+                .addGap(12, 12, 12)
                 .addComponent(btnMinaProjekt)
                 .addGap(31, 31, 31)
                 .addComponent(btnAvdProjekt)
                 .addGap(35, 35, 35)
                 .addComponent(btnAllaProjekt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(btnTillbakaProj)
                 .addGap(34, 34, 34))
         );
@@ -86,7 +98,16 @@ public class Projekt extends javax.swing.JFrame {
 
     private void btnMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektActionPerformed
         new MinaProjekt(idb, pid, aid).setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btnMinaProjektActionPerformed
+
+    private void btnTillbakaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaProjActionPerformed
+        this.toBack();
+        Meny nyMeny = new Meny(idb, aid);
+        nyMeny.setVisible(true);
+        nyMeny.toFront();
+        
+    }//GEN-LAST:event_btnTillbakaProjActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -94,5 +115,6 @@ public class Projekt extends javax.swing.JFrame {
     private javax.swing.JButton btnAvdProjekt;
     private javax.swing.JButton btnMinaProjekt;
     private javax.swing.JButton btnTillbakaProj;
+    private javax.swing.JLabel lblProjektRuta;
     // End of variables declaration//GEN-END:variables
 }

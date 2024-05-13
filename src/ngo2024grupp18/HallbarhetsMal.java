@@ -27,10 +27,14 @@ public class HallbarhetsMal extends javax.swing.JFrame {
     private void initComponents() {
 
         btnTillbakaHallbarMal = new javax.swing.JButton();
+        lblHallbarhetsMalRuta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnTillbakaHallbarMal.setText("Tillbaka");
+
+        lblHallbarhetsMalRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblHallbarhetsMalRuta.setText("Hållbarhetsmål");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,13 +42,17 @@ public class HallbarhetsMal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(btnTillbakaHallbarMal)
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblHallbarhetsMalRuta)
+                    .addComponent(btnTillbakaHallbarMal))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(242, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
+                .addComponent(lblHallbarhetsMalRuta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addComponent(btnTillbakaHallbarMal)
                 .addGap(35, 35, 35))
         );
@@ -55,5 +63,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaHallbarMal;
+    private javax.swing.JLabel lblHallbarhetsMalRuta;
     // End of variables declaration//GEN-END:variables
 }
