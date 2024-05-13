@@ -4,19 +4,29 @@
  */
 package ngo2024grupp18;
 
+import java.util.HashMap;
+import oru.inf.InfDB;
 /**
  *
  * @author alex
  */
 public class AvdelningensProjekt extends javax.swing.JFrame {
-
+    private InfDB idb;
+    private String pid;
+    private String aid; 
+    private String avdid;
+    
     /**
      * Creates new form AvdelningensProjekt
      */
-    public AvdelningensProjekt() {
+    public AvdelningensProjekt(InfDB idb, String pid, String aid, String avdid) {
         initComponents();
+        this.idb = idb;
+        this.pid = pid;
+        this.aid = aid;
+        this.avdid = avdid;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,10 +37,17 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
     private void initComponents() {
 
         btnTillbakaAvdProj = new javax.swing.JButton();
+        lblAvdelningensProjektRuta = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnTillbakaAvdProj.setText("Tillbaka");
+
+        lblAvdelningensProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAvdelningensProjektRuta.setText("Avdelningens projekt");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,13 +55,20 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(btnTillbakaAvdProj)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTillbakaAvdProj)
+                    .addComponent(lblAvdelningensProjektRuta, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(243, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(lblAvdelningensProjektRuta)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addComponent(btnTillbakaAvdProj)
                 .addGap(34, 34, 34))
         );
@@ -55,5 +79,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaAvdProj;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel lblAvdelningensProjektRuta;
     // End of variables declaration//GEN-END:variables
 }
