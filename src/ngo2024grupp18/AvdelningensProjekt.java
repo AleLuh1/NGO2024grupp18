@@ -6,16 +6,18 @@ package ngo2024grupp18;
 
 import java.util.HashMap;
 import oru.inf.InfDB;
+
 /**
  *
  * @author alex
  */
 public class AvdelningensProjekt extends javax.swing.JFrame {
+
     private InfDB idb;
     private String pid;
-    private String aid; 
+    private String aid;
     private String avdid;
-    
+
     /**
      * Creates new form AvdelningensProjekt
      */
@@ -26,7 +28,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
