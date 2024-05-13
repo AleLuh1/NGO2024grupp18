@@ -51,6 +51,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             tfLand.setEditable(false);
             MinaUppgifter newform = new MinaUppgifter(idb, aid);
             if(newform.isProjektledare()) {
+                // 
                 btnAndraUppgifterMinaProjekt.setVisible(true);
             }
         } catch(Exception ex) {
