@@ -15,11 +15,25 @@ public class MinaProjekt extends javax.swing.JFrame {
     
     private InfDB idb;
     private String pid;
+    private String aid; 
     /**
      * Creates new form MinaProjekt
      */
-    public MinaProjekt(InfDB idb, String pid) {
+    public MinaProjekt(InfDB idb, String pid, String aid) {
         initComponents();
+        this.idb = idb;
+        this.pid = pid;
+        this.aid = aid; 
+        try {
+            String sqlFraga = "SELECT projekt.pid FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid WHERE ans_proj.aid = " + aid;
+            System.out.println(sqlFraga);
+            HashMap<String, String> minaProjekt = idb.fetchRow(sqlFraga);
+            tfProjektID.setText(minaProjekt.get("pid"));
+            tfProjektID.setEditable(false);
+            lblProjektID.requestFocus();
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -32,10 +46,22 @@ public class MinaProjekt extends javax.swing.JFrame {
     private void initComponents() {
 
         btnTillbakaMinaProj = new javax.swing.JButton();
+        lblProjektID = new javax.swing.JLabel();
+        tfProjektID = new javax.swing.JTextField();
+        lblProjektNamn = new javax.swing.JLabel();
+        tfProjektNamn = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnTillbakaMinaProj.setText("Tillbaka");
+
+        lblProjektID.setText("Projekt-ID");
+
+        tfProjektID.setText("jTextField1");
+
+        lblProjektNamn.setText("Projektnamn");
+
+        tfProjektNamn.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -43,13 +69,33 @@ public class MinaProjekt extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(btnTillbakaMinaProj)
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTillbakaMinaProj)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblProjektNamn, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(lblProjektID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(tfProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(tfProjektNamn)))))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProjektID)
+                    .addComponent(tfProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProjektNamn)
+                    .addComponent(tfProjektNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(btnTillbakaMinaProj)
                 .addGap(39, 39, 39))
         );
@@ -60,5 +106,9 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaMinaProj;
+    private javax.swing.JLabel lblProjektID;
+    private javax.swing.JLabel lblProjektNamn;
+    private javax.swing.JTextField tfProjektID;
+    private javax.swing.JTextField tfProjektNamn;
     // End of variables declaration//GEN-END:variables
 }

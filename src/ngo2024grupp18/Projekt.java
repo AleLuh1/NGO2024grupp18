@@ -14,22 +14,15 @@ import oru.inf.InfDB;
 public class Projekt extends javax.swing.JFrame {
     private InfDB idb;
     private String pid;
+    private String aid;
     /**
      * Creates new form Projekt
      */
-    public Projekt(InfDB idb, String pid) {
+    public Projekt(InfDB idb, String pid, String aid) {
         initComponents();
         this.idb = idb;
         this.pid = pid;
-        try {
-            String sqlFraga = "SELECT * FROM projekt WHERE pid = " + pid;
-            System.out.println(sqlFraga);
-            HashMap<String, String> projekt = idb.fetchRow(sqlFraga);
-//            tfFornamn.setText(anstalld.get("fornamn"));
-//            tfFornamn.setEditable(false);
-        } catch (Exception ex) {
-
-        }
+        this.aid = aid;
     }
 
     /**
@@ -49,6 +42,11 @@ public class Projekt extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnMinaProjekt.setText("Mina projekt");
+        btnMinaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinaProjektActionPerformed(evt);
+            }
+        });
 
         btnAvdProjekt.setText("Avdelningens projekt");
 
@@ -85,6 +83,10 @@ public class Projekt extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektActionPerformed
+        new MinaProjekt(idb, pid, aid).setVisible(true);
+    }//GEN-LAST:event_btnMinaProjektActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

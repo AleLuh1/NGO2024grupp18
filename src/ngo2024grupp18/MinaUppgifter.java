@@ -16,6 +16,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
+    
 
     /**
      * Creates new form MinaUppgifter
