@@ -115,7 +115,7 @@ public class Meny extends javax.swing.JFrame {
         new MinaUppgifter(idb, aid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
-
+    
     private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
         new Projekt(idb, pid, aid).setVisible(true);
     }//GEN-LAST:event_btnProjektActionPerformed
@@ -128,7 +128,7 @@ public class Meny extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvdelning;
     private javax.swing.JButton btnHallbarhetsMal;

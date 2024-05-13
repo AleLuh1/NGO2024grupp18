@@ -46,9 +46,9 @@ public class MinaUppgifter extends javax.swing.JFrame {
             tfAvdelning.setEditable(false);
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
             if (isHandlaggare() || isProjektledare()) {
-                btnAndraUppgifter.setVisible(true);
+                btnAndraMinaUppgifter.setVisible(true);
             } else {
-                btnAndraUppgifter.setVisible(false);
+                btnAndraMinaUppgifter.setVisible(false);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -137,7 +137,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
         lblAnstallningsDatum = new javax.swing.JLabel();
         lblAvdelning = new javax.swing.JLabel();
         tfAvdelning = new javax.swing.JTextField();
-        btnAndraUppgifter = new javax.swing.JButton();
+        btnAndraMinaUppgifter = new javax.swing.JButton();
         btnTillbakaMU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -172,7 +172,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         tfAvdelning.setText("jTextField1");
 
-        btnAndraUppgifter.setText("Ändra");
+        btnAndraMinaUppgifter.setText("Ändra");
 
         btnTillbakaMU.setText("Tillbaka");
         btnTillbakaMU.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnTillbakaMU)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAndraUppgifter)
+                        .addComponent(btnAndraMinaUppgifter)
                         .addGap(63, 63, 63))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -252,7 +252,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 .addComponent(lblAnstallningsDatum)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAndraUppgifter)
+                    .addComponent(btnAndraMinaUppgifter)
                     .addComponent(btnTillbakaMU))
                 .addGap(27, 27, 27))
         );
@@ -261,12 +261,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaMUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMUActionPerformed
-        setVisible(false);
+        Meny nyMeny = new Meny(idb, aid);
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAndraUppgifter;
+    private javax.swing.JButton btnAndraMinaUppgifter;
     private javax.swing.JButton btnTillbakaMU;
     private javax.swing.JLabel lblAID;
     private javax.swing.JLabel lblAdress;

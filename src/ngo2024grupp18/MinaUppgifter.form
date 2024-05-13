@@ -29,7 +29,7 @@
                   <Group type="102" attributes="0">
                       <Component id="btnTillbakaMU" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnAndraUppgifter" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAndraMinaUppgifter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -107,7 +107,7 @@
               <Component id="lblAnstallningsDatum" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="43" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAndraUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAndraMinaUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaMU" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -191,7 +191,7 @@
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAndraUppgifter">
+    <Component class="javax.swing.JButton" name="btnAndraMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
       </Properties>
