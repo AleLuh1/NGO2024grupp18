@@ -7,6 +7,7 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.HashMap;
+import javax.swing.JFrame;
 
 /**
  *
@@ -54,7 +55,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }
-
+   
     public String getRoll() {
         if (isAdmin() == true) {
             return "Admin";
@@ -261,7 +262,10 @@ public class MinaUppgifter extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaMUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMUActionPerformed
-        setVisible(false);
+        this.toBack();
+        Meny nyMeny = new Meny(idb, aid);
+        nyMeny.setVisible(true);
+        nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
 
