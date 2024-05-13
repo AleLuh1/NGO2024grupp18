@@ -4,17 +4,29 @@
  */
 package ngo2024grupp18;
 
+import java.util.HashMap;
+import oru.inf.InfDB;
 /**
  *
  * @author alex
  */
 public class Avdelning extends javax.swing.JFrame {
-
+    private InfDB idb;
+    private String avdid;
     /**
      * Creates new form Avdelning
      */
-    public Avdelning() {
+    public Avdelning(InfDB idb, String avdid) {
         initComponents();
+        this.idb = idb;
+        this.avdid = avdid;
+        try {
+            String sqlFraga = "SELECT * FROM avdelning WHERE avdid = " + avdid;
+            System.out.println(sqlFraga);
+            HashMap<String, String> avdelning = idb.fetchRow(sqlFraga); 
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**

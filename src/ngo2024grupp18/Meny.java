@@ -16,6 +16,7 @@ public class Meny extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String pid;
+    private String avdid; 
 
     /**
      * Creates new form Meny
@@ -60,6 +61,11 @@ public class Meny extends javax.swing.JFrame {
         });
 
         btnAvdelning.setText("Avdelning");
+        btnAvdelning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvdelningActionPerformed(evt);
+            }
+        });
 
         btnHallbarhetsMal.setText("Hållbarhetsmål");
 
@@ -108,6 +114,10 @@ public class Meny extends javax.swing.JFrame {
     private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
         new Projekt(idb, pid).setVisible(true);
     }//GEN-LAST:event_btnProjektActionPerformed
+
+    private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
+        new Avdelning(idb, avdid).setVisible(true); 
+    }//GEN-LAST:event_btnAvdelningActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
