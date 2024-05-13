@@ -112,7 +112,7 @@ public class Meny extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
-        new Projekt(idb, pid).setVisible(true);
+        new Projekt(idb, pid, aid).setVisible(true);
     }//GEN-LAST:event_btnProjektActionPerformed
 
     private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
