@@ -52,8 +52,6 @@ public class MinaProjekt extends javax.swing.JFrame {
             MinaUppgifter newform = new MinaUppgifter(idb, aid);
             if(newform.isProjektledare()) {
                 btnAndraUppgifterMinaProjekt.setVisible(true);
-            } else {
-                btnAndraUppgifterMinaProjekt.setVisible(false);
             }
         } catch(Exception ex) {
             System.out.println(ex.getMessage());
@@ -151,8 +149,13 @@ public class MinaProjekt extends javax.swing.JFrame {
                             .addComponent(lblProjektchef)
                             .addComponent(lblPrioProjekt)
                             .addComponent(lblStatus)
+                            .addComponent(lblKostnad)
                             .addComponent(lblStartdatum)
-                            .addComponent(lblBeskrivningProjekt)
+                            .addComponent(lblBeskrivningProjekt))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnTillbakaMinaProj)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblProjektID, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -162,25 +165,21 @@ public class MinaProjekt extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(2, 2, 2)
                                         .addComponent(lblProjektNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblSlutdatum)
-                                    .addComponent(lblKostnad))
+                                    .addComponent(lblSlutdatum))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfBeskrivningProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                                    .addComponent(tfProjektNamn, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tfStartdatum)
-                                    .addComponent(tfSlutdatum)
-                                    .addComponent(tfKostnad)
-                                    .addComponent(tfStatus)
-                                    .addComponent(tfPrioProjekt)
-                                    .addComponent(tfProjektchef)
-                                    .addComponent(tfLand))))
-                        .addContainerGap(165, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnTillbakaMinaProj)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfProjektNamn)
+                                    .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfKostnad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfPrioProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfProjektchef, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfBeskrivningProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAndraUppgifterMinaProjekt)
-                        .addGap(40, 40, 40))))
+                        .addGap(50, 50, 50))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
