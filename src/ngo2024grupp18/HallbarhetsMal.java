@@ -3,15 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
+
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author alex
  */
 public class HallbarhetsMal extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
      * Creates new form HallbarhetsMal
      */
@@ -21,19 +26,21 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         fyllCBHallbarhetsmal();
     }
 // CB = ComboBox
+
     private void fyllCBHallbarhetsmal() {
         try {
-             String sqlFraga = "SELECT namn FROM hallbarhetsmal";
-             System.out.println(sqlFraga);
-             ArrayList<String> hallbarhetsNamnLista;
-             hallbarhetsNamnLista = idb.fetchColumn(sqlFraga);
-             for(String ettNamn : hallbarhetsNamnLista) {
-                 cbHallbarhetsmal.addItem(ettNamn);
-             }
-        } catch(Exception ex) {
+            String sqlFraga = "SELECT namn FROM hallbarhetsmal";
+            System.out.println(sqlFraga);
+            ArrayList<String> hallbarhetsNamnLista;
+            hallbarhetsNamnLista = idb.fetchColumn(sqlFraga);
+            for (String ettNamn : hallbarhetsNamnLista) {
+                cbHallbarhetsmal.addItem(ettNamn);
+            }
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,7 +50,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnTillbakaHallbarMal = new javax.swing.JButton();
         lblHallbarhetsMalRuta = new javax.swing.JLabel();
         cbHallbarhetsmal = new javax.swing.JComboBox<>();
         lblMalnummer = new javax.swing.JLabel();
@@ -55,10 +61,18 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnTillbakaHallbarMal.setText("Tillbaka");
-
         lblHallbarhetsMalRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblHallbarhetsMalRuta.setText("Hållbarhetsmål");
+
+        cbHallbarhetsmal.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cbHallbarhetsmalPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         lblMalnummer.setText("Målnummer");
 
@@ -85,8 +99,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(lblPrioritetHallbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBeskrivningHallbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnTillbakaHallbarMal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblBeskrivningHallbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(tfBeskrivningHallbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,17 +129,35 @@ public class HallbarhetsMal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPrioritetHallbar)
                     .addComponent(tfPrioritetHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(btnTillbakaHallbarMal)
-                .addGap(35, 35, 35))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbHallbarhetsmalPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
+        String hbMal = (String) cbHallbarhetsmal.getSelectedItem();
+
+        if (hbMal != null) {
+        }
+        try {
+            String sqlFraga = " SELECT * FROM hallbarhetsmal WHERE namn = '" + hbMal + "'";
+            System.out.println(sqlFraga);
+            HashMap<String, String> hallbarhetsmal = idb.fetchRow(sqlFraga);
+
+            if (hallbarhetsmal != null) {
+             tfMalnummerHallbar.setText(hallbarhetsmal.get("malnummer"));
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+//        
+//        }
+    }//GEN-LAST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTillbakaHallbarMal;
     private javax.swing.JComboBox<String> cbHallbarhetsmal;
     private javax.swing.JLabel lblBeskrivningHallbar;
     private javax.swing.JLabel lblHallbarhetsMalRuta;

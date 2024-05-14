@@ -32,8 +32,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="lblPrioritetHallbar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblBeskrivningHallbar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTillbakaHallbarMal" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblBeskrivningHallbar" alignment="0" pref="72" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -74,19 +73,12 @@
                   <Component id="lblPrioritetHallbar" min="-2" max="-2" attributes="0"/>
                   <Component id="tfPrioritetHallbar" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
-              <Component id="btnTillbakaHallbarMal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnTillbakaHallbarMal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tillbaka"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblHallbarhetsMalRuta">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -101,6 +93,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="popupMenuWillBecomeInvisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="cbHallbarhetsmalPopupMenuWillBecomeInvisible"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
