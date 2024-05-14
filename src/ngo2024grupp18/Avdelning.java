@@ -12,6 +12,7 @@ import oru.inf.InfDB;
  */
 public class Avdelning extends javax.swing.JFrame {
     private InfDB idb;
+    private String aid;
     private String avdid;
     /**
      * Creates new form Avdelning
@@ -44,6 +45,11 @@ public class Avdelning extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnTillbakaAvd.setText("Tillbaka");
+        btnTillbakaAvd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaAvdActionPerformed(evt);
+            }
+        });
 
         lblAvdelningRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAvdelningRuta.setText("Avdelning");
@@ -71,6 +77,13 @@ public class Avdelning extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTillbakaAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAvdActionPerformed
+        this.toBack();
+        Meny nyMeny = new Meny(idb, aid);
+        nyMeny.setVisible(true);
+        nyMeny.toFront();
+    }//GEN-LAST:event_btnTillbakaAvdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

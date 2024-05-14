@@ -13,6 +13,7 @@ import java.util.HashMap;
  */
 public class LaggTillAnstalld extends javax.swing.JFrame {
     private InfDB idb;
+    private String aid;
     
     /**
      * Creates new form Anstallda
@@ -62,6 +63,11 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         });
 
         btnTillbakaLaggTillAnstalld.setText("Tillbaka");
+        btnTillbakaLaggTillAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaLaggTillAnstalldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +124,13 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         //get text från fälten och insert i databas
          
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed
+
+    private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed
+        this.toBack();
+        Meny nyMeny = new Meny(idb, aid);
+        nyMeny.setVisible(true);
+        nyMeny.toFront();
+    }//GEN-LAST:event_btnTillbakaLaggTillAnstalldActionPerformed
 
     /**
      * @param args the command line arguments
