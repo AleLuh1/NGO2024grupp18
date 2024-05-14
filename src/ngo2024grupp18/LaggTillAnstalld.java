@@ -41,15 +41,29 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         tfEfternamnNyAnstalld = new javax.swing.JTextField();
         btnSparaNyAnstalld = new javax.swing.JButton();
         btnTillbakaLaggTillAnstalld = new javax.swing.JButton();
+        lblAidNyAnstalld = new javax.swing.JLabel();
+        tfAidNyAnstalld = new javax.swing.JTextField();
+        lblAdressNyAnstalld = new javax.swing.JLabel();
+        tfAdressNyAnstalld = new javax.swing.JTextField();
+        lblEpostNyAnstalld = new javax.swing.JLabel();
+        tfEpostNyAnstalld = new javax.swing.JTextField();
+        lblTelefonNyAnstalld = new javax.swing.JLabel();
+        tfTelefonNyAnstalld = new javax.swing.JTextField();
+        lblAnstallningsdatumNyAnstalld = new javax.swing.JLabel();
+        tfAnstallningsdatumNyAnstalld = new javax.swing.JTextField();
+        lblLosenordNyAnstalld = new javax.swing.JLabel();
+        tfLosenordNyAnstalld = new javax.swing.JTextField();
+        lblAvdNyAnstalld = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblLaggTillAnstalldRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblLaggTillAnstalldRuta.setText("Lägg till anställd");
 
-        lblFornamnNyAnstalld.setText("Förnamn:");
+        lblFornamnNyAnstalld.setText("Förnamn");
 
-        lblEfternamnNyAnstalld.setText("Efternamn:");
+        lblEfternamnNyAnstalld.setText("Efternamn");
 
         tfFornamnNyAnstalld.setText("jTextField1");
 
@@ -69,48 +83,120 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
             }
         });
 
+        lblAidNyAnstalld.setText("Anställnings-ID");
+
+        tfAidNyAnstalld.setText("jTextField1");
+
+        lblAdressNyAnstalld.setText("Adress");
+
+        tfAdressNyAnstalld.setText("jTextField1");
+
+        lblEpostNyAnstalld.setText("E-post");
+
+        tfEpostNyAnstalld.setText("jTextField1");
+
+        lblTelefonNyAnstalld.setText("Telefon");
+
+        tfTelefonNyAnstalld.setText("jTextField1");
+
+        lblAnstallningsdatumNyAnstalld.setText("Anställningsdatum");
+
+        tfAnstallningsdatumNyAnstalld.setText("jTextField1");
+
+        lblLosenordNyAnstalld.setText("Lösenord");
+
+        tfLosenordNyAnstalld.setText("jTextField1");
+
+        lblAvdNyAnstalld.setText("Avdelning");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(lblLaggTillAnstalldRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEfternamnNyAnstalld)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfEfternamnNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFornamnNyAnstalld)
-                                .addGap(61, 61, 61)
-                                .addComponent(tfFornamnNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(171, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(btnTillbakaLaggTillAnstalld)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addComponent(btnSparaNyAnstalld)
                 .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLaggTillAnstalldRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblAvdNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblLosenordNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblTelefonNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblEpostNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblAdressNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblFornamnNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblEfternamnNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                                .addComponent(lblAidNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                            .addComponent(lblAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfFornamnNyAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(tfAidNyAnstalld)
+                            .addComponent(tfEfternamnNyAnstalld)
+                            .addComponent(tfAdressNyAnstalld)
+                            .addComponent(tfEpostNyAnstalld)
+                            .addComponent(tfTelefonNyAnstalld)
+                            .addComponent(tfAnstallningsdatumNyAnstalld)
+                            .addComponent(tfLosenordNyAnstalld)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblLaggTillAnstalldRuta)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFornamnNyAnstalld)
-                    .addComponent(tfFornamnNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblLaggTillAnstalldRuta)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblAidNyAnstalld)
+                                    .addComponent(tfAidNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tfFornamnNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFornamnNyAnstalld))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblEfternamnNyAnstalld)
+                                .addGap(6, 6, 6))
+                            .addComponent(tfEfternamnNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfAdressNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAdressNyAnstalld)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEfternamnNyAnstalld)
-                    .addComponent(tfEfternamnNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                    .addComponent(lblEpostNyAnstalld)
+                    .addComponent(tfEpostNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfTelefonNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTelefonNyAnstalld))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAnstallningsdatumNyAnstalld)
+                    .addComponent(tfAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLosenordNyAnstalld)
+                    .addComponent(tfLosenordNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAvdNyAnstalld)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSparaNyAnstalld)
                     .addComponent(btnTillbakaLaggTillAnstalld))
@@ -139,10 +225,24 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaNyAnstalld;
     private javax.swing.JButton btnTillbakaLaggTillAnstalld;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel lblAdressNyAnstalld;
+    private javax.swing.JLabel lblAidNyAnstalld;
+    private javax.swing.JLabel lblAnstallningsdatumNyAnstalld;
+    private javax.swing.JLabel lblAvdNyAnstalld;
     private javax.swing.JLabel lblEfternamnNyAnstalld;
+    private javax.swing.JLabel lblEpostNyAnstalld;
     private javax.swing.JLabel lblFornamnNyAnstalld;
     private javax.swing.JLabel lblLaggTillAnstalldRuta;
+    private javax.swing.JLabel lblLosenordNyAnstalld;
+    private javax.swing.JLabel lblTelefonNyAnstalld;
+    private javax.swing.JTextField tfAdressNyAnstalld;
+    private javax.swing.JTextField tfAidNyAnstalld;
+    private javax.swing.JTextField tfAnstallningsdatumNyAnstalld;
     private javax.swing.JTextField tfEfternamnNyAnstalld;
+    private javax.swing.JTextField tfEpostNyAnstalld;
     private javax.swing.JTextField tfFornamnNyAnstalld;
+    private javax.swing.JTextField tfLosenordNyAnstalld;
+    private javax.swing.JTextField tfTelefonNyAnstalld;
     // End of variables declaration//GEN-END:variables
 }
