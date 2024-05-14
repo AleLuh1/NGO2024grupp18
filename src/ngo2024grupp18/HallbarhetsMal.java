@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class HallbarhetsMal extends javax.swing.JFrame {
 
     private InfDB idb;
+    private String aid;
 
     /**
      * Creates new form HallbarhetsMal
@@ -35,6 +36,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
             hallbarhetsNamnLista = idb.fetchColumn(sqlFraga);
             for (String ettNamn : hallbarhetsNamnLista) {
                 cbHallbarhetsmal.addItem(ettNamn);
+                
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -56,8 +58,10 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         lblBeskrivningHallbar = new javax.swing.JLabel();
         lblPrioritetHallbar = new javax.swing.JLabel();
         tfMalnummerHallbar = new javax.swing.JTextField();
-        tfBeskrivningHallbar = new javax.swing.JTextField();
         tfPrioritetHallbar = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taBeskrivningHallbar = new javax.swing.JTextArea();
+        btnTillbakaHallbar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,11 +85,16 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
         lblPrioritetHallbar.setText("Prioritet");
 
-        tfMalnummerHallbar.setText("jTextField1");
+        taBeskrivningHallbar.setColumns(20);
+        taBeskrivningHallbar.setRows(5);
+        jScrollPane1.setViewportView(taBeskrivningHallbar);
 
-        tfBeskrivningHallbar.setText("jTextField1");
-
-        tfPrioritetHallbar.setText("jTextField1");
+        btnTillbakaHallbar.setText("Tillbaka");
+        btnTillbakaHallbar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaHallbarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,23 +102,28 @@ public class HallbarhetsMal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbHallbarhetsmal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHallbarhetsMalRuta)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblPrioritetHallbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBeskrivningHallbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfBeskrivningHallbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tfPrioritetHallbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(lblMalnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(tfMalnummerHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbHallbarhetsmal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblHallbarhetsMalRuta)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblMalnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPrioritetHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfPrioritetHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfMalnummerHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(122, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblBeskrivningHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnTillbakaHallbar)
+                .addGap(374, 374, 374))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,15 +136,17 @@ public class HallbarhetsMal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMalnummer)
                     .addComponent(tfMalnummerHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBeskrivningHallbar)
-                    .addComponent(tfBeskrivningHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPrioritetHallbar)
                     .addComponent(tfPrioritetHallbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBeskrivningHallbar)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(btnTillbakaHallbar)
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -148,6 +164,8 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
             if (hallbarhetsmal != null) {
              tfMalnummerHallbar.setText(hallbarhetsmal.get("malnummer"));
+             taBeskrivningHallbar.setText(hallbarhetsmal.get("beskrivning"));
+             tfPrioritetHallbar.setText(hallbarhetsmal.get("prioritet"));
             }
 
         } catch (Exception ex) {
@@ -157,14 +175,23 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
 
+    private void btnTillbakaHallbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaHallbarActionPerformed
+        this.toBack();
+        Meny nyMeny = new Meny(idb, aid);
+        nyMeny.setVisible(true);
+        nyMeny.toFront();
+    }//GEN-LAST:event_btnTillbakaHallbarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTillbakaHallbar;
     private javax.swing.JComboBox<String> cbHallbarhetsmal;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBeskrivningHallbar;
     private javax.swing.JLabel lblHallbarhetsMalRuta;
     private javax.swing.JLabel lblMalnummer;
     private javax.swing.JLabel lblPrioritetHallbar;
-    private javax.swing.JTextField tfBeskrivningHallbar;
+    private javax.swing.JTextArea taBeskrivningHallbar;
     private javax.swing.JTextField tfMalnummerHallbar;
     private javax.swing.JTextField tfPrioritetHallbar;
     // End of variables declaration//GEN-END:variables
