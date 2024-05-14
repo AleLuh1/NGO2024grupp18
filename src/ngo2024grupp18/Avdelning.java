@@ -38,13 +38,10 @@ public class Avdelning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSeAnstallda = new javax.swing.JButton();
         btnTillbakaAvd = new javax.swing.JButton();
         lblAvdelningRuta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnSeAnstallda.setText("Se anställda");
 
         btnTillbakaAvd.setText("Tillbaka");
 
@@ -59,18 +56,15 @@ public class Avdelning extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAvdelningRuta)
-                    .addComponent(btnTillbakaAvd)
-                    .addComponent(btnSeAnstallda))
-                .addContainerGap(264, Short.MAX_VALUE))
+                    .addComponent(btnTillbakaAvd))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAvdelningRuta)
-                .addGap(9, 9, 9)
-                .addComponent(btnSeAnstallda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addComponent(btnTillbakaAvd)
                 .addGap(35, 35, 35))
         );
@@ -80,7 +74,6 @@ public class Avdelning extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSeAnstallda;
     private javax.swing.JButton btnTillbakaAvd;
     private javax.swing.JLabel lblAvdelningRuta;
     // End of variables declaration//GEN-END:variables

@@ -28,9 +28,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblAvdelningRuta" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaAvd" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSeAnstallda" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="264" max="32767" attributes="0"/>
+              <EmptySpace pref="277" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -39,9 +38,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblAvdelningRuta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Component id="btnSeAnstallda" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="179" max="32767" attributes="0"/>
+              <EmptySpace pref="211" max="32767" attributes="0"/>
               <Component id="btnTillbakaAvd" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
@@ -49,11 +46,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnSeAnstallda">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Se anst&#xe4;llda"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnTillbakaAvd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tillbaka"/>
