@@ -127,7 +127,8 @@ public class Meny extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvdelningActionPerformed
 
     private void btnHallbarhetsMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarhetsMalActionPerformed
-       
+        new HallbarhetsMal(idb).setVisible(true); 
+        setVisible(false);
     }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
 
     
