@@ -64,6 +64,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         lblHallbarhetsMalRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblHallbarhetsMalRuta.setText("Hållbarhetsmål");
 
+        cbHallbarhetsmal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cbHallbarhetsmal.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
