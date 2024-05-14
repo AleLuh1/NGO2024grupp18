@@ -28,6 +28,8 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
