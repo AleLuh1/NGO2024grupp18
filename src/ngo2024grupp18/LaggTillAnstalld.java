@@ -22,10 +22,10 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     public LaggTillAnstalld(InfDB idb) {
         initComponents();
         this.idb = idb;
-        testLaggTillNyAnstalldAid();
+        LaggaTillNyAnstalldAid();
     }
 
-    private String testLaggTillNyAnstalldAid() {
+    private String LaggaTillNyAnstalldAid() {
         String nyAnstalldAid = null;
         try {
             //SQL-fråga för att hämta ut största aid som finns i anstalld
@@ -76,7 +76,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         lblLosenordNyAnstalld = new javax.swing.JLabel();
         tfLosenordNyAnstalld = new javax.swing.JTextField();
         lblAvdNyAnstalld = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tfAvdNyAnstalld = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,10 +86,6 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         lblFornamnNyAnstalld.setText("Förnamn");
 
         lblEfternamnNyAnstalld.setText("Efternamn");
-
-        tfFornamnNyAnstalld.setText("jTextField1");
-
-        tfEfternamnNyAnstalld.setText("jTextField1");
 
         btnSparaNyAnstalld.setText("Spara");
         btnSparaNyAnstalld.addActionListener(new java.awt.event.ActionListener() {
@@ -107,31 +103,17 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
         lblAidNyAnstalld.setText("Anställnings-ID");
 
-        tfAidNyAnstalld.setText("jTextField1");
-
         lblAdressNyAnstalld.setText("Adress");
-
-        tfAdressNyAnstalld.setText("jTextField1");
 
         lblEpostNyAnstalld.setText("E-post");
 
-        tfEpostNyAnstalld.setText("jTextField1");
-
         lblTelefonNyAnstalld.setText("Telefon");
-
-        tfTelefonNyAnstalld.setText("jTextField1");
 
         lblAnstallningsdatumNyAnstalld.setText("Anställningsdatum");
 
-        tfAnstallningsdatumNyAnstalld.setText("jTextField1");
-
         lblLosenordNyAnstalld.setText("Lösenord");
 
-        tfLosenordNyAnstalld.setText("jTextField1");
-
         lblAvdNyAnstalld.setText("Avdelning");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,7 +144,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                             .addComponent(lblAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfFornamnNyAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(tfFornamnNyAnstalld)
                             .addComponent(tfAidNyAnstalld)
                             .addComponent(tfEfternamnNyAnstalld)
                             .addComponent(tfAdressNyAnstalld)
@@ -170,7 +152,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                             .addComponent(tfTelefonNyAnstalld)
                             .addComponent(tfAnstallningsdatumNyAnstalld)
                             .addComponent(tfLosenordNyAnstalld)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(tfAvdNyAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -215,9 +197,9 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                     .addComponent(lblLosenordNyAnstalld)
                     .addComponent(tfLosenordNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAvdNyAnstalld)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfAvdNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSparaNyAnstalld)
@@ -230,8 +212,23 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private void btnSparaNyAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaNyAnstalldActionPerformed
         //get text från fälten och insert i databas
-//        String laggTillSqlFraga = "INSERT INTO anstalld "
-
+        String nyAnstalldAidStr = tfAidNyAnstalld.getText();
+        int nyAnstalldAidInt = Integer.parseInt(nyAnstalldAidStr);
+        String nyAnstalldFornamn = tfFornamnNyAnstalld.getText();
+        String nyAnstalldEfternamn = tfEfternamnNyAnstalld.getText();
+        String nyAnstalldAdress = tfAdressNyAnstalld.getText();
+        String nyAnstalldEpost = tfEpostNyAnstalld.getText();
+        String nyAnstalldTelefon = tfTelefonNyAnstalld.getText();
+        String NyAnstalldAnstallningsDatum = tfAnstallningsdatumNyAnstalld.getText();
+        String NyAnstalldLosenord = tfLosenordNyAnstalld.getText();
+        String nyAnstalldAvd = tfAvdNyAnstalld.getText();
+        int nyAnstalldAvdInt = Integer.parseInt(nyAnstalldAvd);
+        try {
+            String sqlLaggTill = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES (" + nyAnstalldAidInt + ", '" + nyAnstalldFornamn + "', '" + nyAnstalldEfternamn + "', '" + nyAnstalldAdress + "', '" + nyAnstalldEpost + "', '" + nyAnstalldTelefon + "', str_to_date('" + NyAnstalldAnstallningsDatum + "', '%Y-%m-%d'), '" + NyAnstalldLosenord + "', " + nyAnstalldAvdInt + ")";
+            idb.insert(sqlLaggTill);
+        } catch (InfException ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed
 
     private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed
@@ -248,7 +245,6 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaNyAnstalld;
     private javax.swing.JButton btnTillbakaLaggTillAnstalld;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lblAdressNyAnstalld;
     private javax.swing.JLabel lblAidNyAnstalld;
     private javax.swing.JLabel lblAnstallningsdatumNyAnstalld;
@@ -262,6 +258,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     private javax.swing.JTextField tfAdressNyAnstalld;
     private javax.swing.JTextField tfAidNyAnstalld;
     private javax.swing.JTextField tfAnstallningsdatumNyAnstalld;
+    private javax.swing.JTextField tfAvdNyAnstalld;
     private javax.swing.JTextField tfEfternamnNyAnstalld;
     private javax.swing.JTextField tfEpostNyAnstalld;
     private javax.swing.JTextField tfFornamnNyAnstalld;

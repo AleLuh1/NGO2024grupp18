@@ -52,7 +52,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tfFornamnNyAnstalld" pref="115" max="32767" attributes="0"/>
+                          <Component id="tfFornamnNyAnstalld" max="32767" attributes="0"/>
                           <Component id="tfAidNyAnstalld" max="32767" attributes="0"/>
                           <Component id="tfEfternamnNyAnstalld" max="32767" attributes="0"/>
                           <Component id="tfAdressNyAnstalld" alignment="0" max="32767" attributes="0"/>
@@ -60,7 +60,7 @@
                           <Component id="tfTelefonNyAnstalld" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfAnstallningsdatumNyAnstalld" max="32767" attributes="0"/>
                           <Component id="tfLosenordNyAnstalld" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdNyAnstalld" alignment="0" pref="115" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -121,9 +121,9 @@
                   <Component id="tfLosenordNyAnstalld" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvdNyAnstalld" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblAvdNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAvdNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="65" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -155,14 +155,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfFornamnNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEfternamnNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSparaNyAnstalld">
       <Properties>
@@ -186,9 +180,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfAidNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAdressNyAnstalld">
       <Properties>
@@ -196,9 +187,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfAdressNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEpostNyAnstalld">
       <Properties>
@@ -206,9 +194,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEpostNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefonNyAnstalld">
       <Properties>
@@ -216,9 +201,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfTelefonNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAnstallningsdatumNyAnstalld">
       <Properties>
@@ -226,9 +208,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfAnstallningsdatumNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblLosenordNyAnstalld">
       <Properties>
@@ -236,29 +215,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLosenordNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAvdNyAnstalld">
       <Properties>
         <Property name="text" type="java.lang.String" value="Avdelning"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
+    <Component class="javax.swing.JTextField" name="tfAvdNyAnstalld">
     </Component>
   </SubComponents>
 </Form>
