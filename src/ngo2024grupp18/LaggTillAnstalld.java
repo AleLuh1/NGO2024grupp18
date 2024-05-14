@@ -7,22 +7,38 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.HashMap;
+
 /**
  *
  * @author alex
  */
 public class LaggTillAnstalld extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
-    
+
     /**
      * Creates new form Anstallda
      */
     public LaggTillAnstalld(InfDB idb) {
         initComponents();
         this.idb = idb;
-         
-        
+        testLaggTillNyAnstalldAid();
+    }
+
+    public int testLaggTillNyAnstalldAid() {
+        int nyAnstalldAid = 0;
+        int hogstAnstalldAid = 0;
+        try {
+            String sqlFragaHogstAid = "SELECT max(aid) FROM anstalld";
+            System.out.println(sqlFragaHogstAid);
+            hogstAnstalldAid = Integer.parseInt(sqlFragaHogstAid);
+            nyAnstalldAid = hogstAnstalldAid + 1;
+            System.out.println(nyAnstalldAid);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return nyAnstalldAid;
     }
 
     /**
@@ -208,7 +224,8 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private void btnSparaNyAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaNyAnstalldActionPerformed
         //get text från fälten och insert i databas
-         
+
+
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed
 
     private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed
