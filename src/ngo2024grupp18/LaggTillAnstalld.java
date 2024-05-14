@@ -6,7 +6,6 @@ package ngo2024grupp18;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
-import java.util.HashMap;
 
 /**
  *
@@ -26,15 +25,22 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         testLaggTillNyAnstalldAid();
     }
 
-    public int testLaggTillNyAnstalldAid() {
-        int nyAnstalldAid = 0;
-        int hogstAnstalldAid = 0;
+    private String testLaggTillNyAnstalldAid() {
+        String nyAnstalldAid = null;
         try {
+            //SQL-fråga för att hämta ut största aid som finns i anstalld
             String sqlFragaHogstAid = "SELECT max(aid) FROM anstalld";
             System.out.println(sqlFragaHogstAid);
-            hogstAnstalldAid = Integer.parseInt(sqlFragaHogstAid);
-            nyAnstalldAid = hogstAnstalldAid + 1;
-            System.out.println(nyAnstalldAid);
+            //Hämtar ut resultatet från sql-frågan i en sträng 
+            String hogstAnstalldAidDB = idb.fetchSingle(sqlFragaHogstAid);
+            //Konverterar strängen med högst aid till en int
+            int hogstAnstalldAidInt = Integer.parseInt(hogstAnstalldAidDB);
+            int nyAnstalldAidInt = hogstAnstalldAidInt + 1;
+            System.out.println(nyAnstalldAidInt);
+            nyAnstalldAid = Integer.toString(nyAnstalldAidInt);
+            tfAidNyAnstalld.setText(nyAnstalldAid);
+            tfAidNyAnstalld.setEditable(false);
+            lblAidNyAnstalld.requestFocus();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -224,7 +230,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private void btnSparaNyAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaNyAnstalldActionPerformed
         //get text från fälten och insert i databas
-
+//        String laggTillSqlFraga = "INSERT INTO anstalld "
 
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed
 

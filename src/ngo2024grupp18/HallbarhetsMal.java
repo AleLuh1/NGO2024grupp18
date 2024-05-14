@@ -154,7 +154,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private void cbHallbarhetsmalPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
         String hbMal = (String) cbHallbarhetsmal.getSelectedItem();
-
         try {
             String sqlFraga = " SELECT * FROM hallbarhetsmal WHERE namn = '" + hbMal + "'";
             System.out.println(sqlFraga);
@@ -166,8 +165,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-//        
-//        }
     }//GEN-LAST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
 
     private void btnTillbakaHallbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaHallbarActionPerformed
