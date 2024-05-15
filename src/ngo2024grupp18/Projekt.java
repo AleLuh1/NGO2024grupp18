@@ -15,6 +15,7 @@ public class Projekt extends javax.swing.JFrame {
     private InfDB idb;
     private String pid;
     private String aid;
+    private String avdid;
     /**
      * Creates new form Projekt
      */
@@ -50,6 +51,11 @@ public class Projekt extends javax.swing.JFrame {
         });
 
         btnAvdProjekt.setText("Avdelningens projekt");
+        btnAvdProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvdProjektActionPerformed(evt);
+            }
+        });
 
         btnAllaProjekt.setText("Alla projekt");
 
@@ -108,6 +114,11 @@ public class Projekt extends javax.swing.JFrame {
         nyMeny.toFront();
         
     }//GEN-LAST:event_btnTillbakaProjActionPerformed
+
+    private void btnAvdProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdProjektActionPerformed
+        new AvdelningensProjekt(idb, pid, aid, avdid).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btnAvdProjektActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
