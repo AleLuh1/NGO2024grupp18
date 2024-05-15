@@ -27,9 +27,21 @@
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblAvdelningRuta" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnTillbakaAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTillbakaAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTnrAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEpostAvd" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="tfTnrAvd" pref="154" max="32767" attributes="0"/>
+                          <Component id="tfEpostAvd" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="cbAvdAnstalld" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="277" max="32767" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,7 +50,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblAvdelningRuta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="211" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="cbAvdAnstalld" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblTnrAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfTnrAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEpostAvd" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="tfEpostAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
               <Component id="btnTillbakaAvd" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
@@ -61,6 +85,32 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Avdelning"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbAvdAnstalld">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj anst&#xe4;lld"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEpostAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E-post"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTnrAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefonnummer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfTnrAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfEpostAvd">
     </Component>
   </SubComponents>
 </Form>
