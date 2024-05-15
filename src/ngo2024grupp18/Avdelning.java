@@ -4,8 +4,10 @@
  */
 package ngo2024grupp18;
 
+
 import java.util.HashMap;
 import oru.inf.InfDB;
+import java.util.ArrayList;
 /**
  *
  * @author alex
@@ -14,13 +16,17 @@ public class Avdelning extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String avdid;
+ 
     /**
      * Creates new form Avdelning
      */
-    public Avdelning(InfDB idb, String avdid) {
+    public Avdelning(InfDB idb, String avdid, String aid) {
         initComponents();
         this.idb = idb;
+        this.aid = aid;
         this.avdid = avdid;
+        fyllCBAnstalld();
+        
         try {
             String sqlFraga = "SELECT * FROM avdelning WHERE avdid = " + avdid;
             System.out.println(sqlFraga);
@@ -28,6 +34,25 @@ public class Avdelning extends javax.swing.JFrame {
         } catch(Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    //CB = combobox
+    private void fyllCBAnstalld(){
+    try {
+    String sqlFraga = "SELECT fornamn, efternamn FROM anstalld WHERE avdelning = (SELECT avdelning FROM anstalld WHERE aid = " + aid +")";
+    System.out.println(sqlFraga);
+    ArrayList<HashMap<String,String>> anstalldNamnLista = idb.fetchRows(sqlFraga);
+    for (HashMap<String,String> ettNamn : anstalldNamnLista){
+      String fornamn = ettNamn.get("fornamn");
+      String efternamn = ettNamn.get("efternamn");
+    cbAvdAnstalld.addItem(fornamn + " " + efternamn); 
+    }
+    
+    } catch(Exception ex){
+    System.out.println(ex.getMessage());
+    }
+    
+    
     }
 
     /**
@@ -41,6 +66,11 @@ public class Avdelning extends javax.swing.JFrame {
 
         btnTillbakaAvd = new javax.swing.JButton();
         lblAvdelningRuta = new javax.swing.JLabel();
+        cbAvdAnstalld = new javax.swing.JComboBox<>();
+        lblEpostAvd = new javax.swing.JLabel();
+        lblTnrAvd = new javax.swing.JLabel();
+        tfTnrAvd = new javax.swing.JTextField();
+        tfEpostAvd = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +84,12 @@ public class Avdelning extends javax.swing.JFrame {
         lblAvdelningRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAvdelningRuta.setText("Avdelning");
 
+        cbAvdAnstalld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj anställd" }));
+
+        lblEpostAvd.setText("E-post");
+
+        lblTnrAvd.setText("Telefonnummer");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,15 +98,34 @@ public class Avdelning extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAvdelningRuta)
-                    .addComponent(btnTillbakaAvd))
-                .addContainerGap(277, Short.MAX_VALUE))
+                    .addComponent(btnTillbakaAvd)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTnrAvd)
+                            .addComponent(lblEpostAvd, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfTnrAvd, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(tfEpostAvd)))
+                    .addComponent(cbAvdAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAvdelningRuta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(cbAvdAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTnrAvd)
+                    .addComponent(tfTnrAvd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEpostAvd, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfEpostAvd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(btnTillbakaAvd)
                 .addGap(35, 35, 35))
         );
@@ -88,6 +143,11 @@ public class Avdelning extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaAvd;
+    private javax.swing.JComboBox<String> cbAvdAnstalld;
     private javax.swing.JLabel lblAvdelningRuta;
+    private javax.swing.JLabel lblEpostAvd;
+    private javax.swing.JLabel lblTnrAvd;
+    private javax.swing.JTextField tfEpostAvd;
+    private javax.swing.JTextField tfTnrAvd;
     // End of variables declaration//GEN-END:variables
 }

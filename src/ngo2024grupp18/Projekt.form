@@ -75,6 +75,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Alla projekt"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllaProjektActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTillbakaProj">
       <Properties>

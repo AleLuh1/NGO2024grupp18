@@ -58,6 +58,11 @@ public class Projekt extends javax.swing.JFrame {
         });
 
         btnAllaProjekt.setText("Alla projekt");
+        btnAllaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllaProjektActionPerformed(evt);
+            }
+        });
 
         btnTillbakaProj.setText("Tillbaka");
         btnTillbakaProj.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +124,10 @@ public class Projekt extends javax.swing.JFrame {
         new AvdelningensProjekt(idb, pid, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnAvdProjektActionPerformed
+    private void btnAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaProjektActionPerformed
+       new AllaProjekt(idb).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btnAllaProjektActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
