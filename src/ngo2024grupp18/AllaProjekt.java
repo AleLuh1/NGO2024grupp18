@@ -287,7 +287,7 @@ private String pid;
         
       
     
-        String sqlFraga = "UPDATE projekt SET projektchef = " + projektchef + " WHERE projektnamn = '" + projektNamn +"'";
+String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektnamn + "', projektchef = " + projektchef + ", beskrivning = '" + beskrivning + "', startdatum = '" + startdatum + "', slutdatum = '" + slutdatum + "', kostnad = '" + kostnad + "', status = '" + status + "', prioritet = '" + prioritet + "', land = " + land + " WHERE projektnamn = '" + projektNamn + "'";
         idb.update(sqlFraga);
     } catch(Exception ex){
     System.out.println(ex.getMessage());
