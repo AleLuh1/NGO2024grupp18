@@ -36,7 +36,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
             hallbarhetsNamnLista = idb.fetchColumn(sqlFraga);
             for (String ettNamn : hallbarhetsNamnLista) {
                 cbHallbarhetsmal.addItem(ettNamn);
-                
+
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -154,25 +154,17 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private void cbHallbarhetsmalPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
         String hbMal = (String) cbHallbarhetsmal.getSelectedItem();
-
-        if (hbMal != null) {
-        }
         try {
             String sqlFraga = " SELECT * FROM hallbarhetsmal WHERE namn = '" + hbMal + "'";
             System.out.println(sqlFraga);
             HashMap<String, String> hallbarhetsmal = idb.fetchRow(sqlFraga);
-
-            if (hallbarhetsmal != null) {
-             tfMalnummerHallbar.setText(hallbarhetsmal.get("malnummer"));
-             taBeskrivningHallbar.setText(hallbarhetsmal.get("beskrivning"));
-             tfPrioritetHallbar.setText(hallbarhetsmal.get("prioritet"));
-            }
+            tfMalnummerHallbar.setText(hallbarhetsmal.get("malnummer"));
+            taBeskrivningHallbar.setText(hallbarhetsmal.get("beskrivning"));
+            tfPrioritetHallbar.setText(hallbarhetsmal.get("prioritet"));
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-//        
-//        }
     }//GEN-LAST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
 
     private void btnTillbakaHallbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaHallbarActionPerformed

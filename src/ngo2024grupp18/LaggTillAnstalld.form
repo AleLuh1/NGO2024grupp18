@@ -23,55 +23,109 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                      <Component id="lblLaggTillAnstalldRuta" min="-2" pref="143" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblEfternamnNyAnstalld" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="tfEfternamnNyAnstalld" min="-2" pref="71" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblFornamnNyAnstalld" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                              <Component id="tfFornamnNyAnstalld" min="-2" pref="71" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace pref="171" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="btnTillbakaLaggTillAnstalld" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="212" max="32767" attributes="0"/>
               <Component id="btnSparaNyAnstalld" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblLaggTillAnstalldRuta" min="-2" pref="143" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="lblAvdNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblLosenordNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lblTelefonNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblEpostNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblAdressNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lblFornamnNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblEfternamnNyAnstalld" alignment="0" pref="83" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="lblAidNyAnstalld" alignment="0" pref="98" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="lblAnstallningsdatumNyAnstalld" alignment="0" pref="107" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="tfFornamnNyAnstalld" max="32767" attributes="0"/>
+                          <Component id="tfAidNyAnstalld" max="32767" attributes="0"/>
+                          <Component id="tfEfternamnNyAnstalld" max="32767" attributes="0"/>
+                          <Component id="tfAdressNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfEpostNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfTelefonNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAnstallningsdatumNyAnstalld" max="32767" attributes="0"/>
+                          <Component id="tfLosenordNyAnstalld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdNyAnstalld" alignment="0" pref="115" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="lblLaggTillAnstalldRuta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblFornamnNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfFornamnNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblLaggTillAnstalldRuta" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblAidNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfAidNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="tfFornamnNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFornamnNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblEfternamnNyAnstalld" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tfEfternamnNyAnstalld" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tfAdressNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAdressNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblEfternamnNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfEfternamnNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEpostNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfEpostNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="134" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfTelefonNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTelefonNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAnstallningsdatumNyAnstalld" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAnstallningsdatumNyAnstalld" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblLosenordNyAnstalld" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfLosenordNyAnstalld" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblAvdNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAvdNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSparaNyAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaLaggTillAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -92,23 +146,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblFornamnNyAnstalld">
       <Properties>
-        <Property name="text" type="java.lang.String" value="F&#xf6;rnamn:"/>
+        <Property name="text" type="java.lang.String" value="F&#xf6;rnamn"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEfternamnNyAnstalld">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Efternamn:"/>
+        <Property name="text" type="java.lang.String" value="Efternamn"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfFornamnNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEfternamnNyAnstalld">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSparaNyAnstalld">
       <Properties>
@@ -125,6 +173,55 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaLaggTillAnstalldActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAidNyAnstalld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anst&#xe4;llnings-ID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAidNyAnstalld">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdressNyAnstalld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adress"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAdressNyAnstalld">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEpostNyAnstalld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E-post"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfEpostNyAnstalld">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTelefonNyAnstalld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefon"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfTelefonNyAnstalld">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAnstallningsdatumNyAnstalld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anst&#xe4;llningsdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAnstallningsdatumNyAnstalld">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLosenordNyAnstalld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfLosenordNyAnstalld">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAvdNyAnstalld">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avdelning"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAvdNyAnstalld">
     </Component>
   </SubComponents>
 </Form>
