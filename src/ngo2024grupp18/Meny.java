@@ -148,7 +148,7 @@ public class Meny extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
 
     private void btnLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldActionPerformed
-        new LaggTillAnstalld(idb).setVisible(true);
+        new LaggTillAnstalld(idb, aid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLaggTillAnstalldActionPerformed
 

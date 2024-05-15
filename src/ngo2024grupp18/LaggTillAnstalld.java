@@ -19,9 +19,10 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     /**
      * Creates new form Anstallda
      */
-    public LaggTillAnstalld(InfDB idb) {
+    public LaggTillAnstalld(InfDB idb, String aid) {
         initComponents();
         this.idb = idb;
+        this.aid = aid;
         LaggaTillNyAnstalldAid();
     }
 
