@@ -28,6 +28,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         this.pid = pid;
         this.aid = aid;
         this.avdid = avdid;
+        fyllCBAvdelningensProjekt();
     }
     // SQL fråga, 1 får ersättas sedan med avdid
 //    SELECT * FROM anstalld
@@ -44,13 +45,13 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             avdelningensProjektLista = idb.fetchColumn(sqlFraga);
             for (String ettProjektNamn : avdelningensProjektLista) {
                 cbAvdelningensProjekt.addItem(ettProjektNamn);
-            
-        }
+
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        } 
+        }
     }
-    
+
 //    String sqlFraga = "SELECT * FROM anstalld, JOIN avdelning ON anstalld.avdelning = avdelning.avdid, JOIN ans_proj ON anstalld.aid = ans_proj.aid, JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = 1;";
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,7 +99,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         lblAvdelningensProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAvdelningensProjektRuta.setText("Avdelningens projekt");
 
-        cbAvdelningensProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAvdelningensProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
         cbAvdelningensProjekt.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -264,31 +265,29 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
     private void cbAvdelningensProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible
         String avdProj = (String) cbAvdelningensProjekt.getSelectedItem();
-        if (avdProj != null) {
-        }
         try {
             //ChatGPT tycker att detta räcker: String sqlFraga = "SELECT projektnamn FROM projekt WHERE avdid = '" + avdid + "'";
-            String sqlFraga = "SELECT * FROM anstalld, JOIN avdelning ON anstalld.avdelning = avdelning.avdid, JOIN ans_proj ON anstalld.aid = ans_proj.aid, JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = '" + avdProj + "'";
-            //ChatGPT lösning: String sqlFraga = "SELECT projekt.* FROM projekt, JOIN ans_proj ON projekt.pid = ans_proj.pid, JOIN anstalld ON ans_proj.aid = anstalld.aid, JOIN avdelning ON anstalld.avdelning = avdelning.avdid WHERE avdelning.avdid = '" + avdProj + "'";
+            String sqlFraga = "SELECT * FROM anstalld, JOIN avdelning ON anstalld.avdelning = avdelning.avdid, JOIN ans_proj ON anstalld.aid = ans_proj.aid, JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = '" + avdid + "' AND projektnamn = '" + avdProj + "'";
+            //ChatGPTs lösning String sqlFraga = "SELECT projekt.* FROM projekt, JOIN ans_proj ON projekt.pid = ans_proj.pid, JOIN anstalld ON ans_proj.aid = anstalld.aid, JOIN avdelning ON anstalld.avdelning = avdelning.avdid WHERE avdelning.avdid = '" + avdProj + "'";
             System.out.println(sqlFraga);
             HashMap<String, String> avdelningensProjekt = idb.fetchRow(sqlFraga);
-        if (avdelningensProjekt != null) {
-             tfAvdProjID.setText(avdelningensProjekt.get("pid"));
-             tfAvdProjNamn.setText(avdelningensProjekt.get("projektnamn"));
-             taAvdProjBesk.setText(avdelningensProjekt.get("beskrivning"));
-             tfAvdProjStart.setText(avdelningensProjekt.get("startdatum"));
-             tfAvdProjSlut.setText(avdelningensProjekt.get("slutdatum"));
-             tfAvdProjKostn.setText(avdelningensProjekt.get("kostnad")); 
-             tfAvdProjStatus.setText(avdelningensProjekt.get("status"));
-             tfAvdProjPrio.setText(avdelningensProjekt.get("prioritet"));
-             tfAvdProjChef.setText(avdelningensProjekt.get("projektchef"));
-             tfAvdProjLand.setText(avdelningensProjekt.get("land"));
-             
+            if (avdelningensProjekt != null) {
+                tfAvdProjID.setText(avdelningensProjekt.get("projekt.pid"));
+                tfAvdProjNamn.setText(avdelningensProjekt.get("projektnamn"));
+                taAvdProjBesk.setText(avdelningensProjekt.get("projekt.beskrivning"));
+                tfAvdProjStart.setText(avdelningensProjekt.get("startdatum"));
+                tfAvdProjSlut.setText(avdelningensProjekt.get("slutdatum"));
+                tfAvdProjKostn.setText(avdelningensProjekt.get("kostnad"));
+                tfAvdProjStatus.setText(avdelningensProjekt.get("status"));
+                tfAvdProjPrio.setText(avdelningensProjekt.get("prioritet"));
+                tfAvdProjChef.setText(avdelningensProjekt.get("projektchef"));
+                tfAvdProjLand.setText(avdelningensProjekt.get("land"));
+
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-                
+
     }//GEN-LAST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible
 
 
