@@ -6,6 +6,7 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 /**
  *
  * @author alex
@@ -321,10 +322,8 @@ String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektnamn + "', proje
     }//GEN-LAST:event_bnTaBortAllaProjektActionPerformed
 
     private void btnLaggTillProjektAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillProjektAllaProjektActionPerformed
-         try{
-        String projektNamn = cbAllaProjekt.getSelectedItem().toString();
-
-
+    try{
+        String projektNamn = tfProjektnamnAllaProjekt.getText();
         String projektchef = tfProjektchefAllaProjekt.getText();
         String beskrivning = tfBeskrivningAllaProjekt.getText();
         String startdatum = tfStartdatumAllaProjekt.getText();
@@ -333,13 +332,17 @@ String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektnamn + "', proje
         String status = tfStatusAllaProjekt.getText();
         String prioritet = tfPrioAllaProjekt.getText();
         String land = tfLandAllaProjekt.getText();
-        
-      
-    
-        String sqlFraga = "INSERT INTO projekt (projektchef, beskrivning, startdatum,slutdatum,kostnad,status,prioritet,land) WHERE projektnamn = '" + projektNamn +"'";
+
+
+        int pid = new Random().nextInt(1000);
+        String sqlFraga = "INSERT INTO projekt (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ("+pid+", '" + projektNamn + "', " + projektchef + ", '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', " + kostnad + ", '" + status + "', '" + prioritet + "', " + land + ")";
+
         idb.insert(sqlFraga);
+        
+        cbAllaProjekt.removeAllItems();
+        fyllCBAllaProjekt();
     } catch(Exception ex){
-    System.out.println(ex.getMessage());
+        System.out.println(ex.getMessage());
     }   
     }//GEN-LAST:event_btnLaggTillProjektAllaProjektActionPerformed
 
