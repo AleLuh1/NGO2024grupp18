@@ -25,8 +25,12 @@ public class Meny extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid; 
         initComponents();
-        // lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
-        // lblRoll.setText("Roll: " + enAnstalld.getRoll());
+        MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
+        if(ny.isAdmin()) {
+            btnLaggTillAnstalld.setVisible(true);
+        } else {
+            btnLaggTillAnstalld.setVisible(false);
+        }
     }
 
     /**
