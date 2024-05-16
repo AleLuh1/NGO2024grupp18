@@ -3,50 +3,52 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
+
 import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+
 /**
  *
  * @author alex
  */
 public class AllaProjekt extends javax.swing.JFrame {
-private InfDB idb;
-private String aid;
-private String pid;
-private String avdid;
- 
+
+    private InfDB idb;
+    private String aid;
+    private String pid;
+    private String avdid;
+
     /**
      * Creates new form AllaProjekt
      */
     public AllaProjekt(InfDB idb, String aid, String pid, String avdid) {
         initComponents();
-        this.idb= idb; 
+        this.idb = idb;
         this.aid = aid;
         this.pid = pid;
-        this.avdid = avdid; 
+        this.avdid = avdid;
         fyllCBAllaProjekt();
     }
 
     // CB = combobox
-    public void fyllCBAllaProjekt(){
-        try{
+    public void fyllCBAllaProjekt() {
+        try {
             String sqlFraga = "SELECT projektnamn FROM projekt";
             System.out.println(sqlFraga);
             ArrayList<String> projektNamnLista = idb.fetchColumn(sqlFraga);
 
-            for(String ettProjekt: projektNamnLista){
+            for (String ettProjekt : projektNamnLista) {
                 cbAllaProjekt.addItem(ettProjekt);
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
         }
-    
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -249,113 +251,106 @@ private String avdid;
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbAllaProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAllaProjektPopupMenuWillBecomeInvisible
-     String projektNamn =(String) cbAllaProjekt.getSelectedItem();
-    try{
-    String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn +"'"; 
-    System.out.println(sqlFraga);
-  
-    HashMap<String,String>projektNamnLista = idb.fetchRow(sqlFraga);
-    
-    if(projektNamnLista !=null){
-    tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
-    tfProjektchefAllaProjekt.setText(projektNamnLista.get("projektchef"));
-    tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
-    tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
-    tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
-    tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
-    tfStatusAllaProjekt.setText(projektNamnLista.get("status"));
-    tfPrioAllaProjekt.setText(projektNamnLista.get("prioritet"));
-    tfLandAllaProjekt.setText(projektNamnLista.get("land"));
-    
-    
-    }
-    }catch(Exception ex){
-    System.out.println(ex.getMessage());
-    
-    }
-        
-        
-        
+        String projektNamn = cbAllaProjekt.getSelectedItem().toString();
+        try {
+            String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
+            System.out.println(sqlFraga);
+
+            HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
+
+            if (projektNamnLista != null) {
+                tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
+                tfProjektchefAllaProjekt.setText(projektNamnLista.get("projektchef"));
+                tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
+                tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
+                tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
+                tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
+                tfStatusAllaProjekt.setText(projektNamnLista.get("status"));
+                tfPrioAllaProjekt.setText(projektNamnLista.get("prioritet"));
+                tfLandAllaProjekt.setText(projektNamnLista.get("land"));
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+
     }//GEN-LAST:event_cbAllaProjektPopupMenuWillBecomeInvisible
 
     private void btnTillbakaAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAllaProjActionPerformed
-      this.toBack();
+        this.toBack();
         Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaAllaProjActionPerformed
 
     private void btnAndraAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAllaProjektActionPerformed
-     try{
-        String projektNamn = cbAllaProjekt.getSelectedItem().toString();
+        try {
+            String projektNamn = cbAllaProjekt.getSelectedItem().toString();
 
-        String projektnamn = tfProjektnamnAllaProjekt.getText();
-        String projektchef = tfProjektchefAllaProjekt.getText();
-        String beskrivning = tfBeskrivningAllaProjekt.getText();
-        String startdatum = tfStartdatumAllaProjekt.getText();
-        String slutdatum = tfSlutDatumAllaProjekt.getText();
-        String kostnad = tfKostnadAllaProjekt.getText();
-        String status = tfStatusAllaProjekt.getText();
-        String prioritet = tfPrioAllaProjekt.getText();
-        String land = tfLandAllaProjekt.getText();
-        
-      
-    
-String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektnamn + "', projektchef = " + projektchef + ", beskrivning = '" + beskrivning + "', startdatum = '" + startdatum + "', slutdatum = '" + slutdatum + "', kostnad = '" + kostnad + "', status = '" + status + "', prioritet = '" + prioritet + "', land = " + land + " WHERE projektnamn = '" + projektNamn + "'";
-        idb.update(sqlFraga);
-        cbAllaProjekt.removeAllItems();
-        fyllCBAllaProjekt();
-    } catch(Exception ex){
-    System.out.println(ex.getMessage());
-    }
+            String projektnamn = tfProjektnamnAllaProjekt.getText();
+            String projektchef = tfProjektchefAllaProjekt.getText();
+            String beskrivning = tfBeskrivningAllaProjekt.getText();
+            String startdatum = tfStartdatumAllaProjekt.getText();
+            String slutdatum = tfSlutDatumAllaProjekt.getText();
+            String kostnad = tfKostnadAllaProjekt.getText();
+            String status = tfStatusAllaProjekt.getText();
+            String prioritet = tfPrioAllaProjekt.getText();
+            String land = tfLandAllaProjekt.getText();
+
+            String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektnamn + "', projektchef = " + projektchef + ", beskrivning = '" + beskrivning + "', startdatum = '" + startdatum + "', slutdatum = '" + slutdatum + "', kostnad = '" + kostnad + "', status = '" + status + "', prioritet = '" + prioritet + "', land = " + land + " WHERE projektnamn = '" + projektNamn + "'";
+            idb.update(sqlFraga);
+            cbAllaProjekt.removeAllItems();
+            fyllCBAllaProjekt();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_btnAndraAllaProjektActionPerformed
 
     private void bnTaBortAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnTaBortAllaProjektActionPerformed
-             try{
-        String projektNamn = cbAllaProjekt.getSelectedItem().toString();
+        try {
+            String projektNamn = cbAllaProjekt.getSelectedItem().toString();
 
-        String projektnamn = tfProjektnamnAllaProjekt.getText();
-        String projektchef = tfProjektchefAllaProjekt.getText();
-        String beskrivning = tfBeskrivningAllaProjekt.getText();
-        String startdatum = tfStartdatumAllaProjekt.getText();
-        String slutdatum = tfSlutDatumAllaProjekt.getText();
-        String kostnad = tfKostnadAllaProjekt.getText();
-        String status = tfStatusAllaProjekt.getText();
-        String prioritet = tfPrioAllaProjekt.getText();
-        String land = tfLandAllaProjekt.getText();
-        
-      
-    
-        String sqlFraga = "DROP * FROM projekt WHERE projektnamn = '" + projektNamn +"'";
-        idb.delete(sqlFraga);
-    } catch(Exception ex){
-    System.out.println(ex.getMessage());
-    }
+            String projektnamn = tfProjektnamnAllaProjekt.getText();
+            String projektchef = tfProjektchefAllaProjekt.getText();
+            String beskrivning = tfBeskrivningAllaProjekt.getText();
+            String startdatum = tfStartdatumAllaProjekt.getText();
+            String slutdatum = tfSlutDatumAllaProjekt.getText();
+            String kostnad = tfKostnadAllaProjekt.getText();
+            String status = tfStatusAllaProjekt.getText();
+            String prioritet = tfPrioAllaProjekt.getText();
+            String land = tfLandAllaProjekt.getText();
+
+            String sqlFraga = "DROP * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
+            idb.delete(sqlFraga);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_bnTaBortAllaProjektActionPerformed
 
     private void btnLaggTillProjektAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillProjektAllaProjektActionPerformed
-    try{
-        String projektNamn = tfProjektnamnAllaProjekt.getText();
-        String projektchef = tfProjektchefAllaProjekt.getText();
-        String beskrivning = tfBeskrivningAllaProjekt.getText();
-        String startdatum = tfStartdatumAllaProjekt.getText();
-        String slutdatum = tfSlutDatumAllaProjekt.getText();
-        String kostnad = tfKostnadAllaProjekt.getText();
-        String status = tfStatusAllaProjekt.getText();
-        String prioritet = tfPrioAllaProjekt.getText();
-        String land = tfLandAllaProjekt.getText();
+        try {
+            String projektNamn = tfProjektnamnAllaProjekt.getText();
+            String projektchef = tfProjektchefAllaProjekt.getText();
+            String beskrivning = tfBeskrivningAllaProjekt.getText();
+            String startdatum = tfStartdatumAllaProjekt.getText();
+            String slutdatum = tfSlutDatumAllaProjekt.getText();
+            String kostnad = tfKostnadAllaProjekt.getText();
+            String status = tfStatusAllaProjekt.getText();
+            String prioritet = tfPrioAllaProjekt.getText();
+            String land = tfLandAllaProjekt.getText();
 
+            int pid = new Random().nextInt(1000);
+            String sqlFraga = "INSERT INTO projekt (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES (" + pid + ", '" + projektNamn + "', " + projektchef + ", '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', " + kostnad + ", '" + status + "', '" + prioritet + "', " + land + ")";
 
-        int pid = new Random().nextInt(1000);
-        String sqlFraga = "INSERT INTO projekt (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ("+pid+", '" + projektNamn + "', " + projektchef + ", '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', " + kostnad + ", '" + status + "', '" + prioritet + "', " + land + ")";
+            idb.insert(sqlFraga);
 
-        idb.insert(sqlFraga);
-        
-        cbAllaProjekt.removeAllItems();
-        fyllCBAllaProjekt();
-    } catch(Exception ex){
-        System.out.println(ex.getMessage());
-    }   
+            cbAllaProjekt.removeAllItems();
+            fyllCBAllaProjekt();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_btnLaggTillProjektAllaProjektActionPerformed
 
 

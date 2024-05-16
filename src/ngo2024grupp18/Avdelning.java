@@ -4,20 +4,21 @@
  */
 package ngo2024grupp18;
 
-
 import java.util.HashMap;
 import oru.inf.InfDB;
 import java.util.ArrayList;
+
 /**
  *
  * @author alex
  */
 public class Avdelning extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
-    private String pid; 
+    private String pid;
     private String avdid;
- 
+
     /**
      * Creates new form Avdelning
      */
@@ -26,35 +27,26 @@ public class Avdelning extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
-        this.pid = pid; 
+        this.pid = pid;
         fyllCBAnstalld();
-        
+    }
+
+    //CB = combobox
+    private void fyllCBAnstalld() {
         try {
-            String sqlFraga = "SELECT * FROM avdelning WHERE avdid = " + avdid;
+            String sqlFraga = "SELECT * FROM anstalld WHERE avdelning = (SELECT avdelning FROM anstalld WHERE aid = " + aid + ")";
             System.out.println(sqlFraga);
-            HashMap<String, String> avdelning = idb.fetchRow(sqlFraga); 
-        } catch(Exception ex) {
+            ArrayList<HashMap<String, String>> anstalldNamnLista = idb.fetchRows(sqlFraga);
+            for (HashMap<String, String> ettNamn : anstalldNamnLista) {
+                String fornamn = ettNamn.get("fornamn");
+                String efternamn = ettNamn.get("efternamn");
+                cbAvdAnstalld.addItem(fornamn + " " + efternamn);
+            }
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-    }
-    
-    //CB = combobox
-    private void fyllCBAnstalld(){
-    try {
-    String sqlFraga = "SELECT fornamn, efternamn FROM anstalld WHERE avdelning = (SELECT avdelning FROM anstalld WHERE aid = " + aid +")";
-    System.out.println(sqlFraga);
-    ArrayList<HashMap<String,String>> anstalldNamnLista = idb.fetchRows(sqlFraga);
-    for (HashMap<String,String> ettNamn : anstalldNamnLista){
-      String fornamn = ettNamn.get("fornamn");
-      String efternamn = ettNamn.get("efternamn");
-    cbAvdAnstalld.addItem(fornamn + " " + efternamn); 
-    }
-    
-    } catch(Exception ex){
-    System.out.println(ex.getMessage());
-    }
-    
-    
+
     }
 
     /**
@@ -87,6 +79,15 @@ public class Avdelning extends javax.swing.JFrame {
         lblAvdelningRuta.setText("Avdelning");
 
         cbAvdAnstalld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj anställd" }));
+        cbAvdAnstalld.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cbAvdAnstalldPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         lblEpostAvd.setText("E-post");
 
@@ -141,6 +142,22 @@ public class Avdelning extends javax.swing.JFrame {
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaAvdActionPerformed
+
+    private void cbAvdAnstalldPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdAnstalldPopupMenuWillBecomeInvisible
+        String anstalld = cbAvdAnstalld.getSelectedItem().toString();
+        // WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
+        try {
+            String sqlFraga = "SELECT * FROM avdelning JOIN anstalld ON anstalld.avdelning = avdid WHERE avdid = " + avdid + " AND CONCAT(fornamn, ' ', efternamn) = '" + anstalld + "'";
+            System.out.println(sqlFraga);
+            HashMap<String, String> avdelning = idb.fetchRow(sqlFraga);
+            tfTnrAvd.setText(avdelning.get("telefon"));
+            tfTnrAvd.setEditable(false);
+            tfEpostAvd.setText(avdelning.get("epost"));
+            tfEpostAvd.setEditable(false);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_cbAvdAnstalldPopupMenuWillBecomeInvisible
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
