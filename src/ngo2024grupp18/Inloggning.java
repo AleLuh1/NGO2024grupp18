@@ -120,7 +120,7 @@ public class Inloggning extends javax.swing.JFrame {
                     String dbAid = idb.fetchSingle(sqlFraga2);
                     String sqlFragaprojID = "SELECT pid FROM projekt"; 
                     String pid = idb.fetchSingle(sqlFragaprojID);
-                    String sqlFragaAvdID = "SELECT avdid FROM avdelning";
+                    String sqlFragaAvdID = "SELECT avdelning FROM anstalld WHERE aid = " + dbAid;
                     String avdid = idb.fetchSingle(sqlFragaAvdID);
                     new Meny(idb, dbAid, pid, avdid).setVisible(true);
                     this.setVisible(false);
