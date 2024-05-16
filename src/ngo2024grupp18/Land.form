@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="btnTillbakaLand" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnSparaÄndringarLand" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="cbLand" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblNamnLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSpråkLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblValutaLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTidzonLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPolitiskStrukturLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEkonomiLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLandRuta" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLandIDLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="tfLandID" max="32767" attributes="0"/>
+                          <Component id="tfNamnLand" max="32767" attributes="0"/>
+                          <Component id="tfSprakLand" max="32767" attributes="0"/>
+                          <Component id="tfValutaLand" max="32767" attributes="0"/>
+                          <Component id="tfTidszonLand" max="32767" attributes="0"/>
+                          <Component id="tfPolitiskStrukturLand" max="32767" attributes="0"/>
+                          <Component id="tfEkonomiLand" pref="174" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="lblLandRuta" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="cbLand" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblLandIDLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfLandID" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblNamnLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfNamnLand" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblSpråkLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfSprakLand" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblValutaLand" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfValutaLand" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTidzonLand" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfTidszonLand" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblPolitiskStrukturLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPolitiskStrukturLand" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEkonomiLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfEkonomiLand" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnSparaÄndringarLand" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTillbakaLand" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnTillbakaLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaLandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLandRuta">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Land"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLandIDLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Land-ID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNamnLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Namn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSpr&#xe5;kLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Spr&#xe5;k"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblValutaLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valuta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTidzonLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tidszon"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPolitiskStrukturLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Politisk struktur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEkonomiLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ekonomi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfLandID">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfNamnLand">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfSprakLand">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfValutaLand">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfTidszonLand">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPolitiskStrukturLand">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfEkonomiLand">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSpara&#xc4;ndringarLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Spara &#xe4;ndringar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSpara&#xc4;ndringarLandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbLand">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj "/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="popupMenuWillBecomeInvisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="cbLandPopupMenuWillBecomeInvisible"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>
