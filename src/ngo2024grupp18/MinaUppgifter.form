@@ -54,12 +54,12 @@
                               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
-                                  <Component id="tfAdress" alignment="0" pref="157" max="32767" attributes="0"/>
-                                  <Component id="tfEpost" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfTelefon" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfFornamn" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfEfternamn" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfAvdelning" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfAdressMinaUppgifter" alignment="0" pref="157" max="32767" attributes="0"/>
+                                  <Component id="tfEpostMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfTelefonMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfFornamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfEfternamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tftAvdMinaUppgifter" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -78,41 +78,41 @@
                   <Component id="lblAID" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblRoll" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblFornamn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfFornamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfFornamnMinaUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblEfternamn" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfEfternamn" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfEfternamnMinaUppgifter" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblAdress" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAdress" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAdressMinaUppgifter" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblEpost" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfEpostMinaUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfTelefonMinaUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblAvdelning" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAvdelning" min="-2" max="-2" attributes="0"/>
+                  <Component id="tftAvdMinaUppgifter" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Component id="lblAnstallningsDatum" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAndraMinaUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAndraMinaUppgifter" alignment="3" max="32767" attributes="0"/>
                   <Component id="btnTillbakaMU" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -136,7 +136,7 @@
         <Property name="text" type="java.lang.String" value="F&#xf6;rnamn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfFornamn">
+    <Component class="javax.swing.JTextField" name="tfFornamnMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
@@ -146,7 +146,7 @@
         <Property name="text" type="java.lang.String" value="Efternamn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfEfternamn">
+    <Component class="javax.swing.JTextField" name="tfEfternamnMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
@@ -156,7 +156,7 @@
         <Property name="text" type="java.lang.String" value="Adress"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfAdress">
+    <Component class="javax.swing.JTextField" name="tfAdressMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
@@ -166,7 +166,7 @@
         <Property name="text" type="java.lang.String" value="E-post"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfEpost">
+    <Component class="javax.swing.JTextField" name="tfEpostMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
@@ -176,7 +176,7 @@
         <Property name="text" type="java.lang.String" value="Telefon"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfTelefon">
+    <Component class="javax.swing.JTextField" name="tfTelefonMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
@@ -191,15 +191,18 @@
         <Property name="text" type="java.lang.String" value="Avdelning"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfAvdelning">
+    <Component class="javax.swing.JTextField" name="tftAvdMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAndraMinaUppgifter">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
+        <Property name="text" type="java.lang.String" value="Spara &#xe4;ndringar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAndraMinaUppgifterActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTillbakaMU">
       <Properties>

@@ -36,18 +36,18 @@ public class MinaUppgifter extends javax.swing.JFrame {
             lblAID.setText(("AnställningsID: " + anstalld.get("aid")));
             lblAID.requestFocus();
             lblRoll.setText("Roll: " + getRoll());
-            tfFornamn.setText(anstalld.get("fornamn"));
-            tfFornamn.setEditable(false);
-            tfEfternamn.setText(anstalld.get("efternamn"));
-            tfEfternamn.setEditable(false);
-            tfAdress.setText(anstalld.get("adress"));
-            tfAdress.setEditable(false);
-            tfEpost.setText(anstalld.get("epost"));
-            tfEpost.setEditable(false);
-            tfTelefon.setText(anstalld.get("telefon"));
-            tfTelefon.setEditable(false);
-            tfAvdelning.setText(anstalld.get("avdelning"));
-            tfAvdelning.setEditable(false);
+            tfFornamnMinaUppgifter.setText(anstalld.get("fornamn"));
+            
+            tfEfternamnMinaUppgifter.setText(anstalld.get("efternamn"));
+            
+            tfAdressMinaUppgifter.setText(anstalld.get("adress"));
+            
+            tfEpostMinaUppgifter.setText(anstalld.get("epost"));
+         
+            tfTelefonMinaUppgifter.setText(anstalld.get("telefon"));
+           
+            tftAvdMinaUppgifter.setText(anstalld.get("avdelning"));
+            
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -124,18 +124,18 @@ public class MinaUppgifter extends javax.swing.JFrame {
         lblAID = new javax.swing.JLabel();
         lblRoll = new javax.swing.JLabel();
         lblFornamn = new javax.swing.JLabel();
-        tfFornamn = new javax.swing.JTextField();
+        tfFornamnMinaUppgifter = new javax.swing.JTextField();
         lblEfternamn = new javax.swing.JLabel();
-        tfEfternamn = new javax.swing.JTextField();
+        tfEfternamnMinaUppgifter = new javax.swing.JTextField();
         lblAdress = new javax.swing.JLabel();
-        tfAdress = new javax.swing.JTextField();
+        tfAdressMinaUppgifter = new javax.swing.JTextField();
         lblEpost = new javax.swing.JLabel();
-        tfEpost = new javax.swing.JTextField();
+        tfEpostMinaUppgifter = new javax.swing.JTextField();
         lblTelefon = new javax.swing.JLabel();
-        tfTelefon = new javax.swing.JTextField();
+        tfTelefonMinaUppgifter = new javax.swing.JTextField();
         lblAnstallningsDatum = new javax.swing.JLabel();
         lblAvdelning = new javax.swing.JLabel();
-        tfAvdelning = new javax.swing.JTextField();
+        tftAvdMinaUppgifter = new javax.swing.JTextField();
         btnAndraMinaUppgifter = new javax.swing.JButton();
         btnTillbakaMU = new javax.swing.JButton();
         lblMinaUppgifterRuta = new javax.swing.JLabel();
@@ -148,31 +148,36 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         lblFornamn.setText("Förnamn");
 
-        tfFornamn.setText("jTextField1");
+        tfFornamnMinaUppgifter.setText("jTextField1");
 
         lblEfternamn.setText("Efternamn");
 
-        tfEfternamn.setText("jTextField1");
+        tfEfternamnMinaUppgifter.setText("jTextField1");
 
         lblAdress.setText("Adress");
 
-        tfAdress.setText("jTextField1");
+        tfAdressMinaUppgifter.setText("jTextField1");
 
         lblEpost.setText("E-post");
 
-        tfEpost.setText("jTextField1");
+        tfEpostMinaUppgifter.setText("jTextField1");
 
         lblTelefon.setText("Telefon");
 
-        tfTelefon.setText("jTextField1");
+        tfTelefonMinaUppgifter.setText("jTextField1");
 
         lblAnstallningsDatum.setText("Anställningsdatum");
 
         lblAvdelning.setText("Avdelning");
 
-        tfAvdelning.setText("jTextField1");
+        tftAvdMinaUppgifter.setText("jTextField1");
 
-        btnAndraMinaUppgifter.setText("Ändra");
+        btnAndraMinaUppgifter.setText("Spara ändringar");
+        btnAndraMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraMinaUppgifterActionPerformed(evt);
+            }
+        });
 
         btnTillbakaMU.setText("Tillbaka");
         btnTillbakaMU.addActionListener(new java.awt.event.ActionListener() {
@@ -215,12 +220,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
                                 .addGap(61, 61, 61)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfAdress, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                                    .addComponent(tfEpost)
-                                    .addComponent(tfTelefon)
-                                    .addComponent(tfFornamn)
-                                    .addComponent(tfEfternamn)
-                                    .addComponent(tfAvdelning))))
+                                    .addComponent(tfAdressMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                    .addComponent(tfEpostMinaUppgifter)
+                                    .addComponent(tfTelefonMinaUppgifter)
+                                    .addComponent(tfFornamnMinaUppgifter)
+                                    .addComponent(tfEfternamnMinaUppgifter)
+                                    .addComponent(tftAvdMinaUppgifter))))
                         .addContainerGap(102, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -234,32 +239,32 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFornamn)
-                    .addComponent(tfFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfFornamnMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEfternamn)
-                    .addComponent(tfEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEfternamnMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAdress)
-                    .addComponent(tfAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfAdressMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEpost)
-                    .addComponent(tfEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEpostMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefon)
-                    .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfTelefonMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAvdelning)
-                    .addComponent(tfAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tftAvdMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblAnstallningsDatum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAndraMinaUppgifter)
+                    .addComponent(btnAndraMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTillbakaMU))
                 .addGap(27, 27, 27))
         );
@@ -273,6 +278,28 @@ public class MinaUppgifter extends javax.swing.JFrame {
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
+
+    private void btnAndraMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinaUppgifterActionPerformed
+        
+        try{
+        String fornamn = tfFornamnMinaUppgifter.getText();
+        String efternamn = tfEfternamnMinaUppgifter.getText();
+        String adress = tfAdressMinaUppgifter.getText();
+        String epost = tfEpostMinaUppgifter.getText();
+        String telefon = tfTelefonMinaUppgifter.getText(); 
+        String avdelning = tftAvdMinaUppgifter.getText();
+        
+        
+        String sqlFraga = "UPDATE anstalld SET fornamn = '" + fornamn +"', efternamn = '" + efternamn + "',adress = '" + adress + "' ,epost = '" + epost + "', telefon = '" + telefon + "', avdelning = '" + avdelning + "'";
+        idb.update(sqlFraga);
+        } catch(Exception ex){
+            System.out.println(ex.getMessage());
+        
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnAndraMinaUppgifterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -288,11 +315,11 @@ public class MinaUppgifter extends javax.swing.JFrame {
     private javax.swing.JLabel lblMinaUppgifterRuta;
     private javax.swing.JLabel lblRoll;
     private javax.swing.JLabel lblTelefon;
-    private javax.swing.JTextField tfAdress;
-    private javax.swing.JTextField tfAvdelning;
-    private javax.swing.JTextField tfEfternamn;
-    private javax.swing.JTextField tfEpost;
-    private javax.swing.JTextField tfFornamn;
-    private javax.swing.JTextField tfTelefon;
+    private javax.swing.JTextField tfAdressMinaUppgifter;
+    private javax.swing.JTextField tfEfternamnMinaUppgifter;
+    private javax.swing.JTextField tfEpostMinaUppgifter;
+    private javax.swing.JTextField tfFornamnMinaUppgifter;
+    private javax.swing.JTextField tfTelefonMinaUppgifter;
+    private javax.swing.JTextField tftAvdMinaUppgifter;
     // End of variables declaration//GEN-END:variables
 }
