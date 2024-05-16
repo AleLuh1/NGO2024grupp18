@@ -17,7 +17,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String pid; 
     private String avdid; 
 
     /**
@@ -27,7 +26,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.aid = aid; 
-        this.pid = pid; 
         this.avdid = avdid; 
         fyllCBHallbarhetsmal();
     }
@@ -174,7 +172,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private void btnTillbakaHallbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaHallbarActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid, pid, avdid);
+        Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaHallbarActionPerformed

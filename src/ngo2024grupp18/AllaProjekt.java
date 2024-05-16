@@ -7,7 +7,6 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 /**
  *
@@ -17,17 +16,15 @@ public class AllaProjekt extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String pid;
     private String avdid;
 
     /**
      * Creates new form AllaProjekt
      */
-    public AllaProjekt(InfDB idb, String aid, String pid, String avdid) {
+    public AllaProjekt(InfDB idb, String aid, String avdid) {
         initComponents();
         this.idb = idb;
         this.aid = aid;
-        this.pid = pid;
         this.avdid = avdid;
         fyllCBAllaProjekt();
     }
@@ -314,7 +311,7 @@ public class AllaProjekt extends javax.swing.JFrame {
 
     private void btnTillbakaAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAllaProjActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
+        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaAllaProjActionPerformed
@@ -345,7 +342,10 @@ public class AllaProjekt extends javax.swing.JFrame {
     private void bnTaBortAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnTaBortAllaProjektActionPerformed
         try {
             String projektNamn = cbAllaProjekt.getSelectedItem().toString();
-
+            String sqlFragaPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
+            System.out.println(sqlFragaPid);
+            String pid = idb.fetchSingle(sqlFragaPid);
+            
             String sqlFraga1 = "DELETE FROM ans_proj WHERE pid = " + pid + "";
             System.out.println(sqlFraga1);
             idb.delete(sqlFraga1);
@@ -386,7 +386,6 @@ public class AllaProjekt extends javax.swing.JFrame {
             String prioritet = tfPrioAllaProjekt.getText();
             String land = tfLandAllaProjekt.getText();
 
-            //int pid = new Random().nextInt(1000);
             String sqlFraga = "INSERT INTO projekt (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES (" + nyttProjektNyPidInt + ", '" + projektNamn + "', " + projektchef + ", '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', " + kostnad + ", '" + status + "', '" + prioritet + "', " + land + ")";
 
             idb.insert(sqlFraga);

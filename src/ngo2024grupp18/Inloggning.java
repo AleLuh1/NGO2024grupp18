@@ -118,11 +118,11 @@ public class Inloggning extends javax.swing.JFrame {
                     String sqlFraga2 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
                     System.out.println(sqlFraga2);
                     String dbAid = idb.fetchSingle(sqlFraga2);
-                    String sqlFragaprojID = "SELECT pid FROM projekt"; 
-                    String pid = idb.fetchSingle(sqlFragaprojID);
+//                    String sqlFragaprojID = "SELECT pid FROM projekt"; 
+//                    String pid = idb.fetchSingle(sqlFragaprojID);
                     String sqlFragaAvdID = "SELECT avdelning FROM anstalld WHERE aid = " + dbAid;
                     String avdid = idb.fetchSingle(sqlFragaAvdID);
-                    new Meny(idb, dbAid, pid, avdid).setVisible(true);
+                    new Meny(idb, dbAid, avdid).setVisible(true);
                     this.setVisible(false);
                 } else {
                     lblFelLosenord.setVisible(true);

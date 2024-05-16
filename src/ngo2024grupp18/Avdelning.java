@@ -16,18 +16,16 @@ public class Avdelning extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String pid;
     private String avdid;
 
     /**
      * Creates new form Avdelning
      */
-    public Avdelning(InfDB idb, String avdid, String aid, String pid) {
+    public Avdelning(InfDB idb, String avdid, String aid) {
         initComponents();
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
-        this.pid = pid;
         fyllCBAnstalld();
     }
 
@@ -138,7 +136,7 @@ public class Avdelning extends javax.swing.JFrame {
 
     private void btnTillbakaAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAvdActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid, pid, avdid);
+        Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaAvdActionPerformed

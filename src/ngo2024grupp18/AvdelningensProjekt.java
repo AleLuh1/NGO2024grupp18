@@ -15,17 +15,15 @@ import oru.inf.InfDB;
 public class AvdelningensProjekt extends javax.swing.JFrame {
 
     private InfDB idb;
-    private String pid;
     private String aid;
     private String avdid;
 
     /**
      * Creates new form AvdelningensProjekt
      */
-    public AvdelningensProjekt(InfDB idb, String pid, String aid, String avdid) {
+    public AvdelningensProjekt(InfDB idb, String aid, String avdid) {
         initComponents();
         this.idb = idb;
-        this.pid = pid;
         this.aid = aid;
         this.avdid = avdid;
         fyllCBAvdelningensProjekt();
@@ -258,7 +256,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
     private void btnTillbakaAvdProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAvdProjActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
+        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaAvdProjActionPerformed
