@@ -4,6 +4,7 @@
  */
 package ngo2024grupp18;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -231,6 +232,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         try {
             String sqlLaggTill = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES (" + nyAnstalldAidInt + ", '" + nyAnstalldFornamn + "', '" + nyAnstalldEfternamn + "', '" + nyAnstalldAdress + "', '" + nyAnstalldEpost + "', '" + nyAnstalldTelefon + "', str_to_date('" + NyAnstalldAnstallningsDatum + "', '%Y-%m-%d'), '" + NyAnstalldLosenord + "', " + nyAnstalldAvdInt + ")";
             idb.insert(sqlLaggTill);
+            JOptionPane.showMessageDialog(null, "Den anställda har lagts till.");
         } catch (InfException ex) {
             System.out.println(ex.getMessage());
         }

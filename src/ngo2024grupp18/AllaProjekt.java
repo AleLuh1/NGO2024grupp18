@@ -52,12 +52,12 @@ public class AllaProjekt extends javax.swing.JFrame {
     private String LaggaTillNyPid() {
         String nyProjektPid = null;
         try {
-            //SQL-fråga för att hämta ut största aid som finns i anstalld
+            //SQL-fråga för att hämta ut största pid som finns i projekt
             String sqlFragaHogstPid = "SELECT max(pid) FROM projekt";
             System.out.println(sqlFragaHogstPid);
             //Hämtar ut resultatet från sql-frågan i en sträng 
             String hogstProjektPidDB = idb.fetchSingle(sqlFragaHogstPid);
-            //Konverterar strängen med högst aid till en int
+            //Konverterar strängen med högst pid till en int
             int hogstProjektPidInt = Integer.parseInt(hogstProjektPidDB);
             int nyProjektPidInt = hogstProjektPidInt + 1;
             System.out.println(nyProjektPidInt);
