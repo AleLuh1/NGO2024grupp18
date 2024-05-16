@@ -21,15 +21,12 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     /**
      * Creates new form Anstallda
      */
-    public LaggTillAnstalld(InfDB idb) {
+    public LaggTillAnstalld(InfDB idb, String aid, String pid, String avdid) {
         initComponents();
         this.idb = idb;
-<<<<<<< Updated upstream
-=======
         this.aid = aid;
         this.pid = pid; 
         this.avdid = avdid; 
->>>>>>> Stashed changes
         LaggaTillNyAnstalldAid();
     }
 
