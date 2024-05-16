@@ -17,6 +17,8 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
+    private String pid; 
+    private String avdid; 
 
     /**
      * Creates new form HallbarhetsMal
@@ -24,6 +26,9 @@ public class HallbarhetsMal extends javax.swing.JFrame {
     public HallbarhetsMal(InfDB idb) {
         initComponents();
         this.idb = idb;
+        this.aid = aid; 
+        this.pid = pid; 
+        this.avdid = avdid; 
         fyllCBHallbarhetsmal();
     }
 // CB = ComboBox
@@ -169,7 +174,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private void btnTillbakaHallbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaHallbarActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid);
+        Meny nyMeny = new Meny(idb, aid, pid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaHallbarActionPerformed

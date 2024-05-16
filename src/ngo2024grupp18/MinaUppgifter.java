@@ -17,15 +17,18 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    
+    private String pid;
+    private String avdid;
 
     /**
      * Creates new form MinaUppgifter
      */
-    public MinaUppgifter(InfDB idb, String aid) {
+    public MinaUppgifter(InfDB idb, String aid, String pid, String avdid) {
         initComponents();
         this.idb = idb;
         this.aid = aid;
+        this.pid = pid;
+        this.avdid = avdid; 
         try {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
             System.out.println(sqlFraga);
@@ -266,7 +269,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
     private void btnTillbakaMUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMUActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid);
+        Meny nyMeny = new Meny(idb, aid, pid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaMUActionPerformed

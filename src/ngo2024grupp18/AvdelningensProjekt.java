@@ -258,7 +258,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
     private void btnTillbakaAvdProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAvdProjActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid);
+        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaAvdProjActionPerformed
@@ -267,14 +267,13 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         String avdProj = (String) cbAvdelningensProjekt.getSelectedItem();
         try {
             //ChatGPT tycker att detta räcker: String sqlFraga = "SELECT projektnamn FROM projekt WHERE avdid = '" + avdid + "'";
-            String sqlFraga = "SELECT * FROM anstalld, JOIN avdelning ON anstalld.avdelning = avdelning.avdid, JOIN ans_proj ON anstalld.aid = ans_proj.aid, JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = '" + avdid + "' AND projektnamn = '" + avdProj + "'";
+            String sqlFraga = "SELECT * FROM anstalld JOIN avdelning ON anstalld.avdelning = avdelning.avdid JOIN ans_proj ON anstalld.aid = ans_proj.aid JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
             //ChatGPTs lösning String sqlFraga = "SELECT projekt.* FROM projekt, JOIN ans_proj ON projekt.pid = ans_proj.pid, JOIN anstalld ON ans_proj.aid = anstalld.aid, JOIN avdelning ON anstalld.avdelning = avdelning.avdid WHERE avdelning.avdid = '" + avdProj + "'";
             System.out.println(sqlFraga);
             HashMap<String, String> avdelningensProjekt = idb.fetchRow(sqlFraga);
-            if (avdelningensProjekt != null) {
-                tfAvdProjID.setText(avdelningensProjekt.get("projekt.pid"));
+                tfAvdProjID.setText(avdelningensProjekt.get("pid"));
                 tfAvdProjNamn.setText(avdelningensProjekt.get("projektnamn"));
-                taAvdProjBesk.setText(avdelningensProjekt.get("projekt.beskrivning"));
+                taAvdProjBesk.setText(avdelningensProjekt.get("beskrivning"));
                 tfAvdProjStart.setText(avdelningensProjekt.get("startdatum"));
                 tfAvdProjSlut.setText(avdelningensProjekt.get("slutdatum"));
                 tfAvdProjKostn.setText(avdelningensProjekt.get("kostnad"));
@@ -282,8 +281,6 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
                 tfAvdProjPrio.setText(avdelningensProjekt.get("prioritet"));
                 tfAvdProjChef.setText(avdelningensProjekt.get("projektchef"));
                 tfAvdProjLand.setText(avdelningensProjekt.get("land"));
-
-            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

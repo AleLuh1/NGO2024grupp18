@@ -15,6 +15,8 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
+    private String pid;
+    private String avdid; 
 
     /**
      * Creates new form Anstallda
@@ -22,6 +24,12 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     public LaggTillAnstalld(InfDB idb) {
         initComponents();
         this.idb = idb;
+<<<<<<< Updated upstream
+=======
+        this.aid = aid;
+        this.pid = pid; 
+        this.avdid = avdid; 
+>>>>>>> Stashed changes
         LaggaTillNyAnstalldAid();
     }
 
@@ -233,7 +241,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid);
+        Meny nyMeny = new Meny(idb, aid, pid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaLaggTillAnstalldActionPerformed
