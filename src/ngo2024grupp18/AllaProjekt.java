@@ -15,13 +15,17 @@ public class AllaProjekt extends javax.swing.JFrame {
 private InfDB idb;
 private String aid;
 private String pid;
+private String avdid;
  
     /**
      * Creates new form AllaProjekt
      */
-    public AllaProjekt(InfDB idb) {
+    public AllaProjekt(InfDB idb, String aid, String pid, String avdid) {
         initComponents();
         this.idb= idb; 
+        this.aid = aid;
+        this.pid = pid;
+        this.avdid = avdid; 
         fyllCBAllaProjekt();
     }
 
@@ -276,7 +280,7 @@ private String pid;
 
     private void btnTillbakaAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAllaProjActionPerformed
       this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid);
+        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaAllaProjActionPerformed

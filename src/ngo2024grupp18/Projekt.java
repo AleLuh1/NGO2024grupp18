@@ -19,11 +19,12 @@ public class Projekt extends javax.swing.JFrame {
     /**
      * Creates new form Projekt
      */
-    public Projekt(InfDB idb, String pid, String aid) {
+    public Projekt(InfDB idb, String pid, String aid, String avdid) {
         initComponents();
         this.idb = idb;
         this.pid = pid;
         this.aid = aid;
+        this.avdid = avdid;
     }
 
     /**
@@ -108,13 +109,13 @@ public class Projekt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektActionPerformed
-        new MinaProjekt(idb, pid, aid).setVisible(true);
+        new MinaProjekt(idb, pid, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnMinaProjektActionPerformed
 
     private void btnTillbakaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaProjActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid);
+        Meny nyMeny = new Meny(idb, aid, pid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
         
@@ -125,7 +126,7 @@ public class Projekt extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnAvdProjektActionPerformed
     private void btnAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaProjektActionPerformed
-       new AllaProjekt(idb).setVisible(true);
+       new AllaProjekt(idb, aid, pid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnAllaProjektActionPerformed
 

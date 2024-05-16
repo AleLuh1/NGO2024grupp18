@@ -16,14 +16,16 @@ public class MinaProjekt extends javax.swing.JFrame {
     private InfDB idb;
     private String pid;
     private String aid; 
+    private String avdid; 
     /**
      * Creates new form MinaProjekt
      */
-    public MinaProjekt(InfDB idb, String pid, String aid) {
+    public MinaProjekt(InfDB idb, String pid, String aid, String avdid) {
         initComponents();
         this.idb = idb;
         this.pid = pid;
-        this.aid = aid; 
+        this.aid = aid;
+        this.avdid = avdid; 
         try {
             String sqlFraga = "SELECT * FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid WHERE ans_proj.aid = " + aid;
             System.out.println(sqlFraga);
@@ -49,7 +51,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             tfProjektchef.setEditable(false);
             tfLand.setText(minaProjekt.get("land"));
             tfLand.setEditable(false);
-            MinaUppgifter newform = new MinaUppgifter(idb, aid);
+            MinaUppgifter newform = new MinaUppgifter(idb, aid, pid, avdid);
             if(newform.isProjektledare()) {
                 // 
                 btnAndraUppgifterMinaProjekt.setVisible(true);
@@ -251,7 +253,7 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     private void btnTillbakaMinaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMinaProjActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid);
+        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaMinaProjActionPerformed

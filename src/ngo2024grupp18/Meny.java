@@ -21,9 +21,11 @@ public class Meny extends javax.swing.JFrame {
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb, String aid) {
+    public Meny(InfDB idb, String aid, String pid, String avdid) {
         this.idb = idb;
         this.aid = aid;
+        this.pid = pid;
+        this.avdid = avdid; 
         initComponents();
         // lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
         // lblRoll.setText("Roll: " + enAnstalld.getRoll());
@@ -128,17 +130,17 @@ public class Meny extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
-        new MinaUppgifter(idb, aid).setVisible(true);
+        new MinaUppgifter(idb, aid, pid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
     
     private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
-        new Projekt(idb, pid, aid).setVisible(true);
+        new Projekt(idb, pid, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnProjektActionPerformed
 
     private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
-        new Avdelning(idb, avdid, aid).setVisible(true); 
+        new Avdelning(idb, avdid, aid, pid).setVisible(true); 
         setVisible(false);
     }//GEN-LAST:event_btnAvdelningActionPerformed
 
