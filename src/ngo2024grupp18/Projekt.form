@@ -26,6 +26,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
                   <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProjektRuta" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaProj" min="-2" max="-2" attributes="0"/>
@@ -50,7 +51,9 @@
               <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="54" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnTillbakaProj" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
@@ -104,6 +107,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLandProjektActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnHallbarhetsMal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="H&#xe5;llbarhetsm&#xe5;l"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHallbarhetsMalActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -27,10 +27,7 @@
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblMeny" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblMeny" min="-2" pref="136" max="-2" attributes="0"/>
                       <EmptySpace pref="208" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -69,9 +66,7 @@
               <Component id="btnProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="btnAvdelning" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
               <Component id="btnSokAnstalld" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
           </Group>
@@ -101,14 +96,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvdelningActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnHallbarhetsMal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="H&#xe5;llbarhetsm&#xe5;l"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHallbarhetsMalActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMeny">
