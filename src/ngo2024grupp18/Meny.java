@@ -15,20 +15,22 @@ public class Meny extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String pid;
     private String avdid; 
 
     /**
      * Creates new form Meny
      */
-    public Meny(InfDB idb, String aid, String pid, String avdid) {
+    public Meny(InfDB idb, String aid, String avdid) {
         this.idb = idb;
         this.aid = aid;
-        this.pid = pid;
         this.avdid = avdid; 
         initComponents();
-        // lblInloggadAnvandare.setText("AnställningsID: " + inloggadAnvandare);
-        // lblRoll.setText("Roll: " + enAnstalld.getRoll());
+        MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
+        if(ny.isAdmin()) {
+            btnLaggTillAnstalld.setVisible(true);
+        } else {
+            btnLaggTillAnstalld.setVisible(false);
+        }
     }
 
     /**
@@ -145,17 +147,17 @@ public class Meny extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
-        new MinaUppgifter(idb, aid, pid, avdid).setVisible(true);
+        new MinaUppgifter(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
     
     private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
-        new Projekt(idb, pid, aid, avdid).setVisible(true);
+        new Projekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnProjektActionPerformed
 
     private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
-        new Avdelning(idb, avdid, aid, pid).setVisible(true); 
+        new Avdelning(idb, avdid, aid).setVisible(true); 
         setVisible(false);
     }//GEN-LAST:event_btnAvdelningActionPerformed
 
@@ -165,7 +167,7 @@ public class Meny extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
 
     private void btnLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldActionPerformed
-        new LaggTillAnstalld(idb, aid, pid, avdid).setVisible(true);
+        new LaggTillAnstalld(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLaggTillAnstalldActionPerformed
 

@@ -4,6 +4,7 @@
  */
 package ngo2024grupp18;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -15,17 +16,15 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String pid;
     private String avdid; 
 
     /**
      * Creates new form Anstallda
      */
-    public LaggTillAnstalld(InfDB idb, String aid, String pid, String avdid) {
+    public LaggTillAnstalld(InfDB idb, String aid, String avdid) {
         initComponents();
         this.idb = idb;
         this.aid = aid;
-        this.pid = pid; 
         this.avdid = avdid; 
         LaggaTillNyAnstalldAid();
     }
@@ -231,6 +230,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         try {
             String sqlLaggTill = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES (" + nyAnstalldAidInt + ", '" + nyAnstalldFornamn + "', '" + nyAnstalldEfternamn + "', '" + nyAnstalldAdress + "', '" + nyAnstalldEpost + "', '" + nyAnstalldTelefon + "', str_to_date('" + NyAnstalldAnstallningsDatum + "', '%Y-%m-%d'), '" + NyAnstalldLosenord + "', " + nyAnstalldAvdInt + ")";
             idb.insert(sqlLaggTill);
+            JOptionPane.showMessageDialog(null, "Den anställda har lagts till.");
         } catch (InfException ex) {
             System.out.println(ex.getMessage());
         }
@@ -238,7 +238,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid, pid, avdid);
+        Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaLaggTillAnstalldActionPerformed
