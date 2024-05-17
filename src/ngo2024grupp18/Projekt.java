@@ -41,6 +41,7 @@ public class Projekt extends javax.swing.JFrame {
         btnTillbakaProj = new javax.swing.JButton();
         lblProjektRuta = new javax.swing.JLabel();
         btnLandProjekt = new javax.swing.JButton();
+        btnHallbarhetsMal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +83,13 @@ public class Projekt extends javax.swing.JFrame {
             }
         });
 
+        btnHallbarhetsMal.setText("Hållbarhetsmål");
+        btnHallbarhetsMal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHallbarhetsMalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,6 +97,7 @@ public class Projekt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHallbarhetsMal)
                     .addComponent(btnLandProjekt)
                     .addComponent(lblProjektRuta)
                     .addComponent(btnTillbakaProj)
@@ -110,7 +119,9 @@ public class Projekt extends javax.swing.JFrame {
                 .addComponent(btnLandProjekt)
                 .addGap(18, 18, 18)
                 .addComponent(btnAllaProjekt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(btnHallbarhetsMal)
+                .addGap(18, 18, 18)
                 .addComponent(btnTillbakaProj)
                 .addGap(34, 34, 34))
         );
@@ -145,9 +156,15 @@ public class Projekt extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnLandProjektActionPerformed
 
+    private void btnHallbarhetsMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarhetsMalActionPerformed
+        new HallbarhetsMal(idb).setVisible(true); 
+        setVisible(false);
+    }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllaProjekt;
     private javax.swing.JButton btnAvdProjekt;
+    private javax.swing.JButton btnHallbarhetsMal;
     private javax.swing.JButton btnLandProjekt;
     private javax.swing.JButton btnMinaProjekt;
     private javax.swing.JButton btnTillbakaProj;

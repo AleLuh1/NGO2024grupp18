@@ -46,7 +46,6 @@ public class Meny extends javax.swing.JFrame {
         btnMinaUppgifter = new javax.swing.JButton();
         btnProjekt = new javax.swing.JButton();
         btnAvdelning = new javax.swing.JButton();
-        btnHallbarhetsMal = new javax.swing.JButton();
         lblMeny = new javax.swing.JLabel();
         btnLaggTillAnstalld = new javax.swing.JButton();
         btnSokAnstalld = new javax.swing.JButton();
@@ -71,13 +70,6 @@ public class Meny extends javax.swing.JFrame {
         btnAvdelning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAvdelningActionPerformed(evt);
-            }
-        });
-
-        btnHallbarhetsMal.setText("Hållbarhetsmål");
-        btnHallbarhetsMal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHallbarhetsMalActionPerformed(evt);
             }
         });
 
@@ -106,9 +98,7 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnHallbarhetsMal)
-                            .addComponent(lblMeny, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblMeny, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(208, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -137,9 +127,7 @@ public class Meny extends javax.swing.JFrame {
                 .addComponent(btnProjekt)
                 .addGap(26, 26, 26)
                 .addComponent(btnAvdelning)
-                .addGap(18, 18, 18)
-                .addComponent(btnHallbarhetsMal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(btnSokAnstalld)
                 .addGap(29, 29, 29))
         );
@@ -162,11 +150,6 @@ public class Meny extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnAvdelningActionPerformed
 
-    private void btnHallbarhetsMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarhetsMalActionPerformed
-        new HallbarhetsMal(idb).setVisible(true); 
-        setVisible(false);
-    }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
-
     private void btnLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldActionPerformed
         new LaggTillAnstalld(idb, aid, avdid).setVisible(true);
         setVisible(false);
@@ -180,7 +163,6 @@ public class Meny extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvdelning;
-    private javax.swing.JButton btnHallbarhetsMal;
     private javax.swing.JButton btnLaggTillAnstalld;
     private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnProjekt;

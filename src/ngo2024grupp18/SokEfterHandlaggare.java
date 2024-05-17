@@ -141,6 +141,9 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             for (int i = 0; i < listaEpost.size(); i++) {
                 taListaInfo.append(listaEpost.get(i).get("fornamn") + "\n" + listaEpost.get(i).get("efternamn") + "\n" + listaEpost.get(i).get("telefon") + "\n" + listaEpost.get(i).get("epost") + "\n" + listaEpost.get(i).get("adress") + "\n" + "------------------- \n");
             }
+            if(!Validering.finnsTextTA(taListaInfo)) {
+                JOptionPane.showMessageDialog(null, "Vänligen skriv in en giltig e-post");
+            } 
             
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -150,27 +153,19 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
         {
         String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokNamn + "' AND avdelning = " + avdelning;
         try {
-            ArrayList<HashMap<String, String>> listaEpost = idb.fetchRows(sqlFraga);
-            for (int i = 0; i < listaEpost.size(); i++) {
-                taListaInfo.append(listaEpost.get(i).get("fornamn") + "\n" + listaEpost.get(i).get("efternamn") + "\n" + listaEpost.get(i).get("telefon") + "\n" + listaEpost.get(i).get("epost") + "\n" + listaEpost.get(i).get("adress") + "\n" + "------------------- \n");
+            ArrayList<HashMap<String, String>> listaNamn = idb.fetchRows(sqlFraga);
+            for (int i = 0; i < listaNamn.size(); i++) {
+                taListaInfo.append(listaNamn.get(i).get("fornamn") + "\n" + listaNamn.get(i).get("efternamn") + "\n" + listaNamn.get(i).get("telefon") + "\n" + listaNamn.get(i).get("epost") + "\n" + listaNamn.get(i).get("adress") + "\n" + "------------------- \n");
             }
+            if(!Validering.finnsTextTA(taListaInfo)) {
+                JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
+            } 
             
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         }
-    else {
-        String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE epost = '" + sokEpost + "' AND fornamn = '" + sokNamn + "' AND avdelning = " + avdelning;
-        try {
-            ArrayList<HashMap<String, String>> listaEpost = idb.fetchRows(sqlFraga);
-            for (int i = 0; i < listaEpost.size(); i++) {
-                taListaInfo.append(listaEpost.get(i).get("fornamn") + "\n" + listaEpost.get(i).get("efternamn") + "\n" + listaEpost.get(i).get("telefon") + "\n" + listaEpost.get(i).get("epost") + "\n" + listaEpost.get(i).get("adress") + "\n" + "------------------- \n");
-            }
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
+
     }//GEN-LAST:event_btnSokActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed

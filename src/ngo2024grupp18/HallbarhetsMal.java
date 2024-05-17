@@ -173,9 +173,9 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private void btnTillbakaHallbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaHallbarActionPerformed
         this.toBack();
-        Meny nyMeny = new Meny(idb, aid, avdid);
-        nyMeny.setVisible(true);
-        nyMeny.toFront();
+        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
+        nyttProjekt.setVisible(true);
+        nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaHallbarActionPerformed
 
 

@@ -109,7 +109,7 @@ public class Inloggning extends javax.swing.JFrame {
         String losen = tfLosenord.getText();
 
 // Kollar att användaren har angett text i rutorna för E-post och lösenord
-        if (Validering.finnsText(tfEpost) && Validering.finnsText(tfLosenord)
+        if (Validering.finnsTextTF(tfEpost) && Validering.finnsTextTF(tfLosenord)
                 && Validering.isKorrektFormatEpost(tfEpost)) {
             try {
                 String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
