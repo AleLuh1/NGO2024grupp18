@@ -37,8 +37,9 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 //WHERE anstalld.avdelning = 1;
 
     private void fyllCBAvdelningensProjekt() {
+        String avdProjNamn = cbAvdelningensProjekt.getSelectedItem().toString();
         try {
-            String sqlFraga = "SELECT projektnamn FROM projekt";
+            String sqlFraga = "SELECT DISTINCT projektnamn FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid JOIN anstalld on anstalld.aid = ans_proj.aid WHERE avdelning = " + avdid;
             System.out.println(sqlFraga);
             ArrayList<String> avdelningensProjektLista;
             avdelningensProjektLista = idb.fetchColumn(sqlFraga);
@@ -263,7 +264,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaAvdProjActionPerformed
 
     private void cbAvdelningensProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible
-        String avdProj = (String) cbAvdelningensProjekt.getSelectedItem();
+        String avdProj = cbAvdelningensProjekt.getSelectedItem().toString();
         try {
             //ChatGPT tycker att detta räcker: String sqlFraga = "SELECT projektnamn FROM projekt WHERE avdid = '" + avdid + "'";
             String sqlFraga = "SELECT * FROM anstalld JOIN avdelning ON anstalld.avdelning = avdelning.avdid JOIN ans_proj ON anstalld.aid = ans_proj.aid JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
