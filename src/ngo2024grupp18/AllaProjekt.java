@@ -97,7 +97,6 @@ public class AllaProjekt extends javax.swing.JFrame {
         tfLandAllaProjekt = new javax.swing.JTextField();
         bnTaBortAllaProjekt = new javax.swing.JButton();
         btnAndraAllaProjekt = new javax.swing.JButton();
-        btnTaBort = new javax.swing.JButton();
         lblProjektnamnAllaProjekt = new javax.swing.JLabel();
         tfProjektnamnAllaProjekt = new javax.swing.JTextField();
         tfNyttProjektNyPid = new javax.swing.JTextField();
@@ -157,13 +156,6 @@ public class AllaProjekt extends javax.swing.JFrame {
             }
         });
 
-        btnTaBort.setText("Spara nytt projekt");
-        btnTaBort.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaBortActionPerformed(evt);
-            }
-        });
-
         lblProjektnamnAllaProjekt.setText("Projektnamn");
 
         lblNyttProjektNyPid.setText("Projekt-ID");
@@ -217,14 +209,11 @@ public class AllaProjekt extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnAndraAllaProjekt)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bnTaBortAllaProjekt)
-                                    .addComponent(btnTaBort)))
+                                .addComponent(bnTaBortAllaProjekt))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnLaggTillProjektAllaProjekt)
-                                .addGap(19, 19, 19)))
-                        .addGap(25, 25, 25))))
+                                .addComponent(btnLaggTillProjektAllaProjekt)))
+                        .addGap(44, 44, 44))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,9 +269,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                     .addComponent(btnAndraAllaProjekt)
                     .addComponent(bnTaBortAllaProjekt)
                     .addComponent(btnTillbakaAllaProj))
-                .addGap(41, 41, 41)
-                .addComponent(btnTaBort)
-                .addGap(10, 10, 10))
+                .addGap(74, 74, 74))
         );
 
         pack();
@@ -297,6 +284,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
 
             if (projektNamnLista != null) {
+                tfNyttProjektNyPid.setText(projektNamnLista.get("pid"));
                 tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
                 tfProjektchefAllaProjekt.setText(projektNamnLista.get("projektchef"));
                 tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
@@ -376,32 +364,6 @@ public class AllaProjekt extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bnTaBortAllaProjektActionPerformed
 
-    private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
-        try {
-            LaggaTillNyPid();
-
-            String nyttProjektNyPidStr = tfNyttProjektNyPid.getText();
-            int nyttProjektNyPidInt = Integer.parseInt(nyttProjektNyPidStr);
-            
-            String projektNamn = tfProjektnamnAllaProjekt.getText();
-            String projektchef = tfProjektchefAllaProjekt.getText();
-            String beskrivning = tfBeskrivningAllaProjekt.getText();
-            String startdatum = tfStartdatumAllaProjekt.getText();
-            String slutdatum = tfSlutDatumAllaProjekt.getText();
-            String kostnad = tfKostnadAllaProjekt.getText();
-            String status = tfStatusAllaProjekt.getText();
-            String prioritet = tfPrioAllaProjekt.getText();
-            String land = tfLandAllaProjekt.getText();
-
-            String sqlFraga = "INSERT INTO projekt (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES (" + nyttProjektNyPidInt + ", '" + projektNamn + "', " + projektchef + ", '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', " + kostnad + ", '" + status + "', '" + prioritet + "', " + land + ")";
-
-            idb.insert(sqlFraga);
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }//GEN-LAST:event_btnTaBortActionPerformed
-
     private void btnLaggTillProjektAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillProjektAllaProjektActionPerformed
       
         new LaggTillProjekt(idb,aid,avdid).setVisible(true);
@@ -413,7 +375,6 @@ public class AllaProjekt extends javax.swing.JFrame {
     private javax.swing.JButton bnTaBortAllaProjekt;
     private javax.swing.JButton btnAndraAllaProjekt;
     private javax.swing.JButton btnLaggTillProjektAllaProjekt;
-    private javax.swing.JButton btnTaBort;
     private javax.swing.JButton btnTillbakaAllaProj;
     private javax.swing.JComboBox<String> cbAllaProjekt;
     private javax.swing.JLabel lblAllaProjektRuta;

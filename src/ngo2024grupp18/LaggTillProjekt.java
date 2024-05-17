@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
+import java.util.ArrayList;
 import oru.inf.InfDB;
 /**
  *
@@ -20,8 +21,105 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
+        fyllCBVäljProjektchef();
+        fyllCBVäljBeskrivning();
+        fyllCBVäljStatus();
+        fyllCBVäljPrioritet();
+        fyllCBVäljLand();
     }
+    
+    // Lägger till projektchef i combobox
+    public void fyllCBVäljProjektchef(){
+    try {
+            String sqlFraga = "SELECT projektchef FROM projekt";
+            System.out.println(sqlFraga);
+            ArrayList<String> projektchefLista = idb.fetchColumn(sqlFraga);
 
+            for (String enProjektchef: projektchefLista) {
+                cbProjektChefLaggTillProjekt.addItem(enProjektchef);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+    
+    
+    }
+    
+    }
+    
+     // Lägger till beskrivning i combobox
+    public void fyllCBVäljBeskrivning(){
+    try {
+            String sqlFraga = "SELECT beskrivning FROM projekt";
+            System.out.println(sqlFraga);
+            ArrayList<String> beskrivningLista = idb.fetchColumn(sqlFraga);
+
+            for (String enBeskrivning: beskrivningLista) {
+                cbBeskrivningLaggTillProjekt.addItem(enBeskrivning);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+    
+    
+    }
+    
+    }
+    // Lägger till status i comboboxen
+     public void fyllCBVäljStatus(){
+    try {
+            String sqlFraga = "SELECT status FROM projekt";
+            System.out.println(sqlFraga);
+            ArrayList<String> statusLista = idb.fetchColumn(sqlFraga);
+
+            for (String enStatus: statusLista) {
+                cbStatusLaggTillProjekt.addItem(enStatus);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+    
+    
+    }
+    
+    }
+     
+      // Lägger till prioritet i combobox
+    public void fyllCBVäljPrioritet(){
+    try {
+            String sqlFraga = "SELECT prioritet FROM projekt";
+            System.out.println(sqlFraga);
+            ArrayList<String> prioritetLista = idb.fetchColumn(sqlFraga);
+
+            for (String enPrioritet: prioritetLista) {
+                cbPrioritetLaggTillProjekt.addItem(enPrioritet);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+    
+    
+    }
+    
+    }
+    
+     // Lägger till land i combobox
+    public void fyllCBVäljLand(){
+    try {
+            String sqlFraga = "SELECT land FROM projekt";
+            System.out.println(sqlFraga);
+            ArrayList<String> landLista = idb.fetchColumn(sqlFraga);
+
+            for (String ettLand: landLista) {
+                cbLandLaggTillProjekt.addItem(ettLand);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+    
+    
+    }
+    
+    }
+  
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,15 +143,17 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         btnSparaLaggTIllProjekt = new javax.swing.JButton();
         tfProjektIDLaggTIllProjekt = new javax.swing.JTextField();
         tfProjektnamnLaggTIllProjekt = new javax.swing.JTextField();
-        tfProjektchefLaggTIllProjekt = new javax.swing.JTextField();
-        tfBeskrivningLaggTIllProjekt = new javax.swing.JTextField();
         tfStartdatumLaggTIllProjekt = new javax.swing.JTextField();
         tfSlutdatumLaggTIllProjekt = new javax.swing.JTextField();
         tfKostnadLaggTIllProjekt = new javax.swing.JTextField();
-        tfStatusLaggTIllProjekt = new javax.swing.JTextField();
         tfPrioritetLaggTIllProjekt = new javax.swing.JTextField();
         tfLandLaggTIllProjekt = new javax.swing.JTextField();
         btnTillbakaLaggTIllProjekt = new javax.swing.JButton();
+        cbProjektChefLaggTillProjekt = new javax.swing.JComboBox<>();
+        cbBeskrivningLaggTillProjekt = new javax.swing.JComboBox<>();
+        cbStatusLaggTillProjekt = new javax.swing.JComboBox<>();
+        cbPrioritetLaggTillProjekt = new javax.swing.JComboBox<>();
+        cbLandLaggTillProjekt = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,98 +194,123 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             }
         });
 
+        cbProjektChefLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj projektchef" }));
+
+        cbBeskrivningLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj beskrivning" }));
+
+        cbStatusLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj status" }));
+
+        cbPrioritetLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj prioritet" }));
+
+        cbLandLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj land" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLaggTillProjektRuta)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblPorjektIDLaggTIllProjekt)
-                                .addComponent(lblProjektNamnLaggTIllProjekt)
-                                .addComponent(lblProjektchefLaggTIllProjekt)
-                                .addComponent(lblBeskrivningLaggTIllProjekt)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblStartdatumLaggTIllProjekt)
-                                .addComponent(lblSlutdatumLaggTIllProjekt)
-                                .addComponent(lblKostnadLaggTIllProjekt)
-                                .addComponent(lblStatusLaggTIllProjekt)
-                                .addComponent(lblPrioritetLaggTIllProjekt)
-                                .addComponent(lblLandLaggTIllProjekt))
+                                .addGap(63, 63, 63))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnTillbakaLaggTIllProjekt)
-                                .addGap(13, 13, 13)))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfProjektIDLaggTIllProjekt)
-                            .addComponent(tfProjektnamnLaggTIllProjekt)
-                            .addComponent(tfProjektchefLaggTIllProjekt)
-                            .addComponent(tfBeskrivningLaggTIllProjekt)
-                            .addComponent(tfStartdatumLaggTIllProjekt)
-                            .addComponent(tfSlutdatumLaggTIllProjekt)
-                            .addComponent(tfKostnadLaggTIllProjekt)
-                            .addComponent(tfStatusLaggTIllProjekt)
-                            .addComponent(tfPrioritetLaggTIllProjekt)
-                            .addComponent(tfLandLaggTIllProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))))
-                .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSparaLaggTIllProjekt)
-                .addGap(42, 42, 42))
+                                .addGap(3, 3, 3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPorjektIDLaggTIllProjekt)
+                                    .addComponent(lblStatusLaggTIllProjekt)
+                                    .addComponent(lblPrioritetLaggTIllProjekt)
+                                    .addComponent(lblLandLaggTIllProjekt)
+                                    .addComponent(lblLaggTillProjektRuta)
+                                    .addComponent(btnTillbakaLaggTIllProjekt)))
+                            .addComponent(lblSlutdatumLaggTIllProjekt)
+                            .addComponent(lblProjektNamnLaggTIllProjekt)
+                            .addComponent(lblProjektchefLaggTIllProjekt)
+                            .addComponent(lblKostnadLaggTIllProjekt))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(219, 219, 219)
+                                .addComponent(btnSparaLaggTIllProjekt)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbLandLaggTillProjekt, 0, 222, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cbPrioritetLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfStartdatumLaggTIllProjekt)
+                                        .addComponent(tfSlutdatumLaggTIllProjekt)
+                                        .addComponent(tfKostnadLaggTIllProjekt)
+                                        .addComponent(cbProjektChefLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbBeskrivningLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbStatusLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfProjektIDLaggTIllProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                        .addComponent(tfProjektnamnLaggTIllProjekt)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfPrioritetLaggTIllProjekt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfLandLaggTIllProjekt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(lblBeskrivningLaggTIllProjekt))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblLaggTillProjektRuta)
                 .addGap(18, 18, 18)
+                .addComponent(lblLaggTillProjektRuta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPorjektIDLaggTIllProjekt)
-                    .addComponent(tfProjektIDLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProjektNamnLaggTIllProjekt)
-                    .addComponent(tfProjektnamnLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProjektchefLaggTIllProjekt)
-                    .addComponent(tfProjektchefLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBeskrivningLaggTIllProjekt)
-                    .addComponent(tfBeskrivningLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStartdatumLaggTIllProjekt)
-                    .addComponent(tfStartdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSlutdatumLaggTIllProjekt)
-                    .addComponent(tfSlutdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblKostnadLaggTIllProjekt)
-                    .addComponent(tfKostnadLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStatusLaggTIllProjekt)
-                    .addComponent(tfStatusLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPrioritetLaggTIllProjekt)
+                    .addComponent(tfProjektIDLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfPrioritetLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLandLaggTIllProjekt)
-                    .addComponent(tfLandLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSparaLaggTIllProjekt)
-                    .addComponent(btnTillbakaLaggTIllProjekt))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(tfProjektnamnLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProjektNamnLaggTIllProjekt)
+                    .addComponent(tfLandLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBeskrivningLaggTIllProjekt)
+                    .addComponent(cbBeskrivningLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblProjektchefLaggTIllProjekt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblStartdatumLaggTIllProjekt)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblSlutdatumLaggTIllProjekt)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblKostnadLaggTIllProjekt)
+                        .addGap(16, 16, 16)
+                        .addComponent(lblStatusLaggTIllProjekt)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPrioritetLaggTIllProjekt)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblLandLaggTIllProjekt)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnTillbakaLaggTIllProjekt)
+                            .addComponent(btnSparaLaggTIllProjekt))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbProjektChefLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfStartdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfSlutdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(tfKostnadLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbStatusLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(cbPrioritetLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbLandLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92))))
         );
 
         pack();
@@ -203,14 +328,14 @@ public class LaggTillProjekt extends javax.swing.JFrame {
            
             String projektID = tfProjektIDLaggTIllProjekt.getText();
             String projektnamn = tfProjektnamnLaggTIllProjekt.getText();
-            String projektchef = tfProjektchefLaggTIllProjekt.getText();
-            String beskrivning = tfBeskrivningLaggTIllProjekt.getText();
+            String projektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
+            String beskrivning = cbBeskrivningLaggTillProjekt.getSelectedItem().toString();
             String startdatum = tfStartdatumLaggTIllProjekt.getText();
             String slutdatum = tfSlutdatumLaggTIllProjekt.getText();
             String kostnad = tfKostnadLaggTIllProjekt.getText();
-            String status = tfStatusLaggTIllProjekt.getText();
-            String prioritet = tfPrioritetLaggTIllProjekt.getText();
-            String land = tfLandLaggTIllProjekt.getText();
+            String status = cbStatusLaggTillProjekt.getSelectedItem().toString();
+            String prioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
+            String land = cbLandLaggTillProjekt.getSelectedItem().toString();
 
             String sqlFraga = "INSERT INTO projekt (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('"  + projektID + "','"  + projektnamn + "', '"  + projektchef + "', '" + beskrivning + "', '"  + startdatum + "', '"  + slutdatum + "', '" + kostnad + "', '"  + status + "', '" + prioritet + "', '"  + land + "')";
             idb.insert(sqlFraga);
@@ -232,6 +357,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaLaggTIllProjekt;
     private javax.swing.JButton btnTillbakaLaggTIllProjekt;
+    private javax.swing.JComboBox<String> cbBeskrivningLaggTillProjekt;
+    private javax.swing.JComboBox<String> cbLandLaggTillProjekt;
+    private javax.swing.JComboBox<String> cbPrioritetLaggTillProjekt;
+    private javax.swing.JComboBox<String> cbProjektChefLaggTillProjekt;
+    private javax.swing.JComboBox<String> cbStatusLaggTillProjekt;
     private javax.swing.JLabel lblBeskrivningLaggTIllProjekt;
     private javax.swing.JLabel lblKostnadLaggTIllProjekt;
     private javax.swing.JLabel lblLaggTillProjektRuta;
@@ -243,15 +373,12 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     private javax.swing.JLabel lblSlutdatumLaggTIllProjekt;
     private javax.swing.JLabel lblStartdatumLaggTIllProjekt;
     private javax.swing.JLabel lblStatusLaggTIllProjekt;
-    private javax.swing.JTextField tfBeskrivningLaggTIllProjekt;
     private javax.swing.JTextField tfKostnadLaggTIllProjekt;
     private javax.swing.JTextField tfLandLaggTIllProjekt;
     private javax.swing.JTextField tfPrioritetLaggTIllProjekt;
     private javax.swing.JTextField tfProjektIDLaggTIllProjekt;
-    private javax.swing.JTextField tfProjektchefLaggTIllProjekt;
     private javax.swing.JTextField tfProjektnamnLaggTIllProjekt;
     private javax.swing.JTextField tfSlutdatumLaggTIllProjekt;
     private javax.swing.JTextField tfStartdatumLaggTIllProjekt;
-    private javax.swing.JTextField tfStatusLaggTIllProjekt;
     // End of variables declaration//GEN-END:variables
 }
