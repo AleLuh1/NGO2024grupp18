@@ -22,6 +22,7 @@ public class Inloggning extends javax.swing.JFrame {
     public Inloggning(InfDB idb) {
         initComponents();
         this.idb = idb;
+        this.setLocationRelativeTo(null); //sätter rutan i mitten
         lblFelLosenord.setVisible(false);
     }
 
