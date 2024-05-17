@@ -16,16 +16,14 @@ import oru.inf.InfException;
 public class SokEfterHandlaggare extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
-    private String pid;
     private String avdid; 
     /**
      * Creates new form SokEfterHandlaggare
      */
-    public SokEfterHandlaggare(InfDB idb, String aid, String pid, String avdid) {
+    public SokEfterHandlaggare(InfDB idb, String aid, String avdid) {
         initComponents();
         this.idb = idb;
         this.aid = aid;
-        this.pid = pid;
         this.avdid = avdid; 
     }
 

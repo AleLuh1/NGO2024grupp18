@@ -173,7 +173,7 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnSokAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAnstalldActionPerformed
         this.setVisible(false);
-        new SokEfterHandlaggare(idb, aid, pid, avdid).setVisible(true);
+        new SokEfterHandlaggare(idb, aid, avdid).setVisible(true);
     }//GEN-LAST:event_btnSokAnstalldActionPerformed
 
     
