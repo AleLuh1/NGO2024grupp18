@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import oru.inf.InfDB;
 
@@ -24,13 +25,24 @@ public class Validering {
     }
 // En klassmetod för att kontrollera att användaren har skrivit in något i ett textfält    
 
-    public static boolean finnsText(JTextField kontrolleraRuta) {
+    public static boolean finnsTextTF(JTextField kontrolleraRuta) {
         boolean resultat = true;
 
         if (kontrolleraRuta.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen ange en giltig e-postadress eller lösenord");
             resultat = false;
             kontrolleraRuta.requestFocus();
+        }
+        return resultat;
+    }
+    
+    public static boolean finnsTextTA(JTextArea kontrolleraTA) {
+        boolean resultat = true;
+
+        if (kontrolleraTA.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange en giltig e-postadress eller lösenord");
+            resultat = false;
+            kontrolleraTA.requestFocus();
         }
         return resultat;
     }
