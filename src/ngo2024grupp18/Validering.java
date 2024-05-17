@@ -40,7 +40,6 @@ public class Validering {
         boolean resultat = true;
 
         if (kontrolleraTA.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vänligen ange en giltig e-postadress eller lösenord");
             resultat = false;
             kontrolleraTA.requestFocus();
         }
