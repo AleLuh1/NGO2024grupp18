@@ -28,6 +28,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         this.aid = aid; 
         this.avdid = avdid; 
         fyllCBHallbarhetsmal();
+        this.setLocationRelativeTo(null);
     }
 // CB = ComboBox
 

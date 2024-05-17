@@ -25,6 +25,7 @@ public class Meny extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid; 
         initComponents();
+        this.setLocationRelativeTo(null);
         MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
         if(ny.isAdmin()) {
             btnLaggTillAnstalld.setVisible(true);

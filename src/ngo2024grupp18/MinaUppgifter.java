@@ -26,7 +26,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.aid = aid;
-        this.avdid = avdid; 
+        this.avdid = avdid;
+        this.setLocationRelativeTo(null);
         try {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
             System.out.println(sqlFraga);

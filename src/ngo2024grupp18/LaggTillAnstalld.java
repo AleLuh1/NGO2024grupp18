@@ -27,6 +27,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid; 
         LaggaTillNyAnstalldAid();
+        this.setLocationRelativeTo(null);
     }
 
     private String LaggaTillNyAnstalldAid() {

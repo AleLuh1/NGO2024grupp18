@@ -27,6 +27,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         fyllCBMinaProjekt();
+        this.setLocationRelativeTo(null);
     }
 
     public void fyllCBMinaProjekt() {

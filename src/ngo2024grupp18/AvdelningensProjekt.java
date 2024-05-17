@@ -27,6 +27,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         fyllCBAvdelningensProjekt();
+        this.setLocationRelativeTo(null);
     }
     // SQL fråga, 1 får ersättas sedan med avdid
 //    SELECT * FROM anstalld

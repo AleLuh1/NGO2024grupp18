@@ -23,6 +23,7 @@ public class Projekt extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
+        this.setLocationRelativeTo(null);
     }
 
     /**

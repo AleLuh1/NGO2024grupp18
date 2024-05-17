@@ -27,6 +27,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         fyllCBAllaProjekt();
+        this.setLocationRelativeTo(null);
     }
 
     // CB = combobox

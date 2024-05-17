@@ -27,6 +27,7 @@ public class Avdelning extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         fyllCBAnstalld();
+        this.setLocationRelativeTo(null);
     }
 
     //CB = combobox

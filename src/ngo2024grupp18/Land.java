@@ -24,6 +24,7 @@ private InfDB idb;
         this.aid = aid;
         this.avdid = avdid;
         fyllCBLand();
+        this.setLocationRelativeTo(null);
     }
     
     
