@@ -29,12 +29,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         fyllCBAvdelningensProjekt();
         this.setLocationRelativeTo(null);
     }
-    // SQL fråga, 1 får ersättas sedan med avdid
-//    SELECT * FROM anstalld
-//JOIN avdelning ON anstalld.avdelning = avdelning.avdid
-//JOIN ans_proj ON anstalld.aid = ans_proj.aid
-//JOIN projekt ON ans_proj.pid = projekt.pid
-//WHERE anstalld.avdelning = 1;
+
 
     private void fyllCBAvdelningensProjekt() {
         String avdProjNamn = cbAvdelningensProjekt.getSelectedItem().toString();
