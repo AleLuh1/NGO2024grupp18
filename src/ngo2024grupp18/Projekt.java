@@ -76,7 +76,7 @@ public class Projekt extends javax.swing.JFrame {
         lblProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblProjektRuta.setText("Projekt");
 
-        btnLandProjekt.setText("Land");
+        btnLandProjekt.setText("Länder");
         btnLandProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLandProjektActionPerformed(evt);
