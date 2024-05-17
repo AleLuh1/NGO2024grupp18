@@ -12,16 +12,15 @@ import java.util.HashMap;
  */
 public class Land extends javax.swing.JFrame {
 private InfDB idb;
-    private String pid;
+   
     private String aid;
     private String avdid;
     /**
      * Creates new form Land
      */
-    public Land(InfDB idb, String pid, String aid, String avdid) {
+    public Land(InfDB idb, String aid, String avdid) {
         initComponents();
         this.idb = idb;
-        this.pid = pid;
         this.aid = aid;
         this.avdid = avdid;
         fyllCBLand();
@@ -199,7 +198,7 @@ private InfDB idb;
 
     private void btnTillbakaLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLandActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
+        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaLandActionPerformed

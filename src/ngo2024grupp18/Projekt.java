@@ -140,7 +140,7 @@ public class Projekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAllaProjektActionPerformed
 
     private void btnLandProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandProjektActionPerformed
-        new Land(idb,aid,pid,avdid).setVisible(true);
+        new Land(idb,aid,avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLandProjektActionPerformed
 
