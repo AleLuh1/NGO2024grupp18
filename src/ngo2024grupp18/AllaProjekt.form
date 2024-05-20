@@ -25,33 +25,36 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnTillbakaAllaProj" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAllaProjektRuta" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblProjektnamnAllaProjekt" max="32767" attributes="0"/>
-                          <Component id="lblBeskrivningAllaProjekt" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStartDatumAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSlutdatumAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblKostnadAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStatusAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPrioAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLandAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblProduktchefAllaProjekt" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnTillbakaAllaProj" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbAllaProjekt" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                          <Component id="lblAllaProjektRuta" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblProjektnamnAllaProjekt" max="32767" attributes="0"/>
+                              <Component id="lblBeskrivningAllaProjekt" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblStartDatumAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSlutdatumAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKostnadAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblStatusAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPrioAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLandAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProduktchefAllaProjekt" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblNyttProjektNyPid" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="lblHallbarhetsmalAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="lblNyttProjektNyPid" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                      <Component id="lblHallbarhetsmalAllaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="lblHallbTest" min="-2" pref="112" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="btnAndraAllaProjekt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="29" max="32767" attributes="0"/>
+                              <EmptySpace pref="22" max="32767" attributes="0"/>
                               <Component id="bnTaBortAllaProjekt" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -62,18 +65,21 @@
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="tfProjektchefAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfStartdatumAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfSlutDatumAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfKostnadAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfStatusAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfPrioAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfBeskrivningAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfLandAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfProjektnamnAllaProjekt" alignment="0" pref="200" max="32767" attributes="0"/>
-                          <Component id="tfNyttProjektNyPid" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfHallbarhetsmalAllaProjekt" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="tfProjektchefAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfStartdatumAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfSlutDatumAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfKostnadAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfStatusAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfPrioAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfBeskrivningAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfLandAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfProjektnamnAllaProjekt" alignment="0" pref="200" max="32767" attributes="0"/>
+                              <Component id="tfNyttProjektNyPid" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfHallbarhetsmalAllaProjekt" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="cbHallbTest" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -152,7 +158,12 @@
                   <Component id="bnTaBortAllaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaAllaProj" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cbHallbTest" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblHallbTest" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -289,6 +300,21 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfHallbarhetsmalAllaProjekt">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbHallbTest">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHallbTest">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="H&#xe5;llbarhetsm&#xe5;lTest"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

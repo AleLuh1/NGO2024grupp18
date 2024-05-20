@@ -8,7 +8,6 @@ import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 /**
  *
  * @author alex
@@ -48,6 +47,7 @@ public class AllaProjekt extends javax.swing.JFrame {
 
     }
 
+    // Genererar ny projekt-id (pid) genom att lägga till +1 på största befintliga pid
     private String LaggaTillNyPid() {
         String nyProjektPid = null;
         try {
@@ -67,7 +67,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         }
         return nyProjektPid;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,6 +105,8 @@ public class AllaProjekt extends javax.swing.JFrame {
         btnLaggTillProjektAllaProjekt = new javax.swing.JButton();
         lblHallbarhetsmalAllaProjekt = new javax.swing.JLabel();
         tfHallbarhetsmalAllaProjekt = new javax.swing.JTextField();
+        cbHallbTest = new javax.swing.JComboBox<>();
+        lblHallbTest = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,54 +174,60 @@ public class AllaProjekt extends javax.swing.JFrame {
 
         lblHallbarhetsmalAllaProjekt.setText("Hållbarhetsmål");
 
+        lblHallbTest.setText("HållbarhetsmålTest");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnTillbakaAllaProj)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cbAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblAllaProjektRuta)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblProjektnamnAllaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblBeskrivningAllaProjekt)
-                            .addComponent(lblStartDatumAllaProjekt)
-                            .addComponent(lblSlutdatumAllaProjekt)
-                            .addComponent(lblKostnadAllaProjekt)
-                            .addComponent(lblStatusAllaProjekt)
-                            .addComponent(lblPrioAllaProjekt)
-                            .addComponent(lblLandAllaProjekt)
-                            .addComponent(lblProduktchefAllaProjekt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lblNyttProjektNyPid, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblHallbarhetsmalAllaProjekt)))
-                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnTillbakaAllaProj)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAllaProjektRuta)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblProjektnamnAllaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblBeskrivningAllaProjekt)
+                                .addComponent(lblStartDatumAllaProjekt)
+                                .addComponent(lblSlutdatumAllaProjekt)
+                                .addComponent(lblKostnadAllaProjekt)
+                                .addComponent(lblStatusAllaProjekt)
+                                .addComponent(lblPrioAllaProjekt)
+                                .addComponent(lblLandAllaProjekt)
+                                .addComponent(lblProduktchefAllaProjekt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNyttProjektNyPid, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblHallbarhetsmalAllaProjekt)))
+                    .addComponent(lblHallbTest, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnAndraAllaProjekt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                                 .addComponent(bnTaBortAllaProjekt))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnLaggTillProjektAllaProjekt)))
                         .addGap(44, 44, 44))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tfProjektchefAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfStartdatumAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfSlutDatumAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfKostnadAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfStatusAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfPrioAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfBeskrivningAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfLandAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfProjektnamnAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(tfNyttProjektNyPid, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfHallbarhetsmalAllaProjekt))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfProjektchefAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfStartdatumAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfSlutDatumAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfKostnadAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfStatusAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfPrioAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfBeskrivningAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfLandAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfProjektnamnAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                .addComponent(tfNyttProjektNyPid, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfHallbarhetsmalAllaProjekt))
+                            .addComponent(cbHallbTest, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -280,26 +288,32 @@ public class AllaProjekt extends javax.swing.JFrame {
                     .addComponent(btnAndraAllaProjekt)
                     .addComponent(bnTaBortAllaProjekt)
                     .addComponent(btnTillbakaAllaProj))
-                .addGap(74, 74, 74))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbHallbTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHallbTest))
+                .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbAllaProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAllaProjektPopupMenuWillBecomeInvisible
-        
-   
-      
-        
+
         String projektNamn = cbAllaProjekt.getSelectedItem().toString();
         try {
             String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFraga);
-            
-        
-            HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
-            
 
+            HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
+
+            String sqlFragaHallbMal = "SELECT DISTINCT namn FROM hallbarhetsmal JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid JOIN projekt ON projekt.pid = proj_hallbarhet.pid WHERE projektnamn = '" + projektNamn + "'";
+            System.out.println(sqlFragaHallbMal);
+            ArrayList<String> projektHallbMal = idb.fetchColumn(sqlFragaHallbMal); 
+            for(String ettMal : projektHallbMal) {
+                cbHallbTest.addItem(ettMal);
+            }
+            
             if (projektNamnLista != null) {
                 tfNyttProjektNyPid.setText(projektNamnLista.get("pid"));
                 tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
@@ -316,7 +330,6 @@ public class AllaProjekt extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-
         }
 
 
@@ -353,15 +366,14 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraAllaProjektActionPerformed
 
     private void bnTaBortAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnTaBortAllaProjektActionPerformed
-        
-      
+
         try {
-        
+
             String projektNamn = cbAllaProjekt.getSelectedItem().toString();
             String sqlFragaPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFragaPid);
             String pid = idb.fetchSingle(sqlFragaPid);
-            
+
             String sqlFraga1 = "DELETE FROM ans_proj WHERE pid = " + pid + "";
             System.out.println(sqlFraga1);
             idb.delete(sqlFraga1);
@@ -377,7 +389,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             String sqlFraga4 = "DELETE FROM projekt WHERE pid = " + pid + "";
             System.out.println(sqlFraga4);
             idb.delete(sqlFraga4);
-            
+
             // rensar textfields från uppgifter
             tfNyttProjektNyPid.setText(" ");
             tfProjektnamnAllaProjekt.setText(" ");
@@ -390,8 +402,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             tfPrioAllaProjekt.setText(" ");
             tfLandAllaProjekt.setText(" ");
             tfHallbarhetsmalAllaProjekt.setText(" ");
-            
-            
+
             // uppdaterar comboboxen
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
@@ -401,8 +412,8 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_bnTaBortAllaProjektActionPerformed
 
     private void btnLaggTillProjektAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillProjektAllaProjektActionPerformed
-      
-        new LaggTillProjekt(idb,aid,avdid).setVisible(true);
+
+        new LaggTillProjekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLaggTillProjektAllaProjektActionPerformed
 
@@ -413,8 +424,10 @@ public class AllaProjekt extends javax.swing.JFrame {
     private javax.swing.JButton btnLaggTillProjektAllaProjekt;
     private javax.swing.JButton btnTillbakaAllaProj;
     private javax.swing.JComboBox<String> cbAllaProjekt;
+    private javax.swing.JComboBox<String> cbHallbTest;
     private javax.swing.JLabel lblAllaProjektRuta;
     private javax.swing.JLabel lblBeskrivningAllaProjekt;
+    private javax.swing.JLabel lblHallbTest;
     private javax.swing.JLabel lblHallbarhetsmalAllaProjekt;
     private javax.swing.JLabel lblKostnadAllaProjekt;
     private javax.swing.JLabel lblLandAllaProjekt;
