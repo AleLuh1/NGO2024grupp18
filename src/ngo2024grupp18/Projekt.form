@@ -26,15 +26,22 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblProjektRuta" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnTillbakaProj" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAvdProjekt" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnMinaProjekt" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProjektRuta" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTillbakaProj" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAvdProjekt" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnMinaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="220" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="220" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -44,16 +51,16 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblProjektRuta" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnMinaProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnAvdProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
-              <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
+              <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
               <Component id="btnTillbakaProj" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>

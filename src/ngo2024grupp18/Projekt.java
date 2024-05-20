@@ -12,9 +12,11 @@ import oru.inf.InfDB;
  * @author alex
  */
 public class Projekt extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
     private String avdid;
+
     /**
      * Creates new form Projekt
      */
@@ -97,14 +99,18 @@ public class Projekt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHallbarhetsMal)
-                    .addComponent(btnLandProjekt)
-                    .addComponent(lblProjektRuta)
-                    .addComponent(btnTillbakaProj)
-                    .addComponent(btnAllaProjekt)
-                    .addComponent(btnAvdProjekt)
-                    .addComponent(btnMinaProjekt))
-                .addContainerGap(220, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnHallbarhetsMal)
+                            .addComponent(btnLandProjekt)
+                            .addComponent(lblProjektRuta)
+                            .addComponent(btnTillbakaProj)
+                            .addComponent(btnAvdProjekt)
+                            .addComponent(btnMinaProjekt))
+                        .addContainerGap(220, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAllaProjekt)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,16 +118,16 @@ public class Projekt extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblProjektRuta)
                 .addGap(12, 12, 12)
+                .addComponent(btnAllaProjekt)
+                .addGap(18, 18, 18)
                 .addComponent(btnMinaProjekt)
                 .addGap(18, 18, 18)
                 .addComponent(btnAvdProjekt)
                 .addGap(18, 18, 18)
                 .addComponent(btnLandProjekt)
                 .addGap(18, 18, 18)
-                .addComponent(btnAllaProjekt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnHallbarhetsMal)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(btnTillbakaProj)
                 .addGap(34, 34, 34))
         );
@@ -139,7 +145,7 @@ public class Projekt extends javax.swing.JFrame {
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
         nyMeny.toFront();
-        
+
     }//GEN-LAST:event_btnTillbakaProjActionPerformed
 
     private void btnAvdProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdProjektActionPerformed
@@ -147,17 +153,17 @@ public class Projekt extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnAvdProjektActionPerformed
     private void btnAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaProjektActionPerformed
-       new AllaProjekt(idb, aid, avdid).setVisible(true);
+        new AllaProjekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnAllaProjektActionPerformed
 
     private void btnLandProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandProjektActionPerformed
-        new Land(idb,aid,avdid).setVisible(true);
+        new Land(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLandProjektActionPerformed
 
     private void btnHallbarhetsMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarhetsMalActionPerformed
-        new HallbarhetsMal(idb).setVisible(true); 
+        new HallbarhetsMal(idb).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
 
