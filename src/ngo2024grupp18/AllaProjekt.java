@@ -8,6 +8,7 @@ import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 /**
  *
  * @author alex
@@ -286,6 +287,10 @@ public class AllaProjekt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbAllaProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAllaProjektPopupMenuWillBecomeInvisible
+        
+   
+      
+        
         String projektNamn = cbAllaProjekt.getSelectedItem().toString();
         try {
             String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
@@ -348,7 +353,10 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraAllaProjektActionPerformed
 
     private void bnTaBortAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnTaBortAllaProjektActionPerformed
+        
+      
         try {
+        
             String projektNamn = cbAllaProjekt.getSelectedItem().toString();
             String sqlFragaPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFragaPid);
@@ -369,6 +377,18 @@ public class AllaProjekt extends javax.swing.JFrame {
             String sqlFraga4 = "DELETE FROM projekt WHERE pid = " + pid + "";
             System.out.println(sqlFraga4);
             idb.delete(sqlFraga4);
+            
+            tfNyttProjektNyPid.setText(" ");
+            tfProjektnamnAllaProjekt.setText(" ");
+            tfProjektchefAllaProjekt.setText(" ");
+            tfBeskrivningAllaProjekt.setText(" ");
+            tfSlutDatumAllaProjekt.setText(" ");
+            tfStatusAllaProjekt.setText(" ");
+            tfPrioAllaProjekt.setText(" ");
+            tfLandAllaProjekt.setText(" ");
+            tfHallbarhetsmalAllaProjekt.setText(" ");
+            
+            
 
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();

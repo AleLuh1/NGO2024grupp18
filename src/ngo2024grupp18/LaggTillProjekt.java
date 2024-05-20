@@ -4,6 +4,7 @@
  */
 package ngo2024grupp18;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 /**
  *
@@ -255,7 +256,6 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                                 .addComponent(tfProjektnamnLaggTIllProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSparaLaggTIllProjekt)
                         .addGap(78, 78, 78))))
         );
@@ -307,8 +307,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                     .addComponent(lblLandLaggTIllProjekt)
                     .addComponent(cbLandLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHallbarhetsmalLaggTillProjekt)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -328,7 +328,16 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTIllProjektActionPerformed
 
     private void btnSparaLaggTIllProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTIllProjektActionPerformed
-     try {
+    
+            //String laggTillProjektNamn = tfProjektnamnLaggTIllProjekt.getText();
+            //String laggTillBeskrivning= tfBeskrivningLaggTillProjekt.getText();
+             //  if (laggTillProjektNamn.isEmpty() &&  laggTillBeskrivning.isEmpty())
+             //   {
+              //      JOptionPane.showMessageDialog(null, "Vänligen fyll i ett projektnamn");
+               // }
+
+        
+        try {
            
             String projektID = tfProjektIDLaggTIllProjekt.getText();
             String projektnamn = tfProjektnamnLaggTIllProjekt.getText();
@@ -342,8 +351,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             String land = cbLandLaggTillProjekt.getSelectedItem().toString();
             
             
-            //HJÄLP!!
-            String sqlFraga = "INSERT INTO projekt, hallbarhetsmal.namn join hallbarhetsmal WHERE projekt.pid =   (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('"  + projektID + "','"  + projektnamn + "', '"  + projektchef + "', '" + beskrivning + "', '"  + startdatum + "', '"  + slutdatum + "', '" + kostnad + "', '"  + status + "', '" + prioritet + "', '"  + land + "')";
+   
+            String sqlFraga = "INSERT INTO  projekt WHERE projekt.pid =   (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('"  + projektID + "','"  + projektnamn + "', '"  + projektchef + "', '" + beskrivning + "', '"  + startdatum + "', '"  + slutdatum + "', '" + kostnad + "', '"  + status + "', '" + prioritet + "', '"  + land + "')";
             idb.insert(sqlFraga);
             
            
