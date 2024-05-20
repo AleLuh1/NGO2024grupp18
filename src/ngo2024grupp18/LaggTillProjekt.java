@@ -429,7 +429,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             String land = cbLandLaggTillProjekt.getSelectedItem().toString();
             String hallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
 
-            String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('" + projektID + "','" + projektnamn + "', '" + projektchef + "', '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + land + "')";
+            // String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('" + projektID + "','" + projektnamn + "', '" + projektchef + "', '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + land + "')";
+            String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + projektnamn + "', '" + beskrivning + "', str_to_date('" + startdatum + "', '%Y-%m-%d'),  str_to_date('" + slutdatum + "', '%Y-%m-%d'), '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + projektchef + "', '" + land + "')";
             idb.insert(sqlFraga1);
 
             // String  sqlFraga 2 "INSERT INTO hallbarhetsmal WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
