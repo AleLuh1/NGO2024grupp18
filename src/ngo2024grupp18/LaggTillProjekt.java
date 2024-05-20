@@ -3,17 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+
 /**
  *
  * @author ellenor
  */
 public class LaggTillProjekt extends javax.swing.JFrame {
-     private InfDB idb;
+
+    private InfDB idb;
     private String aid;
     private String avdid;
+
     /**
      * Creates new form LaggTillProjekt
      */
@@ -29,99 +33,92 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         fyllCBVäljLand();
         fyllCBVäljHallbarhetsmal();
     }
-    
+
     // Lägger till projektchef i combobox
-    public void fyllCBVäljProjektchef(){
-    try {
+    public void fyllCBVäljProjektchef() {
+        try {
             String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
             System.out.println(sqlFraga);
             ArrayList<String> projektchefLista = idb.fetchColumn(sqlFraga);
 
-            for (String enProjektchef: projektchefLista) {
+            for (String enProjektchef : projektchefLista) {
                 cbProjektChefLaggTillProjekt.addItem(enProjektchef);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-    
-    
+
+        }
+
     }
-    
-    }
-    
-     // Lägger till beskrivning i combobox
-    public void fyllCBVäljHallbarhetsmal(){
-    try {
+
+    // Lägger till beskrivning i combobox
+    public void fyllCBVäljHallbarhetsmal() {
+        try {
             String sqlFraga = "SELECT DISTINCT namn FROM hallbarhetsmal";
             System.out.println(sqlFraga);
             ArrayList<String> hallbarhetsmalLista = idb.fetchColumn(sqlFraga);
 
-            for (String ettHallbarhetsmal: hallbarhetsmalLista) {
+            for (String ettHallbarhetsmal : hallbarhetsmalLista) {
                 cbHallbarhetsmalLaggTillProjekt.addItem(ettHallbarhetsmal);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-    
-    
+
+        }
+
     }
-    
-    }
+
     // Lägger till status i comboboxen
-     public void fyllCBVäljStatus(){
-    try {
+    public void fyllCBVäljStatus() {
+        try {
             String sqlFraga = "SELECT DISTINCT status FROM projekt";
             System.out.println(sqlFraga);
             ArrayList<String> statusLista = idb.fetchColumn(sqlFraga);
 
-            for (String enStatus: statusLista) {
+            for (String enStatus : statusLista) {
                 cbStatusLaggTillProjekt.addItem(enStatus);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-    
-    
+
+        }
+
     }
-    
-    }
-     
-      // Lägger till prioritet i combobox
-    public void fyllCBVäljPrioritet(){
-    try {
+
+    // Lägger till prioritet i combobox
+    public void fyllCBVäljPrioritet() {
+        try {
             String sqlFraga = "SELECT DISTINCT prioritet FROM projekt";
             System.out.println(sqlFraga);
             ArrayList<String> prioritetLista = idb.fetchColumn(sqlFraga);
 
-            for (String enPrioritet: prioritetLista) {
+            for (String enPrioritet : prioritetLista) {
                 cbPrioritetLaggTillProjekt.addItem(enPrioritet);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-    
-    
+
+        }
+
     }
-    
-    }
-    
-     // Lägger till land i combobox
-    public void fyllCBVäljLand(){
-    try {
+
+    // Lägger till land i combobox
+    public void fyllCBVäljLand() {
+        try {
             String sqlFraga = "SELECT DISTINCT land FROM projekt";
             System.out.println(sqlFraga);
             ArrayList<String> landLista = idb.fetchColumn(sqlFraga);
 
-            for (String ettLand: landLista) {
+            for (String ettLand : landLista) {
                 cbLandLaggTillProjekt.addItem(ettLand);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-    
-    
+
+        }
+
     }
-    
-    }
-  
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -329,97 +326,80 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTIllProjektActionPerformed
 
     private void btnSparaLaggTIllProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTIllProjektActionPerformed
-    
-        
-            // säkerställer så användaren har fyllt alla textfields och comboboxar 
-            
-            String laggTillProjektNamn = tfProjektnamnLaggTIllProjekt.getText();
-         
-                if (laggTillProjektNamn.isEmpty())
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen fyll i ett projektnamn");
-               
-                }
-                
-             
-                String laggTillBeskrivning = tfBeskrivningLaggTillProjekt.getText();
-         
-                if (laggTillBeskrivning.isEmpty())
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen fyll i en beskrivning");
-               
-                }
-                
-                String laggTillProjektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
-         
-                if (laggTillProjektchef.equals("Välj projektchef"))
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen välj en projektchef");
-               
-                }
-                
-                
-                String laggTillStartdatum = tfStartdatumLaggTIllProjekt.getText();
-         
-                if (laggTillStartdatum.isEmpty())
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen fyll i en startdatum");
-               
-                }
-                
-                String laggTillSlutdatum = tfSlutdatumLaggTIllProjekt.getText();
-         
-                if (laggTillSlutdatum.isEmpty())
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen fyll i en slutdatum");
-               
-                }
-                
-                
-                String laggTillKostnad= tfKostnadLaggTIllProjekt.getText();
-         
-                if (laggTillKostnad.isEmpty())
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen fyll i en kostnad");
-               
-                }
-                
-                
-                 String laggTillStatus = cbStatusLaggTillProjekt.getSelectedItem().toString();
-         
-                if (laggTillStatus.equals("Välj status"))
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen välj status");
-               
-                }
-                
-                String laggTillPrioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
-         
-                if (laggTillPrioritet.equals("Välj prioritet"))
-               {
-              JOptionPane.showMessageDialog(null, "Vänligen välj prioritet");
-               
-                }
-                
-                   String laggTillLand = cbLandLaggTillProjekt.getSelectedItem().toString();
-         
-                if (laggTillLand.equals("Välj land"))
-                {
-                JOptionPane.showMessageDialog(null, "Vänligen välj ett land");
-               
-                }
-                
-                String laggTillHallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
-         
-                if (laggTillHallbarhetsmal.equals("Välj hållbarhetsmål"))
-                {
-                JOptionPane.showMessageDialog(null, "Vänligen välj ett hållbarhetsmål");
-               
-                }
- 
-        
+
+        // säkerställer så användaren har fyllt alla textfields och comboboxar 
+        String laggTillProjektNamn = tfProjektnamnLaggTIllProjekt.getText();
+
+        if (laggTillProjektNamn.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i ett projektnamn");
+
+        }
+
+        String laggTillBeskrivning = tfBeskrivningLaggTillProjekt.getText();
+
+        if (laggTillBeskrivning.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i en beskrivning");
+
+        }
+
+        String laggTillProjektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
+
+        if (laggTillProjektchef.equals("Välj projektchef")) {
+            JOptionPane.showMessageDialog(null, "Vänligen välj en projektchef");
+
+        }
+
+        String laggTillStartdatum = tfStartdatumLaggTIllProjekt.getText();
+
+        if (laggTillStartdatum.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i en startdatum");
+
+        }
+
+        String laggTillSlutdatum = tfSlutdatumLaggTIllProjekt.getText();
+
+        if (laggTillSlutdatum.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i en slutdatum");
+
+        }
+
+        String laggTillKostnad = tfKostnadLaggTIllProjekt.getText();
+
+        if (laggTillKostnad.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i en kostnad");
+
+        }
+
+        String laggTillStatus = cbStatusLaggTillProjekt.getSelectedItem().toString();
+
+        if (laggTillStatus.equals("Välj status")) {
+            JOptionPane.showMessageDialog(null, "Vänligen välj status");
+
+        }
+
+        String laggTillPrioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
+
+        if (laggTillPrioritet.equals("Välj prioritet")) {
+            JOptionPane.showMessageDialog(null, "Vänligen välj prioritet");
+
+        }
+
+        String laggTillLand = cbLandLaggTillProjekt.getSelectedItem().toString();
+
+        if (laggTillLand.equals("Välj land")) {
+            JOptionPane.showMessageDialog(null, "Vänligen välj ett land");
+
+        }
+
+        String laggTillHallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
+
+        if (laggTillHallbarhetsmal.equals("Välj hållbarhetsmål")) {
+            JOptionPane.showMessageDialog(null, "Vänligen välj ett hållbarhetsmål");
+
+        }
+
         try {
-           
+
             String projektID = tfProjektIDLaggTIllProjekt.getText();
             String projektnamn = tfProjektnamnLaggTIllProjekt.getText();
             String projektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
@@ -431,26 +411,18 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             String prioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
             String land = cbLandLaggTillProjekt.getSelectedItem().toString();
             String hallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
-            
-   
-            String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('"  + projektID + "','"  + projektnamn + "', '"  + projektchef + "', '" + beskrivning + "', '"  + startdatum + "', '"  + slutdatum + "', '" + kostnad + "', '"  + status + "', '" + prioritet + "', '"  + land + "')";
+
+            String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('" + projektID + "','" + projektnamn + "', '" + projektchef + "', '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + land + "')";
             idb.insert(sqlFraga1);
-            
+
             // String  sqlFraga 2 "INSERT INTO hallbarhetsmal WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
-            
-           
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        }  
-        
-      
-        
-        
-        
+        }
+
+
     }//GEN-LAST:event_btnSparaLaggTIllProjektActionPerformed
 
-   
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaLaggTIllProjekt;
