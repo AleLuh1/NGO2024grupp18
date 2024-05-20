@@ -272,15 +272,19 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private void cbValjSamarbetspartnerPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbValjSamarbetspartnerPopupMenuWillBecomeInvisible
 
         String partnerNamn = cbValjSamarbetspartner.getSelectedItem().toString();
-
+       
         try {
 
             String sqlFraga = "SELECT * FROM partner WHERE namn = '" + partnerNamn + "'";
             System.out.println(sqlFraga);
-
+            
+ 
             HashMap<String, String> partnerNamnLista = idb.fetchRow(sqlFraga);
-
+           
             if (partnerNamnLista != null) {
+                String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + partnerNamnLista.get("stad") + "'";
+                String stad = idb.fetchSingle(sqlFraga2);
+                
                 tfProjektIDSam.setText(partnerNamnLista.get("pid"));
                 tfNamnSam.setText(partnerNamnLista.get("namn"));
                 tfKontaktpersonSam.setText(partnerNamnLista.get("kontaktperson"));
@@ -288,7 +292,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 tfTnrSam.setText(partnerNamnLista.get("telefon"));
                 tfAdressSam.setText(partnerNamnLista.get("adress"));
                 tfBranchSam.setText(partnerNamnLista.get("branch"));
-                tfStadSam.setText(partnerNamnLista.get("stad"));
+                tfStadSam.setText(stad);
             }
 
         } catch (Exception ex) {

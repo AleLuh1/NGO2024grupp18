@@ -3,18 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
+
 import java.util.ArrayList;
 import oru.inf.InfDB;
-import java.util.HashMap; 
+import java.util.HashMap;
+
 /**
  *
  * @author ellenor
  */
 public class Land extends javax.swing.JFrame {
-private InfDB idb;
-   
+
+    private InfDB idb;
+
     private String aid;
     private String avdid;
+
     /**
      * Creates new form Land
      */
@@ -26,10 +30,8 @@ private InfDB idb;
         fyllCBLand();
         this.setLocationRelativeTo(null);
     }
-    
-    
-    
-     public void fyllCBLand() {
+
+    public void fyllCBLand() {
         try {
             String sqlFraga = "SELECT namn FROM land";
             System.out.println(sqlFraga);
@@ -218,67 +220,61 @@ private InfDB idb;
 
     private void cbLandPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbLandPopupMenuWillBecomeInvisible
         String namnLand = cbLand.getSelectedItem().toString();
-        try{
-        String sqlFraga = "SELECT * FROM land WHERE namn = '" + namnLand +"'";
-        System.out.println(sqlFraga);
-        
-        HashMap <String,String> landLista = idb.fetchRow(sqlFraga);
-        if(landLista != null){
-           tfLandID.setText(landLista.get("lid")); 
-           tfNamnLand.setText(landLista.get("namn"));
-           tfSprakLand.setText(landLista.get("sprak"));
-           tfValutaLand.setText(landLista.get("valuta"));
-           tfTidszonLand.setText(landLista.get("tidszon"));
-           tfPolitiskStrukturLand.setText(landLista.get("politisk_struktur"));
-           tfEkonomiLand.setText(landLista.get("ekonomi"));
-           
-        
-        
+        try {
+            String sqlFraga = "SELECT * FROM land WHERE namn = '" + namnLand + "'";
+            System.out.println(sqlFraga);
+
+            HashMap<String, String> landLista = idb.fetchRow(sqlFraga);
+            if (landLista != null) {
+
+                tfLandID.setText(landLista.get("lid"));
+                tfNamnLand.setText(landLista.get("namn"));
+                tfSprakLand.setText(landLista.get("sprak"));
+                tfValutaLand.setText(landLista.get("valuta"));
+                tfTidszonLand.setText(landLista.get("tidszon"));
+                tfPolitiskStrukturLand.setText(landLista.get("politisk_struktur"));
+                tfEkonomiLand.setText(landLista.get("ekonomi"));
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
         }
-        
-            
-            
-        
-        }catch(Exception ex){
-        System.out.println(ex.getMessage());
-        
-        }
-        
-        
+
+
     }//GEN-LAST:event_cbLandPopupMenuWillBecomeInvisible
 
     private void btnSparaÄndringarLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaÄndringarLandActionPerformed
-        
-         String namnLand = cbLand.getSelectedItem().toString();
-        try{
-        String landID = tfLandID.getText();
-        String namn = tfNamnLand.getText();
-        String sprak = tfSprakLand.getText();
-        String valuta = tfValutaLand.getText();
-        String tidszon = tfTidszonLand.getText();
-        String politiskStruktur = tfPolitiskStrukturLand.getText();
-        String ekonomi = tfEkonomiLand.getText();
-        
-        String sqlFraga = "UPDATE land Set lid = " + landID + " WHERE namn = '" + namnLand + "'";
-        idb.update(sqlFraga);
-            
-        }catch(Exception ex){
-        System.out.println(ex.getMessage());
+
+        String namnLand = cbLand.getSelectedItem().toString();
+        try {
+            String landID = tfLandID.getText();
+            String namn = tfNamnLand.getText();
+            String sprak = tfSprakLand.getText();
+            String valuta = tfValutaLand.getText();
+            String tidszon = tfTidszonLand.getText();
+            String politiskStruktur = tfPolitiskStrukturLand.getText();
+            String ekonomi = tfEkonomiLand.getText();
+
+            String sqlFraga = "UPDATE land Set lid = " + landID + " WHERE namn = '" + namnLand + "'";
+            idb.update(sqlFraga);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
-        
-        
+
+
     }//GEN-LAST:event_btnSparaÄndringarLandActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       new LaggTillLand (idb, aid, avdid).setVisible(true);
+        new LaggTillLand(idb, aid, avdid).setVisible(true);
         setVisible(false);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaÄndringarLand;
     private javax.swing.JButton btnTillbakaLand;
