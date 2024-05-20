@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblLaggTillAvdRuta" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblAvdIDLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBeskrivningLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNamnLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAdressLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEpostLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTnrLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStadLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAvdchefLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tfNamnLaggTillAvd" max="32767" attributes="0"/>
+                          <Component id="tfBeskrivningLaggTillAvd" max="32767" attributes="0"/>
+                          <Component id="tfAdressLaggTillAvd" max="32767" attributes="0"/>
+                          <Component id="tfEpostLaggTillAvd" max="32767" attributes="0"/>
+                          <Component id="tfTnrLaggTillAvd" max="32767" attributes="0"/>
+                          <Component id="tfStadLaggTillAvd" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="tfAvdIDLaggTillAvd" min="-2" pref="184" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="tfAvdchefLaggTillAvd" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="btnTillbakaLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnSparaLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="lblLaggTillAvdRuta" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAvdIDLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAvdIDLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblNamnLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfNamnLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblBeskrivningLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfBeskrivningLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAdressLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAdressLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblEpostLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfEpostLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTnrLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfTnrLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblStadLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfStadLaggTillAvd" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblAvdchefLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAvdchefLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnTillbakaLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSparaLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblLaggTillAvdRuta">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till avdelning"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAvdIDLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="AvdelningsID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNamnLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Namn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBeskrivningLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Beskrivning"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdressLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adress"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEpostLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E-post"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTnrLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefonnummer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStadLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stad"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAvdchefLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avdelningschef"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTillbakaLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaLaggTillAvdActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSparaLaggTillAvd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Spara"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaLaggTillAvdActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAvdIDLaggTillAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfNamnLaggTillAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfBeskrivningLaggTillAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAdressLaggTillAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfEpostLaggTillAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfTnrLaggTillAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfStadLaggTillAvd">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAvdchefLaggTillAvd">
+    </Component>
+  </SubComponents>
+</Form>

@@ -95,7 +95,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         jLabel4.setText("E-post");
 
-        jLabel5.setText("Telefon");
+        jLabel5.setText("Telefonnummer");
 
         jLabel6.setText("Stad");
 
@@ -113,6 +113,11 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         jButton2.setText("Spara ändringar");
 
         jButton3.setText("Lägg till avdelning");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         cbValjAvdAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj avdelning" }));
         cbValjAvdAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +267,12 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_cbValjAvdAdminActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    new LaggTillAvdelning(idb, aid, avdid).setVisible(true);
+        setVisible(false);    
+       
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
