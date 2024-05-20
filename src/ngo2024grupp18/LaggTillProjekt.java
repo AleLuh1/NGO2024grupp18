@@ -367,9 +367,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en beskrivning");
         }
 
-        String laggTillProjektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
+        String laggTillProjektchefStr = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
+        //Gör om projektchef från String till int för att kunna lägga in i db
+        int laggTillProjektchef = Integer.parseInt(laggTillProjektchefStr);
 
-        if (laggTillProjektchef.equals("Välj projektchef")) {
+        if (laggTillProjektchefStr.equals("Välj projektchef")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj en projektchef");
         }
 
@@ -403,9 +405,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vänligen välj prioritet");
         }
 
-        String laggTillLand = cbLandLaggTillProjekt.getSelectedItem().toString();
+        String laggTillLandStr = cbLandLaggTillProjekt.getSelectedItem().toString();
+        // Gör om land från String till int för att kunna lägga in i db
+        int laggTillLand = Integer.parseInt(laggTillLandStr);
 
-        if (laggTillLand.equals("Välj land")) {
+        if (laggTillLandStr.equals("Välj land")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj ett land");
         }
 
@@ -416,22 +420,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         }
 
         try {
-
-            String projektID = tfProjektIDLaggTIllProjekt.getText();
-            String projektnamn = tfProjektnamnLaggTIllProjekt.getText();
-            String projektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
-            String beskrivning = tfBeskrivningLaggTillProjekt.getText();
-            String startdatum = tfStartdatumLaggTIllProjekt.getText();
-            String slutdatum = tfSlutdatumLaggTIllProjekt.getText();
-            String kostnad = tfKostnadLaggTIllProjekt.getText();
-            String status = cbStatusLaggTillProjekt.getSelectedItem().toString();
-            String prioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
-            //remember to convert land to int later (int in db table)
-            String land = cbLandLaggTillProjekt.getSelectedItem().toString();
-            String hallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
-
             // String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('" + projektID + "','" + projektnamn + "', '" + projektchef + "', '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + land + "')";
-            String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + projektnamn + "', '" + beskrivning + "', str_to_date('" + startdatum + "', '%Y-%m-%d'),  str_to_date('" + slutdatum + "', '%Y-%m-%d'), '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + projektchef + "', '" + land + "')";
+            String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), '" + laggTillKostnad + "', '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + laggTillProjektchef + ", " + laggTillLand + ")";
             idb.insert(sqlFraga1);
 
             // String  sqlFraga 2 "INSERT INTO hallbarhetsmal WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
