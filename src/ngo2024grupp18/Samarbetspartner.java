@@ -27,12 +27,12 @@ public class Samarbetspartner extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-        fyllCBVäljSamarbetspartner();
+        fyllCBValjSamarbetspartner();
 
     }
 
     // Lägger till alla samarbetspartner i combobox
-    public void fyllCBVäljSamarbetspartner() {
+    public void fyllCBValjSamarbetspartner() {
         try {
             String sqlFraga = "SELECT DISTINCT namn FROM partner";
             System.out.println(sqlFraga);
@@ -317,7 +317,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
             // uppdaterar comboboxen
             cbValjSamarbetspartner.removeAllItems();
-            fyllCBVäljSamarbetspartner();
+            fyllCBValjSamarbetspartner();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

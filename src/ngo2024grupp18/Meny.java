@@ -15,7 +15,7 @@ public class Meny extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String avdid; 
+    private String avdid;
 
     /**
      * Creates new form Meny
@@ -23,11 +23,11 @@ public class Meny extends javax.swing.JFrame {
     public Meny(InfDB idb, String aid, String avdid) {
         this.idb = idb;
         this.aid = aid;
-        this.avdid = avdid; 
+        this.avdid = avdid;
         initComponents();
         this.setLocationRelativeTo(null);
         MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
-        if(ny.isAdmin()) {
+        if (ny.isAdmin()) {
             btnLaggTillAnstalld.setVisible(true);
         } else {
             btnLaggTillAnstalld.setVisible(false);
@@ -49,6 +49,7 @@ public class Meny extends javax.swing.JFrame {
         lblMeny = new javax.swing.JLabel();
         btnLaggTillAnstalld = new javax.swing.JButton();
         btnSokAnstalld = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,6 +91,13 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Avdelning ADMIN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,21 +106,21 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lblMeny, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(208, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnSokAnstalld))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLaggTillAnstalld)))
-                        .addGap(76, 76, 76))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLaggTillAnstalld)
+                            .addComponent(btnSokAnstalld))
+                        .addGap(86, 86, 86))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,12 +132,14 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(btnMinaUppgifter)
                     .addComponent(btnLaggTillAnstalld))
                 .addGap(18, 18, 18)
-                .addComponent(btnProjekt)
-                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProjekt)
+                    .addComponent(btnSokAnstalld))
+                .addGap(18, 18, 18)
                 .addComponent(btnAvdelning)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(btnSokAnstalld)
-                .addGap(29, 29, 29))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,14 +149,14 @@ public class Meny extends javax.swing.JFrame {
         new MinaUppgifter(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
-    
+
     private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
         new Projekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnProjektActionPerformed
 
     private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
-        new Avdelning(idb, avdid, aid).setVisible(true); 
+        new Avdelning(idb, avdid, aid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnAvdelningActionPerformed
 
@@ -160,13 +170,19 @@ public class Meny extends javax.swing.JFrame {
         new SokEfterHandlaggare(idb, aid, avdid).setVisible(true);
     }//GEN-LAST:event_btnSokAnstalldActionPerformed
 
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new AvdelningAdmin(idb, aid, avdid).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvdelning;
     private javax.swing.JButton btnLaggTillAnstalld;
     private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnProjekt;
     private javax.swing.JButton btnSokAnstalld;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblMeny;
     // End of variables declaration//GEN-END:variables
 }
