@@ -44,6 +44,7 @@ public class Projekt extends javax.swing.JFrame {
         lblProjektRuta = new javax.swing.JLabel();
         btnLandProjekt = new javax.swing.JButton();
         btnHallbarhetsMal = new javax.swing.JButton();
+        btnSamarbetspartnerProjekt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +93,13 @@ public class Projekt extends javax.swing.JFrame {
             }
         });
 
+        btnSamarbetspartnerProjekt.setText("Samarbetspartner");
+        btnSamarbetspartnerProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSamarbetspartnerProjektActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,17 +108,18 @@ public class Projekt extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSamarbetspartnerProjekt)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnHallbarhetsMal)
                             .addComponent(btnLandProjekt)
                             .addComponent(lblProjektRuta)
                             .addComponent(btnTillbakaProj)
                             .addComponent(btnAvdProjekt)
-                            .addComponent(btnMinaProjekt))
-                        .addContainerGap(220, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAllaProjekt)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnMinaProjekt)
+                            .addComponent(btnAllaProjekt))
+                        .addContainerGap(220, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +136,9 @@ public class Projekt extends javax.swing.JFrame {
                 .addComponent(btnLandProjekt)
                 .addGap(18, 18, 18)
                 .addComponent(btnHallbarhetsMal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSamarbetspartnerProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(btnTillbakaProj)
                 .addGap(34, 34, 34))
         );
@@ -167,12 +178,20 @@ public class Projekt extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
 
+    private void btnSamarbetspartnerProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSamarbetspartnerProjektActionPerformed
+        new Samarbetspartner(idb, aid, avdid).setVisible(true);
+        setVisible(false);
+        
+        
+    }//GEN-LAST:event_btnSamarbetspartnerProjektActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllaProjekt;
     private javax.swing.JButton btnAvdProjekt;
     private javax.swing.JButton btnHallbarhetsMal;
     private javax.swing.JButton btnLandProjekt;
     private javax.swing.JButton btnMinaProjekt;
+    private javax.swing.JButton btnSamarbetspartnerProjekt;
     private javax.swing.JButton btnTillbakaProj;
     private javax.swing.JLabel lblProjektRuta;
     // End of variables declaration//GEN-END:variables

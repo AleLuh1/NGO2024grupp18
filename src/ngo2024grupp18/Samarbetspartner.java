@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
+
 import oru.inf.InfDB;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,9 +14,11 @@ import javax.swing.JOptionPane;
  * @author ellenor
  */
 public class Samarbetspartner extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
     private String avdid;
+
     /**
      * Creates new form Samarbetspartner
      */
@@ -24,7 +28,25 @@ public class Samarbetspartner extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-       
+        fyllCBVäljSamarbetspartner();
+
+    }
+
+    // Lägger till alla samarbetspartner i combobox
+    public void fyllCBVäljSamarbetspartner() {
+        try {
+            String sqlFraga = "SELECT DISTINCT namn FROM partner";
+            System.out.println(sqlFraga);
+            ArrayList<String> partnerLista = idb.fetchColumn(sqlFraga);
+
+            for (String enPartner : partnerLista) {
+                cbValjSamarbetspartner.addItem(enPartner);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
     }
 
     /**
@@ -40,7 +62,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
         cbValjSamarbetspartner = new javax.swing.JComboBox<>();
         btnTillbakaSamarbetspartner = new javax.swing.JButton();
         btnSparAndringarSam = new javax.swing.JButton();
-        lblPartnerIDSam = new javax.swing.JLabel();
+        lblProjektIDSam = new javax.swing.JLabel();
         lblNamnSam = new javax.swing.JLabel();
         lblKontaktpersonSam = new javax.swing.JLabel();
         lblEpostSam = new javax.swing.JLabel();
@@ -48,7 +70,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
         lblAdressSam = new javax.swing.JLabel();
         lblBranchSam = new javax.swing.JLabel();
         lblStadSam = new javax.swing.JLabel();
-        tfPartnerIDSam = new javax.swing.JTextField();
+        tfProjektIDSam = new javax.swing.JTextField();
         tfNamnSam = new javax.swing.JTextField();
         tfKontaktpersonSam = new javax.swing.JTextField();
         tfEpostSam = new javax.swing.JTextField();
@@ -64,6 +86,15 @@ public class Samarbetspartner extends javax.swing.JFrame {
         jLabel1.setText("Samarbetspartner");
 
         cbValjSamarbetspartner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj samarbetspartner" }));
+        cbValjSamarbetspartner.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cbValjSamarbetspartnerPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         btnTillbakaSamarbetspartner.setText("Tillbaka");
         btnTillbakaSamarbetspartner.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +110,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             }
         });
 
-        lblPartnerIDSam.setText("Partner-ID");
+        lblProjektIDSam.setText("Projekt-ID");
 
         lblNamnSam.setText("Namn");
 
@@ -114,7 +145,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblPartnerIDSam)
+                                            .addComponent(lblProjektIDSam)
                                             .addComponent(lblNamnSam)
                                             .addComponent(lblKontaktpersonSam)
                                             .addComponent(lblEpostSam)
@@ -124,7 +155,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                                             .addComponent(lblStadSam))
                                         .addGap(39, 39, 39)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tfPartnerIDSam)
+                                            .addComponent(tfProjektIDSam)
                                             .addComponent(tfNamnSam)
                                             .addComponent(tfKontaktpersonSam)
                                             .addComponent(tfEpostSam)
@@ -152,8 +183,8 @@ public class Samarbetspartner extends javax.swing.JFrame {
                     .addComponent(btnLaggTillPartner))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPartnerIDSam)
-                    .addComponent(tfPartnerIDSam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblProjektIDSam)
+                    .addComponent(tfProjektIDSam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNamnSam)
@@ -193,23 +224,66 @@ public class Samarbetspartner extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaSamarbetspartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaSamarbetspartnerActionPerformed
-      this.toBack();
+        this.toBack();
         Projekt nyttProjekt = new Projekt(idb, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaSamarbetspartnerActionPerformed
 
     private void btnSparAndringarSamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparAndringarSamActionPerformed
-        
-        
-        
-        
-        
-        
+
+        try {
+
+            String projketID = tfProjektIDSam.getText();
+            String namn = tfNamnSam.getText();
+            String kontaktperson = tfKontaktpersonSam.getText();
+            String kontaktEpost = tfEpostSam.getText();
+            String telefonnummer = tfTnrSam.getText();
+            String adress = tfAdressSam.getText();
+            String branch = tfBranchSam.getText();
+            String stad = tfStadSam.getText();
+
+            String sqlFraga = " INSERT INTO partner WHERE pid = (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) VALUES('" + projketID + "','" + namn + "', '" + kontaktperson + "', '" + kontaktEpost + "', '" + telefonnummer + "', '" + adress + "', '" + branch + "', '" + stad + "')";
+            idb.insert(sqlFraga);
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+
+        }
+
+
     }//GEN-LAST:event_btnSparAndringarSamActionPerformed
 
-    
-    
+    private void cbValjSamarbetspartnerPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbValjSamarbetspartnerPopupMenuWillBecomeInvisible
+
+        String partnerNamn = cbValjSamarbetspartner.getSelectedItem().toString();
+
+        try {
+
+            String sqlFraga = "SELECT * FROM partner WHERE namn = '" + partnerNamn + "'";
+            System.out.println(sqlFraga);
+         
+          
+          HashMap<String, String> partnerNamnLista = idb.fetchRow(sqlFraga);
+          
+          if (partnerNamnLista != null){
+          tfProjektIDSam.setText(partnerNamnLista.get("pid"));
+          tfNamnSam.setText(partnerNamnLista.get("namn"));
+          tfKontaktpersonSam.setText(partnerNamnLista.get("kontaktperson"));
+          tfEpostSam.setText(partnerNamnLista.get("kontaktepost"));
+          tfTnrSam.setText(partnerNamnLista.get("telefon"));
+          tfAdressSam.setText(partnerNamnLista.get("adress"));
+          tfBranchSam.setText(partnerNamnLista.get("branch"));
+          tfStadSam.setText(partnerNamnLista.get("stad"));
+          }
+          
+      }catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+    }//GEN-LAST:event_cbValjSamarbetspartnerPopupMenuWillBecomeInvisible
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLaggTillPartner;
@@ -222,7 +296,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private javax.swing.JLabel lblEpostSam;
     private javax.swing.JLabel lblKontaktpersonSam;
     private javax.swing.JLabel lblNamnSam;
-    private javax.swing.JLabel lblPartnerIDSam;
+    private javax.swing.JLabel lblProjektIDSam;
     private javax.swing.JLabel lblStadSam;
     private javax.swing.JLabel lblTnrSam;
     private javax.swing.JTextField tfAdressSam;
@@ -230,7 +304,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private javax.swing.JTextField tfEpostSam;
     private javax.swing.JTextField tfKontaktpersonSam;
     private javax.swing.JTextField tfNamnSam;
-    private javax.swing.JTextField tfPartnerIDSam;
+    private javax.swing.JTextField tfProjektIDSam;
     private javax.swing.JTextField tfStadSam;
     private javax.swing.JTextField tfTnrSam;
     // End of variables declaration//GEN-END:variables

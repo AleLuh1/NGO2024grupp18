@@ -34,7 +34,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         fyllCBVäljHallbarhetsmal();
     }
 
-    // Lägger till projektchef i combobox
+    // Lägger till alla projektchefer i combobox
     public void fyllCBVäljProjektchef() {
         try {
             String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
