@@ -27,11 +27,35 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
+        LaggaTillNyttProjektPid();
         fyllCBVäljProjektchef();
         fyllCBVäljStatus();
         fyllCBVäljPrioritet();
         fyllCBVäljLand();
         fyllCBVäljHallbarhetsmal();
+    }
+
+    private String LaggaTillNyttProjektPid() {
+        String nyAnstalldAid = null;
+        String nyttProjektPid = null;
+        try {
+            //SQL-fråga för att hämta ut största aid som finns i anstalld
+            String sqlFragaHogstPid = "SELECT max(pid) FROM projekt";
+            System.out.println(sqlFragaHogstPid);
+            //Hämtar ut resultatet från sql-frågan i en sträng 
+            String hogstProjektPidDB = idb.fetchSingle(sqlFragaHogstPid);
+            //Konverterar strängen med högst aid till en int
+            int hogstProjektPidInt = Integer.parseInt(hogstProjektPidDB);
+            int nyProjektPidInt = hogstProjektPidInt + 1;
+            System.out.println(nyProjektPidInt);
+            nyttProjektPid = Integer.toString(nyProjektPidInt);
+            tfProjektIDLaggTIllProjekt.setText(nyttProjektPid);
+            tfProjektIDLaggTIllProjekt.setEditable(false);
+            lblPorjektIDLaggTIllProjekt.requestFocus();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return nyttProjektPid;
     }
 
     // Lägger till alla projektchefer i combobox
@@ -326,76 +350,69 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTIllProjektActionPerformed
 
     private void btnSparaLaggTIllProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTIllProjektActionPerformed
+        //Gör om nya projektID till en int igen för att kunna lägga i db 
+        String nyProjektPidStr = tfProjektIDLaggTIllProjekt.getText();
+        int nyProjektPidInt = Integer.parseInt(nyProjektPidStr);
 
-        // säkerställer så användaren har fyllt alla textfields och comboboxar 
+// säkerställer så användaren har fyllt alla textfields och comboboxar 
         String laggTillProjektNamn = tfProjektnamnLaggTIllProjekt.getText();
 
         if (laggTillProjektNamn.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i ett projektnamn");
-
         }
 
         String laggTillBeskrivning = tfBeskrivningLaggTillProjekt.getText();
 
         if (laggTillBeskrivning.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en beskrivning");
-
         }
 
         String laggTillProjektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
 
         if (laggTillProjektchef.equals("Välj projektchef")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj en projektchef");
-
         }
 
         String laggTillStartdatum = tfStartdatumLaggTIllProjekt.getText();
 
         if (laggTillStartdatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en startdatum");
-
         }
 
         String laggTillSlutdatum = tfSlutdatumLaggTIllProjekt.getText();
 
         if (laggTillSlutdatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en slutdatum");
-
         }
 
         String laggTillKostnad = tfKostnadLaggTIllProjekt.getText();
 
         if (laggTillKostnad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en kostnad");
-
         }
 
         String laggTillStatus = cbStatusLaggTillProjekt.getSelectedItem().toString();
 
         if (laggTillStatus.equals("Välj status")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj status");
-
         }
 
         String laggTillPrioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
 
         if (laggTillPrioritet.equals("Välj prioritet")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj prioritet");
-
         }
 
         String laggTillLand = cbLandLaggTillProjekt.getSelectedItem().toString();
 
         if (laggTillLand.equals("Välj land")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj ett land");
-
         }
 
         String laggTillHallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
 
         if (laggTillHallbarhetsmal.equals("Välj hållbarhetsmål")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj ett hållbarhetsmål");
-
         }
 
         try {
