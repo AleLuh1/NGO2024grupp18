@@ -215,53 +215,39 @@ public class LaggTillLand extends javax.swing.JFrame {
 
         if (laggTillNamn.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i namn");
-
         }
 
         String laggTillSprak = tfSprakLaggTillLand.getText();
 
         if (laggTillSprak.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i språk");
-
         }
 
         String laggTillValuta = tfValutaLaggTillLand.getText();
 
         if (laggTillValuta.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i valuta");
-
         }
 
         String laggTillTidszon = tfTidszonLaggTillLand.getText();
 
         if (laggTillTidszon.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i tidszon");
-
         }
 
         String laggTillPolitiskStruktur = tfPolitiskStrukturLaggTillLand.getText();
 
         if (laggTillPolitiskStruktur.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i politisk struktur");
-
         }
         String laggTillEkonomi = tfEkonomiLaggTillLand.getText();
 
         if (laggTillEkonomi.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i ekonomi");
-
         }
 
         try {
-            String landID = tfLandIDLaggTillLand.getText();
-            String namn = tfNamnLaggTillLand.getText();
-            String sprak = tfSprakLaggTillLand.getText();
-            String valuta = tfValutaLaggTillLand.getText();
-            String tidszon = tfTidszonLaggTillLand.getText();
-            String politiskStruktur = tfPolitiskStrukturLaggTillLand.getText();
-            String ekonomi = tfEkonomiLaggTillLand.getText();
-
-            String sqlFraga = " INSERT INTO land WHERE lid = (lid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) VALUES ('" + landID + "','" + namn + "', '" + sprak + "', '" + valuta + "', '" + tidszon + "', '" + politiskStruktur + "', '" + ekonomi + "')";
+            String sqlFraga = "INSERT INTO land (lid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) VALUES (" + nyLid + ",'" + laggTillNamn + "', '" + laggTillSprak + "', '" + laggTillValuta + "', '" + laggTillTidszon + "', '" + laggTillPolitiskStruktur + "', '" + laggTillEkonomi + "')";
             idb.insert(sqlFraga);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
