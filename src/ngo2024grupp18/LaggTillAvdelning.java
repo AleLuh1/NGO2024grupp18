@@ -31,7 +31,6 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
 
     // Genererar ett nytt avd-id genom att hitta högsta avdid och adderar 1 
     private String LaggaTillNyAvdId() {
-        String nyttProjektPid = null;
         String nyAvdId = null;
         try {
             //SQL-fråga för att hämta ut största avdid som finns i avdelning

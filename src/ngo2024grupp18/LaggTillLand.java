@@ -27,8 +27,32 @@ public class LaggTillLand extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
+        LaggaTillNyLid();
     }
 
+    //Genererar ny land-id vid tillägg av nytt land genom att +1 på högsta befintliga land-id
+    private String LaggaTillNyLid() {
+        String nyLid = null;
+        try {
+            //SQL-fråga för att hämta ut största land-id (lid) som finns i land
+            String sqlFragaHogstLid = "SELECT max(lid) FROM land";
+            System.out.println(sqlFragaHogstLid);
+            //Hämtar ut resultatet från sql-frågan i en sträng 
+            String hogstLidDB = idb.fetchSingle(sqlFragaHogstLid);
+            //Konverterar strängen med högst lid till en int
+            int hogstLidInt = Integer.parseInt(hogstLidDB);
+            int nyLidInt = hogstLidInt + 1;
+            System.out.println(nyLidInt);
+            nyLid = Integer.toString(nyLidInt);
+            tfLandIDLaggTillLand.setText(nyLid);
+            tfLandIDLaggTillLand.setEditable(false);
+            lblLandIDLaggTillLand.requestFocus();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return nyLid;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -182,7 +206,10 @@ public class LaggTillLand extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTillLandActionPerformed
 
     private void btnSparaLaggTillLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillLandActionPerformed
-
+        //Gör om nya lid från String till int för att kunna lägga in i db
+        String nyLidStr = tfLandIDLaggTillLand.getText();
+        int nyLid = Integer.parseInt(nyLidStr);
+        
         // kontrollerar om textfields är tomma
         String laggTillNamn = tfNamnLaggTillLand.getText();
 
