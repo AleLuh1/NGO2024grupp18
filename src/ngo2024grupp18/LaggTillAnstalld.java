@@ -220,7 +220,13 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         //get text från fälten och insert i databas
         String nyAnstalldAidStr = tfAidNyAnstalld.getText();
         int nyAnstalldAidInt = Integer.parseInt(nyAnstalldAidStr);
+        
         String nyAnstalldFornamn = tfFornamnNyAnstalld.getText();
+        if(nyAnstalldFornamn.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i ett förnamn");
+            return;
+        }
+        
         String nyAnstalldEfternamn = tfEfternamnNyAnstalld.getText();
         String nyAnstalldAdress = tfAdressNyAnstalld.getText();
         String nyAnstalldEpost = tfEpostNyAnstalld.getText();
