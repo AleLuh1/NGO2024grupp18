@@ -186,29 +186,79 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTillAvdActionPerformed
 
     private void btnSparaLaggTillAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillAvdActionPerformed
-     
-      
+
+        // kontrollerar om textfields är tomma
+        String laggTillNamn = tfNamnLaggTillAvd.getText();
+
+        if (laggTillNamn.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i namn");
+
+        }
         
-        try{
-        String avdID = tfAvdIDLaggTillAvd.getText();
-        String namn = tfNamnLaggTillAvd.getText();
-        String beskrivning = tfBeskrivningLaggTillAvd.getText();
-        String adress = tfAdressLaggTillAvd.getText();
-        String epost = tfEpostLaggTillAvd.getText();
-        String telefonnummer = tfTnrLaggTillAvd.getText();
-        String stad = tfTnrLaggTillAvd.getText();
-        String avdchef = tfAvdchefLaggTillAvd.getText();
-            
-          String sqlFraga = " INSERT INTO avdelning WHERE avdid = (namn, beskrivning, adress, epost, telefon, stad, chef, avdid) VALUES ('" + namn + "','" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefonnummer + "', '" + stad + "', '" + avdchef + "''" + avdid + "')";
-            idb.insert(sqlFraga);  
-            
-            
-        }catch(Exception ex){
-        System.out.println(ex.getMessage());
+        String laggTillBeskrivning = tfBeskrivningLaggTillAvd.getText();
+
+        if (laggTillBeskrivning.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i beskrivning");
+
+        }
         
+        String laggTillAdress = tfAdressLaggTillAvd.getText();
+
+        if (laggTillAdress.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
+
+        }
+        
+        String laggTillEpost = tfEpostLaggTillAvd.getText();
+
+        if (laggTillEpost.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
+
+        }
+        
+        String laggTillTelefonnummer = tfTnrLaggTillAvd.getText();
+
+        if (laggTillTelefonnummer.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
+
+        }
+        
+        String laggTillStad = tfStadLaggTillAvd.getText();
+
+        if (laggTillStad.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i stad");
+
         }
         
         
+        String laggTillAvdChef = tfAvdchefLaggTillAvd.getText();
+
+        if (laggTillAvdChef.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i avdelningschef");
+
+        }
+        
+        
+
+        try {
+            String avdID = tfAvdIDLaggTillAvd.getText();
+            String namn = tfNamnLaggTillAvd.getText();
+            String beskrivning = tfBeskrivningLaggTillAvd.getText();
+            String adress = tfAdressLaggTillAvd.getText();
+            String epost = tfEpostLaggTillAvd.getText();
+            String telefonnummer = tfTnrLaggTillAvd.getText();
+            String stad = tfTnrLaggTillAvd.getText();
+            String avdchef = tfAvdchefLaggTillAvd.getText();
+
+            String sqlFraga = " INSERT INTO avdelning WHERE avdid = (namn, beskrivning, adress, epost, telefon, stad, chef, avdid) VALUES ('" + namn + "','" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefonnummer + "', '" + stad + "', '" + avdchef + "''" + avdid + "')";
+            idb.insert(sqlFraga);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+
     }//GEN-LAST:event_btnSparaLaggTillAvdActionPerformed
 
 
