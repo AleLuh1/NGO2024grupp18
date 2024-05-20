@@ -22,6 +22,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
+        this.setLocationRelativeTo(null);
         fyllCBVäljProjektchef();
         fyllCBVäljStatus();
         fyllCBVäljPrioritet();
@@ -55,7 +56,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             ArrayList<String> hallbarhetsmalLista = idb.fetchColumn(sqlFraga);
 
             for (String ettHallbarhetsmal: hallbarhetsmalLista) {
-                dbHallbarhetsmalLaggTillProjekt.addItem(ettHallbarhetsmal);
+                cbHallbarhetsmalLaggTillProjekt.addItem(ettHallbarhetsmal);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -153,7 +154,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         cbPrioritetLaggTillProjekt = new javax.swing.JComboBox<>();
         cbLandLaggTillProjekt = new javax.swing.JComboBox<>();
         lblHallbarhetsmalLaggTillProjekt = new javax.swing.JLabel();
-        dbHallbarhetsmalLaggTillProjekt = new javax.swing.JComboBox<>();
+        cbHallbarhetsmalLaggTillProjekt = new javax.swing.JComboBox<>();
         tfBeskrivningLaggTillProjekt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -205,7 +206,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
         lblHallbarhetsmalLaggTillProjekt.setText("Hållbarhetsmål");
 
-        dbHallbarhetsmalLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj hållbarhetsmål" }));
+        cbHallbarhetsmalLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj hållbarhetsmål" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,7 +240,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(160, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +310,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaLaggTIllProjekt)
@@ -329,13 +330,93 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
     private void btnSparaLaggTIllProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTIllProjektActionPerformed
     
-            //String laggTillProjektNamn = tfProjektnamnLaggTIllProjekt.getText();
-            //String laggTillBeskrivning= tfBeskrivningLaggTillProjekt.getText();
-             //  if (laggTillProjektNamn.isEmpty() &&  laggTillBeskrivning.isEmpty())
-             //   {
-              //      JOptionPane.showMessageDialog(null, "Vänligen fyll i ett projektnamn");
-               // }
-
+        
+            // säkerställer så användaren har fyllt alla textfields och comboboxar 
+            
+            String laggTillProjektNamn = tfProjektnamnLaggTIllProjekt.getText();
+         
+                if (laggTillProjektNamn.isEmpty())
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen fyll i ett projektnamn");
+               
+                }
+                
+             
+                String laggTillBeskrivning = tfBeskrivningLaggTillProjekt.getText();
+         
+                if (laggTillBeskrivning.isEmpty())
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen fyll i en beskrivning");
+               
+                }
+                
+                String laggTillProjektchef = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
+         
+                if (laggTillProjektchef.equals("Välj projektchef"))
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen välj en projektchef");
+               
+                }
+                
+                
+                String laggTillStartdatum = tfStartdatumLaggTIllProjekt.getText();
+         
+                if (laggTillStartdatum.isEmpty())
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen fyll i en startdatum");
+               
+                }
+                
+                String laggTillSlutdatum = tfSlutdatumLaggTIllProjekt.getText();
+         
+                if (laggTillSlutdatum.isEmpty())
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen fyll i en slutdatum");
+               
+                }
+                
+                
+                String laggTillKostnad= tfKostnadLaggTIllProjekt.getText();
+         
+                if (laggTillKostnad.isEmpty())
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen fyll i en kostnad");
+               
+                }
+                
+                
+                 String laggTillStatus = cbStatusLaggTillProjekt.getSelectedItem().toString();
+         
+                if (laggTillStatus.equals("Välj status"))
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen välj status");
+               
+                }
+                
+                String laggTillPrioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
+         
+                if (laggTillPrioritet.equals("Välj prioritet"))
+               {
+              JOptionPane.showMessageDialog(null, "Vänligen välj prioritet");
+               
+                }
+                
+                   String laggTillLand = cbLandLaggTillProjekt.getSelectedItem().toString();
+         
+                if (laggTillLand.equals("Välj land"))
+                {
+                JOptionPane.showMessageDialog(null, "Vänligen välj ett land");
+               
+                }
+                
+                String laggTillHallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
+         
+                if (laggTillHallbarhetsmal.equals("Välj hållbarhetsmål"))
+                {
+                JOptionPane.showMessageDialog(null, "Vänligen välj ett hållbarhetsmål");
+               
+                }
+ 
         
         try {
            
@@ -349,18 +430,20 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             String status = cbStatusLaggTillProjekt.getSelectedItem().toString();
             String prioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
             String land = cbLandLaggTillProjekt.getSelectedItem().toString();
-            
+            String hallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
             
    
-            String sqlFraga = "INSERT INTO  projekt WHERE projekt.pid =   (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('"  + projektID + "','"  + projektnamn + "', '"  + projektchef + "', '" + beskrivning + "', '"  + startdatum + "', '"  + slutdatum + "', '" + kostnad + "', '"  + status + "', '" + prioritet + "', '"  + land + "')";
-            idb.insert(sqlFraga);
+            String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('"  + projektID + "','"  + projektnamn + "', '"  + projektchef + "', '" + beskrivning + "', '"  + startdatum + "', '"  + slutdatum + "', '" + kostnad + "', '"  + status + "', '" + prioritet + "', '"  + land + "')";
+            idb.insert(sqlFraga1);
+            
+            // String  sqlFraga 2 "INSERT INTO hallbarhetsmal WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
             
            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }  
         
-        
+      
         
         
         
@@ -372,11 +455,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaLaggTIllProjekt;
     private javax.swing.JButton btnTillbakaLaggTIllProjekt;
+    private javax.swing.JComboBox<String> cbHallbarhetsmalLaggTillProjekt;
     private javax.swing.JComboBox<String> cbLandLaggTillProjekt;
     private javax.swing.JComboBox<String> cbPrioritetLaggTillProjekt;
     private javax.swing.JComboBox<String> cbProjektChefLaggTillProjekt;
     private javax.swing.JComboBox<String> cbStatusLaggTillProjekt;
-    private javax.swing.JComboBox<String> dbHallbarhetsmalLaggTillProjekt;
     private javax.swing.JLabel lblBeskrivningLaggTIllProjekt;
     private javax.swing.JLabel lblHallbarhetsmalLaggTillProjekt;
     private javax.swing.JLabel lblKostnadLaggTIllProjekt;

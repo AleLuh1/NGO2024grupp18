@@ -378,18 +378,21 @@ public class AllaProjekt extends javax.swing.JFrame {
             System.out.println(sqlFraga4);
             idb.delete(sqlFraga4);
             
+            // rensar textfields från uppgifter
             tfNyttProjektNyPid.setText(" ");
             tfProjektnamnAllaProjekt.setText(" ");
             tfProjektchefAllaProjekt.setText(" ");
             tfBeskrivningAllaProjekt.setText(" ");
+            tfStartdatumAllaProjekt.setText(" ");
             tfSlutDatumAllaProjekt.setText(" ");
+            tfKostnadAllaProjekt.setText(" ");
             tfStatusAllaProjekt.setText(" ");
             tfPrioAllaProjekt.setText(" ");
             tfLandAllaProjekt.setText(" ");
             tfHallbarhetsmalAllaProjekt.setText(" ");
             
             
-
+            // uppdaterar comboboxen
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
         } catch (Exception ex) {
