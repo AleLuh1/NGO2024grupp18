@@ -214,7 +214,6 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         String nyAvdidStr = tfAvdIDLaggTillAvd.getText();
         int nyAvdidInt = Integer.parseInt(nyAvdidStr);
         
-        
         // kontrollerar om textfields är tomma
         String laggTillNamn = tfNamnLaggTillAvd.getText();
 
@@ -265,10 +264,15 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             String adress = tfAdressLaggTillAvd.getText();
             String epost = tfEpostLaggTillAvd.getText();
             String telefonnummer = tfTnrLaggTillAvd.getText();
-            String stad = tfTnrLaggTillAvd.getText();
-            String avdchef = tfAvdchefLaggTillAvd.getText();
+            String stadStr = tfStadLaggTillAvd.getText();
+            //Gör om stad till en int för att kunna lägga i db
+            int stad = Integer.parseInt(stadStr);
+            String avdchefStr = tfAvdchefLaggTillAvd.getText();
+            //Gör om avdchef till en int för att kunna lägga i db
+            int avdchef = Integer.parseInt(avdchefStr); 
 
-            String sqlFraga = " INSERT INTO avdelning WHERE avdid = (namn, beskrivning, adress, epost, telefon, stad, chef, avdid) VALUES ('" + namn + "','" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefonnummer + "', '" + stad + "', '" + avdchef + "''" + avdid + "')";
+            String sqlFraga = "INSERT INTO avdelning (avdid, namn, beskrivning, adress, epost, telefon, stad, chef) VALUES (" + nyAvdidInt + ", '" + namn + "','" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefonnummer + "', " + stad + ", " + avdchef + ")";
+            System.out.println(sqlFraga);
             idb.insert(sqlFraga);
 
         } catch (Exception ex) {

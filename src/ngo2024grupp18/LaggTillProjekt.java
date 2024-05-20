@@ -426,6 +426,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             String kostnad = tfKostnadLaggTIllProjekt.getText();
             String status = cbStatusLaggTillProjekt.getSelectedItem().toString();
             String prioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
+            //remember to convert land to int later (int in db table)
             String land = cbLandLaggTillProjekt.getSelectedItem().toString();
             String hallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
 
