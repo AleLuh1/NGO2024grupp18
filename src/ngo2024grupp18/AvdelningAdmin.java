@@ -31,7 +31,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     }
     
     
-    // Lägger till alla avdelnignar i combobox
+    // Lägger till alla avdelningar i combobox
     
     public void fyllCBValjAVD(){
     

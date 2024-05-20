@@ -26,7 +26,31 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
+        LaggaTillNyAvdId();
+    }
 
+    // Genererar ett nytt avd-id genom att hitta högsta avdid och adderar 1 
+    private String LaggaTillNyAvdId() {
+        String nyttProjektPid = null;
+        String nyAvdId = null;
+        try {
+            //SQL-fråga för att hämta ut största avdid som finns i avdelning
+            String sqlFragaHogstAvdid = "SELECT max(avdid) FROM avdelning";
+            System.out.println(sqlFragaHogstAvdid);
+            //Hämtar ut resultatet från sql-frågan i en sträng 
+            String hogstAvdidDB = idb.fetchSingle(sqlFragaHogstAvdid);
+            //Konverterar strängen med högst pid till en int
+            int hogstAvdidInt = Integer.parseInt(hogstAvdidDB);
+            int nyAvdidInt = hogstAvdidInt + 1;
+            System.out.println(nyAvdidInt);
+            nyAvdId = Integer.toString(nyAvdidInt);
+            tfAvdIDLaggTillAvd.setText(nyAvdId);
+            tfAvdIDLaggTillAvd.setEditable(false);
+            lblAvdIDLaggTillAvd.requestFocus();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return nyAvdId;
     }
 
     /**
@@ -186,59 +210,53 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTillAvdActionPerformed
 
     private void btnSparaLaggTillAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillAvdActionPerformed
-
+        //Gör om nya avdid till en int igen för att kunna lägga i db 
+        String nyAvdidStr = tfAvdIDLaggTillAvd.getText();
+        int nyAvdidInt = Integer.parseInt(nyAvdidStr);
+        
+        
         // kontrollerar om textfields är tomma
         String laggTillNamn = tfNamnLaggTillAvd.getText();
 
         if (laggTillNamn.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i namn");
-
         }
-        
+
         String laggTillBeskrivning = tfBeskrivningLaggTillAvd.getText();
 
         if (laggTillBeskrivning.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i beskrivning");
-
         }
-        
+
         String laggTillAdress = tfAdressLaggTillAvd.getText();
 
         if (laggTillAdress.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
-
         }
-        
+
         String laggTillEpost = tfEpostLaggTillAvd.getText();
 
         if (laggTillEpost.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
-
         }
-        
+
         String laggTillTelefonnummer = tfTnrLaggTillAvd.getText();
 
         if (laggTillTelefonnummer.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
-
         }
-        
+
         String laggTillStad = tfStadLaggTillAvd.getText();
 
         if (laggTillStad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i stad");
-
         }
-        
-        
+
         String laggTillAvdChef = tfAvdchefLaggTillAvd.getText();
 
         if (laggTillAvdChef.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i avdelningschef");
-
         }
-        
-        
 
         try {
             String avdID = tfAvdIDLaggTillAvd.getText();

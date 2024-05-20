@@ -30,6 +30,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    //Genererar ett nytt aid genom att hitta största aid och sedan göra aid +1
     private String LaggaTillNyAnstalldAid() {
         String nyAnstalldAid = null;
         try {

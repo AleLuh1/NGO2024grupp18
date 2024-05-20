@@ -35,16 +35,16 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         fyllCBVäljHallbarhetsmal();
     }
 
+    // Genererar ett nytt projekt-id (genom att hitta högsta pid och lägger till +1
     private String LaggaTillNyttProjektPid() {
-        String nyAnstalldAid = null;
         String nyttProjektPid = null;
         try {
-            //SQL-fråga för att hämta ut största aid som finns i anstalld
+            //SQL-fråga för att hämta ut största pid som finns i projekt
             String sqlFragaHogstPid = "SELECT max(pid) FROM projekt";
             System.out.println(sqlFragaHogstPid);
             //Hämtar ut resultatet från sql-frågan i en sträng 
             String hogstProjektPidDB = idb.fetchSingle(sqlFragaHogstPid);
-            //Konverterar strängen med högst aid till en int
+            //Konverterar strängen med högst pid till en int
             int hogstProjektPidInt = Integer.parseInt(hogstProjektPidDB);
             int nyProjektPidInt = hogstProjektPidInt + 1;
             System.out.println(nyProjektPidInt);
