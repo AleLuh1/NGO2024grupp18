@@ -27,11 +27,11 @@ public class Meny extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
-        if (ny.isAdmin()) {
-            btnLaggTillAnstalld.setVisible(true);
-        } else {
-            btnLaggTillAnstalld.setVisible(false);
-        }
+//        if (ny.isAdmin()) {
+//            btnLaggTillAnstalld.setVisible(true);
+//        } else {
+//            btnLaggTillAnstalld.setVisible(false);
+//        }
     }
 
     /**
