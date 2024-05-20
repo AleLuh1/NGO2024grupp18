@@ -277,22 +277,21 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
             String sqlFraga = "SELECT * FROM partner WHERE namn = '" + partnerNamn + "'";
             System.out.println(sqlFraga);
-         
-          
-          HashMap<String, String> partnerNamnLista = idb.fetchRow(sqlFraga);
-          
-          if (partnerNamnLista != null){
-          tfProjektIDSam.setText(partnerNamnLista.get("pid"));
-          tfNamnSam.setText(partnerNamnLista.get("namn"));
-          tfKontaktpersonSam.setText(partnerNamnLista.get("kontaktperson"));
-          tfEpostSam.setText(partnerNamnLista.get("kontaktepost"));
-          tfTnrSam.setText(partnerNamnLista.get("telefon"));
-          tfAdressSam.setText(partnerNamnLista.get("adress"));
-          tfBranchSam.setText(partnerNamnLista.get("branch"));
-          tfStadSam.setText(partnerNamnLista.get("stad"));
-          }
-          
-      }catch (Exception ex) {
+
+            HashMap<String, String> partnerNamnLista = idb.fetchRow(sqlFraga);
+
+            if (partnerNamnLista != null) {
+                tfProjektIDSam.setText(partnerNamnLista.get("pid"));
+                tfNamnSam.setText(partnerNamnLista.get("namn"));
+                tfKontaktpersonSam.setText(partnerNamnLista.get("kontaktperson"));
+                tfEpostSam.setText(partnerNamnLista.get("kontaktepost"));
+                tfTnrSam.setText(partnerNamnLista.get("telefon"));
+                tfAdressSam.setText(partnerNamnLista.get("adress"));
+                tfBranchSam.setText(partnerNamnLista.get("branch"));
+                tfStadSam.setText(partnerNamnLista.get("stad"));
+            }
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
         }
@@ -300,12 +299,12 @@ public class Samarbetspartner extends javax.swing.JFrame {
     }//GEN-LAST:event_cbValjSamarbetspartnerPopupMenuWillBecomeInvisible
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         String partnerNamn = cbValjSamarbetspartner.getSelectedItem().toString();
         try {
-           
-           String sqlFraga = " DELETE FROM partner WHERE pid = '" + partnerNamn + "'";
-            
+
+            String sqlFraga = " DELETE FROM partner WHERE pid = '" + partnerNamn + "'";
+
             // rensar textfields från uppgifter
             tfProjektIDSam.setText(" ");
             tfNamnSam.setText(" ");
@@ -315,19 +314,18 @@ public class Samarbetspartner extends javax.swing.JFrame {
             tfAdressSam.setText(" ");
             tfBranchSam.setText(" ");
             tfStadSam.setText(" ");
-            
-            
+
             // uppdaterar comboboxen
             cbValjSamarbetspartner.removeAllItems();
             fyllCBVäljSamarbetspartner();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-         
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
-    new LaggTillSamarbetspartner(idb, aid, avdid).setVisible(true);
+        new LaggTillSamarbetspartner(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
 

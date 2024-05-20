@@ -183,6 +183,7 @@ public class LaggTillLand extends javax.swing.JFrame {
 
     private void btnSparaLaggTillLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillLandActionPerformed
 
+        // kontrollerar om textfields är tomma
         String laggTillNamn = tfNamnLaggTillLand.getText();
 
         if (laggTillNamn.isEmpty()) {

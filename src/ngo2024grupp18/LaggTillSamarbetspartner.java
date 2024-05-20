@@ -183,90 +183,84 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
         Samarbetspartner nyPartner = new Samarbetspartner(idb, aid, avdid);
         nyPartner.setVisible(true);
         nyPartner.toFront();
-        
-        
-        
+
+
     }//GEN-LAST:event_btnTillbakaLaggTillPartnerActionPerformed
 
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
-      
+
+        // kontrollerar om textfields är tomma
         String laggTillNamn = tfNamnLaggTillPartner.getText();
 
         if (laggTillNamn.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i namn");
 
         }
-        
-         String laggTillKontaktperson = tfKontaktpersonLaggTillPartner.getText();
 
-        if (laggTillNamn.isEmpty()) {
+        String laggTillKontaktperson = tfKontaktpersonLaggTillPartner.getText();
+
+        if (laggTillKontaktperson.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i kontaktperson");
 
         }
-        
-        
+
         String laggTillKontaktEpost = tfEpostLaggTillPartner.getText();
 
-        if (laggTillNamn.isEmpty()) {
+        if (laggTillKontaktEpost.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
 
         }
-        
+
         String laggTillTelefonnummer = tfTelefonLaggTillPartner.getText();
 
-        if (laggTillNamn.isEmpty()) {
+        if (laggTillTelefonnummer.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
 
         }
-        
+
         String laggTillAdress = tfAdressLaggTillPartner.getText();
 
-        if (laggTillNamn.isEmpty()) {
+        if (laggTillAdress.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
 
         }
-        
+
         String laggTillBranch = tfBranchLaggTillPartner.getText();
 
-        if (laggTillNamn.isEmpty()) {
+        if (laggTillBranch.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i branch");
 
         }
-        
+
         String laggTillStad = tfStadLaggTillPartner.getText();
 
-        if (laggTillNamn.isEmpty()) {
+        if (laggTillStad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i stad");
 
         }
-        
-        
-        
-        try{
-            
-          String projektID = tfProjektIDLaggTillPartner.getText();
-          String namn = tfNamnLaggTillPartner.getText();
-          String kontaktperson = tfKontaktpersonLaggTillPartner.getText();
-          String kontaktEpost = tfEpostLaggTillPartner.getText();
-          String telefonnummer = tfTelefonLaggTillPartner.getText();
-          String adress = tfAdressLaggTillPartner.getText();
-          String branch = tfBranchLaggTillPartner.getText();
-          String stad = tfStadLaggTillPartner.getText();
-          
-          String sqlFraga = " INSERT INTO partner WHERE pid = (pid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) VALUES ('" + projektID + "','" + namn + "', '" + kontaktperson + "', '" + kontaktEpost + "', '" + telefonnummer + "', '" + adress + "','" + stad + "', '" + branch + "')";
+
+        try {
+
+            String projektID = tfProjektIDLaggTillPartner.getText();
+            String namn = tfNamnLaggTillPartner.getText();
+            String kontaktperson = tfKontaktpersonLaggTillPartner.getText();
+            String kontaktEpost = tfEpostLaggTillPartner.getText();
+            String telefonnummer = tfTelefonLaggTillPartner.getText();
+            String adress = tfAdressLaggTillPartner.getText();
+            String branch = tfBranchLaggTillPartner.getText();
+            String stad = tfStadLaggTillPartner.getText();
+
+            String sqlFraga = " INSERT INTO partner WHERE pid = (pid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) VALUES ('" + projektID + "','" + namn + "', '" + kontaktperson + "', '" + kontaktEpost + "', '" + telefonnummer + "', '" + adress + "','" + stad + "', '" + branch + "')";
             idb.insert(sqlFraga);
-            
-            
-        
-        }catch(Exception ex){
-        
-        System.out.println(ex.getMessage());
+
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
         }
-        
-        
+
+
     }//GEN-LAST:event_btnSparaLaggTillPartnerActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaLaggTillPartner;
