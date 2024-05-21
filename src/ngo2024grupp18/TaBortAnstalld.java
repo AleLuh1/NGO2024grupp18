@@ -61,6 +61,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         cbTaBortAnstalld = new javax.swing.JComboBox<>();
         btnTillbakaTaBortAnstalld = new javax.swing.JButton();
         btnTaBortAnstalld = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +89,8 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Gå till ändra projektchef");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,24 +99,29 @@ public class TaBortAnstalld extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                        .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnTillbakaTaBortAnstalld)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTaBortAnstalld)
-                        .addGap(53, 53, 53))))
+                        .addGap(53, 53, 53))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaTaBortAnstalld)
                     .addComponent(btnTaBortAnstalld))
@@ -139,14 +147,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             String sqlFraga1 = "DELETE FROM ans_proj WHERE aid = " + aid;
             System.out.println(sqlFraga1);
             idb.delete(sqlFraga1);
-
-            String sqlFraga11 = "DELETE FROM proj_hallbarhet WHERE projektchef =" + aid;
-            System.out.println(sqlFraga11);
-            idb.delete(sqlFraga11);
-
-            String sqlFraga5 = "DELETE FROM projekt WHERE projektchef =" + aid;
-            System.out.println(sqlFraga5);
-            idb.delete(sqlFraga5);
 
             String sqlFraga2 = "DELETE FROM admin WHERE aid = " + aid;
             System.out.println(sqlFraga2);
@@ -220,6 +220,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     private javax.swing.JButton btnTaBortAnstalld;
     private javax.swing.JButton btnTillbakaTaBortAnstalld;
     private javax.swing.JComboBox<String> cbTaBortAnstalld;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
