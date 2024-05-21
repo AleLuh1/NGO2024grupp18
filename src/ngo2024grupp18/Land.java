@@ -15,7 +15,6 @@ import java.util.HashMap;
 public class Land extends javax.swing.JFrame {
 
     private InfDB idb;
-
     private String aid;
     private String avdid;
 
