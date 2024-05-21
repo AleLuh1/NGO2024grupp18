@@ -8,12 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JTable;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
 import java.util.HashMap;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
-//import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -41,6 +36,10 @@ public class FiltreraStatus extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         Fyllcb();
+    }
+
+    FiltreraStatus(InfDB idb, String aid, String avdid) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     private void Fyllcb() {
@@ -136,9 +135,15 @@ public class FiltreraStatus extends javax.swing.JFrame {
                 .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnTillbakaStatus)
                 .addGap(25, 25, 25))
+
+                .addGap(18, 18, 18)
+                .addComponent(btnTillbakaStatus)
+                .addContainerGap(44, Short.MAX_VALUE))
+ 5275c0ccaa982fc07bb583e8cb8ed0322e96dc6a
         );
 
         pack();
@@ -213,9 +218,15 @@ public class FiltreraStatus extends javax.swing.JFrame {
 
     private void btnTillbakaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaStatusActionPerformed
         this.toBack();
+
         Projekt nyttProjekt = new Projekt(idb,aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
+
+        Projekt nyttProject = new Projekt(idb, aid, avdid);
+        nyttProject.setVisible(true);
+        nyttProject.toFront();
+ 5275c0ccaa982fc07bb583e8cb8ed0322e96dc6a
     }//GEN-LAST:event_btnTillbakaStatusActionPerformed
 
     /**
