@@ -8,7 +8,6 @@ import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 /**
  *
  * @author alex
@@ -287,30 +286,31 @@ public class AllaProjekt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbAllaProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAllaProjektPopupMenuWillBecomeInvisible
-        
-   
-      
-        
+
         String projektNamn = cbAllaProjekt.getSelectedItem().toString();
         try {
             String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFraga);
-            
-        
+
             HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
-            
 
             if (projektNamnLista != null) {
+                String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + projektNamnLista.get("land") + "'";
+                String land = idb.fetchSingle(sqlFraga2);
+
+                String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid ='" + projektNamnLista.get("projektchef") + "'";
+                String projektchef = idb.fetchSingle(sqlFraga3);
+
                 tfNyttProjektNyPid.setText(projektNamnLista.get("pid"));
                 tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
-                tfProjektchefAllaProjekt.setText(projektNamnLista.get("projektchef"));
+                tfProjektchefAllaProjekt.setText(projektchef);
                 tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
                 tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
                 tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
                 tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
                 tfStatusAllaProjekt.setText(projektNamnLista.get("status"));
                 tfPrioAllaProjekt.setText(projektNamnLista.get("prioritet"));
-                tfLandAllaProjekt.setText(projektNamnLista.get("land"));
+                tfLandAllaProjekt.setText(land);
                 tfHallbarhetsmalAllaProjekt.setText(("hallbarhetsmal"));
 
             }
@@ -353,15 +353,14 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraAllaProjektActionPerformed
 
     private void bnTaBortAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnTaBortAllaProjektActionPerformed
-        
-      
+
         try {
-        
+
             String projektNamn = cbAllaProjekt.getSelectedItem().toString();
             String sqlFragaPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFragaPid);
             String pid = idb.fetchSingle(sqlFragaPid);
-            
+
             String sqlFraga1 = "DELETE FROM ans_proj WHERE pid = " + pid + "";
             System.out.println(sqlFraga1);
             idb.delete(sqlFraga1);
@@ -377,7 +376,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             String sqlFraga4 = "DELETE FROM projekt WHERE pid = " + pid + "";
             System.out.println(sqlFraga4);
             idb.delete(sqlFraga4);
-            
+
             // rensar textfields från uppgifter
             tfNyttProjektNyPid.setText(" ");
             tfProjektnamnAllaProjekt.setText(" ");
@@ -390,8 +389,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             tfPrioAllaProjekt.setText(" ");
             tfLandAllaProjekt.setText(" ");
             tfHallbarhetsmalAllaProjekt.setText(" ");
-            
-            
+
             // uppdaterar comboboxen
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
@@ -401,8 +399,8 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_bnTaBortAllaProjektActionPerformed
 
     private void btnLaggTillProjektAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillProjektAllaProjektActionPerformed
-      
-        new LaggTillProjekt(idb,aid,avdid).setVisible(true);
+
+        new LaggTillProjekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLaggTillProjektAllaProjektActionPerformed
 

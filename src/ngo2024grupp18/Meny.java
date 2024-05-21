@@ -50,6 +50,7 @@ public class Meny extends javax.swing.JFrame {
         btnLaggTillAnstalld = new javax.swing.JButton();
         btnSokAnstalld = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,6 +99,13 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Ta bort anställd");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,7 +127,8 @@ public class Meny extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLaggTillAnstalld)
-                            .addComponent(btnSokAnstalld))
+                            .addComponent(btnSokAnstalld)
+                            .addComponent(jButton2))
                         .addGap(86, 86, 86))))
         );
         layout.setVerticalGroup(
@@ -136,7 +145,9 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(btnProjekt)
                     .addComponent(btnSokAnstalld))
                 .addGap(18, 18, 18)
-                .addComponent(btnAvdelning)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAvdelning)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(90, Short.MAX_VALUE))
@@ -175,6 +186,11 @@ public class Meny extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new TaBortAnstalld(idb, aid, avdid).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvdelning;
@@ -183,6 +199,7 @@ public class Meny extends javax.swing.JFrame {
     private javax.swing.JButton btnProjekt;
     private javax.swing.JButton btnSokAnstalld;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblMeny;
     // End of variables declaration//GEN-END:variables
 }

@@ -88,43 +88,23 @@ public class MinaProjekt extends javax.swing.JFrame {
 
         lblProjektID.setText("Projekt-ID");
 
-        tfProjektID.setText("jTextField1");
-
         lblProjektNamn.setText("Projektnamn");
-
-        tfProjektNamn.setText("jTextField1");
 
         lblBeskrivningProjekt.setText("Beskrivning");
 
-        tfBeskrivningProjekt.setText("jTextField1");
-
         lblStartdatum.setText("Startdatum");
-
-        tfStartdatum.setText("jTextField1");
 
         lblSlutdatum.setText("Slutdatum");
 
-        tfSlutdatum.setText("jTextField1");
-
         lblKostnad.setText("Kostnad");
-
-        tfKostnad.setText("jTextField1");
 
         lblStatus.setText("Status");
 
-        tfStatus.setText("jTextField1");
-
         lblPrioProjekt.setText("Prioritet");
-
-        tfPrioProjekt.setText("jTextField1");
 
         lblProjektchef.setText("Projektchef");
 
-        tfProjektchef.setText("jTextField1");
-
         lblLand.setText("Land");
-
-        tfLand.setText("jTextField2");
 
         btnAndraUppgifterMinaProjekt.setText("Ändra uppgifter");
 
@@ -169,15 +149,15 @@ public class MinaProjekt extends javax.swing.JFrame {
                                 .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfProjektNamn, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                                    .addComponent(tfLand, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfKostnad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfPrioProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfProjektchef, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfBeskrivningProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                                    .addComponent(tfProjektID))))
+                                    .addComponent(tfProjektID)
+                                    .addComponent(tfStartdatum)
+                                    .addComponent(tfSlutdatum)
+                                    .addComponent(tfKostnad)
+                                    .addComponent(tfStatus)
+                                    .addComponent(tfPrioProjekt)
+                                    .addComponent(tfProjektchef)
+                                    .addComponent(tfLand))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAndraUppgifterMinaProjekt)
                         .addGap(50, 50, 50))
@@ -255,9 +235,16 @@ public class MinaProjekt extends javax.swing.JFrame {
         String minaProjektNamn = cbMinaProjekt.getSelectedItem().toString();
 
         try {
-            String sqlFraga = "SELECT * FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid WHERE ans_proj.aid = " + aid + " AND projektnamn = '" + minaProjektNamn + "'";
-            System.out.println(sqlFraga);
-            HashMap<String, String> minaProjekt = idb.fetchRow(sqlFraga);
+            String sqlFraga1 = "SELECT * FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid WHERE ans_proj.aid = " + aid + " AND projektnamn = '" + minaProjektNamn + "'";
+            System.out.println(sqlFraga1);
+            HashMap<String, String> minaProjekt = idb.fetchRow(sqlFraga1);
+            
+            String sqlFraga2 = "SELECT namn FROM land WHERE lid = '"+ minaProjekt.get("land")+"'";
+            String land = idb.fetchSingle(sqlFraga2);
+            
+            String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid ='" +minaProjekt.get("projektchef")+"'";
+            String projektchef = idb.fetchSingle(sqlFraga3);
+            
             tfProjektID.setText(minaProjekt.get("pid"));
             tfProjektID.setEditable(false);
             lblProjektID.requestFocus();
@@ -275,9 +262,9 @@ public class MinaProjekt extends javax.swing.JFrame {
             tfStatus.setEditable(false);
             tfPrioProjekt.setText(minaProjekt.get("prioritet"));
             tfPrioProjekt.setEditable(false);
-            tfProjektchef.setText(minaProjekt.get("projektchef"));
+            tfProjektchef.setText(projektchef);
             tfProjektchef.setEditable(false);
-            tfLand.setText(minaProjekt.get("land"));
+            tfLand.setText(land);
             tfLand.setEditable(false);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
