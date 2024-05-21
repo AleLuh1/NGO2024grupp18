@@ -27,9 +27,33 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
+        LaggaTillNyPartnerID();
         this.setLocationRelativeTo(null);
     }
 
+    // Genererar ett nytt partner-id (pid) när man lägger till nya partners 
+    private String LaggaTillNyPartnerID() {
+        String nyPartnerId = null;
+        try {
+            //SQL-fråga för att hämta ut största pid som finns i partner
+            String sqlFragaHogstPid = "SELECT max(pid) FROM partner";
+            System.out.println(sqlFragaHogstPid);
+            //Hämtar ut resultatet från sql-frågan i en sträng 
+            String hogstPartnerPidDB = idb.fetchSingle(sqlFragaHogstPid);
+            //Konverterar strängen med högst pid till en int
+            int hogstPartnerPidInt = Integer.parseInt(hogstPartnerPidDB);
+            int nyPartnerPidInt = hogstPartnerPidInt + 1;
+            System.out.println(nyPartnerPidInt);
+            nyPartnerId = Integer.toString(nyPartnerPidInt);
+            tfPartnerIDLaggTillPartner.setText(nyPartnerId);
+            tfPartnerIDLaggTillPartner.setEditable(false);
+            lblPartnerIDLaggTillPartner.requestFocus();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return nyPartnerId;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,7 +84,8 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
         btnSparaLaggTillPartner = new javax.swing.JButton();
         lblPartnerIDLaggTillPartner = new javax.swing.JLabel();
         tfPartnerIDLaggTillPartner = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblPartnerNamnLaggTillPartner = new javax.swing.JLabel();
+        tfPartnerNamnLaggTillPartner = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,7 +124,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
 
         lblPartnerIDLaggTillPartner.setText("Partner-ID");
 
-        jLabel1.setText("jLabel1");
+        lblPartnerNamnLaggTillPartner.setText("Partnernamn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,16 +142,18 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSamarbetspartnerRuta)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblStadLaggTillPartner)
-                                    .addComponent(lblProjektIDLaggTillPartner)
-                                    .addComponent(lblEpostLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(lblTnrLaggTillPartner)
-                                    .addComponent(lblAdressLaggTillPartner)
-                                    .addComponent(lblBranchLaggTillPartner)
-                                    .addComponent(lblPartnerIDLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblNamnLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblStadLaggTillPartner)
+                                        .addComponent(lblProjektIDLaggTillPartner)
+                                        .addComponent(lblEpostLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addComponent(lblTnrLaggTillPartner)
+                                        .addComponent(lblAdressLaggTillPartner)
+                                        .addComponent(lblBranchLaggTillPartner)
+                                        .addComponent(lblPartnerIDLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblNamnLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblPartnerNamnLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfProjektIDLaggTillPartner)
@@ -137,8 +164,8 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                                     .addComponent(tfAdressLaggTillPartner)
                                     .addComponent(tfBranchLaggTillPartner)
                                     .addComponent(tfStadLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                                    .addComponent(tfPartnerIDLaggTillPartner)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfPartnerIDLaggTillPartner)
+                                    .addComponent(tfPartnerNamnLaggTillPartner))))
                         .addContainerGap(54, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -151,8 +178,10 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                     .addComponent(lblPartnerIDLaggTillPartner)
                     .addComponent(tfPartnerIDLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPartnerNamnLaggTillPartner)
+                    .addComponent(tfPartnerNamnLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblProjektIDLaggTillPartner, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tfProjektIDLaggTillPartner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -281,13 +310,13 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaLaggTillPartner;
     private javax.swing.JButton btnTillbakaLaggTillPartner;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblAdressLaggTillPartner;
     private javax.swing.JLabel lblBranchLaggTillPartner;
     private javax.swing.JLabel lblEpostLaggTillPartner;
     private javax.swing.JLabel lblNamnLaggTillPartner;
     private javax.swing.JLabel lblPartnerIDLaggTillPartner;
+    private javax.swing.JLabel lblPartnerNamnLaggTillPartner;
     private javax.swing.JLabel lblProjektIDLaggTillPartner;
     private javax.swing.JLabel lblSamarbetspartnerRuta;
     private javax.swing.JLabel lblStadLaggTillPartner;
@@ -298,6 +327,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     private javax.swing.JTextField tfKontaktpersonLaggTillPartner;
     private javax.swing.JTextField tfNamnLaggTillPartner;
     private javax.swing.JTextField tfPartnerIDLaggTillPartner;
+    private javax.swing.JTextField tfPartnerNamnLaggTillPartner;
     private javax.swing.JTextField tfProjektIDLaggTillPartner;
     private javax.swing.JTextField tfStadLaggTillPartner;
     private javax.swing.JTextField tfTelefonLaggTillPartner;
