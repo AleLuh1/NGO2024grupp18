@@ -186,26 +186,28 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTaBortAnstalldActionPerformed
 
     private void cbTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTaBortAnstalldActionPerformed
+        btnTaBortAnstalld.setVisible(true);
+
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
 
         try {
-            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + anstalld + "'";
+
+            String fornamn = anstalld.split(" ")[0];
+            String efternamn = anstalld.split(" ")[1];
+            
+            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
             System.out.println(sqlFragaAid);
             String aid = idb.fetchSingle(sqlFragaAid);
+
+            String sqlFraga13 = "SELECT pid FROM projekt WHERE projektchef =" + aid;
+            System.out.println(sqlFraga13);
+            String projektchef = idb.fetchSingle(sqlFraga13);
             
-            
-            
-//           String sqlFraga = "SELECT projektchef FROM projekt WHERE aid = '" + projektchef + "'";
-//            System.out.println(sqlFraga);
-//            
-//            HashMap<String, String> projektchefLista = idb.fetchRow(sqlFraga);
-//            
-//           
-//            if(projektchef.equals(projektchefLista)){
-//            JOptionPane.showMessageDialog(null, "Vänligen utse en ny projektchef innan projektet kan tas bort");
-//            
-//            }
-            
+           
+            if(projektchef != null){
+                JOptionPane.showMessageDialog(null, "Vänligen utse en ny projektchef innan projektet kan tas bort");
+                btnTaBortAnstalld.setVisible(false);
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
