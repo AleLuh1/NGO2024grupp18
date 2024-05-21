@@ -318,12 +318,12 @@ public class AllaProjekt extends javax.swing.JFrame {
                 String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + projektNamnLista.get("land") + "'";
                 String land = idb.fetchSingle(sqlFraga2);
 
-                String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid ='" + projektNamnLista.get("projektchef") + "'";
-                String projektchef = idb.fetchSingle(sqlFraga3);
+                String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid ='" + projektNamnLista.get("projektchef") + "'";
+                HashMap<String,String> projektchef = idb.fetchRow(sqlFraga3);
 
                 tfNyttProjektNyPid.setText(projektNamnLista.get("pid"));
                 tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
-                tfProjektchefAllaProjekt.setText(projektchef);
+                tfProjektchefAllaProjekt.setText(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
                 tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
                 tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
                 tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
