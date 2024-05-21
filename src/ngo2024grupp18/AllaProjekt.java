@@ -315,16 +315,22 @@ public class AllaProjekt extends javax.swing.JFrame {
             }
             
             if (projektNamnLista != null) {
+                String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + projektNamnLista.get("land") + "'";
+                String land = idb.fetchSingle(sqlFraga2);
+
+                String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid ='" + projektNamnLista.get("projektchef") + "'";
+                String projektchef = idb.fetchSingle(sqlFraga3);
+
                 tfNyttProjektNyPid.setText(projektNamnLista.get("pid"));
                 tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
-                tfProjektchefAllaProjekt.setText(projektNamnLista.get("projektchef"));
+                tfProjektchefAllaProjekt.setText(projektchef);
                 tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
                 tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
                 tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
                 tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
                 tfStatusAllaProjekt.setText(projektNamnLista.get("status"));
                 tfPrioAllaProjekt.setText(projektNamnLista.get("prioritet"));
-                tfLandAllaProjekt.setText(projektNamnLista.get("land"));
+                tfLandAllaProjekt.setText(land);
                 tfHallbarhetsmalAllaProjekt.setText(("hallbarhetsmal"));
 
             }

@@ -30,7 +30,6 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-
     private void fyllCBAvdelningensProjekt() {
         String avdProjNamn = cbAvdelningensProjekt.getSelectedItem().toString();
         try {
@@ -266,16 +265,23 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             //ChatGPTs lösning String sqlFraga = "SELECT projekt.* FROM projekt, JOIN ans_proj ON projekt.pid = ans_proj.pid, JOIN anstalld ON ans_proj.aid = anstalld.aid, JOIN avdelning ON anstalld.avdelning = avdelning.avdid WHERE avdelning.avdid = '" + avdProj + "'";
             System.out.println(sqlFraga);
             HashMap<String, String> avdelningensProjekt = idb.fetchRow(sqlFraga);
-                tfAvdProjID.setText(avdelningensProjekt.get("pid"));
-                tfAvdProjNamn.setText(avdelningensProjekt.get("projektnamn"));
-                taAvdProjBesk.setText(avdelningensProjekt.get("beskrivning"));
-                tfAvdProjStart.setText(avdelningensProjekt.get("startdatum"));
-                tfAvdProjSlut.setText(avdelningensProjekt.get("slutdatum"));
-                tfAvdProjKostn.setText(avdelningensProjekt.get("kostnad"));
-                tfAvdProjStatus.setText(avdelningensProjekt.get("status"));
-                tfAvdProjPrio.setText(avdelningensProjekt.get("prioritet"));
-                tfAvdProjChef.setText(avdelningensProjekt.get("projektchef"));
-                tfAvdProjLand.setText(avdelningensProjekt.get("land"));
+
+            String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + avdelningensProjekt.get("land") + "'";
+            String land = idb.fetchSingle(sqlFraga2);
+
+            String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid ='" + avdelningensProjekt.get("projektchef") + "'";
+            String projektchef = idb.fetchSingle(sqlFraga3);
+            
+            tfAvdProjID.setText(avdelningensProjekt.get("pid"));
+            tfAvdProjNamn.setText(avdelningensProjekt.get("projektnamn"));
+            taAvdProjBesk.setText(avdelningensProjekt.get("beskrivning"));
+            tfAvdProjStart.setText(avdelningensProjekt.get("startdatum"));
+            tfAvdProjSlut.setText(avdelningensProjekt.get("slutdatum"));
+            tfAvdProjKostn.setText(avdelningensProjekt.get("kostnad"));
+            tfAvdProjStatus.setText(avdelningensProjekt.get("status"));
+            tfAvdProjPrio.setText(avdelningensProjekt.get("prioritet"));
+            tfAvdProjChef.setText(projektchef);
+            tfAvdProjLand.setText(land);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
