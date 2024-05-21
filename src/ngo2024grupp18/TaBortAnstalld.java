@@ -3,23 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
-
 import java.util.ArrayList;
 import oru.inf.InfDB;
-import java.util.HashMap;
-
 /**
  *
  * @author ellenor
  */
 public class TaBortAnstalld extends javax.swing.JFrame {
-
     private InfDB idb;
     private String aid;
     private String avdid;
 
     /**
-     * Creates new form TaBortAnstalld
+     * Creates new form TaBortAnstalld1
      */
     public TaBortAnstalld(InfDB idb, String aid, String avdid) {
         initComponents();
@@ -27,10 +23,31 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-        
-
+        fyllCBTaBortAnstalld();
     }
+    
+    private void fyllCBTaBortAnstalld(){
+    
+    try {
+            String sqlFraga = "SELECT fornamn FROM anstalld";
+            System.out.println(sqlFraga);
+            ArrayList<String> namnLista = idb.fetchColumn(sqlFraga);
 
+            for (String ettNamn : namnLista) {
+                cbTaBortAnstalld.addItem(ettNamn);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+    
+    
+    }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,74 +58,73 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTaBortAnstalldRuta = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         cbTaBortAnstalld = new javax.swing.JComboBox<>();
-        btnTillbakaTaBortAnstalld = new javax.swing.JButton();
-        btnTaBortTaBortAnstalld = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblTaBortAnstalldRuta.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        lblTaBortAnstalldRuta.setText("Ta bort anställd");
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setText("Ta bort anställd");
 
         cbTaBortAnstalld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj anställd" }));
 
-        btnTillbakaTaBortAnstalld.setText("Tillbaka");
-        btnTillbakaTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Tillbaka");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTillbakaTaBortAnstalldActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        btnTaBortTaBortAnstalld.setText("Ta bort");
+        jButton2.setText("Ta bort");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTaBortAnstalldRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbTaBortAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnTillbakaTaBortAnstalld)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                        .addComponent(btnTaBortTaBortAnstalld)
-                        .addGap(28, 28, 28))))
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(53, 53, 53))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblTaBortAnstalldRuta)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTillbakaTaBortAnstalld)
-                    .addComponent(btnTaBortTaBortAnstalld))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTillbakaTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaTaBortAnstalldActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.toBack();
         Meny nyTaBortAnstalld = new Meny(idb, aid, avdid);
         nyTaBortAnstalld.setVisible(true);
-        nyTaBortAnstalld.toFront();
-    }//GEN-LAST:event_btnTillbakaTaBortAnstalldActionPerformed
+        nyTaBortAnstalld.toFront();    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTaBortTaBortAnstalld;
-    private javax.swing.JButton btnTillbakaTaBortAnstalld;
     private javax.swing.JComboBox<String> cbTaBortAnstalld;
-    private javax.swing.JLabel lblTaBortAnstalldRuta;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
