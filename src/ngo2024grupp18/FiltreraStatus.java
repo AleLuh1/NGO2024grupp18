@@ -36,6 +36,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         Fyllcb();
+        this.setLocationRelativeTo(null);
     }
 
     FiltreraStatus(InfDB idb, String aid, String avdid) {
@@ -135,16 +136,16 @@ public class FiltreraStatus extends javax.swing.JFrame {
                 .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-HEAD
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnTillbakaStatus)
-                .addGap(25, 25, 25))
+                .addGap(25, 25, 25)));
 
-                .addGap(18, 18, 18)
-                .addComponent(btnTillbakaStatus)
-                .addContainerGap(44, Short.MAX_VALUE))
- 5275c0ccaa982fc07bb583e8cb8ed0322e96dc6a
-        );
+                // .addGap(18, 18, 18)
+                // .addComponent(btnTillbakaStatus)
+                // .addContainerGap(44, Short.MAX_VALUE));
+
+        
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,51 +219,13 @@ HEAD
 
     private void btnTillbakaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaStatusActionPerformed
         this.toBack();
-
         Projekt nyttProjekt = new Projekt(idb,aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
-
-        Projekt nyttProject = new Projekt(idb, aid, avdid);
-        nyttProject.setVisible(true);
-        nyttProject.toFront();
- 5275c0ccaa982fc07bb583e8cb8ed0322e96dc6a
+ 
     }//GEN-LAST:event_btnTillbakaStatusActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(FiltreraStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(FiltreraStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(FiltreraStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(FiltreraStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FiltreraStatus().setVisible(true);
-//            }
-//        });
-//    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaStatus;
