@@ -29,8 +29,8 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllCBMinaProjekt();
         this.setLocationRelativeTo(null);
     }
-// Tror inte metoden funkar nu, kanske för att man måste lägga till ytterligare sql-frågor för att uppdatera andra berörda tabller
-    // när man lägger till nytt projekt? D.v.s. ans_proj osv
+// Tror inte fyllCBMinaProjekt-metoden funkar nu, kanske för att man måste lägga till ytterligare sql-frågor för att uppdatera andra berörda tabller
+    // när man lägger till nytt projekt? D.v.s. ans_proj. Ej gjort detta än!
 
     public void fyllCBMinaProjekt() {
         try {
