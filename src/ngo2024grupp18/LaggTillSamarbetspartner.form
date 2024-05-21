@@ -30,17 +30,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblSamarbetspartnerRuta" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblProjektIDLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNamnLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEpostLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTnrLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblAdressLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblBranchLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStadLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="tfProjektIDLaggTillPartner" max="32767" attributes="0"/>
                                   <Component id="tfNamnLaggTillPartner" max="32767" attributes="0"/>
@@ -61,6 +51,20 @@
                       <Component id="btnSparaLaggTillPartner" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="lblProjektIDLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNamnLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEpostLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTnrLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAdressLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBranchLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStadLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -70,47 +74,49 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="lblSamarbetspartnerRuta" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblProjektIDLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfProjektIDLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblProjektIDLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfProjektIDLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblNamnLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfNamnLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblNamnLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfNamnLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblEpostLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfKontaktpersonLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfEpostLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTnrLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfTelefonLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAdressLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAdressLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfEpostLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBranchLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfBranchLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTnrLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfTelefonLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblStadLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfStadLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAdressLaggTillPartner" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAdressLaggTillPartner" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblBranchLaggTillPartner" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfBranchLaggTillPartner" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblStadLaggTillPartner" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfStadLaggTillPartner" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="52" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnTillbakaLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSparaLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -200,6 +206,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaLaggTillPartnerActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
