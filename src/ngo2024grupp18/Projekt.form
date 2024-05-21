@@ -26,25 +26,23 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblProjekt" min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="btnMinaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAvdProjekt" max="32767" attributes="0"/>
-                          <Component id="btnLandProjekt" max="32767" attributes="0"/>
-                          <Component id="btnHallbarMalProjekt" max="32767" attributes="0"/>
-                          <Component id="btnSamarbetsPartnersProjekt" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnTillbakaProjekt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="110" max="32767" attributes="0"/>
-                      <Component id="btnSokAvdProjDatum" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnTillbakaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblProjekt" min="-2" pref="88" max="-2" attributes="0"/>
+                      <Component id="btnMinaProjekt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnAvdProjekt" max="32767" attributes="0"/>
+                      <Component id="btnLandProjekt" max="32767" attributes="0"/>
+                      <Component id="btnHallbarMalProjekt" max="32767" attributes="0"/>
+                      <Component id="btnSamarbetsPartnersProjekt" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnSokAvdProjDatum" max="32767" attributes="0"/>
+                  <Component id="btnFiltreraStatus" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,7 +52,10 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="lblProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAllaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFiltreraStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnMinaProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -146,6 +147,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokAvdProjDatumActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFiltreraStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Filtrera efter status"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFiltreraStatusActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
