@@ -199,15 +199,27 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             System.out.println(sqlFragaAid);
             String aid = idb.fetchSingle(sqlFragaAid);
 
-            String sqlFraga13 = "SELECT pid FROM projekt WHERE projektchef =" + aid;
+            String sqlFraga13 = "SELECT projektnamn FROM projekt WHERE projektchef =" + aid;
             System.out.println(sqlFraga13);
-            String projektchef = idb.fetchSingle(sqlFraga13);
+            ArrayList<HashMap<String,String>> projekter = idb.fetchRows(sqlFraga13);
             
            
-            if(projektchef != null){
-                JOptionPane.showMessageDialog(null, "Vänligen utse en ny projektchef innan projektet kan tas bort");
-                btnTaBortAnstalld.setVisible(false);
+            if (projekter != null) {
+            ArrayList<String> projektNamnLista = new ArrayList<>();
+
+            for (HashMap<String, String> ettProjekt : projekter) {
+                projektNamnLista.add(ettProjekt.get("projektnamn"));
             }
+
+            String message = "Vänligen utse en ny projektchef innan projektet kan tas bort:\n";
+            for (String projektNamn : projektNamnLista) {
+                message += projektNamn + "\n";
+            }
+
+            JOptionPane.showMessageDialog(null, message);
+            btnTaBortAnstalld.setVisible(false); 
+        }
+    
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
