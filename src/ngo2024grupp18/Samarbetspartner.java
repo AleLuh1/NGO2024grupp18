@@ -256,11 +256,16 @@ public class Samarbetspartner extends javax.swing.JFrame {
             String telefonnummer = tfTnrSam.getText();
             String adress = tfAdressSam.getText();
             String branch = tfBranchSam.getText();
+            
             String stadStr = tfStadSam.getText();
-            int stad = Integer.parseInt(stadStr);
-
-            String sqlFraga = "INSERT INTO partner (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) VALUES(" + partnerID + ",'" + namn + "', '" + kontaktperson + "', '" + kontaktEpost + "', '" + telefonnummer + "', '" + adress + "', '" + branch + "', " + stad + ")";
-            idb.insert(sqlFraga);
+            String sqlFraga1 = "SELECT sid FROM stad WHERE namn = '" + stadStr + "'";
+            System.out.println(sqlFraga1);
+            String stadIDStr = idb.fetchSingle(sqlFraga1);
+            int stadIDInt = Integer.parseInt(stadIDStr);
+            // pid = " + partnerID + ", 
+            
+            String sqlFraga2 = "UPDATE partner SET namn = '" + namn + "', kontaktperson = '" + kontaktperson + "', kontaktepost = '" + kontaktEpost + "', telefon = '" + telefonnummer + "', adress = '" + adress + "', branch = '" + branch + "', stad = " + stadIDInt + " WHERE pid = " + partnerID + "";
+            idb.update(sqlFraga2);
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
