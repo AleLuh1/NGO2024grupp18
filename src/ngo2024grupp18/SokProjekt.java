@@ -17,10 +17,11 @@ import ngo2024grupp18.Validering;
  * @author marin
  */
 public class SokProjekt extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
     private String avdid;
-    
+
     /**
      * Creates new form SokProjekt
      */
@@ -72,8 +73,10 @@ public class SokProjekt extends javax.swing.JFrame {
         taResultatSoktaProjekt.setRows(5);
         jScrollPane1.setViewportView(taResultatSoktaProjekt);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel4.setText("ÅÅÅÅ-MM-DD");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel5.setText("ÅÅÅÅ-MM-DD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -98,7 +101,7 @@ public class SokProjekt extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)))
                     .addComponent(jScrollPane1))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,83 +123,49 @@ public class SokProjekt extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokProjektActionPerformed
-    String sokStartDatum = tfStartDatum.getText();
-    String sokSlutDatum = tfSlutDatum.getText();
-    int avdelning = Integer.parseInt(this.avdid);
-    taResultatSoktaProjekt.setText("");
-    if (sokStartDatum.isEmpty() && sokSlutDatum.isEmpty())
-              {
-              JOptionPane.showMessageDialog(null, "Vänligen fyll i båda fälten");
-               }
-else {
-        String sqlFraga = "select distinct projekt.pid, projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, projekt.prioritet, projekt.projektchef, projekt.land FROM ngo_2024.projekt " +
-"join ngo_2024.ans_proj on ans_proj.pid = projekt.pid " +
-"join ngo_2024.anstalld on anstalld.aid = ans_proj.aid " +
-"where anstalld.avdelning = " + avdelning + " and status = 'Pågående' and startdatum >= '" + sokStartDatum + "' and slutdatum <= '" + sokSlutDatum + "' ";
+        String sokStartDatum = tfStartDatum.getText();
+        String sokSlutDatum = tfSlutDatum.getText();
+        int avdelning = Integer.parseInt(this.avdid);
+        taResultatSoktaProjekt.setText("");
+        if (sokStartDatum.isEmpty() && sokSlutDatum.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i båda fälten");
+        } else {
+            String sqlFraga = "select distinct projekt.pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land FROM projekt "
+                    + "join ngo_2024.ans_proj on ans_proj.pid = projekt.pid "
+                    + "join ngo_2024.anstalld on anstalld.aid = ans_proj.aid "
+                    + "where anstalld.avdelning = " + avdelning + " and status = 'Pågående' and startdatum >= '" + sokStartDatum + "' and slutdatum <= '" + sokSlutDatum + "' ";
 
-
-try {
-            ArrayList<HashMap<String, String>> resultatListaProjekt = idb.fetchRows(sqlFraga);
-            for (int i = 0; i < resultatListaProjekt.size(); i++) {
-                taResultatSoktaProjekt.append("Pid: " + resultatListaProjekt.get(i).get("pid") + "\n " + 
-                "Namn: " + resultatListaProjekt.get(i).get("projektnamn") + "\n " + 
-                "Beskrivning: " + resultatListaProjekt.get(i).get("beskrivning") + "\n " + 
-                "Startdatum: " + resultatListaProjekt.get(i).get("startdatum") + "\n " + 
-                "Slutdatum: " + resultatListaProjekt.get(i).get("slutdatum") + "\n " + 
-                "Kostnad: " + resultatListaProjekt.get(i).get("kostnad") + "\n " + 
-                "Status: " + resultatListaProjekt.get(i).get("status") + "\n " + 
-                "Prioritet: " + resultatListaProjekt.get(i).get("prioritet") + "\n " + 
-                "Projektchef(aid): " + resultatListaProjekt.get(i).get("projektchef") + "\n " + 
-                "Land(lid): " + resultatListaProjekt.get(i).get("land") + "\n " + "------------------- \n");
-         }
-            taResultatSoktaProjekt.setCaretPosition(0);
-        } catch (Exception ex) {
-           System.out.println(ex.getMessage());
-       }
-   }
+            try {
+                ArrayList<HashMap<String, String>> resultatListaProjekt = idb.fetchRows(sqlFraga);
+                for (int i = 0; i < resultatListaProjekt.size(); i++) {
+                    taResultatSoktaProjekt.append("Pid: " + resultatListaProjekt.get(i).get("pid") + "\n "
+                            + "Namn: " + resultatListaProjekt.get(i).get("projektnamn") + "\n "
+                            + "Beskrivning: " + resultatListaProjekt.get(i).get("beskrivning") + "\n "
+                            + "Startdatum: " + resultatListaProjekt.get(i).get("startdatum") + "\n "
+                            + "Slutdatum: " + resultatListaProjekt.get(i).get("slutdatum") + "\n "
+                            + "Kostnad: " + resultatListaProjekt.get(i).get("kostnad") + "\n "
+                            + "Status: " + resultatListaProjekt.get(i).get("status") + "\n "
+                            + "Prioritet: " + resultatListaProjekt.get(i).get("prioritet") + "\n "
+                            + "Projektchef(aid): " + resultatListaProjekt.get(i).get("projektchef") + "\n "
+                            + "Land(lid): " + resultatListaProjekt.get(i).get("land") + "\n " + "------------------- \n");
+                }
+                taResultatSoktaProjekt.setCaretPosition(0);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnSokProjektActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SokProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SokProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SokProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SokProjekt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               // new SokProjekt().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSokProjekt;
