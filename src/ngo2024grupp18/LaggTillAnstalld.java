@@ -7,6 +7,7 @@ package ngo2024grupp18;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.security.SecureRandom;
 
 /**
  *
@@ -16,7 +17,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String avdid; 
+    private String avdid;
 
     /**
      * Creates new form Anstallda
@@ -25,7 +26,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.aid = aid;
-        this.avdid = avdid; 
+        this.avdid = avdid;
         LaggaTillNyAnstalldAid();
         this.setLocationRelativeTo(null);
     }
@@ -51,6 +52,19 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         return nyAnstalldAid;
+    }
+
+    private String skapaSlumpatLosenord() {
+        String tecken = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+<>?";
+        int losenordLangd = 11;
+        SecureRandom slumpatLosenord = new SecureRandom();
+        StringBuilder losenord = new StringBuilder(losenordLangd);
+
+        for (int i = 0; i < losenordLangd; i++) {
+            int index = slumpatLosenord.nextInt(tecken.length());
+            losenord.append(tecken.charAt(index));
+        }
+        return losenord.toString();
     }
 
     /**
@@ -220,19 +234,20 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         //get text från fälten och insert i databas
         String nyAnstalldAidStr = tfAidNyAnstalld.getText();
         int nyAnstalldAidInt = Integer.parseInt(nyAnstalldAidStr);
-        
+
         String nyAnstalldFornamn = tfFornamnNyAnstalld.getText();
-        if(nyAnstalldFornamn.isEmpty()) {
+        if (nyAnstalldFornamn.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i ett förnamn");
             return;
         }
-        
+
         String nyAnstalldEfternamn = tfEfternamnNyAnstalld.getText();
         String nyAnstalldAdress = tfAdressNyAnstalld.getText();
         String nyAnstalldEpost = tfEpostNyAnstalld.getText();
         String nyAnstalldTelefon = tfTelefonNyAnstalld.getText();
         String NyAnstalldAnstallningsDatum = tfAnstallningsdatumNyAnstalld.getText();
-        String NyAnstalldLosenord = tfLosenordNyAnstalld.getText();
+        String NyAnstalldLosenord = skapaSlumpatLosenord();
+        tfLosenordNyAnstalld.setText(NyAnstalldLosenord);
         String nyAnstalldAvd = tfAvdNyAnstalld.getText();
         int nyAnstalldAvdInt = Integer.parseInt(nyAnstalldAvd);
         try {
