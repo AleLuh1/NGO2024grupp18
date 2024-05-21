@@ -36,6 +36,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         Fyllcb();
+        this.setLocationRelativeTo(null);
     }
 
     FiltreraStatus(InfDB idb, String aid, String avdid) {
@@ -218,14 +219,9 @@ public class FiltreraStatus extends javax.swing.JFrame {
 
     private void btnTillbakaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaStatusActionPerformed
         this.toBack();
-
         Projekt nyttProjekt = new Projekt(idb,aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
-
-        Projekt nyttProject = new Projekt(idb, aid, avdid);
-        nyttProject.setVisible(true);
-        nyttProject.toFront();
  
     }//GEN-LAST:event_btnTillbakaStatusActionPerformed
 
