@@ -19,7 +19,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private String avdid;
 
     /**
-     * Creates new form Samarbetspartner
+     * Creates new form 
      */
     public Samarbetspartner(InfDB idb, String aid, String avdid) {
         initComponents();
@@ -69,7 +69,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
         lblAdressSam = new javax.swing.JLabel();
         lblBranchSam = new javax.swing.JLabel();
         lblStadSam = new javax.swing.JLabel();
-        tfProjektIDSam = new javax.swing.JTextField();
+        tfPartnerIDSam = new javax.swing.JTextField();
         tfNamnSam = new javax.swing.JTextField();
         tfKontaktpersonSam = new javax.swing.JTextField();
         tfEpostSam = new javax.swing.JTextField();
@@ -110,7 +110,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             }
         });
 
-        lblProjektIDSam.setText("Projekt-ID");
+        lblProjektIDSam.setText("Partner-ID");
 
         lblNamnSam.setText("Namn");
 
@@ -174,7 +174,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                                             .addComponent(lblStadSam))
                                         .addGap(39, 39, 39)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tfProjektIDSam)
+                                            .addComponent(tfPartnerIDSam)
                                             .addComponent(tfNamnSam)
                                             .addComponent(tfKontaktpersonSam)
                                             .addComponent(tfEpostSam)
@@ -198,7 +198,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProjektIDSam)
-                    .addComponent(tfProjektIDSam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfPartnerIDSam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNamnSam)
@@ -248,17 +248,18 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private void btnSparAndringarSamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparAndringarSamActionPerformed
 
         try {
-
-            String projketID = tfProjektIDSam.getText();
+            String partnerIDStr = tfPartnerIDSam.getText();
+            int partnerID = Integer.parseInt(partnerIDStr);
             String namn = tfNamnSam.getText();
             String kontaktperson = tfKontaktpersonSam.getText();
             String kontaktEpost = tfEpostSam.getText();
             String telefonnummer = tfTnrSam.getText();
             String adress = tfAdressSam.getText();
             String branch = tfBranchSam.getText();
-            String stad = tfStadSam.getText();
+            String stadStr = tfStadSam.getText();
+            int stad = Integer.parseInt(stadStr);
 
-            String sqlFraga = " INSERT INTO partner WHERE pid = (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) VALUES('" + projketID + "','" + namn + "', '" + kontaktperson + "', '" + kontaktEpost + "', '" + telefonnummer + "', '" + adress + "', '" + branch + "', '" + stad + "')";
+            String sqlFraga = "INSERT INTO partner (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) VALUES(" + partnerID + ",'" + namn + "', '" + kontaktperson + "', '" + kontaktEpost + "', '" + telefonnummer + "', '" + adress + "', '" + branch + "', " + stad + ")";
             idb.insert(sqlFraga);
         } catch (Exception ex) {
 
@@ -285,7 +286,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + partnerNamnLista.get("stad") + "'";
                 String stad = idb.fetchSingle(sqlFraga2);
                 
-                tfProjektIDSam.setText(partnerNamnLista.get("pid"));
+                tfPartnerIDSam.setText(partnerNamnLista.get("pid"));
                 tfNamnSam.setText(partnerNamnLista.get("namn"));
                 tfKontaktpersonSam.setText(partnerNamnLista.get("kontaktperson"));
                 tfEpostSam.setText(partnerNamnLista.get("kontaktepost"));
@@ -310,7 +311,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             String sqlFraga = " DELETE FROM partner WHERE pid = '" + partnerNamn + "'";
 
             // rensar textfields från uppgifter
-            tfProjektIDSam.setText(" ");
+            tfPartnerIDSam.setText(" ");
             tfNamnSam.setText(" ");
             tfKontaktpersonSam.setText(" ");
             tfEpostSam.setText(" ");
@@ -354,7 +355,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private javax.swing.JTextField tfEpostSam;
     private javax.swing.JTextField tfKontaktpersonSam;
     private javax.swing.JTextField tfNamnSam;
-    private javax.swing.JTextField tfProjektIDSam;
+    private javax.swing.JTextField tfPartnerIDSam;
     private javax.swing.JTextField tfStadSam;
     private javax.swing.JTextField tfTnrSam;
     // End of variables declaration//GEN-END:variables
