@@ -213,7 +213,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
 
     private void btnTillbakaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaStatusActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
+        Projekt nyttProjekt = new Projekt(idb,aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaStatusActionPerformed

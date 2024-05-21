@@ -32,6 +32,11 @@ public class MinaUppgifter extends javax.swing.JFrame {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
             System.out.println(sqlFraga);
             HashMap<String, String> anstalld = idb.fetchRow(sqlFraga);
+            
+            String sqlFraga2 = "SELECT namn FROM avdelning WHERE avdid = '" + anstalld.get("avdelning") + "'";
+                String avdelning = idb.fetchSingle(sqlFraga2);
+            
+            
             lblAID.setText(("AnställningsID: " + anstalld.get("aid")));
             lblAID.requestFocus();
             lblRoll.setText("Roll: " + getRoll());
@@ -45,7 +50,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
          
             tfTelefonMinaUppgifter.setText(anstalld.get("telefon"));
            
-            tftAvdMinaUppgifter.setText(anstalld.get("avdelning"));
+            tftAvdMinaUppgifter.setText(avdelning);
             
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
         } catch (Exception ex) {
