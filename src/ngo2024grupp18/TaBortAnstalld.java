@@ -61,7 +61,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         cbTaBortAnstalld = new javax.swing.JComboBox<>();
         btnTillbakaTaBortAnstalld = new javax.swing.JButton();
         btnTaBortAnstalld = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,8 +88,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Gå till ändra projektchef");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,20 +105,16 @@ public class TaBortAnstalld extends javax.swing.JFrame {
                         .addGap(53, 53, 53))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(25, 25, 25))))
+                        .addGap(25, 251, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaTaBortAnstalld)
                     .addComponent(btnTaBortAnstalld))
@@ -139,43 +132,48 @@ public class TaBortAnstalld extends javax.swing.JFrame {
 
     private void btnTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldActionPerformed
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
-        try {
-            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + anstalld + "'";
-            System.out.println(sqlFragaAid);
-            String aid = idb.fetchSingle(sqlFragaAid);
+        
+        String fornamn = anstalld.split(" ")[0];
+                String efternamn = anstalld.split(" ")[1];
 
-            String sqlFraga1 = "DELETE FROM ans_proj WHERE aid = " + aid;
+        try {
+            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
+            System.out.println(sqlFragaAid);
+            String selectedAid = idb.fetchSingle(sqlFragaAid);
+
+            String sqlFraga1 = "DELETE FROM ans_proj WHERE aid = " + selectedAid;
             System.out.println(sqlFraga1);
             idb.delete(sqlFraga1);
 
-            String sqlFraga2 = "DELETE FROM admin WHERE aid = " + aid;
+            String sqlFraga2 = "DELETE FROM admin WHERE aid = " + selectedAid;
             System.out.println(sqlFraga2);
             idb.delete(sqlFraga2);
-
-            String sqlFraga8 = "DELETE FROM handlaggare WHERE mentor = " + aid;
-            System.out.println(sqlFraga8);
-            idb.delete(sqlFraga8);
-
-            String sqlFraga3 = "DELETE FROM handlaggare WHERE aid = " + aid;
-            System.out.println(sqlFraga3);
-            idb.delete(sqlFraga3);
-
-            String sqlFraga4 = "DELETE FROM avdelning WHERE chef = " + aid;
+            
+                        String sqlFraga4 = "DELETE FROM handlaggare WHERE aid = " + selectedAid + " OR mentor = "+ selectedAid;
             System.out.println(sqlFraga4);
             idb.delete(sqlFraga4);
 
-            String sqlFraga6 = "DELETE FROM ans_proj WHERE aid =" + aid;
+//            String sqlFraga3 = "DELETE FROM handlaggare WHERE mentor = " + selectedAid;
+//            System.out.println(sqlFraga3);
+//            idb.delete(sqlFraga3);
+
+
+
+            String sqlFraga5 = "DELETE FROM avdelning WHERE chef = " + selectedAid;
+            System.out.println(sqlFraga5);
+            idb.delete(sqlFraga5);
+
+            String sqlFraga6 = "DELETE FROM ans_proj WHERE aid =" + selectedAid;
             System.out.println(sqlFraga6);
             idb.delete(sqlFraga6);
 
-            String sqlFraga7 = "DELETE FROM anstalld WHERE aid = " + aid;
+            String sqlFraga7 = "DELETE FROM anstalld WHERE aid = " + selectedAid;
             System.out.println(sqlFraga7);
             idb.delete(sqlFraga7);
 
             JOptionPane.showMessageDialog(null, "Anställd borttagen");
 
             // uppdaterar comboboxen
-            cbTaBortAnstalld.removeAllItems();
             fyllCBTaBortAnstalld();
 
         } catch (Exception ex) {
@@ -187,6 +185,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
 
     private void cbTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTaBortAnstalldActionPerformed
         btnTaBortAnstalld.setVisible(true);
+
 
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
 
@@ -201,24 +200,24 @@ public class TaBortAnstalld extends javax.swing.JFrame {
 
             String sqlFraga13 = "SELECT projektnamn FROM projekt WHERE projektchef =" + aid;
             System.out.println(sqlFraga13);
-            ArrayList<HashMap<String,String>> projekter = idb.fetchRows(sqlFraga13);
+            ArrayList<HashMap<String,String>> projektLista = idb.fetchRows(sqlFraga13);
             
            
-            if (projekter != null) {
-            ArrayList<String> projektNamnLista = new ArrayList<>();
+            if (!projektLista.isEmpty()) {
+                ArrayList<String> projektNamnLista = new ArrayList<>();
 
-            for (HashMap<String, String> ettProjekt : projekter) {
-                projektNamnLista.add(ettProjekt.get("projektnamn"));
+                for (HashMap<String, String> ettProjekt : projektLista) {
+                    projektNamnLista.add(ettProjekt.get("projektnamn"));
+                }
+
+                String message = "Vänligen utse en ny projektchef för:\n";
+                for (String projektNamn : projektNamnLista) {
+                    message += projektNamn + "\n";
+                }
+
+                JOptionPane.showMessageDialog(null, message);
+                btnTaBortAnstalld.setVisible(false); 
             }
-
-            String message = "Vänligen utse en ny projektchef innan projektet kan tas bort:\n";
-            for (String projektNamn : projektNamnLista) {
-                message += projektNamn + "\n";
-            }
-
-            JOptionPane.showMessageDialog(null, message);
-            btnTaBortAnstalld.setVisible(false); 
-        }
     
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -232,7 +231,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     private javax.swing.JButton btnTaBortAnstalld;
     private javax.swing.JButton btnTillbakaTaBortAnstalld;
     private javax.swing.JComboBox<String> cbTaBortAnstalld;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
