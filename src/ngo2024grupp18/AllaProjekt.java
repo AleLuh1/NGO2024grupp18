@@ -307,7 +307,6 @@ public class AllaProjekt extends javax.swing.JFrame {
 
             HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
 
-5275c0ccaa982fc07bb583e8cb8ed0322e96dc6a
             String sqlFragaHallbMal = "SELECT DISTINCT namn FROM hallbarhetsmal JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid JOIN projekt ON projekt.pid = proj_hallbarhet.pid WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFragaHallbMal);
             ArrayList<String> projektHallbMal = idb.fetchColumn(sqlFragaHallbMal); 
