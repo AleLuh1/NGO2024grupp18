@@ -56,7 +56,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="tfProjektIDSam" max="32767" attributes="0"/>
+                                          <Component id="tfPartnerIDSam" max="32767" attributes="0"/>
                                           <Component id="tfNamnSam" max="32767" attributes="0"/>
                                           <Component id="tfKontaktpersonSam" max="32767" attributes="0"/>
                                           <Component id="tfEpostSam" max="32767" attributes="0"/>
@@ -90,7 +90,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblProjektIDSam" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfProjektIDSam" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPartnerIDSam" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -180,7 +180,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblProjektIDSam">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Projekt-ID"/>
+        <Property name="text" type="java.lang.String" value="Partner-ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNamnSam">
@@ -218,7 +218,7 @@
         <Property name="text" type="java.lang.String" value="Stad"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfProjektIDSam">
+    <Component class="javax.swing.JTextField" name="tfPartnerIDSam">
     </Component>
     <Component class="javax.swing.JTextField" name="tfNamnSam">
     </Component>

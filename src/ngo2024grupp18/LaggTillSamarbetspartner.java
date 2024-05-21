@@ -53,7 +53,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
         }
         return nyPartnerId;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +73,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
         lblBranchLaggTillPartner = new javax.swing.JLabel();
         lblStadLaggTillPartner = new javax.swing.JLabel();
         tfProjektIDLaggTillPartner = new javax.swing.JTextField();
-        tfNamnLaggTillPartner = new javax.swing.JTextField();
+        tfProjektNamnLaggTillPartner = new javax.swing.JTextField();
         tfKontaktpersonLaggTillPartner = new javax.swing.JTextField();
         tfEpostLaggTillPartner = new javax.swing.JTextField();
         tfTelefonLaggTillPartner = new javax.swing.JTextField();
@@ -157,7 +157,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfProjektIDLaggTillPartner)
-                                    .addComponent(tfNamnLaggTillPartner)
+                                    .addComponent(tfProjektNamnLaggTillPartner)
                                     .addComponent(tfKontaktpersonLaggTillPartner)
                                     .addComponent(tfEpostLaggTillPartner)
                                     .addComponent(tfTelefonLaggTillPartner)
@@ -188,7 +188,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNamnLaggTillPartner, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfNamnLaggTillPartner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfProjektNamnLaggTillPartner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEpostLaggTillPartner)
@@ -228,78 +228,64 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
         Samarbetspartner nyPartner = new Samarbetspartner(idb, aid, avdid);
         nyPartner.setVisible(true);
         nyPartner.toFront();
-
-
     }//GEN-LAST:event_btnTillbakaLaggTillPartnerActionPerformed
 
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
-
         // kontrollerar om textfields är tomma
-        String laggTillNamn = tfNamnLaggTillPartner.getText();
-
-        if (laggTillNamn.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vänligen fyll i namn");
-
-        }
-
+        String PartnerID = tfPartnerIDLaggTillPartner.getText();
+        //Gör om nya partnerID till en int igen för att kunna lägga i db 
+        int nyPartnerIdInt = Integer.parseInt(PartnerID);
+        
+        String partnerNamn = tfPartnerNamnLaggTillPartner.getText();
+        
+        String projektNamn = tfProjektNamnLaggTillPartner.getText();
+        
+        String projektIDStr = tfProjektIDLaggTillPartner.getText();
+        int projektID = Integer.parseInt(projektIDStr); 
+        
         String laggTillKontaktperson = tfKontaktpersonLaggTillPartner.getText();
 
         if (laggTillKontaktperson.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i kontaktperson");
-
         }
 
         String laggTillKontaktEpost = tfEpostLaggTillPartner.getText();
 
         if (laggTillKontaktEpost.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
-
         }
 
         String laggTillTelefonnummer = tfTelefonLaggTillPartner.getText();
 
         if (laggTillTelefonnummer.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
-
         }
 
         String laggTillAdress = tfAdressLaggTillPartner.getText();
 
         if (laggTillAdress.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
-
         }
 
         String laggTillBranch = tfBranchLaggTillPartner.getText();
 
         if (laggTillBranch.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i branch");
-
         }
 
-        String laggTillStad = tfStadLaggTillPartner.getText();
+        String laggTillStadStr = tfStadLaggTillPartner.getText();
+        // Gör om stad från String till int för att kunna lägga in i db
+        int laggTillStad = Integer.parseInt(laggTillStadStr);
 
-        if (laggTillStad.isEmpty()) {
+        if (laggTillStadStr.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i stad");
-
         }
 
         try {
-
-            String projektID = tfProjektIDLaggTillPartner.getText();
-            String namn = tfNamnLaggTillPartner.getText();
-            String kontaktperson = tfKontaktpersonLaggTillPartner.getText();
-            String kontaktEpost = tfEpostLaggTillPartner.getText();
-            String telefonnummer = tfTelefonLaggTillPartner.getText();
-            String adress = tfAdressLaggTillPartner.getText();
-            String branch = tfBranchLaggTillPartner.getText();
-            String stad = tfStadLaggTillPartner.getText();
-
-            String sqlFraga = " INSERT INTO partner WHERE pid = (pid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) VALUES ('" + projektID + "','" + namn + "', '" + kontaktperson + "', '" + kontaktEpost + "', '" + telefonnummer + "', '" + adress + "','" + stad + "', '" + branch + "')";
+            String sqlFraga = "INSERT INTO partner (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) VALUES (" + nyPartnerIdInt + ",'" + partnerNamn + "', '" + laggTillKontaktperson + "', '" + laggTillKontaktEpost + "', '" + laggTillTelefonnummer + "', '" + laggTillAdress + "', '" + laggTillBranch + "', " + laggTillStad + ")";
             idb.insert(sqlFraga);
 
         } catch (Exception ex) {
-
             System.out.println(ex.getMessage());
         }
 
@@ -325,10 +311,10 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     private javax.swing.JTextField tfBranchLaggTillPartner;
     private javax.swing.JTextField tfEpostLaggTillPartner;
     private javax.swing.JTextField tfKontaktpersonLaggTillPartner;
-    private javax.swing.JTextField tfNamnLaggTillPartner;
     private javax.swing.JTextField tfPartnerIDLaggTillPartner;
     private javax.swing.JTextField tfPartnerNamnLaggTillPartner;
     private javax.swing.JTextField tfProjektIDLaggTillPartner;
+    private javax.swing.JTextField tfProjektNamnLaggTillPartner;
     private javax.swing.JTextField tfStadLaggTillPartner;
     private javax.swing.JTextField tfTelefonLaggTillPartner;
     // End of variables declaration//GEN-END:variables
