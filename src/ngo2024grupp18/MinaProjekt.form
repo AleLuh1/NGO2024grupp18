@@ -49,15 +49,15 @@
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="tfProjektNamn" pref="183" max="32767" attributes="0"/>
-                                  <Component id="tfLand" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="tfStartdatum" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="tfSlutdatum" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="tfKostnad" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="tfStatus" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="tfPrioProjekt" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="tfProjektchef" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                   <Component id="tfBeskrivningProjekt" pref="183" max="32767" attributes="0"/>
                                   <Component id="tfProjektID" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfStartdatum" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfSlutdatum" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfKostnad" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfStatus" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfPrioProjekt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfProjektchef" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfLand" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -158,9 +158,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfProjektID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblProjektNamn">
       <Properties>
@@ -168,9 +165,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfProjektNamn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblBeskrivningProjekt">
       <Properties>
@@ -178,9 +172,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfBeskrivningProjekt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblStartdatum">
       <Properties>
@@ -188,9 +179,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfStartdatum">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSlutdatum">
       <Properties>
@@ -198,9 +186,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfSlutdatum">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKostnad">
       <Properties>
@@ -208,9 +193,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfKostnad">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblStatus">
       <Properties>
@@ -218,9 +200,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfStatus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrioProjekt">
       <Properties>
@@ -228,9 +207,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfPrioProjekt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblProjektchef">
       <Properties>
@@ -238,9 +214,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfProjektchef">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblLand">
       <Properties>
@@ -248,9 +221,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLand">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAndraUppgifterMinaProjekt">
       <Properties>

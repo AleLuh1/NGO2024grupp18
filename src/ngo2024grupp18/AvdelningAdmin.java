@@ -242,14 +242,20 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             HashMap<String, String> avdLista = idb.fetchRow(sqlFraga);
 
             if (avdLista != null) {
+                String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + avdLista.get("stad") + "'";
+                String stad = idb.fetchSingle(sqlFraga2);
+                
+                String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid = '" +avdLista.get("chef")+"'";
+                String avdChef = idb.fetchSingle(sqlFraga3);
+                
                 tfAvdelningsIDAvdAdmin.setText(avdLista.get("avdid"));
                 tfNamnAvdAdmin.setText(avdLista.get("namn"));
                 tfBeskrivningAvdAdmin.setText(avdLista.get("beskrivning"));
                 tfAdressAvdAdmin.setText(avdLista.get("adress"));
                 tfEpostAvdAdmin.setText(avdLista.get("epost"));
                 tfTnrAvdAdmin.setText(avdLista.get("telefon"));
-                tfStadAvdAdmin.setText(avdLista.get("stad"));
-                tfChefAvdAdmin.setText(avdLista.get("chef"));
+                tfStadAvdAdmin.setText(stad);
+                tfChefAvdAdmin.setText(avdChef);
             }
 
         } catch (Exception ex) {
