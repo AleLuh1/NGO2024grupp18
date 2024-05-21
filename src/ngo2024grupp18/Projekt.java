@@ -45,6 +45,7 @@ public class Projekt extends javax.swing.JFrame {
         btnLandProjekt = new javax.swing.JButton();
         btnHallbarhetsMal = new javax.swing.JButton();
         btnSamarbetspartnerProjekt = new javax.swing.JButton();
+        btnSokAvdProjDatum = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +98,10 @@ public class Projekt extends javax.swing.JFrame {
         btnSamarbetspartnerProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSamarbetspartnerProjektActionPerformed(evt);
+        btnSokAvdProjDatum.setText("Sök projekt på datum");
+        btnSokAvdProjDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAvdProjDatumActionPerformed(evt);
             }
         });
 
@@ -110,16 +115,21 @@ public class Projekt extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSamarbetspartnerProjekt)
                         .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnTillbakaProj)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                        .addComponent(btnSokAvdProjDatum)
+                        .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnHallbarhetsMal)
                             .addComponent(btnLandProjekt)
                             .addComponent(lblProjektRuta)
                             .addComponent(btnTillbakaProj)
-                            .addComponent(btnAvdProjekt)
-                            .addComponent(btnMinaProjekt)
-                            .addComponent(btnAllaProjekt))
                         .addContainerGap(220, Short.MAX_VALUE))))
+                            .addComponent(btnAllaProjekt)
+                            .addComponent(btnAvdProjekt)
+                            .addComponent(btnMinaProjekt))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +149,10 @@ public class Projekt extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSamarbetspartnerProjekt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(btnTillbakaProj)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTillbakaProj)
+                    .addComponent(btnSokAvdProjDatum))
                 .addGap(34, 34, 34))
         );
 
@@ -184,6 +197,10 @@ public class Projekt extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnSamarbetspartnerProjektActionPerformed
+    private void btnSokAvdProjDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAvdProjDatumActionPerformed
+        this.setVisible(false);
+        new SokProjekt(idb, aid, avdid).setVisible(true);
+    }//GEN-LAST:event_btnSokAvdProjDatumActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllaProjekt;
@@ -192,6 +209,7 @@ public class Projekt extends javax.swing.JFrame {
     private javax.swing.JButton btnLandProjekt;
     private javax.swing.JButton btnMinaProjekt;
     private javax.swing.JButton btnSamarbetspartnerProjekt;
+    private javax.swing.JButton btnSokAvdProjDatum;
     private javax.swing.JButton btnTillbakaProj;
     private javax.swing.JLabel lblProjektRuta;
     // End of variables declaration//GEN-END:variables
