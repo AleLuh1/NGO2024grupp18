@@ -56,7 +56,7 @@ public class SokProjekt extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Sök efter projekt");
+        jLabel1.setText("Sök efter aktiva projekt");
 
         jLabel2.setText("Från datum");
 
@@ -133,6 +133,7 @@ public class SokProjekt extends javax.swing.JFrame {
         String sokStartDatum = tfStartDatum.getText();
         String sokSlutDatum = tfSlutDatum.getText();
         int avdelning = Integer.parseInt(this.avdid);
+        System.out.println(avdelning);
         taResultatSoktaProjekt.setText("");
         if (sokStartDatum.isEmpty() && sokSlutDatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i båda fälten");

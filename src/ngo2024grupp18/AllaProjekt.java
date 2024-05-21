@@ -337,9 +337,9 @@ public class AllaProjekt extends javax.swing.JFrame {
 
     private void btnTillbakaAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAllaProjActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
-        nyttProjekt.setVisible(true);
-        nyttProjekt.toFront();
+        Projekt nyttProject = new Projekt(idb, aid, avdid);
+        nyttProject.setVisible(true);
+        nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaAllaProjActionPerformed
 
     private void btnAndraAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAllaProjektActionPerformed

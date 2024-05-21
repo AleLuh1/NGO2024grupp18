@@ -253,9 +253,9 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
     private void btnTillbakaAvdProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAvdProjActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
-        nyttProjekt.setVisible(true);
-        nyttProjekt.toFront();
+        Projekt nyttProject = new Projekt(idb, aid, avdid);
+        nyttProject.setVisible(true);
+        nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaAvdProjActionPerformed
 
     private void cbAvdelningensProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible

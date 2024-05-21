@@ -240,9 +240,9 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
     private void btnTillbakaSamarbetspartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaSamarbetspartnerActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
-        nyttProjekt.setVisible(true);
-        nyttProjekt.toFront();
+        Projekt nyttProject = new Projekt(idb, aid, avdid);
+        nyttProject.setVisible(true);
+        nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaSamarbetspartnerActionPerformed
 
     private void btnSparAndringarSamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparAndringarSamActionPerformed

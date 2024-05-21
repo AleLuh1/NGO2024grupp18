@@ -24,30 +24,25 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="btnSamarbetspartnerProjekt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnTillbakaProj" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="115" max="32767" attributes="0"/>
-                      <Component id="btnSokAvdProjDatum" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblProjektRuta" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTillbakaProj" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="220" max="32767" attributes="0"/>
-                          <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAvdProjekt" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMinaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblProjekt" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="btnMinaProjekt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAllaProjekt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAvdProjekt" max="32767" attributes="0"/>
+                          <Component id="btnLandProjekt" max="32767" attributes="0"/>
+                          <Component id="btnHallbarMalProjekt" max="32767" attributes="0"/>
+                          <Component id="btnSamarbetsPartnersProjekt" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnTillbakaProjekt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="110" max="32767" attributes="0"/>
+                      <Component id="btnSokAvdProjDatum" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -56,31 +51,47 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblProjektRuta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="lblProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnAllaProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnMinaProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnAvdProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnSamarbetspartnerProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Component id="btnMinaProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnAvdProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnHallbarMalProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnSamarbetsPartnersProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnTillbakaProj" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTillbakaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSokAvdProjDatum" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblProjekt">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Projekt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAllaProjekt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alla projekt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllaProjektActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnMinaProjekt">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mina projekt"/>
@@ -97,30 +108,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvdProjektActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAllaProjekt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Alla projekt"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllaProjektActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnTillbakaProj">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tillbaka"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaProjActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblProjektRuta">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Projekt"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnLandProjekt">
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xe4;nder"/>
@@ -129,20 +116,30 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLandProjektActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnHallbarhetsMal">
+    <Component class="javax.swing.JButton" name="btnHallbarMalProjekt">
       <Properties>
         <Property name="text" type="java.lang.String" value="H&#xe5;llbarhetsm&#xe5;l"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHallbarhetsMalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHallbarMalProjektActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSamarbetspartnerProjekt">
+    <Component class="javax.swing.JButton" name="btnSamarbetsPartnersProjekt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Samarbetspartner"/>
+        <Property name="text" type="java.lang.String" value="Samarbetspartners"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSamarbetspartnerProjektActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSamarbetsPartnersProjektActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTillbakaProjekt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tillbaka"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaProjektActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnSokAvdProjDatum">
       <Properties>
         <Property name="text" type="java.lang.String" value="S&#xf6;k projekt p&#xe5; datum"/>

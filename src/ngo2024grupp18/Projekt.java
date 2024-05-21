@@ -18,7 +18,7 @@ public class Projekt extends javax.swing.JFrame {
     private String avdid;
 
     /**
-     * Creates new form Projekt
+     * Creates new form Project
      */
     public Projekt(InfDB idb, String aid, String avdid) {
         initComponents();
@@ -37,17 +37,27 @@ public class Projekt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblProjekt = new javax.swing.JLabel();
+        btnAllaProjekt = new javax.swing.JButton();
         btnMinaProjekt = new javax.swing.JButton();
         btnAvdProjekt = new javax.swing.JButton();
-        btnAllaProjekt = new javax.swing.JButton();
-        btnTillbakaProj = new javax.swing.JButton();
-        lblProjektRuta = new javax.swing.JLabel();
         btnLandProjekt = new javax.swing.JButton();
-        btnHallbarhetsMal = new javax.swing.JButton();
-        btnSamarbetspartnerProjekt = new javax.swing.JButton();
+        btnHallbarMalProjekt = new javax.swing.JButton();
+        btnSamarbetsPartnersProjekt = new javax.swing.JButton();
+        btnTillbakaProjekt = new javax.swing.JButton();
         btnSokAvdProjDatum = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblProjekt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblProjekt.setText("Projekt");
+
+        btnAllaProjekt.setText("Alla projekt");
+        btnAllaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllaProjektActionPerformed(evt);
+            }
+        });
 
         btnMinaProjekt.setText("Mina projekt");
         btnMinaProjekt.addActionListener(new java.awt.event.ActionListener() {
@@ -63,23 +73,6 @@ public class Projekt extends javax.swing.JFrame {
             }
         });
 
-        btnAllaProjekt.setText("Alla projekt");
-        btnAllaProjekt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAllaProjektActionPerformed(evt);
-            }
-        });
-
-        btnTillbakaProj.setText("Tillbaka");
-        btnTillbakaProj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTillbakaProjActionPerformed(evt);
-            }
-        });
-
-        lblProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblProjektRuta.setText("Projekt");
-
         btnLandProjekt.setText("Länder");
         btnLandProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,17 +80,27 @@ public class Projekt extends javax.swing.JFrame {
             }
         });
 
-        btnHallbarhetsMal.setText("Hållbarhetsmål");
-        btnHallbarhetsMal.addActionListener(new java.awt.event.ActionListener() {
+        btnHallbarMalProjekt.setText("Hållbarhetsmål");
+        btnHallbarMalProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHallbarhetsMalActionPerformed(evt);
+                btnHallbarMalProjektActionPerformed(evt);
             }
         });
 
-        btnSamarbetspartnerProjekt.setText("Samarbetspartner");
-        btnSamarbetspartnerProjekt.addActionListener(new java.awt.event.ActionListener() {
+        btnSamarbetsPartnersProjekt.setText("Samarbetspartners");
+        btnSamarbetsPartnersProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSamarbetspartnerProjektActionPerformed(evt);
+                btnSamarbetsPartnersProjektActionPerformed(evt);
+            }
+        });
+
+        btnTillbakaProjekt.setText("Tillbaka");
+        btnTillbakaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaProjektActionPerformed(evt);
+            }
+        });
+
         btnSokAvdProjDatum.setText("Sök projekt på datum");
         btnSokAvdProjDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,107 +113,106 @@ public class Projekt extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSamarbetspartnerProjekt)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                        .addComponent(btnTillbakaProj)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                        .addComponent(btnSokAvdProjDatum)
-                        .addGap(31, 31, 31))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMinaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAllaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAvdProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLandProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnHallbarMalProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSamarbetsPartnersProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnHallbarhetsMal)
-                            .addComponent(btnLandProjekt)
-                            .addComponent(lblProjektRuta)
-                            .addComponent(btnTillbakaProj)
-                        .addContainerGap(220, Short.MAX_VALUE))))
-                            .addComponent(btnAllaProjekt)
-                            .addComponent(btnAvdProjekt)
-                            .addComponent(btnMinaProjekt))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(btnTillbakaProjekt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addComponent(btnSokAvdProjDatum)
+                        .addGap(40, 40, 40))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblProjektRuta)
-                .addGap(12, 12, 12)
+                .addGap(21, 21, 21)
+                .addComponent(lblProjekt)
+                .addGap(18, 18, 18)
                 .addComponent(btnAllaProjekt)
-                .addGap(18, 18, 18)
-                .addComponent(btnMinaProjekt)
-                .addGap(18, 18, 18)
-                .addComponent(btnAvdProjekt)
-                .addGap(18, 18, 18)
-                .addComponent(btnLandProjekt)
-                .addGap(18, 18, 18)
-                .addComponent(btnHallbarhetsMal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSamarbetspartnerProjekt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(btnMinaProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAvdProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLandProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHallbarMalProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSamarbetsPartnersProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTillbakaProj)
+                    .addComponent(btnTillbakaProjekt)
                     .addComponent(btnSokAvdProjDatum))
-                .addGap(34, 34, 34))
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaProjektActionPerformed
+        new AllaProjekt(idb, aid, avdid).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btnAllaProjektActionPerformed
 
     private void btnMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektActionPerformed
         new MinaProjekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnMinaProjektActionPerformed
 
-    private void btnTillbakaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaProjActionPerformed
-        this.toBack();
-        Meny nyMeny = new Meny(idb, aid, avdid);
-        nyMeny.setVisible(true);
-        nyMeny.toFront();
-
-    }//GEN-LAST:event_btnTillbakaProjActionPerformed
-
     private void btnAvdProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdProjektActionPerformed
         new AvdelningensProjekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnAvdProjektActionPerformed
-    private void btnAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaProjektActionPerformed
-        new AllaProjekt(idb, aid, avdid).setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_btnAllaProjektActionPerformed
 
     private void btnLandProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandProjektActionPerformed
         new Land(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLandProjektActionPerformed
 
-    private void btnHallbarhetsMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarhetsMalActionPerformed
+    private void btnHallbarMalProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarMalProjektActionPerformed
         new HallbarhetsMal(idb).setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
+    }//GEN-LAST:event_btnHallbarMalProjektActionPerformed
 
-    private void btnSamarbetspartnerProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSamarbetspartnerProjektActionPerformed
+    private void btnSamarbetsPartnersProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSamarbetsPartnersProjektActionPerformed
         new Samarbetspartner(idb, aid, avdid).setVisible(true);
         setVisible(false);
-        
-        
-    }//GEN-LAST:event_btnSamarbetspartnerProjektActionPerformed
+    }//GEN-LAST:event_btnSamarbetsPartnersProjektActionPerformed
+
     private void btnSokAvdProjDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAvdProjDatumActionPerformed
         this.setVisible(false);
         new SokProjekt(idb, aid, avdid).setVisible(true);
     }//GEN-LAST:event_btnSokAvdProjDatumActionPerformed
 
+    private void btnTillbakaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaProjektActionPerformed
+        this.toBack();
+        Meny nyMeny = new Meny(idb, aid, avdid);
+        nyMeny.setVisible(true);
+        nyMeny.toFront();
+    }//GEN-LAST:event_btnTillbakaProjektActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllaProjekt;
     private javax.swing.JButton btnAvdProjekt;
-    private javax.swing.JButton btnHallbarhetsMal;
+    private javax.swing.JButton btnHallbarMalProjekt;
     private javax.swing.JButton btnLandProjekt;
     private javax.swing.JButton btnMinaProjekt;
-    private javax.swing.JButton btnSamarbetspartnerProjekt;
+    private javax.swing.JButton btnSamarbetsPartnersProjekt;
     private javax.swing.JButton btnSokAvdProjDatum;
-    private javax.swing.JButton btnTillbakaProj;
-    private javax.swing.JLabel lblProjektRuta;
+    private javax.swing.JButton btnTillbakaProjekt;
+    private javax.swing.JLabel lblProjekt;
     // End of variables declaration//GEN-END:variables
 }

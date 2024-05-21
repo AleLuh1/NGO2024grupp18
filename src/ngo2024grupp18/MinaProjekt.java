@@ -246,9 +246,9 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     private void btnTillbakaMinaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMinaProjActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
-        nyttProjekt.setVisible(true);
-        nyttProjekt.toFront();
+        Projekt nyttProject = new Projekt(idb, aid, avdid);
+        nyttProject.setVisible(true);
+        nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaMinaProjActionPerformed
 
     private void cbMinaProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbMinaProjektPopupMenuWillBecomeInvisible
