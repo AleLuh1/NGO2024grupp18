@@ -269,8 +269,8 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + avdelningensProjekt.get("land") + "'";
             String land = idb.fetchSingle(sqlFraga2);
 
-            String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid ='" + avdelningensProjekt.get("projektchef") + "'";
-            String projektchef = idb.fetchSingle(sqlFraga3);
+            String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid ='" + avdelningensProjekt.get("projektchef") + "'";
+            HashMap<String,String> projektchef = idb.fetchRow(sqlFraga3);
             
             tfAvdProjID.setText(avdelningensProjekt.get("pid"));
             tfAvdProjNamn.setText(avdelningensProjekt.get("projektnamn"));
@@ -280,7 +280,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             tfAvdProjKostn.setText(avdelningensProjekt.get("kostnad"));
             tfAvdProjStatus.setText(avdelningensProjekt.get("status"));
             tfAvdProjPrio.setText(avdelningensProjekt.get("prioritet"));
-            tfAvdProjChef.setText(projektchef);
+            tfAvdProjChef.setText(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
             tfAvdProjLand.setText(land);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

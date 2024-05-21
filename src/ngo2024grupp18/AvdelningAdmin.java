@@ -245,8 +245,8 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + avdLista.get("stad") + "'";
                 String stad = idb.fetchSingle(sqlFraga2);
                 
-                String sqlFraga3 = "SELECT fornamn FROM anstalld WHERE aid = '" +avdLista.get("chef")+"'";
-                String avdChef = idb.fetchSingle(sqlFraga3);
+                String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid = '" +avdLista.get("chef")+"'";
+                HashMap<String,String> avdChef = idb.fetchRow(sqlFraga3);
                 
                 tfAvdelningsIDAvdAdmin.setText(avdLista.get("avdid"));
                 tfNamnAvdAdmin.setText(avdLista.get("namn"));
@@ -255,7 +255,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 tfEpostAvdAdmin.setText(avdLista.get("epost"));
                 tfTnrAvdAdmin.setText(avdLista.get("telefon"));
                 tfStadAvdAdmin.setText(stad);
-                tfChefAvdAdmin.setText(avdChef);
+                tfChefAvdAdmin.setText(avdChef.get("fornamn") + " " + avdChef.get("efternamn"));
             }
 
         } catch (Exception ex) {
