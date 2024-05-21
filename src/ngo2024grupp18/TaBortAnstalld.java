@@ -5,8 +5,9 @@
 package ngo2024grupp18;
 
 import java.util.ArrayList;
-import oru.inf.InfDB;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
 
 /**
  *
@@ -19,7 +20,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     private String avdid;
 
     /**
-     * Creates new form TaBortAnstalld
+     * Creates new form TaBortAnstalld1
      */
     public TaBortAnstalld(InfDB idb, String aid, String avdid) {
         initComponents();
@@ -27,10 +28,25 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-        
-
+        fyllCBTaBortAnstalld();
     }
 
+    private void fyllCBTaBortAnstalld() {
+
+        try {
+            String sqlFraga = "SELECT fornamn, efternamn FROM anstalld";
+            System.out.println(sqlFraga);
+            ArrayList<HashMap<String, String>> anstalldaNamnLista = idb.fetchRows(sqlFraga);
+
+            for (HashMap<String, String> ettNamn : anstalldaNamnLista) {
+                cbTaBortAnstalld.addItem(ettNamn.get("fornamn") + " " + ettNamn.get("efternamn"));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,17 +57,22 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTaBortAnstalldRuta = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         cbTaBortAnstalld = new javax.swing.JComboBox<>();
         btnTillbakaTaBortAnstalld = new javax.swing.JButton();
-        btnTaBortTaBortAnstalld = new javax.swing.JButton();
+        btnTaBortAnstalld = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblTaBortAnstalldRuta.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        lblTaBortAnstalldRuta.setText("Ta bort anställd");
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setText("Ta bort anställd");
 
         cbTaBortAnstalld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj anställd" }));
+        cbTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTaBortAnstalldActionPerformed(evt);
+            }
+        });
 
         btnTillbakaTaBortAnstalld.setText("Tillbaka");
         btnTillbakaTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
@@ -60,38 +81,44 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             }
         });
 
-        btnTaBortTaBortAnstalld.setText("Ta bort");
+        btnTaBortAnstalld.setText("Ta bort");
+        btnTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAnstalldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTaBortAnstalldRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbTaBortAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnTillbakaTaBortAnstalld)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                        .addComponent(btnTaBortTaBortAnstalld)
-                        .addGap(28, 28, 28))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTaBortAnstalld)
+                        .addGap(53, 53, 53))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(25, 251, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblTaBortAnstalldRuta)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaTaBortAnstalld)
-                    .addComponent(btnTaBortTaBortAnstalld))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(btnTaBortAnstalld))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -101,14 +128,109 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         this.toBack();
         Meny nyTaBortAnstalld = new Meny(idb, aid, avdid);
         nyTaBortAnstalld.setVisible(true);
-        nyTaBortAnstalld.toFront();
-    }//GEN-LAST:event_btnTillbakaTaBortAnstalldActionPerformed
+        nyTaBortAnstalld.toFront();        nyTaBortAnstalld.toFront();    }//GEN-LAST:event_btnTillbakaTaBortAnstalldActionPerformed
+
+    private void btnTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldActionPerformed
+        String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
+        
+        String fornamn = anstalld.split(" ")[0];
+                String efternamn = anstalld.split(" ")[1];
+
+        try {
+            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
+            System.out.println(sqlFragaAid);
+            String selectedAid = idb.fetchSingle(sqlFragaAid);
+
+            String sqlFraga1 = "DELETE FROM ans_proj WHERE aid = " + selectedAid;
+            System.out.println(sqlFraga1);
+            idb.delete(sqlFraga1);
+
+            String sqlFraga2 = "DELETE FROM admin WHERE aid = " + selectedAid;
+            System.out.println(sqlFraga2);
+            idb.delete(sqlFraga2);
+            
+                        String sqlFraga4 = "DELETE FROM handlaggare WHERE aid = " + selectedAid + " OR mentor = "+ selectedAid;
+            System.out.println(sqlFraga4);
+            idb.delete(sqlFraga4);
+
+//            String sqlFraga3 = "DELETE FROM handlaggare WHERE mentor = " + selectedAid;
+//            System.out.println(sqlFraga3);
+//            idb.delete(sqlFraga3);
+
+
+
+            String sqlFraga5 = "DELETE FROM avdelning WHERE chef = " + selectedAid;
+            System.out.println(sqlFraga5);
+            idb.delete(sqlFraga5);
+
+            String sqlFraga6 = "DELETE FROM ans_proj WHERE aid =" + selectedAid;
+            System.out.println(sqlFraga6);
+            idb.delete(sqlFraga6);
+
+            String sqlFraga7 = "DELETE FROM anstalld WHERE aid = " + selectedAid;
+            System.out.println(sqlFraga7);
+            idb.delete(sqlFraga7);
+
+            JOptionPane.showMessageDialog(null, "Anställd borttagen");
+
+            // uppdaterar comboboxen
+            fyllCBTaBortAnstalld();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+    }//GEN-LAST:event_btnTaBortAnstalldActionPerformed
+
+    private void cbTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTaBortAnstalldActionPerformed
+        btnTaBortAnstalld.setVisible(true);
+
+
+        String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
+
+        try {
+
+            String fornamn = anstalld.split(" ")[0];
+            String efternamn = anstalld.split(" ")[1];
+            
+            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
+            System.out.println(sqlFragaAid);
+            String aid = idb.fetchSingle(sqlFragaAid);
+
+            String sqlFraga13 = "SELECT projektnamn FROM projekt WHERE projektchef =" + aid;
+            System.out.println(sqlFraga13);
+            ArrayList<HashMap<String,String>> projektLista = idb.fetchRows(sqlFraga13);
+            
+           
+            if (!projektLista.isEmpty()) {
+                ArrayList<String> projektNamnLista = new ArrayList<>();
+
+                for (HashMap<String, String> ettProjekt : projektLista) {
+                    projektNamnLista.add(ettProjekt.get("projektnamn"));
+                }
+
+                String message = "Vänligen utse en ny projektchef för:\n";
+                for (String projektNamn : projektNamnLista) {
+                    message += projektNamn + "\n";
+                }
+
+                JOptionPane.showMessageDialog(null, message);
+                btnTaBortAnstalld.setVisible(false); 
+            }
+    
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+    }//GEN-LAST:event_cbTaBortAnstalldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTaBortTaBortAnstalld;
+    private javax.swing.JButton btnTaBortAnstalld;
     private javax.swing.JButton btnTillbakaTaBortAnstalld;
     private javax.swing.JComboBox<String> cbTaBortAnstalld;
-    private javax.swing.JLabel lblTaBortAnstalldRuta;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
