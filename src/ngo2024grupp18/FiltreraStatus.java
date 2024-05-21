@@ -74,7 +74,6 @@ public class FiltreraStatus extends javax.swing.JFrame {
         cbStatus = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTabell = new javax.swing.JTable();
-        btnTillbakaStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,13 +109,6 @@ public class FiltreraStatus extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblTabell);
 
-        btnTillbakaStatus.setText("Tillbaka");
-        btnTillbakaStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTillbakaStatusActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,7 +116,6 @@ public class FiltreraStatus extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTillbakaStatus)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(85, Short.MAX_VALUE))
@@ -136,9 +127,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
                 .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(btnTillbakaStatus)
-                .addGap(25, 25, 25))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,13 +200,6 @@ public class FiltreraStatus extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbStatusActionPerformed
 
-    private void btnTillbakaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaStatusActionPerformed
-        this.toBack();
-        Projekt nyttProjekt = new Projekt(idb, pid, aid, avdid);
-        nyttProjekt.setVisible(true);
-        nyttProjekt.toFront();
-    }//GEN-LAST:event_btnTillbakaStatusActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -254,7 +236,6 @@ public class FiltreraStatus extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTillbakaStatus;
     private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblTabell;
