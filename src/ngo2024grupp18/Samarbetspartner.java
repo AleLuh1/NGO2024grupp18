@@ -28,6 +28,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
         fyllCBValjSamarbetspartner();
+        tfPartnerIDSam.setEditable(false);
 
     }
 
