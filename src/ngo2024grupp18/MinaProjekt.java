@@ -20,6 +20,8 @@ public class MinaProjekt extends javax.swing.JFrame {
     private String aid;
     private String avdid;
     private DefaultListModel<String> listModel = new DefaultListModel<>();
+    private ArrayList<String> anstalldaSomSkaTasBort = new ArrayList<>();
+
 
     /**
      * Creates new form MinaProjekt
@@ -35,6 +37,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllPaPrioritet();
         fyllCBVäljProjektchef();
         this.setLocationRelativeTo(null);
+        btnTaBortAnstalld.setVisible(false);
     }
 // Tror inte fyllCBMinaProjekt-metoden funkar nu, kanske för att man måste lägga till ytterligare sql-frågor för att uppdatera andra berörda tabller
     // när man lägger till nytt projekt? D.v.s. ans_proj. Ej gjort detta än!
@@ -146,6 +149,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListAnstalldaMinaProjekt = new javax.swing.JList<>();
         cbAnstalldaMinaProjekt = new javax.swing.JComboBox<>();
+        btnTaBortAnstalld = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -226,9 +230,21 @@ public class MinaProjekt extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListAnstalldaMinaProjekt.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListAnstalldaMinaProjektValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jListAnstalldaMinaProjekt);
 
         cbAnstalldaMinaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnTaBortAnstalld.setText("Ta bort");
+        btnTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAnstalldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,7 +303,9 @@ public class MinaProjekt extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(cbAnstalldaMinaProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(130, 130, 130))))))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnTaBortAnstalld)
+                                        .addGap(34, 34, 34))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAndraUppgifterMinaProjekt)))
@@ -326,37 +344,42 @@ public class MinaProjekt extends javax.swing.JFrame {
                             .addComponent(lblStartdatum)
                             .addComponent(tfStartdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblSlutdatum)
+                                    .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblKostnad)
+                                    .addComponent(tfKostnad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbAnstalldaMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addGap(35, 35, 35)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSlutdatum)
-                            .addComponent(tfSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
+                            .addComponent(lblStatus)
+                            .addComponent(cbStatusMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblKostnad)
-                            .addComponent(tfKostnad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
+                            .addComponent(lblPrioProjekt)
+                            .addComponent(cbPrioritetMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblProjektchef)
+                            .addComponent(cbProjektchefMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblLand)
+                            .addComponent(cbLandMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbAnstalldaMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(35, 35, 35)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus)
-                    .addComponent(cbStatusMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrioProjekt)
-                    .addComponent(cbPrioritetMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProjektchef)
-                    .addComponent(cbProjektchefMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLand)
-                    .addComponent(cbLandMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addComponent(btnTaBortAnstalld)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAndraUppgifterMinaProjekt)
@@ -448,6 +471,7 @@ public class MinaProjekt extends javax.swing.JFrame {
 
             String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektNamn + "', beskrivning = '" + projektBeskrivning + "', startdatum = " + startDatum + ", slutdatum = " + slutDatum + ", kostnad = " + projektKostnad + ", status = '" + status + "', land = " + landId + ", projektchef =" + chefId + ",prioritet='" + prioritet + "' WHERE pid=" + projektId;
             idb.update(sqlFraga);
+            
 
             for (int i = 0; i < listModel.size(); i++) {
                 String anstalld = listModel.getElementAt(i);
@@ -456,6 +480,7 @@ public class MinaProjekt extends javax.swing.JFrame {
 
                 String sqlFragaAnstalldId = "SELECT aid FROM anstalld WHERE fornamn = '" + anstalldFornamn + "' AND efternamn = '" + anstalldEfternamn + "'";
                 String anstalldId = idb.fetchSingle(sqlFragaAnstalldId);
+                
 
                 String sqlFragaProjektAnst = "INSERT INTO ans_proj (pid, aid) "
                         + "SELECT " + projektId + ", " + anstalldId + " "
@@ -464,6 +489,19 @@ public class MinaProjekt extends javax.swing.JFrame {
                 idb.insert(sqlFragaProjektAnst);
 
             }
+            
+            for (String tagitBortAnstalld : anstalldaSomSkaTasBort) {
+                String anstalldFornamn = tagitBortAnstalld.split(" ")[0];
+                String anstalldEfternamn = tagitBortAnstalld.split(" ")[1];
+
+                String sqlFragaAnstalldId = "SELECT aid FROM anstalld WHERE fornamn = '" + anstalldFornamn + "' AND efternamn = '" + anstalldEfternamn + "'";
+                String anstalldId = idb.fetchSingle(sqlFragaAnstalldId);
+                
+                String sqlFragaTaBort = "DELETE FROM ans_proj WHERE pid ="+projektId+" AND aid ="+anstalldId;
+                idb.delete(sqlFragaTaBort);
+            }
+            
+            
 
             JOptionPane.showMessageDialog(null, "Ändring sparad");
         } catch (Exception ex) {
@@ -474,10 +512,22 @@ public class MinaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraUppgifterMinaProjektActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        anstalldaSomSkaTasBort.clear();
         String selectedAnstalld = cbAnstalldaMinaProjekt.getSelectedItem().toString();
         cbAnstalldaMinaProjekt.removeItem(selectedAnstalld);
         listModel.addElement(selectedAnstalld);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldActionPerformed
+        String anstalld = jListAnstalldaMinaProjekt.getSelectedValue();
+        listModel.removeElement(anstalld);
+        cbAnstalldaMinaProjekt.addItem(anstalld);
+        anstalldaSomSkaTasBort.add(anstalld);
+    }//GEN-LAST:event_btnTaBortAnstalldActionPerformed
+
+    private void jListAnstalldaMinaProjektValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListAnstalldaMinaProjektValueChanged
+        btnTaBortAnstalld.setVisible(true);
+    }//GEN-LAST:event_jListAnstalldaMinaProjektValueChanged
 
     private void fyllPaLander() {
         try {
@@ -532,6 +582,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraUppgifterMinaProjekt;
     private javax.swing.JButton btnStatistikMinaProjekt;
+    private javax.swing.JButton btnTaBortAnstalld;
     private javax.swing.JButton btnTillbakaMinaProj;
     private javax.swing.JComboBox<String> cbAnstalldaMinaProjekt;
     private javax.swing.JComboBox<String> cbLandMinaProjekt;
