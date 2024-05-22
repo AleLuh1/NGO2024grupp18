@@ -150,7 +150,9 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
         } else if (!sokFornamn.isEmpty()) {
             System.out.println("Söker på förnamn");
-            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokFornamn + "' AND avdelning = " + avdelning;
+            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld "
+                    + "JOIN handlaggare ON handlaggare.aid = anstalld.aid "
+                    + "WHERE fornamn = '" + sokFornamn + "' AND avdelning = " + avdelning;
             try {
                 ArrayList<HashMap<String, String>> listaFornamn = idb.fetchRows(sqlFraga);
                 for (int i = 0; i < listaFornamn.size(); i++) {
