@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
+import ngo2024grupp18.Validering;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -19,28 +20,23 @@ import oru.inf.InfException;
  *
  * @author User
  */
+
 public class FiltreraStatus extends javax.swing.JFrame {
 
     private InfDB idb;
-    private String pid;
     private String aid;
     private String avdid;
 
     /**
      * Creates new form FiltreraStatus
      */
-    public FiltreraStatus(InfDB idb, String pid, String aid, String avdid) {
+    public FiltreraStatus(InfDB idb, String aid, String avdid) {
         initComponents();
         this.idb = idb;
-        this.pid = pid;
         this.aid = aid;
         this.avdid = avdid;
         Fyllcb();
         this.setLocationRelativeTo(null);
-    }
-
-    FiltreraStatus(InfDB idb, String aid, String avdid) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     private void Fyllcb() {
@@ -56,7 +52,6 @@ public class FiltreraStatus extends javax.swing.JFrame {
     }
 
     public class CenterRenderer extends DefaultTableCellRenderer {
-
         public CenterRenderer() {
             setHorizontalAlignment(CENTER);
         }
@@ -151,66 +146,35 @@ public class FiltreraStatus extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
+        String avdelningsID = this.avdid;
         String kollaStatus = (String) cbStatus.getSelectedItem();
         DefaultTableModel model = (DefaultTableModel) tblTabell.getModel();
 
-// Använder CenterRenderer för att centrera värdena i tabellen
+// Använder CenterRenderer för att centrera värdena i tabellen.
         CenterRenderer centerRenderer = new CenterRenderer();
+
         for (int i = 0; i < tblTabell.getColumnCount(); i++) {
             tblTabell.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
         try {
-            model.setRowCount(0);
+            model.setRowCount(0); // Rensar tabellen innan vi fyller på med nya data, när vi väljer ett annat värde.
 
-            if (kollaStatus.equals("Pågående")) {
-                String sqlFraga2 = "SELECT COUNT(status) FROM projekt WHERE status = 'Pågående';";
-                String rowCount = idb.fetchSingle(sqlFraga2);
-                int rowCountNumber = Integer.parseInt(rowCount);
+            String sqlFraga = "SELECT DISTINCT projekt.pid, projektnamn, status "
+                    + "FROM projekt "
+                    + "JOIN ngo_2024.ans_proj ON ans_proj.pid = projekt.pid "
+                    + "JOIN ngo_2024.anstalld ON anstalld.aid = ans_proj.aid "
+                    + "WHERE anstalld.avdelning = " + avdelningsID
+                    + " AND status = '" + kollaStatus + "'";
 
-                String sqlFraga = "SELECT pid, projektnamn, status FROM projekt WHERE status = 'Pågående'";
-                ArrayList<HashMap<String, String>> tabellLista = idb.fetchRows(sqlFraga);
+            ArrayList<HashMap<String, String>> tabellLista = idb.fetchRows(sqlFraga);
 
-                System.out.println(sqlFraga2);
-                System.out.println(rowCount);
-
-                for (int i = 0; i < tabellLista.size(); i++) {
-                    HashMap<String, String> rad = tabellLista.get(i);
-                    model.addRow(new Object[]{rad.get("pid"), rad.get("projektnamn"), rad.get("status")});
-                    System.out.println(i);
-                }
-            } else if (kollaStatus.equals("Planerat")) {
-                String sqlFraga2 = "SELECT COUNT(status) FROM projekt WHERE status = 'Planerat';";
-                String rowCount = idb.fetchSingle(sqlFraga2);
-                int rowCountNumber = Integer.parseInt(rowCount);
-
-                String sqlFraga = "SELECT pid, projektnamn, status FROM projekt WHERE status = 'Planerat'";
-                ArrayList<HashMap<String, String>> tabellLista = idb.fetchRows(sqlFraga);
-
-                System.out.println(sqlFraga2);
-                System.out.println(rowCount);
-
-                for (int i = 0; i < tabellLista.size(); i++) {
-                    HashMap<String, String> rad = tabellLista.get(i);
-                    model.addRow(new Object[]{rad.get("pid"), rad.get("projektnamn"), rad.get("status")});
-                    System.out.println(i);
-                }
-            } else if (kollaStatus.equals("Avslutat")) {
-                String sqlFraga2 = "SELECT COUNT(status) FROM projekt WHERE status = 'Avslutat';";
-                String rowCount = idb.fetchSingle(sqlFraga2);
-                int rowCountNumber = Integer.parseInt(rowCount);
-
-                String sqlFraga = "SELECT pid, projektnamn, status FROM projekt WHERE status = 'Avslutat'";
-                ArrayList<HashMap<String, String>> tabellLista = idb.fetchRows(sqlFraga);
-
-                System.out.println(sqlFraga2);
-                System.out.println(rowCount);
-
-                for (int i = 0; i < tabellLista.size(); i++) {
-                    HashMap<String, String> rad = tabellLista.get(i);
-                    model.addRow(new Object[]{rad.get("pid"), rad.get("projektnamn"), rad.get("status")});
-                    System.out.println(i);
-                }
+            for (HashMap<String, String> rad : tabellLista) {
+                model.addRow(new Object[]{
+                    rad.get("pid"),
+                    rad.get("projektnamn"),
+                    rad.get("status")
+                });
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -219,13 +183,10 @@ public class FiltreraStatus extends javax.swing.JFrame {
 
     private void btnTillbakaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaStatusActionPerformed
         this.toBack();
-        Projekt nyttProjekt = new Projekt(idb,aid, avdid);
+        Projekt nyttProjekt = new Projekt(idb, aid, avdid);
         nyttProjekt.setVisible(true);
         nyttProjekt.toFront();
- 
     }//GEN-LAST:event_btnTillbakaStatusActionPerformed
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaStatus;
