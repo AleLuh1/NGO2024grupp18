@@ -153,8 +153,8 @@ public class SokProjekt extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i båda fälten");
         } else {
             String sqlFraga = "select distinct projekt.pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land FROM projekt "
-                    + "join ngo_2024.ans_proj on ans_proj.pid = projekt.pid "
-                    + "join ngo_2024.anstalld on anstalld.aid = ans_proj.aid "
+                    + "join ans_proj on ans_proj.pid = projekt.pid "
+                    + "join anstalld on anstalld.aid = ans_proj.aid "
                     + "where anstalld.avdelning = " + avdelning + " and status = 'Pågående' and startdatum >= '" + sokStartDatum + "' and slutdatum <= '" + sokSlutDatum + "' ";
 
             try {
