@@ -249,7 +249,8 @@ public class MinaProjekt extends javax.swing.JFrame {
         String minaProjektNamn = cbMinaProjekt.getSelectedItem().toString();
 
         try {
-            String sqlFraga1 = "SELECT * FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid WHERE ans_proj.aid = " + aid + " AND projektnamn = '" + minaProjektNamn + "'";
+            String sqlFraga1 = "SELECT * FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid "
+                    + "WHERE ans_proj.aid = " + aid + " AND projektnamn = '" + minaProjektNamn + "'";
             System.out.println(sqlFraga1);
             HashMap<String, String> minaProjekt = idb.fetchRow(sqlFraga1);
 
