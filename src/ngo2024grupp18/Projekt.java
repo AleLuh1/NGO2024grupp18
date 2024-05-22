@@ -211,7 +211,8 @@ public class Projekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaProjektActionPerformed
 
     private void btnFiltreraStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltreraStatusActionPerformed
-        new FiltreraStatus(idb, pid, aid, avdid).setVisible(true);
+        FiltreraStatus filtreraStatusFonster = new FiltreraStatus(idb, aid, avdid);
+        filtreraStatusFonster.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnFiltreraStatusActionPerformed
 
