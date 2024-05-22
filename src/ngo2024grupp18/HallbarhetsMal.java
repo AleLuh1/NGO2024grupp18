@@ -165,6 +165,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
             tfMalnummerHallbar.setText(hallbarhetsmal.get("malnummer"));
             taBeskrivningHallbar.setText(hallbarhetsmal.get("beskrivning"));
             tfPrioritetHallbar.setText(hallbarhetsmal.get("prioritet"));
+            taBeskrivningHallbar.setCaretPosition(0);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
