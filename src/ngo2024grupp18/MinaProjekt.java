@@ -6,6 +6,7 @@ package ngo2024grupp18;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 
 /**
@@ -114,6 +115,11 @@ public class MinaProjekt extends javax.swing.JFrame {
         lblLand.setText("Land");
 
         btnAndraUppgifterMinaProjekt.setText("Ändra uppgifter");
+        btnAndraUppgifterMinaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraUppgifterMinaProjektActionPerformed(evt);
+            }
+        });
 
         lblMinaProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblMinaProjektRuta.setText("Mina projekt");
@@ -243,11 +249,9 @@ public class MinaProjekt extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLand)
-                            .addComponent(cbLandMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnStatistikMinaProjekt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cbLandMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnStatistikMinaProjekt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAndraUppgifterMinaProjekt)
                     .addComponent(btnTillbakaMinaProj))
@@ -277,13 +281,12 @@ public class MinaProjekt extends javax.swing.JFrame {
             String land = idb.fetchSingle(sqlFraga2);
 
             String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid =" + minaProjekt.get("projektchef");
-            HashMap<String,String> projektchef = idb.fetchRow(sqlFraga3);
+            HashMap<String, String> projektchef = idb.fetchRow(sqlFraga3);
 
             cbStatusMinaProjekt.setSelectedItem(minaProjekt.get("status"));
             cbPrioritetMinaProjekt.setSelectedItem(minaProjekt.get("prioritet"));
             cbLandMinaProjekt.setSelectedItem(land);
-            
-            cbProjektchefMinaProjekt.setSelectedItem(projektchef.get("fornamn") + " " +projektchef.get("efternamn"));
+            cbProjektchefMinaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
 
             tfProjektID.setText(minaProjekt.get("pid"));
             tfProjektID.setEditable(false);
@@ -299,7 +302,6 @@ public class MinaProjekt extends javax.swing.JFrame {
             tfKostnad.setText(minaProjekt.get("kostnad"));
             tfKostnad.setEditable(false);
 
-            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -309,6 +311,41 @@ public class MinaProjekt extends javax.swing.JFrame {
         new ProjektStatistik(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnStatistikMinaProjektActionPerformed
+
+    private void btnAndraUppgifterMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraUppgifterMinaProjektActionPerformed
+        try {
+            String projektId = tfProjektID.getText();
+            String projektNamn = tfProjektNamn.getText();
+            String projektBeskrivning = tfBeskrivningProjekt.getText();
+            String projektStartDatum = tfStartdatum.getText();
+            String projektSlutDatum = tfSlutdatum.getText();
+            String projektKostnad = tfKostnad.getText();
+            String status = cbStatusMinaProjekt.getSelectedItem().toString();
+            String prioritet = cbPrioritetMinaProjekt.getSelectedItem().toString();
+
+            String landNamn = cbLandMinaProjekt.getSelectedItem().toString();
+            String sqlFragaLandId = "SELECT lid FROM land WHERE namn = '" + landNamn + "'";
+            String landId = idb.fetchSingle(sqlFragaLandId);
+            
+            String projektChefNamn = cbProjektchefMinaProjekt.getSelectedItem().toString();
+            String fornamn = projektChefNamn.split(" ")[0];
+            String efternamn = projektChefNamn.split(" ")[1];
+            String sqlFragaChefId = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
+            String chefId = idb.fetchSingle(sqlFragaChefId);
+            
+            String startDatum = "str_to_date('" + projektStartDatum + "', '%Y-%m-%d')";
+            String slutDatum = "str_to_date('" + projektSlutDatum + "', '%Y-%m-%d')";
+            
+            String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektNamn +"', beskrivning = '" + projektBeskrivning + "', startdatum = " + startDatum + ", slutdatum = " + slutDatum + ", kostnad = " + projektKostnad + ", status = '" + status + "', land = "+landId+", projektchef ="+chefId+",prioritet='"+prioritet+"' WHERE pid="+projektId;
+            idb.update(sqlFraga);
+            
+            JOptionPane.showMessageDialog(null, "Ändring sparad");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+    }//GEN-LAST:event_btnAndraUppgifterMinaProjektActionPerformed
 
     private void fyllPaLander() {
         try {
@@ -323,8 +360,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
 
     }
-    
-   
+
     public void fyllCBVäljProjektchef() {
         try {
             cbProjektchefMinaProjekt.removeAllItems();
@@ -334,8 +370,8 @@ public class MinaProjekt extends javax.swing.JFrame {
 
             for (String enProjektchefId : projektchefIdLista) {
                 String sqlFraga1 = "SELECT fornamn, efternamn FROM anstalld WHERE aid =" + enProjektchefId;
-                HashMap<String,String> projektchef = idb.fetchRow(sqlFraga1);
-                cbProjektchefMinaProjekt.addItem(projektchef.get("fornamn") + " " +projektchef.get("efternamn"));
+                HashMap<String, String> projektchef = idb.fetchRow(sqlFraga1);
+                cbProjektchefMinaProjekt.addItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

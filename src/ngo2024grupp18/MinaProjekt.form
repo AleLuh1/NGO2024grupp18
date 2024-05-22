@@ -143,13 +143,10 @@
                           <Component id="lblLand" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbLandMinaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="31" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnStatistikMinaProjekt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btnStatistikMinaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAndraUppgifterMinaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaMinaProj" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -234,6 +231,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc4;ndra uppgifter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAndraUppgifterMinaProjektActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMinaProjektRuta">
       <Properties>
