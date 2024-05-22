@@ -33,7 +33,9 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
     private void fyllCBAvdelningensProjekt() {
         String avdProjNamn = cbAvdelningensProjekt.getSelectedItem().toString();
         try {
-            String sqlFraga = "SELECT DISTINCT projektnamn FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid JOIN anstalld on anstalld.aid = ans_proj.aid WHERE avdelning = " + avdid;
+            String sqlFraga = "SELECT DISTINCT projektnamn FROM projekt "
+                    + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
+                    + "JOIN anstalld on anstalld.aid = ans_proj.aid WHERE avdelning = " + avdid;
             System.out.println(sqlFraga);
             ArrayList<String> avdelningensProjektLista;
             avdelningensProjektLista = idb.fetchColumn(sqlFraga);
@@ -106,8 +108,6 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
         lblAvdProjID.setText("ProjektID");
 
-        tfAvdProjID.setText("jTextField1");
-
         lblAvdProjNamn.setText("Projektnamn");
 
         lblAvdProjBesk.setText("Beskrivning");
@@ -126,25 +126,9 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
         lblAvdProjLand.setText("Land");
 
-        tfAvdProjNamn.setText("jTextField1");
-
-        tfAvdProjStart.setText("jTextField1");
-
-        tfAvdProjSlut.setText("jTextField1");
-
         taAvdProjBesk.setColumns(20);
         taAvdProjBesk.setRows(5);
         jScrollPane1.setViewportView(taAvdProjBesk);
-
-        tfAvdProjKostn.setText("jTextField1");
-
-        tfAvdProjStatus.setText("jTextField1");
-
-        tfAvdProjPrio.setText("jTextField1");
-
-        tfAvdProjChef.setText("jTextField1");
-
-        tfAvdProjLand.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,14 +244,18 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
     private void cbAvdelningensProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible
         String avdProj = cbAvdelningensProjekt.getSelectedItem().toString();
         try {
-            String sqlFraga = "SELECT * FROM anstalld JOIN avdelning ON anstalld.avdelning = avdelning.avdid JOIN ans_proj ON anstalld.aid = ans_proj.aid JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
+            String sqlFraga = "SELECT * FROM anstalld JOIN avdelning ON anstalld.avdelning = avdelning.avdid "
+                    + "JOIN ans_proj ON anstalld.aid = ans_proj.aid "
+                    + "JOIN projekt ON ans_proj.pid = projekt.pid "
+                    + "WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
             System.out.println(sqlFraga);
             HashMap<String, String> avdelningensProjekt = idb.fetchRow(sqlFraga);
 
             String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + avdelningensProjekt.get("land") + "'";
             String land = idb.fetchSingle(sqlFraga2);
 
-            String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid ='" + avdelningensProjekt.get("projektchef") + "'";
+            String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld "
+                    + "WHERE aid ='" + avdelningensProjekt.get("projektchef") + "'";
             HashMap<String, String> projektchef = idb.fetchRow(sqlFraga3);
 
             tfAvdProjID.setText(avdelningensProjekt.get("pid"));
