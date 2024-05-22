@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ngo2024grupp18;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -14,9 +15,11 @@ import oru.inf.InfException;
  * @author marin
  */
 public class SokEfterHandlaggare extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
-    private String avdid; 
+    private String avdid;
+
     /**
      * Creates new form SokEfterHandlaggare
      */
@@ -46,6 +49,8 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
         taListaInfo = new javax.swing.JTextArea();
         btnSok = new javax.swing.JButton();
         btnTillbaka = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        tfSokEfternamn = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +78,8 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Sök på efternamn");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,23 +87,28 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(btnSok))
-                                .addGap(122, 122, 122)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfSokFornamn, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                                    .addComponent(tfSokEpost)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnTillbaka)
-                            .addComponent(lblTitel))))
+                            .addComponent(lblTitel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tfSokEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSok)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel3))
+                                    .addGap(113, 113, 113)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tfSokFornamn, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                        .addComponent(tfSokEfternamn)))))))
                 .addContainerGap(276, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,66 +116,87 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(lblTitel)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfSokFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfSokFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfSokEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfSokEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(35, 35, 35)
+                .addGap(23, 23, 23)
                 .addComponent(btnSok)
-                .addGap(47, 47, 47)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102)
                 .addComponent(btnTillbaka)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
-        String sokNamn = tfSokFornamn.getText();
+        String sokFornamn = tfSokFornamn.getText();
+        String sokEfternamn = tfSokEfternamn.getText();
         String sokEpost = tfSokEpost.getText();
         int avdelning = Integer.parseInt(this.avdid);
         taListaInfo.setText("");
-    if (sokNamn.isEmpty() && sokEpost.isEmpty())
-            {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
+        if (sokFornamn.isEmpty() && sokEfternamn.isEmpty() && sokEpost.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
+        } else if (!sokFornamn.isEmpty()) {
+            System.out.println("Söker på förnamn");
+            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokFornamn + "' AND avdelning = " + avdelning;
+            try {
+                ArrayList<HashMap<String, String>> listaFornamn = idb.fetchRows(sqlFraga);
+                for (int i = 0; i < listaFornamn.size(); i++) {
+                    taListaInfo.append(" Förnamn: " + listaFornamn.get(i).get("fornamn") + "\n "
+                            + "Efternamn: " + listaFornamn.get(i).get("efternamn") + "\n "
+                            + "Telefon: " + listaFornamn.get(i).get("telefon") + "\n "
+                            + "E-post: " + listaFornamn.get(i).get("epost") + "\n "
+                            + "Adress: " + listaFornamn.get(i).get("adress") + "\n "
+                            + "------------------- \n");
+                }
+                if (!Validering.finnsTextTA(taListaInfo)) {
+                    JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-    else if (sokNamn.isEmpty()) {
-        System.out.println("Söker på e-post");
-        String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE epost = '" + sokEpost + "' AND avdelning = " + avdelning;
-        try {
-            ArrayList<HashMap<String, String>> listaEpost = idb.fetchRows(sqlFraga);
-            for (int i = 0; i < listaEpost.size(); i++) {
-                taListaInfo.append(listaEpost.get(i).get("fornamn") + "\n" + listaEpost.get(i).get("efternamn") + "\n" + listaEpost.get(i).get("telefon") + "\n" + listaEpost.get(i).get("epost") + "\n" + listaEpost.get(i).get("adress") + "\n" + "------------------- \n");
+        } else if (!sokEfternamn.isEmpty()) {
+            System.out.println("Söker på efternamn");
+            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE efternamn = '" + sokEfternamn + "' AND avdelning = " + avdelning;
+            try {
+                ArrayList<HashMap<String, String>> listaEfternamn = idb.fetchRows(sqlFraga);
+                for (int i = 0; i < listaEfternamn.size(); i++) {
+                    taListaInfo.append(listaEfternamn.get(i).get("fornamn") + "\n" + listaEfternamn.get(i).get("efternamn") + "\n" + listaEfternamn.get(i).get("telefon") + "\n" + listaEfternamn.get(i).get("epost") + "\n" + listaEfternamn.get(i).get("adress") + "\n" + "------------------- \n");
+                }
+                if (!Validering.finnsTextTA(taListaInfo)) {
+                    JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-            if(!Validering.finnsTextTA(taListaInfo)) {
-                JOptionPane.showMessageDialog(null, "Vänligen skriv in en giltig e-post");
-            } 
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    else if (sokEpost.isEmpty()) 
-        {
-        String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokNamn + "' AND avdelning = " + avdelning;
-        try {
-            ArrayList<HashMap<String, String>> listaNamn = idb.fetchRows(sqlFraga);
-            for (int i = 0; i < listaNamn.size(); i++) {
-                taListaInfo.append(listaNamn.get(i).get("fornamn") + "\n" + listaNamn.get(i).get("efternamn") + "\n" + listaNamn.get(i).get("telefon") + "\n" + listaNamn.get(i).get("epost") + "\n" + listaNamn.get(i).get("adress") + "\n" + "------------------- \n");
+        } else if (!sokEpost.isEmpty()) {
+            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokEpost + "' AND avdelning = " + avdelning;
+            try {
+                ArrayList<HashMap<String, String>> listaEpost = idb.fetchRows(sqlFraga);
+                for (int i = 0; i < listaEpost.size(); i++) {
+                    taListaInfo.append(listaEpost.get(i).get("fornamn") + "\n" + listaEpost.get(i).get("efternamn") + "\n" + listaEpost.get(i).get("telefon") + "\n" + listaEpost.get(i).get("epost") + "\n" + listaEpost.get(i).get("adress") + "\n" + "------------------- \n");
+                }
+                if (!Validering.finnsTextTA(taListaInfo)) {
+                    JOptionPane.showMessageDialog(null, "Vänligen skriv in en giltig e-post");
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-            if(!Validering.finnsTextTA(taListaInfo)) {
-                JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
-            } 
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
         }
 
     }//GEN-LAST:event_btnSokActionPerformed
@@ -178,16 +211,17 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitel;
     private javax.swing.JTextArea taListaInfo;
+    private javax.swing.JTextField tfSokEfternamn;
     private javax.swing.JTextField tfSokEpost;
     private javax.swing.JTextField tfSokFornamn;
     // End of variables declaration//GEN-END:variables
