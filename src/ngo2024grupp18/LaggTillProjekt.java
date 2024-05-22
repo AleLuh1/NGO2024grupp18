@@ -440,10 +440,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                     + "VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), '" + laggTillKostnad + "', '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + laggTillProjektchef + ", " + laggTillLand + ")";
             idb.insert(sqlFraga1);
 
-            String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + nyProjektPidInt + ", " + laggTillHallbarhetsmal + ")";
+            String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid)"
+                    + "VALUES (" + nyProjektPidInt + ", " + laggTillHallbarhetsmal + ")";
             //WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
             idb.insert(sqlFraga2);
-            
+
             //String sqlFraga3 = "INSERT INTO ans_proj (pid, aid) VALUES (" + nyProjektPidInt + ", " + laggTillAnstalld + ")";
             //idb.insert(sqlFraga3);
         } catch (Exception ex) {
