@@ -260,9 +260,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
     private void cbAvdelningensProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible
         String avdProj = cbAvdelningensProjekt.getSelectedItem().toString();
         try {
-            //ChatGPT tycker att detta räcker: String sqlFraga = "SELECT projektnamn FROM projekt WHERE avdid = '" + avdid + "'";
             String sqlFraga = "SELECT * FROM anstalld JOIN avdelning ON anstalld.avdelning = avdelning.avdid JOIN ans_proj ON anstalld.aid = ans_proj.aid JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
-            //ChatGPTs lösning String sqlFraga = "SELECT projekt.* FROM projekt, JOIN ans_proj ON projekt.pid = ans_proj.pid, JOIN anstalld ON ans_proj.aid = anstalld.aid, JOIN avdelning ON anstalld.avdelning = avdelning.avdid WHERE avdelning.avdid = '" + avdProj + "'";
             System.out.println(sqlFraga);
             HashMap<String, String> avdelningensProjekt = idb.fetchRow(sqlFraga);
 
@@ -270,8 +268,8 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             String land = idb.fetchSingle(sqlFraga2);
 
             String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid ='" + avdelningensProjekt.get("projektchef") + "'";
-            HashMap<String,String> projektchef = idb.fetchRow(sqlFraga3);
-            
+            HashMap<String, String> projektchef = idb.fetchRow(sqlFraga3);
+
             tfAvdProjID.setText(avdelningensProjekt.get("pid"));
             tfAvdProjNamn.setText(avdelningensProjekt.get("projektnamn"));
             taAvdProjBesk.setText(avdelningensProjekt.get("beskrivning"));
