@@ -424,7 +424,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), '" + laggTillKostnad + "', '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + laggTillProjektchef + ", " + laggTillLand + ")";
             idb.insert(sqlFraga1);
 
-            // String  sqlFraga 2 "INSERT INTO hallbarhetsmal WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
+            // String  sqlFraga 2 "INSERT INTO hallbarhetsmal ( 
+            //WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
