@@ -356,6 +356,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xe4;gg till anst&#xe4;lld i projekt"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

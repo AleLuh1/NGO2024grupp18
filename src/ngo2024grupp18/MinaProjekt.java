@@ -19,6 +19,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String avdid;
+    private DefaultListModel<String> listModel = new DefaultListModel<>();
 
     /**
      * Creates new form MinaProjekt
@@ -52,11 +53,11 @@ public class MinaProjekt extends javax.swing.JFrame {
     }
 
     public void fyllAnstalldaList(String pid) {
+        listModel.removeAllElements();
         try {
             String sqlFraga = "SELECT aid FROM ans_proj WHERE pid = " + pid;
             System.out.println(sqlFraga);
             ArrayList<HashMap<String, String>> anstalldaIProjekt = idb.fetchRows(sqlFraga);
-            DefaultListModel<String> listModel = new DefaultListModel<>();
 
             for (HashMap<String, String> enAnstall : anstalldaIProjekt) {
                 String sqlFraga1 = "SELECT fornamn,efternamn FROM anstalld WHERE aid=" + enAnstall.get("aid");
@@ -212,6 +213,11 @@ public class MinaProjekt extends javax.swing.JFrame {
         cbLandMinaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra land" }));
 
         jButton1.setText("Lägg till anställd i projekt");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Anställda i projekt");
 
@@ -432,9 +438,9 @@ public class MinaProjekt extends javax.swing.JFrame {
             String landId = idb.fetchSingle(sqlFragaLandId);
 
             String projektChefNamn = cbProjektchefMinaProjekt.getSelectedItem().toString();
-            String fornamn = projektChefNamn.split(" ")[0];
-            String efternamn = projektChefNamn.split(" ")[1];
-            String sqlFragaChefId = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '" + efternamn + "'";
+            String chefFornamn = projektChefNamn.split(" ")[0];
+            String chefEfternamn = projektChefNamn.split(" ")[1];
+            String sqlFragaChefId = "SELECT aid FROM anstalld WHERE fornamn = '" + chefFornamn + "' AND efternamn = '" + chefEfternamn + "'";
             String chefId = idb.fetchSingle(sqlFragaChefId);
 
             String startDatum = "str_to_date('" + projektStartDatum + "', '%Y-%m-%d')";
@@ -443,6 +449,22 @@ public class MinaProjekt extends javax.swing.JFrame {
             String sqlFraga = "UPDATE projekt SET projektnamn = '" + projektNamn + "', beskrivning = '" + projektBeskrivning + "', startdatum = " + startDatum + ", slutdatum = " + slutDatum + ", kostnad = " + projektKostnad + ", status = '" + status + "', land = " + landId + ", projektchef =" + chefId + ",prioritet='" + prioritet + "' WHERE pid=" + projektId;
             idb.update(sqlFraga);
 
+            for (int i = 0; i < listModel.size(); i++) {
+                String anstalld = listModel.getElementAt(i);
+                String anstalldFornamn = anstalld.split(" ")[0];
+                String anstalldEfternamn = anstalld.split(" ")[1];
+
+                String sqlFragaAnstalldId = "SELECT aid FROM anstalld WHERE fornamn = '" + anstalldFornamn + "' AND efternamn = '" + anstalldEfternamn + "'";
+                String anstalldId = idb.fetchSingle(sqlFragaAnstalldId);
+
+                String sqlFragaProjektAnst = "INSERT INTO ans_proj (pid, aid) "
+                        + "SELECT " + projektId + ", " + anstalldId + " "
+                        + "WHERE NOT EXISTS (SELECT 1 FROM ans_proj WHERE pid = " + projektId + " AND aid = " + anstalldId + ")";
+                
+                idb.insert(sqlFragaProjektAnst);
+
+            }
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -450,6 +472,12 @@ public class MinaProjekt extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnAndraUppgifterMinaProjektActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String selectedAnstalld = cbAnstalldaMinaProjekt.getSelectedItem().toString();
+        cbAnstalldaMinaProjekt.removeItem(selectedAnstalld);
+        listModel.addElement(selectedAnstalld);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fyllPaLander() {
         try {
