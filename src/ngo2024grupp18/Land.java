@@ -7,6 +7,7 @@ package ngo2024grupp18;
 import java.util.ArrayList;
 import oru.inf.InfDB;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -256,9 +257,11 @@ public class Land extends javax.swing.JFrame {
             String politiskStruktur = tfPolitiskStrukturLand.getText();
             String ekonomi = tfEkonomiLand.getText();
 
-            String sqlFraga = "UPDATE land Set lid = " + landID + " WHERE namn = '" + namnLand + "'";
+            String sqlFraga = "UPDATE land SET lid = " + landID + ", sprak = '" + sprak + "', valuta = '" + valuta + "', tidszon = '" + tidszon + "', ekonomi = '" + ekonomi + "' WHERE namn = '" + namnLand + "'";
             idb.update(sqlFraga);
-
+            
+            JOptionPane.showMessageDialog(null, "Ändring sparad");
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

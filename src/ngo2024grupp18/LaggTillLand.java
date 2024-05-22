@@ -249,6 +249,8 @@ public class LaggTillLand extends javax.swing.JFrame {
         try {
             String sqlFraga = "INSERT INTO land (lid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) VALUES (" + nyLid + ",'" + laggTillNamn + "', '" + laggTillSprak + "', '" + laggTillValuta + "', '" + laggTillTidszon + "', '" + laggTillPolitiskStruktur + "', '" + laggTillEkonomi + "')";
             idb.insert(sqlFraga);
+            
+            JOptionPane.showMessageDialog(null, "Land tillagt");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
