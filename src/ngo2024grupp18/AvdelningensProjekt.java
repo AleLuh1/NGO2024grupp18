@@ -48,7 +48,6 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         }
     }
 
-//    String sqlFraga = "SELECT * FROM anstalld, JOIN avdelning ON anstalld.avdelning = avdelning.avdid, JOIN ans_proj ON anstalld.aid = ans_proj.aid, JOIN projekt ON ans_proj.pid = projekt.pid WHERE anstalld.avdelning = 1;";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
