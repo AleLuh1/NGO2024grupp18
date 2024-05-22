@@ -191,7 +191,7 @@ public class MinaProjekt extends javax.swing.JFrame {
 
         lblLand.setText("Land");
 
-        btnAndraUppgifterMinaProjekt.setText("Ändra uppgifter");
+        btnAndraUppgifterMinaProjekt.setText("Spara");
         btnAndraUppgifterMinaProjekt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAndraUppgifterMinaProjektActionPerformed(evt);
