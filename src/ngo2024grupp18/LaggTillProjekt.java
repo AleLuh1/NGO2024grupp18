@@ -232,7 +232,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
         cbHallbarhetsmalLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj hållbarhetsmål" }));
 
-        btnAnstalld.setText("Anställd");
+        btnAnstalld.setText("Anställda i projektet");
 
         jListAllaAnstallda.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -436,7 +436,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
         try {
             // String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('" + projektID + "','" + projektnamn + "', '" + projektchef + "', '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + land + "')";
-            String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), '" + laggTillKostnad + "', '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + laggTillProjektchef + ", " + laggTillLand + ")";
+            String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land)"
+                    + "VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), '" + laggTillKostnad + "', '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + laggTillProjektchef + ", " + laggTillLand + ")";
             idb.insert(sqlFraga1);
 
             String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + nyProjektPidInt + ", " + laggTillHallbarhetsmal + ")";

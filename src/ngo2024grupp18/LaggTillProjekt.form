@@ -315,7 +315,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="btnAnstalld">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Anst&#xe4;lld"/>
+        <Property name="text" type="java.lang.String" value="Anst&#xe4;llda i projektet"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
