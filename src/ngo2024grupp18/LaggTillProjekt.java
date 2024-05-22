@@ -129,7 +129,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     // Lägger till land i combobox
     public void fyllCBVäljLand() {
         try {
-            String sqlFraga = "SELECT DISTINCT land FROM projekt";
+            String sqlFraga = "SELECT DISTINCT lid FROM land";
             System.out.println(sqlFraga);
             ArrayList<String> landLista = idb.fetchColumn(sqlFraga);
 
