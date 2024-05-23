@@ -527,7 +527,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Samarbetspartner"/>
+        <Property name="text" type="java.lang.String" value="V&#xe4;lj samarbetspartner"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane4">

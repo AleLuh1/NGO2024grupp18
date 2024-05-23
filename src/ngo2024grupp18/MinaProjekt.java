@@ -426,7 +426,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jListPartnerInfoMinaUppgifter);
 
-        jLabel5.setText("Samarbetspartner");
+        jLabel5.setText("Välj samarbetspartner");
 
         taPartnerInfoMinaUppgifter.setColumns(20);
         taPartnerInfoMinaUppgifter.setRows(5);
