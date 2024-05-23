@@ -67,7 +67,9 @@ public class AllaProjekt extends javax.swing.JFrame {
     // Fyller i CB för hallbarhetsmål som inte redan finns kopplade till projektet
     public void fyllCBhallbarMal(int pid) {
         try {
-            String sqlFraga = "SELECT DISTINCT hallbarhetsmal.hid FROM hallbarhetsmal JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid WHERE NOT hallbarhetsmal.hid IN (SELECT hid FROM proj_hallbarhet WHERE pid = " + pid + ")";
+            String sqlFraga = "SELECT DISTINCT hallbarhetsmal.hid FROM hallbarhetsmal "
+                    + "JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid "
+                    + "WHERE NOT hallbarhetsmal.hid IN (SELECT hid FROM proj_hallbarhet WHERE pid = " + pid + ")";
             System.out.println(sqlFraga);
             ArrayList<String> allaHBMalLista = idb.fetchColumn(sqlFraga);
             cbAllaHallbMal.removeAllItems();
@@ -88,7 +90,8 @@ public class AllaProjekt extends javax.swing.JFrame {
     //Fyller i Cb för alla anställda som inte jobbar i projektet
     public void fyllCBAllaAnstallda(int pid) {
         try {
-            String sqlFraga = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld LEFT OUTER JOIN ans_proj ON ans_proj.aid = anstalld.aid WHERE pid != " + pid + " OR pid IS NULL";
+            String sqlFraga = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld LEFT OUTER "
+                    + "JOIN ans_proj ON ans_proj.aid = anstalld.aid WHERE pid != " + pid + " OR pid IS NULL";
             System.out.println(sqlFraga);
             ArrayList<String> anstalldAidLista = idb.fetchColumn(sqlFraga);
             cbAllaAnstallda.removeAllItems();
@@ -530,12 +533,16 @@ public class AllaProjekt extends javax.swing.JFrame {
 
             HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
 
-            String sqlFragaHallbMal = "SELECT DISTINCT namn FROM hallbarhetsmal JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid JOIN projekt ON projekt.pid = proj_hallbarhet.pid WHERE projektnamn = '" + projektNamn + "'";
+            String sqlFragaHallbMal = "SELECT DISTINCT namn FROM hallbarhetsmal "
+                    + "JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid "
+                    + "JOIN projekt ON projekt.pid = proj_hallbarhet.pid "
+                    + "WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFragaHallbMal);
             ArrayList<String> projektHallbMal = idb.fetchColumn(sqlFragaHallbMal);
 
             // Hämtar namn på alla anställda som jobbar 
-            String sqlFragaAnstalldNamn = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld JOIN ans_proj ON ans_proj.aid = anstalld.aid WHERE ans_proj.pid = " + pid;
+            String sqlFragaAnstalldNamn = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld "
+                    + "JOIN ans_proj ON ans_proj.aid = anstalld.aid WHERE ans_proj.pid = " + pid;
             System.out.println(sqlFragaAnstalldNamn);
             anstalldaIProjLista = idb.fetchColumn(sqlFragaAnstalldNamn);
 
