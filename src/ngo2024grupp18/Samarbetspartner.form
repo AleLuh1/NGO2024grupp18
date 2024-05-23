@@ -30,54 +30,56 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="cbValjSamarbetspartner" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnLaggTillPartner" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblProjektIDSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNamnSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblKontaktpersonSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEpostSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTnrSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblAdressSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblBranchSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStadSam" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="tfPartnerIDSam" pref="253" max="32767" attributes="0"/>
-                                  <Component id="tfNamnSam" max="32767" attributes="0"/>
-                                  <Component id="tfKontaktpersonSam" max="32767" attributes="0"/>
-                                  <Component id="tfEpostSam" max="32767" attributes="0"/>
-                                  <Component id="tfTnrSam" max="32767" attributes="0"/>
-                                  <Component id="tfAdressSam" max="32767" attributes="0"/>
-                                  <Component id="tfBranchSam" max="32767" attributes="0"/>
-                                  <Component id="cbValjStadSamarbetspartner" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="cbValjSamarbetspartner" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                      <Component id="btnLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblProjektIDSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNamnSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblKontaktpersonSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblEpostSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTnrSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblAdressSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblBranchSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblStadSam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="tfPartnerIDSam" pref="253" max="32767" attributes="0"/>
+                                          <Component id="tfNamnSam" max="32767" attributes="0"/>
+                                          <Component id="tfKontaktpersonSam" max="32767" attributes="0"/>
+                                          <Component id="tfEpostSam" max="32767" attributes="0"/>
+                                          <Component id="tfTnrSam" max="32767" attributes="0"/>
+                                          <Component id="tfAdressSam" max="32767" attributes="0"/>
+                                          <Component id="tfBranchSam" max="32767" attributes="0"/>
+                                          <Component id="cbValjStadSamarbetspartner" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnSparAndringarSam" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="btnTillbakaSamarbetspartner" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="btnTaBortSamarbetspartner" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Component id="btnTillbakaSamarbetspartner" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-              <Component id="btnTaBortSamarbetspartner" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
