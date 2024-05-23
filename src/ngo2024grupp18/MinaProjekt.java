@@ -82,6 +82,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
     }
 
+    
     //fyll på anställd combobox med alla anställda som jobbar inte i projektet
     public void fyllAnstalldaCB(String pid) {
         cbAnstalldaMinaProjekt.removeAllItems();
@@ -120,6 +121,54 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
     }
 
+    private void fyllPaLander() {
+        try {
+            cbLandMinaProjekt.removeAllItems();
+            String sqlFraga4 = "SELECT namn FROM land";
+            ArrayList<HashMap<String, String>> allaLander = idb.fetchRows(sqlFraga4);
+            for (HashMap<String, String> ettLand : allaLander) {
+                cbLandMinaProjekt.addItem(ettLand.get("namn"));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public void fyllCBVäljProjektchef() {
+        try {
+            cbProjektchefMinaProjekt.removeAllItems();
+            String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
+            System.out.println(sqlFraga);
+            ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
+
+            for (String enProjektchefId : projektchefIdLista) {
+                String sqlFraga1 = "SELECT fornamn, efternamn FROM anstalld WHERE aid =" + enProjektchefId;
+                HashMap<String, String> projektchef = idb.fetchRow(sqlFraga1);
+                cbProjektchefMinaProjekt.addItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+    }
+
+    private void fyllPaStatus() {
+        cbStatusMinaProjekt.removeAllItems();
+        cbStatusMinaProjekt.addItem("Planerat");
+        cbStatusMinaProjekt.addItem("Pågående");
+        cbStatusMinaProjekt.addItem("Avslutat");
+
+    }
+
+    private void fyllPaPrioritet() {
+        cbPrioritetMinaProjekt.removeAllItems();
+        cbPrioritetMinaProjekt.addItem("Hög");
+        cbPrioritetMinaProjekt.addItem("Medel");
+        cbPrioritetMinaProjekt.addItem("Låg");
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -535,54 +584,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         btnTaBortAnstalld.setVisible(true);
     }//GEN-LAST:event_jListAnstalldaMinaProjektValueChanged
 
-    private void fyllPaLander() {
-        try {
-            cbLandMinaProjekt.removeAllItems();
-            String sqlFraga4 = "SELECT namn FROM land";
-            ArrayList<HashMap<String, String>> allaLander = idb.fetchRows(sqlFraga4);
-            for (HashMap<String, String> ettLand : allaLander) {
-                cbLandMinaProjekt.addItem(ettLand.get("namn"));
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-    }
-
-    public void fyllCBVäljProjektchef() {
-        try {
-            cbProjektchefMinaProjekt.removeAllItems();
-            String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
-            System.out.println(sqlFraga);
-            ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
-
-            for (String enProjektchefId : projektchefIdLista) {
-                String sqlFraga1 = "SELECT fornamn, efternamn FROM anstalld WHERE aid =" + enProjektchefId;
-                HashMap<String, String> projektchef = idb.fetchRow(sqlFraga1);
-                cbProjektchefMinaProjekt.addItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-
-        }
-
-    }
-
-    private void fyllPaStatus() {
-        cbStatusMinaProjekt.removeAllItems();
-        cbStatusMinaProjekt.addItem("Planerat");
-        cbStatusMinaProjekt.addItem("Pågående");
-        cbStatusMinaProjekt.addItem("Avslutat");
-
-    }
-
-    private void fyllPaPrioritet() {
-        cbPrioritetMinaProjekt.removeAllItems();
-        cbPrioritetMinaProjekt.addItem("Hög");
-        cbPrioritetMinaProjekt.addItem("Medel");
-        cbPrioritetMinaProjekt.addItem("Låg");
-
-    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
