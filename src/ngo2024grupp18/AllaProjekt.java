@@ -29,6 +29,7 @@ public class AllaProjekt extends javax.swing.JFrame {
     private ArrayList<String> anstalldaIProjLista;
     private ArrayList<String> nyTillagdaAnstallda;
     private ArrayList<String> nyTillagdaHBMal;
+    private ArrayList<String> anstalldaSomTasBortLista;
 
     /**
      * Creates new form AllaProjekt
@@ -39,14 +40,11 @@ public class AllaProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         fyllCBAllaProjekt();
-        fyllCBProjektChef();
-        fyllCBLander();
-        fyllPaStatus();
-        fyllPaPrioritet();
         this.setLocationRelativeTo(null);
         btnTaBortAnstalldAllaProj.setVisible(false);
         nyTillagdaAnstallda = new ArrayList<String>();
         nyTillagdaHBMal = new ArrayList<String>();
+        anstalldaSomTasBortLista = new ArrayList<String>();
     }
 
     // CB = combobox
@@ -307,6 +305,11 @@ public class AllaProjekt extends javax.swing.JFrame {
 
         lblAllaProjAnstallda.setText("Anställda i projektet");
 
+        jListAllaAnstallda.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListAllaAnstalldaValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jListAllaAnstallda);
 
         lblAllaProjLaggTillAnstalld.setText("Välj anställd att lägga till i projektet");
@@ -327,6 +330,11 @@ public class AllaProjekt extends javax.swing.JFrame {
         cbLandAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra land" }));
 
         btnTaBortAnstalldAllaProj.setText("Ta bort anställd från projektet");
+        btnTaBortAnstalldAllaProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAnstalldAllaProjActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Lägg till ett nytt projekt");
@@ -515,6 +523,10 @@ public class AllaProjekt extends javax.swing.JFrame {
             int pid = Integer.parseInt(pidStr);
             fyllCBAllaAnstallda(pid);
             fyllCBhallbarMal(pid);
+            fyllCBProjektChef();
+            fyllCBLander();
+            fyllPaStatus();
+            fyllPaPrioritet();
 
             HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
 
@@ -640,11 +652,27 @@ public class AllaProjekt extends javax.swing.JFrame {
                 System.out.println(sqlFrHBMal);
                 idb.insert(sqlFrHBMal);
             }
+
+            for (String anstalldAttTaBort : anstalldaSomTasBortLista) {
+                String anstalldFornamn = anstalldAttTaBort.split(" ")[0];
+                String anstalldEfternamn = anstalldAttTaBort.split(" ")[1];
+
+                String sqlFragaAnstalldId = "SELECT aid FROM anstalld WHERE fornamn = '" + anstalldFornamn + "' AND efternamn = '" + anstalldEfternamn + "'";
+                String anstalldId = idb.fetchSingle(sqlFragaAnstalldId);
+                
+                if(!anstalldId.equals(aid)) {
+                     String sqlFragaTaBort = "DELETE FROM ans_proj WHERE pid =" + pid + " AND aid =" + anstalldId;
+                    idb.delete(sqlFragaTaBort);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Projektchef " + anstalldFornamn + " " + anstalldEfternamn + " kan inte tas bort");
+                }
+            }
+
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
-        JOptionPane.showMessageDialog(null, "Ändring sparad");
-        this.dispose();
-        new Meny(idb, aid, avdid).setVisible(true);
+            JOptionPane.showMessageDialog(null, "Ändring sparad");
+            this.dispose();
+            new Meny(idb, aid, avdid).setVisible(true);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -711,7 +739,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             System.out.println(sqlProjnamnTillPid);
             String pidStr = idb.fetchSingle(sqlProjnamnTillPid);
             int pid = Integer.parseInt(pidStr);
-           fyllCBhallbarMal(pid);
+            fyllCBhallbarMal(pid);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -734,6 +762,17 @@ public class AllaProjekt extends javax.swing.JFrame {
         }
         nyTillagdaAnstallda.add(anstalld);
     }//GEN-LAST:event_btnLaggTillAnstalldAllaProjActionPerformed
+
+    private void jListAllaAnstalldaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListAllaAnstalldaValueChanged
+        btnTaBortAnstalldAllaProj.setVisible(true);
+    }//GEN-LAST:event_jListAllaAnstalldaValueChanged
+
+    private void btnTaBortAnstalldAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldAllaProjActionPerformed
+        String anstalld = jListAllaAnstallda.getSelectedValue();
+        listModelAnstallda.removeElement(anstalld);
+        cbAllaAnstallda.addItem(anstalld);
+        anstalldaSomTasBortLista.add(anstalld);
+    }//GEN-LAST:event_btnTaBortAnstalldAllaProjActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
