@@ -25,8 +25,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
     public HallbarhetsMal(InfDB idb) {
         initComponents();
         this.idb = idb;
-        this.aid = aid; 
-        this.avdid = avdid; 
         fyllCBHallbarhetsmal();
         this.setLocationRelativeTo(null);
     }
