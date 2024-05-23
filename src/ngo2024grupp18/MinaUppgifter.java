@@ -8,6 +8,7 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -133,7 +134,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
         lblAnstallningsDatum = new javax.swing.JLabel();
         lblAvdelning = new javax.swing.JLabel();
         tftAvdMinaUppgifter = new javax.swing.JTextField();
-        btnAndraMinaUppgifter = new javax.swing.JButton();
+        btnSparaMinaUppgifter = new javax.swing.JButton();
         btnTillbakaMU = new javax.swing.JButton();
         lblMinaUppgifterRuta = new javax.swing.JLabel();
 
@@ -157,12 +158,10 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         lblAvdelning.setText("Avdelning");
 
-        tftAvdMinaUppgifter.setText("jTextField1");
-
-        btnAndraMinaUppgifter.setText("Spara ändringar");
-        btnAndraMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
+        btnSparaMinaUppgifter.setText("Spara ändringar");
+        btnSparaMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAndraMinaUppgifterActionPerformed(evt);
+                btnSparaMinaUppgifterActionPerformed(evt);
             }
         });
 
@@ -189,7 +188,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnTillbakaMU)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAndraMinaUppgifter)
+                        .addComponent(btnSparaMinaUppgifter)
                         .addGap(63, 63, 63))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -251,7 +250,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 .addComponent(lblAnstallningsDatum)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAndraMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSparaMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTillbakaMU))
                 .addGap(27, 27, 27))
         );
@@ -267,25 +266,51 @@ public class MinaUppgifter extends javax.swing.JFrame {
         //nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
-    private void btnAndraMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinaUppgifterActionPerformed
+    private void btnSparaMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaMinaUppgifterActionPerformed
 
         try {
+
             String fornamn = tfFornamnMinaUppgifter.getText();
+            tfEpostMinaUppgifter.setEditable(false);
+            tfEpostMinaUppgifter.requestFocus();
+            
             String efternamn = tfEfternamnMinaUppgifter.getText();
+            tfEpostMinaUppgifter.setEditable(false);
+            tfEpostMinaUppgifter.requestFocus();
+            
+
             String adress = tfAdressMinaUppgifter.getText();
+            if (adress.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Vänligen fyll i en adress");
+                return;
+            }
             String epost = tfEpostMinaUppgifter.getText();
+            tfEpostMinaUppgifter.setEditable(false);
+            tfEpostMinaUppgifter.requestFocus();
+            
             String telefon = tfTelefonMinaUppgifter.getText();
+            if (telefon.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Vänligen fyll i ett telefonnummer");
+                return;
+            }
             String avdelning = tftAvdMinaUppgifter.getText();
-            String sqlFraga = "UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn + "',adress = '" + adress + "' ,epost = '" + epost + "', telefon = '" + telefon + "', avdelning = '" + avdelning + "' WHERE aid = " + aid;
+
+            tftAvdMinaUppgifter.setEditable(false);
+            tftAvdMinaUppgifter.requestFocus();
+
+            String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;
             idb.update(sqlFraga);
+            
+            JOptionPane.showMessageDialog(null, "Ändring sparad");
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-    }//GEN-LAST:event_btnAndraMinaUppgifterActionPerformed
+    }//GEN-LAST:event_btnSparaMinaUppgifterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAndraMinaUppgifter;
+    private javax.swing.JButton btnSparaMinaUppgifter;
     private javax.swing.JButton btnTillbakaMU;
     private javax.swing.JLabel lblAID;
     private javax.swing.JLabel lblAdress;

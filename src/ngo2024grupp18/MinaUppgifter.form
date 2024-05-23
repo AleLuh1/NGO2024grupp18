@@ -33,7 +33,7 @@
                   <Group type="102" attributes="0">
                       <Component id="btnTillbakaMU" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnAndraMinaUppgifter" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSparaMinaUppgifter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -112,7 +112,7 @@
               <Component id="lblAnstallningsDatum" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAndraMinaUppgifter" alignment="3" max="32767" attributes="0"/>
+                  <Component id="btnSparaMinaUppgifter" alignment="3" max="32767" attributes="0"/>
                   <Component id="btnTillbakaMU" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -177,16 +177,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tftAvdMinaUppgifter">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAndraMinaUppgifter">
+    <Component class="javax.swing.JButton" name="btnSparaMinaUppgifter">
       <Properties>
         <Property name="text" type="java.lang.String" value="Spara &#xe4;ndringar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAndraMinaUppgifterActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaMinaUppgifterActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTillbakaMU">

@@ -32,6 +32,8 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     private DefaultListModel<String> listModelPartnersInfo = new DefaultListModel<>();
 
+    private ArrayList<String> partnersSomSkaTasBort = new ArrayList<>();
+
     private ArrayList<String> visaPartnerInfo = new ArrayList<>();
 
     /**
@@ -49,9 +51,6 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllCBVäljProjektchef();
         fyllValjPartner();
         this.setLocationRelativeTo(null);
-
-        //Tabort-knappen är ej synlig när sidan laddas. Man måste välja en anställd först
-        btnTaBortAnstalld.setVisible(false);
     }
 
     // Fyller combobox
@@ -95,13 +94,15 @@ public class MinaProjekt extends javax.swing.JFrame {
         listModelPartners.removeAllElements();
         try {
 
-            String sqlFraga = "SELECT * FROM partner WHERE pid=" + pid;
+            String sqlFraga = "SELECT partner_pid FROM projekt_partner WHERE pid=" + pid;
             System.out.println(sqlFraga);
+
             ArrayList<HashMap<String, String>> allaPartnersForProjektet = idb.fetchRows(sqlFraga);
 
             for (HashMap<String, String> enPartner : allaPartnersForProjektet) {
-
-                listModelPartners.addElement(enPartner.get("namn"));
+                String sqlFragaPartnerName = "SELECT namn FROM partner WHERE pid=" + enPartner.get("partner_pid");
+                String partnerName = idb.fetchSingle(sqlFragaPartnerName);
+                listModelPartners.addElement(partnerName);
 
             }
             jListPartnerMinaProjekt.setModel(listModelPartners);
@@ -721,6 +722,30 @@ public class MinaProjekt extends javax.swing.JFrame {
 
             }
 
+            for (int i = 0; i < listModelPartners.size(); i++) {
+                String partnerNamn = listModelPartners.getElementAt(i);
+
+                String sqlFragaPartnerdId = "SELECT pid FROM partner WHERE namn = '" + partnerNamn + "'";
+                String partnerId = idb.fetchSingle(sqlFragaPartnerdId);
+
+                //skapa ny item i tabellen projekt_partner med pid och partner_pid. Använder WHERE NOT EXIST för att kontrollera att det inte finns en annan item som har redan pid+partner_pid
+                String sqlFragaProjektPartner = "INSERT INTO projekt_partner (pid, partner_pid) "
+                        + "SELECT " + projektId + ", " + partnerId + " "
+                        + "WHERE NOT EXISTS (SELECT 1 FROM projekt_partner WHERE pid = " + projektId + " AND partner_pid = " + partnerId + ")";
+
+                idb.insert(sqlFragaProjektPartner);
+
+            }
+
+            for (String tagitBortPartner : partnersSomSkaTasBort) {
+                String sqlFragaPartnerId = "SELECT pid FROM partner WHERE namn = '" + tagitBortPartner + "'";
+                String partnerId = idb.fetchSingle(sqlFragaPartnerId);
+
+                String sqlFragaTaBortPartner = "DELETE FROM projekt_partner WHERE pid =" + projektId + " AND partner_pid =" + partnerId;
+                idb.delete(sqlFragaTaBortPartner);
+
+            }
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
 
             //laddar om listan
@@ -765,6 +790,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         listModelPartners.removeElement(anstalld);
         cbValjPartnerMinaProjekt.addItem(anstalld);
         visaPartner.add(anstalld);
+         partnersSomSkaTasBort.add(anstalld);
 
 
     }//GEN-LAST:event_btnTaBortPartnerMinaProjektActionPerformed
@@ -772,8 +798,8 @@ public class MinaProjekt extends javax.swing.JFrame {
     private void jListPartnerInfoMinaUppgifterValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPartnerInfoMinaUppgifterValueChanged
         taPartnerInfoMinaUppgifter.setText("");
         String partnerNamn = jListPartnerInfoMinaUppgifter.getSelectedValue();
-        if (partnerNamn != null){
-        fyllPaInfoTa(partnerNamn); 
+        if (partnerNamn != null) {
+            fyllPaInfoTa(partnerNamn);
         }
     }//GEN-LAST:event_jListPartnerInfoMinaUppgifterValueChanged
 
