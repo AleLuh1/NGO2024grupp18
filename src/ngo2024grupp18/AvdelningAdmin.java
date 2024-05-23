@@ -29,26 +29,22 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         fyllCBValjAVD();
     }
-    
-    
+
     // Lägger till alla avdelningar i combobox
-    
-    public void fyllCBValjAVD(){
-    
-    try{
-        
-      String sqlFraga = "SELECT DISTINCT namn FROM avdelning";  
-      System.out.println(sqlFraga);
-      ArrayList <String> avdLista = idb.fetchColumn(sqlFraga);
-      for(String enAvd : avdLista){
-      cbValjAvdAdmin.addItem(enAvd);
-      }
-    
-    }catch(Exception ex){
-    System.out.println(ex.getMessage());
-    
-    }
-    
+    public void fyllCBValjAVD() {
+
+        try {
+
+            String sqlFraga = "SELECT DISTINCT namn FROM avdelning";
+            System.out.println(sqlFraga);
+            ArrayList<String> avdLista = idb.fetchColumn(sqlFraga);
+            for (String enAvd : avdLista) {
+                cbValjAvdAdmin.addItem(enAvd);
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -228,16 +224,15 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     this.toBack();
+        this.toBack();
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
-        nyMeny.toFront();    
+        nyMeny.toFront();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbValjAvdAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjAvdAdminActionPerformed
-        
-        
-          String avdNamn = cbValjAvdAdmin.getSelectedItem().toString();
+
+        String avdNamn = cbValjAvdAdmin.getSelectedItem().toString();
 
         try {
 
@@ -249,10 +244,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             if (avdLista != null) {
                 String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + avdLista.get("stad") + "'";
                 String stad = idb.fetchSingle(sqlFraga2);
-                
-                String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid = '" +avdLista.get("chef")+"'";
-                HashMap<String,String> avdChef = idb.fetchRow(sqlFraga3);
-                
+
+                String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid = '" + avdLista.get("chef") + "'";
+                HashMap<String, String> avdChef = idb.fetchRow(sqlFraga3);
+
                 tfAvdelningsIDAvdAdmin.setText(avdLista.get("avdid"));
                 tfNamnAvdAdmin.setText(avdLista.get("namn"));
                 tfBeskrivningAvdAdmin.setText(avdLista.get("beskrivning"));
@@ -265,24 +260,12 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_cbValjAvdAdminActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    new LaggTillAvdelning(idb, aid, avdid).setVisible(true);
-        setVisible(false);    
-       
+        new LaggTillAvdelning(idb, aid, avdid).setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -239,6 +239,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListAllaAnstallda.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListAllaAnstalldaValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jListAllaAnstallda);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -453,6 +458,10 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnSparaLaggTIllProjektActionPerformed
+
+    private void jListAllaAnstalldaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListAllaAnstalldaValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jListAllaAnstalldaValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
