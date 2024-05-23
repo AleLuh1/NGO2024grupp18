@@ -8,6 +8,7 @@ import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -270,7 +271,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaSamarbetspartnerActionPerformed
 
     private void btnSparAndringarSamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparAndringarSamActionPerformed
-
+          if(Validering.isKorrektFormatEpostPartner(tfEpostSam)){
         try {
             String partnerIDStr = tfPartnerIDSam.getText();
             int partnerID = Integer.parseInt(partnerIDStr);
@@ -300,7 +301,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
 
         }
-
+          }
 
     }//GEN-LAST:event_btnSparAndringarSamActionPerformed
 

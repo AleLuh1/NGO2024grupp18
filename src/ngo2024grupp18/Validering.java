@@ -62,4 +62,26 @@ public class Validering {
         }
         return resultat;
     }
+    
+    
+    public static boolean isKorrektFormatEpostPartner(JTextField kontrolleraRuta) {
+        boolean resultat = true;
+        String ePost = kontrolleraRuta.getText();
+        // Regex för att kontrollera om användaren har skrivit in e-post som slutar med "@example.com"
+        String regex = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";
+        // Skapar ett Pattern-objekt
+        Pattern mall = Pattern.compile(regex);
+        // Skapar ett Matcher-objekt 
+        Matcher ePostMatchar = mall.matcher(ePost);
+        if (!(ePostMatchar.matches())) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange korrekt e-post");
+            resultat = false;
+        }
+        return resultat;
+    }
+    
+    
+    
+    
+    
 }

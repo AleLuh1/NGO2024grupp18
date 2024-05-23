@@ -268,6 +268,8 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTillPartnerActionPerformed
 
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
+        
+        if(Validering.isKorrektFormatEpostPartner(tfEpostLaggTillPartner)){
         try {
             // kontrollerar om textfields är tomma
             String PartnerID = tfPartnerIDLaggTillPartner.getText();
@@ -331,7 +333,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
+        }
 
     }//GEN-LAST:event_btnSparaLaggTillPartnerActionPerformed
 
