@@ -30,40 +30,41 @@
                       <Component id="lblMinaUppgifterRuta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="btnTillbakaMU" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnSparaMinaUppgifter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="lblAnstallningsDatum" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblFornamn" max="32767" attributes="0"/>
-                                      <Component id="lblAID" pref="99" max="32767" attributes="0"/>
+                              <Component id="btnTillbakaMU" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
+                              <Component id="btnSparaMinaUppgifter" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lblAnstallningsDatum" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                      <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <Component id="lblTelefon" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="lblEfternamn" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblFornamn" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblAID" alignment="0" pref="99" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Component id="lblEfternamn" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                  <Component id="lblTelefon" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                  <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
-                                  <Component id="tfAdressMinaUppgifter" alignment="0" pref="157" max="32767" attributes="0"/>
-                                  <Component id="tfEpostMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfTelefonMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfFornamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfEfternamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tftAvdMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="tfAdressMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfFornamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfEfternamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfTelefonMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfEpostMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tftAvdMinaUppgifter" alignment="0" min="-2" pref="339" max="-2" attributes="0"/>
+                                      <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="102" max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -180,7 +181,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSparaMinaUppgifter">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Spara &#xe4;ndringar"/>
+        <Property name="text" type="java.lang.String" value="Spara"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaMinaUppgifterActionPerformed"/>
