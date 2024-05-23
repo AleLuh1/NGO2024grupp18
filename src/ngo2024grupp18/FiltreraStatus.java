@@ -36,7 +36,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         Fyllcb();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //Används för att centrera JFrameForm i mitten av skärmen.
     }
 
     private void Fyllcb() {
@@ -144,7 +144,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
         String kollaStatus = (String) cbStatus.getSelectedItem();
         DefaultTableModel model = (DefaultTableModel) tblTabell.getModel();
 
-// Använder CenterRenderer för att centrera värdena i tabellen.
+// Använder CenterRenderer för att centrera värdena som vi får i tabellen till mitten.
         CenterRenderer centerRenderer = new CenterRenderer();
 
         for (int i = 0; i < tblTabell.getColumnCount(); i++) {
@@ -152,7 +152,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
         }
 
         try {
-            model.setRowCount(0); // Rensar tabellen innan vi fyller på med nya data, när vi väljer ett annat värde.
+            model.setRowCount(0); // Rensar tabellen innan vi fyller på med ny data, när vi väljer ett annat värde i vår JComboBox.
 
             String sqlFraga = "SELECT DISTINCT projekt.pid, projektnamn, status "
                     + "FROM projekt "
