@@ -272,7 +272,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     private void cbValjAvdAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjAvdAdminActionPerformed
 
         try {
-String avdNamn = cbValjAvdAdmin.getSelectedItem().toString();
+            String avdNamn = cbValjAvdAdmin.getSelectedItem().toString();
             String sqlFraga = "SELECT * FROM avdelning WHERE namn = '" + avdNamn + "'";
             System.out.println(sqlFraga);
 
@@ -307,15 +307,14 @@ String avdNamn = cbValjAvdAdmin.getSelectedItem().toString();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnSparaAvdelningAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAvdelningAdminActionPerformed
-if(Validering.isKorrektFormatEpostPartner(tfEpostAvdAdmin)){
-}
+        
+        
         try {
             String avdId = tfAvdelningsIDAvdAdmin.getText();
             String avdNamn = tfNamnAvdAdmin.getText();
             String avdBeskrivning = tfBeskrivningAvdAdmin.getText();
             String avdAddress = tfAdressAvdAdmin.getText();
-            
-            
+
             String avdEpost = tfEpostAvdAdmin.getText();
             String avdTnr = tfTnrAvdAdmin.getText();
             String avdStad = cbStadAvdAdmin.getSelectedItem().toString();
@@ -326,23 +325,23 @@ if(Validering.isKorrektFormatEpostPartner(tfEpostAvdAdmin)){
 
             String fornamn = avdChef.split(" ")[0];
             String efternamn = avdChef.split(" ")[1];
-            
-            String sqlFragaChefId = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
-            
+
+            String sqlFragaChefId = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '" + efternamn + "'";
+
             String chefId = idb.fetchSingle(sqlFragaChefId);
-            
+
             String sqlFragaUpdate = "UPDATE avdelning SET namn = '" + avdNamn + "', beskrivning = '" + avdBeskrivning + "', adress = '" + avdAddress + "', epost = '" + avdEpost + "', telefon = '" + avdTnr + "', stad = " + stadId + ", chef = " + chefId + " WHERE avdid=" + avdId;
             idb.update(sqlFragaUpdate);
-            
+
             cbValjAvdAdmin.removeAllItems();
             fyllCBValjAVD();
-            
-             JOptionPane.showMessageDialog(null, "Ändring sparad");
+
+            JOptionPane.showMessageDialog(null, "Ändring sparad");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
-        }
-        
+        } 
+
 
     }//GEN-LAST:event_btnSparaAvdelningAdminActionPerformed
 
