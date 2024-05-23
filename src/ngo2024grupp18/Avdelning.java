@@ -146,7 +146,8 @@ public class Avdelning extends javax.swing.JFrame {
         String anstalld = cbAvdAnstalld.getSelectedItem().toString();
         // WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
         try {
-            String sqlFraga = "SELECT * FROM avdelning JOIN anstalld ON anstalld.avdelning = avdid WHERE avdid = " + avdid + " AND CONCAT(fornamn, ' ', efternamn) = '" + anstalld + "'";
+            String sqlFraga = "SELECT * FROM avdelning JOIN anstalld ON anstalld.avdelning = avdid "
+                    + "WHERE avdid = " + avdid + " AND CONCAT(fornamn, ' ', efternamn) = '" + anstalld + "'";
             System.out.println(sqlFraga);
             HashMap<String, String> avdelning = idb.fetchRow(sqlFraga);
             tfTnrAvd.setText(avdelning.get("telefon"));

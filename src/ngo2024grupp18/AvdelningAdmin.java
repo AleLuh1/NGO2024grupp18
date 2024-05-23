@@ -85,7 +85,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
 
         }
-
     }
 
     /**
@@ -298,16 +297,13 @@ String avdNamn = cbValjAvdAdmin.getSelectedItem().toString();
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-
         }
-
 
     }//GEN-LAST:event_cbValjAvdAdminActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         new LaggTillAvdelning(idb, aid, avdid).setVisible(true);
         setVisible(false);
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnSparaAvdelningAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAvdelningAdminActionPerformed
