@@ -24,89 +24,89 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblMinaProjektRuta" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblMinaProjektRuta" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblSlutdatum" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblLand" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblProjektchef" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblPrioProjekt" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblKostnad" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="lblStartdatum" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="lblBeskrivningProjekt" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="lblProjektNamn" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                                              <Component id="lblProjektID" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                                              <Component id="lblSlutdatum" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblLand" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblProjektchef" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblPrioProjekt" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblKostnad" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblStartdatum" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btnTillbakaMinaProj" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="lblBeskrivningProjekt" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="tfProjektNamn" pref="183" max="32767" attributes="0"/>
-                                          <Component id="tfBeskrivningProjekt" pref="183" max="32767" attributes="0"/>
-                                          <Component id="tfProjektID" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfStartdatum" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfSlutdatum" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfKostnad" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbStatusMinaProjekt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbPrioritetMinaProjekt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbLandMinaProjekt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbProjektchefMinaProjekt" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="lblProjektNamn" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                                      <Component id="lblProjektID" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cbMinaProjekt" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                      <Component id="btnStatistikMinaProjekt" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btnTillbakaMinaProj" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="43" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tfProjektNamn" pref="183" max="32767" attributes="0"/>
+                                  <Component id="tfBeskrivningProjekt" pref="183" max="32767" attributes="0"/>
+                                  <Component id="tfProjektID" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfStartdatum" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfSlutdatum" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfKostnad" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cbStatusMinaProjekt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cbPrioritetMinaProjekt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cbLandMinaProjekt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cbProjektchefMinaProjekt" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="cbMinaProjekt" min="-2" pref="130" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Component id="btnStatistikMinaProjekt" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane2" min="-2" pref="195" max="-2" attributes="0"/>
-                                  <Component id="btnTaBortPartnerMinaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane2" min="-2" pref="195" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cbValjPartnerMinaProjekt" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnLaggTillPartnerMinaProjekt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTaBortPartnerMinaProjekt" alignment="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="jScrollPane3" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="btnLaggTillAnstalld" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cbAnstalldaMinaProjekt" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnTaBortAnstalld" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnLaggTillAnstalld" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cbAnstalldaMinaProjekt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnTaBortAnstalld" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane4" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnAndraUppgifterMinaProjekt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnAndraUppgifterMinaProjekt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -114,10 +114,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="lblMinaProjektRuta" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblMinaProjektRuta" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cbMinaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnStatistikMinaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -138,6 +138,19 @@
                           <Component id="tfBeskrivningProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane4" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -152,9 +165,28 @@
                           <Component id="lblKostnad" min="-2" max="-2" attributes="0"/>
                           <Component id="tfKostnad" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbStatusMinaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPrioProjekt" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbPrioritetMinaProjekt" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblProjektchef" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbProjektchefMinaProjekt" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblLand" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbLandMinaProjekt" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -189,27 +221,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbStatusMinaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblPrioProjekt" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbPrioritetMinaProjekt" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblProjektchef" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbProjektchefMinaProjekt" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblLand" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbLandMinaProjekt" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAndraUppgifterMinaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaMinaProj" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -425,7 +437,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTaBortAnstalld">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ta bort anst&#xe4;lld fr&#xe5;n projektet"/>
+        <Property name="text" type="java.lang.String" value="Ta bort"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortAnstalldActionPerformed"/>
@@ -480,7 +492,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTaBortPartnerMinaProjekt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ta bort partner fr&#xe5;n projektet"/>
+        <Property name="text" type="java.lang.String" value="Ta bort "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortPartnerMinaProjektActionPerformed"/>
@@ -491,5 +503,47 @@
         <Property name="text" type="java.lang.String" value="V&#xe4;lj partner att l&#xe4;gga till i projektet"/>
       </Properties>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="jListPartnerInfoMinaUppgifter">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jListPartnerInfoMinaUppgifterValueChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Samarbetspartner"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="taPartnerInfoMinaUppgifter">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
