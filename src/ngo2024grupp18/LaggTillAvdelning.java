@@ -256,6 +256,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i avdelningschef");
         }
 
+        if(Validering.isKorrektFormatEpostPartner(tfEpostLaggTillAvd)){
         try {
             String avdID = tfAvdIDLaggTillAvd.getText();
             String namn = tfNamnLaggTillAvd.getText();
@@ -278,7 +279,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
 
         }
-
+        }
 
     }//GEN-LAST:event_btnSparaLaggTillAvdActionPerformed
 
