@@ -332,6 +332,8 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
         String nyAnstalldAvd = cbAvdNyAnstalld.getSelectedItem().toString();
 
+        
+        if(Validering.isKorrektFormatEpostPartner(tfEpostNyAnstalld)){
         try {
             String sqlFragaAvdNamn = "SELECT avdid FROM avdelning WHERE namn = '" + nyAnstalldAvd + "'";
             System.out.println(sqlFragaAvdNamn);
@@ -377,7 +379,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
         } catch (InfException ex) {
             System.out.println(ex.getMessage());
-        }
+        } }
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed
 
     private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed
