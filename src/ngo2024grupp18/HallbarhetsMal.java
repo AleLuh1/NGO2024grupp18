@@ -17,7 +17,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
     private InfDB idb;
     private String aid;
-    private String avdid; 
+    private String avdid;
 
     /**
      * Creates new form HallbarhetsMal
