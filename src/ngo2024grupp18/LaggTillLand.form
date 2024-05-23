@@ -24,40 +24,41 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="btnSparaLaggTillLand" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblPolitiskStrukturLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblEkonomiLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblPolitiskStrukturLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblEkonomiLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="tfEkonomiLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="tfEkonomiLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="tfPolitiskStrukturLaggTillLand" alignment="1" min="-2" pref="229" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblLandIDLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNamnLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblValutaLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTidszonLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfValutaLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
-                                      <Component id="tfTidszonLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
-                                      <Component id="tfSprakLaggTillLand" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                                      <Component id="tfNamnLaggTillLand" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                                      <Component id="tfLandIDLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Component id="tfPolitiskStrukturLaggTillLand" alignment="1" min="-2" pref="229" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblLandIDLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblNamnLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblValutaLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblTidszonLaggTillLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="tfValutaLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
+                                              <Component id="tfTidszonLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
+                                              <Component id="tfSprakLaggTillLand" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                              <Component id="tfNamnLaggTillLand" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                              <Component id="tfLandIDLaggTillLand" min="-2" pref="229" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -68,7 +69,7 @@
                       <Component id="btnTillbakaLaggTillLand" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
