@@ -585,10 +585,11 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAllaProjektPopupMenuWillBecomeInvisible
 
     private void btnTillbakaAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAllaProjActionPerformed
-        this.toBack();
+        //this.toBack();
+        this.dispose();
         Projekt nyttProject = new Projekt(idb, aid, avdid);
         nyttProject.setVisible(true);
-        nyttProject.toFront();
+        //nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaAllaProjActionPerformed
 
     private void btnSparaAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAllaProjektActionPerformed
