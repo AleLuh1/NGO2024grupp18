@@ -67,8 +67,8 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="cbMinaProjekt" min="-2" pref="130" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Component id="cbMinaProjekt" min="-2" pref="154" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnStatistikMinaProjekt" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -221,7 +221,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAndraUppgifterMinaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTillbakaMinaProj" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -320,6 +320,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cbMinaProjekt">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="14" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
             <StringItem index="0" value="V&#xe4;lj ett projekt"/>
