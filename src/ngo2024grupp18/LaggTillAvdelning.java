@@ -4,6 +4,8 @@
  */
 package ngo2024grupp18;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import oru.inf.InfDB;
 import javax.swing.JOptionPane;
 
@@ -27,6 +29,9 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
         LaggaTillNyAvdId();
+        fyllCBValjStad();
+        fyllCBValjProjektchef();
+        fyllCBHallbarhetsmal();
     }
 
     // Genererar ett nytt avd-id genom att hitta högsta avdid och adderar 1 
@@ -50,6 +55,58 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         return nyAvdId;
+    }
+
+    // Lägger till alla städer i combobox
+    public void fyllCBValjStad() {
+        try {
+            String sqlFraga = "SELECT DISTINCT namn FROM stad";
+            System.out.println(sqlFraga);
+            ArrayList<String> stadNamnLista = idb.fetchColumn(sqlFraga);
+
+            for (String enStad : stadNamnLista) {
+                cbStadLaggTillPartner.addItem(enStad);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+    }
+
+    // Lägger till alla projektchefer i combobox
+    public void fyllCBValjProjektchef() {
+        try {
+            cbAvdchefLaggTillavd.removeAllItems();
+            String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
+            System.out.println(sqlFraga);
+            ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
+
+            for (String enProjektchefId : projektchefIdLista) {
+                String sqlFraga1 = "SELECT fornamn, efternamn FROM anstalld WHERE aid =" + enProjektchefId;
+                HashMap<String, String> projektchef = idb.fetchRow(sqlFraga1);
+                cbAvdchefLaggTillavd.addItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+        }
+
+    }
+
+    private void fyllCBHallbarhetsmal() {
+        try {
+            String sqlFraga = "SELECT namn FROM hallbarhetsmal";
+            System.out.println(sqlFraga);
+            ArrayList<String> hallbarhetsNamnLista;
+            hallbarhetsNamnLista = idb.fetchColumn(sqlFraga);
+            for (String ettNamn : hallbarhetsNamnLista) {
+                cbHallbarhetsmalLaggTillAvd.addItem(ettNamn);
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -78,8 +135,10 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         tfAdressLaggTillAvd = new javax.swing.JTextField();
         tfEpostLaggTillAvd = new javax.swing.JTextField();
         tfTnrLaggTillAvd = new javax.swing.JTextField();
-        tfStadLaggTillAvd = new javax.swing.JTextField();
-        tfAvdchefLaggTillAvd = new javax.swing.JTextField();
+        cbStadLaggTillPartner = new javax.swing.JComboBox<>();
+        cbAvdchefLaggTillavd = new javax.swing.JComboBox<>();
+        cbHallbarhetsmalLaggTillAvd = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +175,8 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Hållbarhetsmål");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +184,9 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLaggTillAvdRuta)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblLaggTillAvdRuta)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAvdIDLaggTillAvd)
@@ -133,20 +196,22 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                             .addComponent(lblEpostLaggTillAvd)
                             .addComponent(lblTnrLaggTillAvd)
                             .addComponent(lblStadLaggTillAvd)
-                            .addComponent(lblAvdchefLaggTillAvd))
+                            .addComponent(lblAvdchefLaggTillAvd)
+                            .addComponent(jLabel1))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbHallbarhetsmalLaggTillAvd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfNamnLaggTillAvd)
                             .addComponent(tfBeskrivningLaggTillAvd)
                             .addComponent(tfAdressLaggTillAvd)
                             .addComponent(tfEpostLaggTillAvd)
                             .addComponent(tfTnrLaggTillAvd)
-                            .addComponent(tfStadLaggTillAvd)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tfAvdIDLaggTillAvd, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(tfAvdchefLaggTillAvd))))
-                .addGap(35, 35, 35))
+                            .addComponent(cbStadLaggTillPartner, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbAvdchefLaggTillavd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(35, 35, 35))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(btnTillbakaLaggTillAvd)
@@ -186,12 +251,16 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStadLaggTillAvd)
-                    .addComponent(tfStadLaggTillAvd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbStadLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAvdchefLaggTillAvd)
-                    .addComponent(tfAvdchefLaggTillAvd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                    .addComponent(cbAvdchefLaggTillavd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbHallbarhetsmalLaggTillAvd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaLaggTillAvd)
                     .addComponent(btnSparaLaggTillAvd))
@@ -212,7 +281,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         //Gör om nya avdid till en int igen för att kunna lägga i db 
         String nyAvdidStr = tfAvdIDLaggTillAvd.getText();
         int nyAvdidInt = Integer.parseInt(nyAvdidStr);
-        
+
         // kontrollerar om textfields är tomma
         String laggTillNamn = tfNamnLaggTillAvd.getText();
 
@@ -244,42 +313,58 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
         }
 
-        String laggTillStad = tfStadLaggTillAvd.getText();
+        String laggTillStad = cbStadLaggTillPartner.getSelectedItem().toString();
 
         if (laggTillStad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i stad");
         }
 
-        String laggTillAvdChef = tfAvdchefLaggTillAvd.getText();
+        String laggTillAvdChef = cbAvdchefLaggTillavd.getSelectedItem().toString();
 
         if (laggTillAvdChef.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i avdelningschef");
         }
 
-        if(Validering.isKorrektFormatEpostPartner(tfEpostLaggTillAvd)){
+        if (Validering.isKorrektFormatEpostPartner(tfEpostLaggTillAvd)) {
+            try {
+                String avdID = tfAvdIDLaggTillAvd.getText();
+                String namn = tfNamnLaggTillAvd.getText();
+                String beskrivning = tfBeskrivningLaggTillAvd.getText();
+                String adress = tfAdressLaggTillAvd.getText();
+                String epost = tfEpostLaggTillAvd.getText();
+                String telefonnummer = tfTnrLaggTillAvd.getText();
+                String stadStr = cbStadLaggTillPartner.getSelectedItem().toString();
+                //Gör om stad till en int för att kunna lägga i db
+                int stad = Integer.parseInt(stadStr);
+                String avdchefStr = cbAvdchefLaggTillavd.getSelectedItem().toString();
+                //Gör om avdchef till en int för att kunna lägga i db
+                int avdchef = Integer.parseInt(avdchefStr);
+
+                String sqlFraga = "INSERT INTO avdelning (avdid, namn, beskrivning, adress, epost, telefon, stad, chef) VALUES (" + nyAvdidInt + ", '" + namn + "','" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefonnummer + "', " + stad + ", " + avdchef + ")";
+                System.out.println(sqlFraga);
+                idb.insert(sqlFraga);
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+
+            }
+        }
+
+        //Gör om nya projektID till en int igen för att kunna lägga i db 
+        String nyttMalStr = cbHallbarhetsmalLaggTillAvd.getSelectedItem().toString();
+        int nyttMalInt = Integer.parseInt(nyttMalStr);
+
+        String laggTillHallbarhetsmal = cbHallbarhetsmalLaggTillAvd.getSelectedItem().toString();
+
         try {
-            String avdID = tfAvdIDLaggTillAvd.getText();
-            String namn = tfNamnLaggTillAvd.getText();
-            String beskrivning = tfBeskrivningLaggTillAvd.getText();
-            String adress = tfAdressLaggTillAvd.getText();
-            String epost = tfEpostLaggTillAvd.getText();
-            String telefonnummer = tfTnrLaggTillAvd.getText();
-            String stadStr = tfStadLaggTillAvd.getText();
-            //Gör om stad till en int för att kunna lägga i db
-            int stad = Integer.parseInt(stadStr);
-            String avdchefStr = tfAvdchefLaggTillAvd.getText();
-            //Gör om avdchef till en int för att kunna lägga i db
-            int avdchef = Integer.parseInt(avdchefStr); 
 
-            String sqlFraga = "INSERT INTO avdelning (avdid, namn, beskrivning, adress, epost, telefon, stad, chef) VALUES (" + nyAvdidInt + ", '" + namn + "','" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefonnummer + "', " + stad + ", " + avdchef + ")";
-            System.out.println(sqlFraga);
-            idb.insert(sqlFraga);
-
+            String sqlFraga2 = "INSERT INTO avd_hallbarhet (avdid, hid)"
+                    + "VALUES (" + nyttMalInt + ", " + laggTillHallbarhetsmal + ")";
+            idb.insert(sqlFraga2);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+        }
 
-        }
-        }
 
     }//GEN-LAST:event_btnSparaLaggTillAvdActionPerformed
 
@@ -287,6 +372,10 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaLaggTillAvd;
     private javax.swing.JButton btnTillbakaLaggTillAvd;
+    private javax.swing.JComboBox<String> cbAvdchefLaggTillavd;
+    private javax.swing.JComboBox<String> cbHallbarhetsmalLaggTillAvd;
+    private javax.swing.JComboBox<String> cbStadLaggTillPartner;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAdressLaggTillAvd;
     private javax.swing.JLabel lblAvdIDLaggTillAvd;
     private javax.swing.JLabel lblAvdchefLaggTillAvd;
@@ -298,11 +387,9 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
     private javax.swing.JLabel lblTnrLaggTillAvd;
     private javax.swing.JTextField tfAdressLaggTillAvd;
     private javax.swing.JTextField tfAvdIDLaggTillAvd;
-    private javax.swing.JTextField tfAvdchefLaggTillAvd;
     private javax.swing.JTextField tfBeskrivningLaggTillAvd;
     private javax.swing.JTextField tfEpostLaggTillAvd;
     private javax.swing.JTextField tfNamnLaggTillAvd;
-    private javax.swing.JTextField tfStadLaggTillAvd;
     private javax.swing.JTextField tfTnrLaggTillAvd;
     // End of variables declaration//GEN-END:variables
 }
