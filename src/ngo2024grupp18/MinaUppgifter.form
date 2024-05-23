@@ -40,18 +40,25 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="lblAnstallningsDatum" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="lblTelefon" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="lblEfternamn" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lblFornamn" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lblAID" alignment="0" pref="99" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                              <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="lblEfternamn" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblFornamn" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblAID" alignment="0" pref="99" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblTelefon" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="tfAdressMinaUppgifter" alignment="0" max="32767" attributes="0"/>
                                       <Component id="tfFornamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
@@ -67,6 +74,11 @@
                       <EmptySpace pref="49" max="32767" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="98" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,7 +123,9 @@
               </Group>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Component id="lblAnstallningsDatum" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSparaMinaUppgifter" alignment="3" max="32767" attributes="0"/>
                   <Component id="btnTillbakaMU" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -148,7 +162,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblAdress">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adress"/>
+        <Property name="text" type="java.lang.String" value="Adress*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfAdressMinaUppgifter">
@@ -162,7 +176,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefon">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Telefon"/>
+        <Property name="text" type="java.lang.String" value=" Telefonnummer*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfTelefonMinaUppgifter">
@@ -201,6 +215,11 @@
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mina uppgifter"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="* = kan &#xe4;ndras"/>
       </Properties>
     </Component>
   </SubComponents>
