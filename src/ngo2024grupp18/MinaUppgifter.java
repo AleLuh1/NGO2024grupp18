@@ -32,32 +32,25 @@ public class MinaUppgifter extends javax.swing.JFrame {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
             System.out.println(sqlFraga);
             HashMap<String, String> anstalld = idb.fetchRow(sqlFraga);
-            
+
             String sqlFraga2 = "SELECT namn FROM avdelning WHERE avdid = '" + anstalld.get("avdelning") + "'";
-                String avdelning = idb.fetchSingle(sqlFraga2);
-            
-            
+            String avdelning = idb.fetchSingle(sqlFraga2);
+
             lblAID.setText(("AnställningsID: " + anstalld.get("aid")));
             lblAID.requestFocus();
             lblRoll.setText("Roll: " + getRoll());
             tfFornamnMinaUppgifter.setText(anstalld.get("fornamn"));
-            
             tfEfternamnMinaUppgifter.setText(anstalld.get("efternamn"));
-            
             tfAdressMinaUppgifter.setText(anstalld.get("adress"));
-            
             tfEpostMinaUppgifter.setText(anstalld.get("epost"));
-         
             tfTelefonMinaUppgifter.setText(anstalld.get("telefon"));
-           
             tftAvdMinaUppgifter.setText(avdelning);
-            
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
-   
+
     public String getRoll() {
         if (isAdmin() == true) {
             return "Admin";
@@ -152,23 +145,13 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         lblFornamn.setText("Förnamn");
 
-        tfFornamnMinaUppgifter.setText("jTextField1");
-
         lblEfternamn.setText("Efternamn");
-
-        tfEfternamnMinaUppgifter.setText("jTextField1");
 
         lblAdress.setText("Adress");
 
-        tfAdressMinaUppgifter.setText("jTextField1");
-
         lblEpost.setText("E-post");
 
-        tfEpostMinaUppgifter.setText("jTextField1");
-
         lblTelefon.setText("Telefon");
-
-        tfTelefonMinaUppgifter.setText("jTextField1");
 
         lblAnstallningsDatum.setText("Anställningsdatum");
 
@@ -284,25 +267,19 @@ public class MinaUppgifter extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
     private void btnAndraMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinaUppgifterActionPerformed
-        
-        try{
-        String fornamn = tfFornamnMinaUppgifter.getText();
-        String efternamn = tfEfternamnMinaUppgifter.getText();
-        String adress = tfAdressMinaUppgifter.getText();
-        String epost = tfEpostMinaUppgifter.getText();
-        String telefon = tfTelefonMinaUppgifter.getText(); 
-        String avdelning = tftAvdMinaUppgifter.getText();
-        
-        
-        String sqlFraga = "UPDATE anstalld SET fornamn = '" + fornamn +"', efternamn = '" + efternamn + "',adress = '" + adress + "' ,epost = '" + epost + "', telefon = '" + telefon + "', avdelning = '" + avdelning + "' WHERE aid = " + aid;
-        idb.update(sqlFraga);
-        } catch(Exception ex){
+
+        try {
+            String fornamn = tfFornamnMinaUppgifter.getText();
+            String efternamn = tfEfternamnMinaUppgifter.getText();
+            String adress = tfAdressMinaUppgifter.getText();
+            String epost = tfEpostMinaUppgifter.getText();
+            String telefon = tfTelefonMinaUppgifter.getText();
+            String avdelning = tftAvdMinaUppgifter.getText();
+            String sqlFraga = "UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn + "',adress = '" + adress + "' ,epost = '" + epost + "', telefon = '" + telefon + "', avdelning = '" + avdelning + "' WHERE aid = " + aid;
+            idb.update(sqlFraga);
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        
         }
-        
-        
-        
     }//GEN-LAST:event_btnAndraMinaUppgifterActionPerformed
 
 

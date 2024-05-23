@@ -137,9 +137,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfFornamnMinaUppgifter">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEfternamn">
       <Properties>
@@ -147,9 +144,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEfternamnMinaUppgifter">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAdress">
       <Properties>
@@ -157,9 +151,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfAdressMinaUppgifter">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEpost">
       <Properties>
@@ -167,9 +158,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEpostMinaUppgifter">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefon">
       <Properties>
@@ -177,9 +165,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfTelefonMinaUppgifter">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAnstallningsDatum">
       <Properties>
