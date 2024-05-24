@@ -206,7 +206,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         lblStatusAllaProjekt = new javax.swing.JLabel();
         lblPrioAllaProjekt = new javax.swing.JLabel();
         lblLandAllaProjekt = new javax.swing.JLabel();
-        lblProduktchefAllaProjekt = new javax.swing.JLabel();
+        lblProjektchefAllaProjekt = new javax.swing.JLabel();
         tfBeskrivningAllaProjekt = new javax.swing.JTextField();
         tfStartdatumAllaProjekt = new javax.swing.JTextField();
         tfSlutDatumAllaProjekt = new javax.swing.JTextField();
@@ -275,7 +275,7 @@ public class AllaProjekt extends javax.swing.JFrame {
 
         lblLandAllaProjekt.setText("Land");
 
-        lblProduktchefAllaProjekt.setText("Projektchef");
+        lblProjektchefAllaProjekt.setText("Projektchef");
 
         bnTaBortProj.setText("Ta bort");
         bnTaBortProj.addActionListener(new java.awt.event.ActionListener() {
@@ -367,7 +367,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                     .addComponent(lblAllaProjektRuta)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lblProjektnamnAllaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblProduktchefAllaProjekt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblProjektchefAllaProjekt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblNyttProjektNyPid, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
@@ -449,7 +449,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(lblProduktchefAllaProjekt)
+                        .addComponent(lblProjektchefAllaProjekt)
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -822,7 +822,7 @@ public class AllaProjekt extends javax.swing.JFrame {
     private javax.swing.JLabel lblLandAllaProjekt;
     private javax.swing.JLabel lblNyttProjektNyPid;
     private javax.swing.JLabel lblPrioAllaProjekt;
-    private javax.swing.JLabel lblProduktchefAllaProjekt;
+    private javax.swing.JLabel lblProjektchefAllaProjekt;
     private javax.swing.JLabel lblProjektnamnAllaProjekt;
     private javax.swing.JLabel lblSlutdatumAllaProjekt;
     private javax.swing.JLabel lblStartDatumAllaProjekt;
