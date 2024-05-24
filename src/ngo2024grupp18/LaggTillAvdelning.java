@@ -78,7 +78,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
     public void fyllCBValjProjektchef() {
         try {
             cbAvdchefLaggTillavd.removeAllItems();
-            String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
+            String sqlFraga = "SELECT aid FROM handlaggare";
             System.out.println(sqlFraga);
             ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
 

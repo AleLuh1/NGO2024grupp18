@@ -71,8 +71,9 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     public void fyllCBValjProjektchef() {
         try {
             cbAvdchefAdmin.removeAllItems();
-            String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
+            String sqlFraga = "SELECT aid FROM handlaggare";
             System.out.println(sqlFraga);
+            
             ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
 
             for (String enProjektchefId : projektchefIdLista) {
