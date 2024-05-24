@@ -326,45 +326,48 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
 
         if (Validering.isKorrektFormatEpostPartner(tfEpostLaggTillAvd)) {
             try {
-                String avdID = tfAvdIDLaggTillAvd.getText();
+                //Gör om avdID till en int för att kunna lägga in i db
+                String avdIDStr = tfAvdIDLaggTillAvd.getText();
+                int avdid = Integer.parseInt(avdIDStr);
+                
                 String namn = tfNamnLaggTillAvd.getText();
                 String beskrivning = tfBeskrivningLaggTillAvd.getText();
                 String adress = tfAdressLaggTillAvd.getText();
                 String epost = tfEpostLaggTillAvd.getText();
                 String telefonnummer = tfTnrLaggTillAvd.getText();
-                String stadStr = cbStadLaggTillPartner.getSelectedItem().toString();
+
                 //Gör om stad till en int för att kunna lägga i db
-                int stad = Integer.parseInt(stadStr);
-                String avdchefStr = cbAvdchefLaggTillavd.getSelectedItem().toString();
+                String stadStr = cbStadLaggTillPartner.getSelectedItem().toString();
+                String sqlFragaStad = "SELECT sid FROM stad WHERE namn = '" + stadStr + "'";
+                System.out.println(sqlFragaStad);
+                String sidString = idb.fetchSingle(sqlFragaStad);
+                System.out.println(sidString);
+                int stad = Integer.parseInt(sidString);
+
                 //Gör om avdchef till en int för att kunna lägga i db
-                int avdchef = Integer.parseInt(avdchefStr);
+                String avdchefNamn = cbAvdchefLaggTillavd.getSelectedItem().toString();
+                String sqlFragaAvdChef = "SELECT aid FROM anstalld WHERE CONCAT(fornamn, ' ', efternamn) = '" + avdchefNamn + "'";
+                System.out.println(sqlFragaAvdChef);
+                String avdChefAidStr = idb.fetchSingle(sqlFragaAvdChef);
+                int avdchef = Integer.parseInt(avdChefAidStr);
 
                 String sqlFraga = "INSERT INTO avdelning (avdid, namn, beskrivning, adress, epost, telefon, stad, chef) VALUES (" + nyAvdidInt + ", '" + namn + "','" + beskrivning + "', '" + adress + "', '" + epost + "', '" + telefonnummer + "', " + stad + ", " + avdchef + ")";
                 System.out.println(sqlFraga);
                 idb.insert(sqlFraga);
 
+                String nyttMalStr = cbHallbarhetsmalLaggTillAvd.getSelectedItem().toString();
+                String sqlFragaHBMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + nyttMalStr + "'";
+                System.out.println(sqlFragaHBMal);
+                String hidStr = idb.fetchSingle(sqlFragaHBMal);
+                int hid = Integer.parseInt(hidStr);
+
+                String sqlFraga2 = "INSERT INTO avd_hallbarhet (avdid, hid)"
+                        + "VALUES (" + avdid + ", " + hid + ")";
+                idb.insert(sqlFraga2);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
-
             }
         }
-
-        //Gör om nya projektID till en int igen för att kunna lägga i db 
-        String nyttMalStr = cbHallbarhetsmalLaggTillAvd.getSelectedItem().toString();
-        int nyttMalInt = Integer.parseInt(nyttMalStr);
-
-        String laggTillHallbarhetsmal = cbHallbarhetsmalLaggTillAvd.getSelectedItem().toString();
-
-        try {
-
-            String sqlFraga2 = "INSERT INTO avd_hallbarhet (avdid, hid)"
-                    + "VALUES (" + nyttMalInt + ", " + laggTillHallbarhetsmal + ")";
-            idb.insert(sqlFraga2);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-
     }//GEN-LAST:event_btnSparaLaggTillAvdActionPerformed
 
 
