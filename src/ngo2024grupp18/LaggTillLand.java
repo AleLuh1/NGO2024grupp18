@@ -52,7 +52,7 @@ public class LaggTillLand extends javax.swing.JFrame {
         }
         return nyLid;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -209,7 +209,7 @@ public class LaggTillLand extends javax.swing.JFrame {
         //Gör om nya lid från String till int för att kunna lägga in i db
         String nyLidStr = tfLandIDLaggTillLand.getText();
         int nyLid = Integer.parseInt(nyLidStr);
-        
+
         // kontrollerar om textfields är tomma
         String laggTillNamn = tfNamnLaggTillLand.getText();
 
@@ -249,7 +249,7 @@ public class LaggTillLand extends javax.swing.JFrame {
         try {
             String sqlFraga = "INSERT INTO land (lid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi) VALUES (" + nyLid + ",'" + laggTillNamn + "', '" + laggTillSprak + "', '" + laggTillValuta + "', '" + laggTillTidszon + "', '" + laggTillPolitiskStruktur + "', '" + laggTillEkonomi + "')";
             idb.insert(sqlFraga);
-            
+
             JOptionPane.showMessageDialog(null, "Land tillagt");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

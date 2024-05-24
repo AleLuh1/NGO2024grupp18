@@ -48,7 +48,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
 
         }
-
     }
 
     // Lägger till alla städer i combobox
@@ -307,8 +306,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnSparaAvdelningAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAvdelningAdminActionPerformed
-        
-        
+
         try {
             String avdId = tfAvdelningsIDAvdAdmin.getText();
             String avdNamn = tfNamnAvdAdmin.getText();
@@ -340,7 +338,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
-        } 
+        }
 
 
     }//GEN-LAST:event_btnSparaAvdelningAdminActionPerformed

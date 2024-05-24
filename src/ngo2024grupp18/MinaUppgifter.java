@@ -47,20 +47,19 @@ public class MinaUppgifter extends javax.swing.JFrame {
             tfTelefonMinaUppgifter.setText(anstalld.get("telefon"));
             tftAvdMinaUppgifter.setText(avdelning);
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
-            
+
             tfFornamnMinaUppgifter.setEditable(false);
             tfFornamnMinaUppgifter.requestFocus();
-            
+
             tfEfternamnMinaUppgifter.setEditable(false);
             tfEfternamnMinaUppgifter.requestFocus();
-            
+
             tfEpostMinaUppgifter.setEditable(false);
             tfEpostMinaUppgifter.requestFocus();
-            
+
             tftAvdMinaUppgifter.setEditable(false);
             tftAvdMinaUppgifter.requestFocus();
-            
-            
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -298,31 +297,28 @@ public class MinaUppgifter extends javax.swing.JFrame {
         try {
 
             String fornamn = tfFornamnMinaUppgifter.getText();
-            
+
             String efternamn = tfEfternamnMinaUppgifter.getText();
-            
+
             String adress = tfAdressMinaUppgifter.getText();
             if (adress.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Vänligen fyll i en adress");
                 return;
             }
-            
+
             String epost = tfEpostMinaUppgifter.getText();
-           
-            
+
             String telefon = tfTelefonMinaUppgifter.getText();
             if (telefon.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Vänligen fyll i ett telefonnummer");
                 return;
             }
-            
-            String avdelning = tftAvdMinaUppgifter.getText();
 
-            
+            String avdelning = tftAvdMinaUppgifter.getText();
 
             String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;
             idb.update(sqlFraga);
-            
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
 
         } catch (Exception ex) {

@@ -35,7 +35,7 @@ public class Validering {
         }
         return resultat;
     }
-    
+
     public static boolean finnsTextTA(JTextArea kontrolleraTA) {
         boolean resultat = true;
 
@@ -62,8 +62,7 @@ public class Validering {
         }
         return resultat;
     }
-    
-    
+
     public static boolean isKorrektFormatEpostPartner(JTextField kontrolleraRuta) {
         boolean resultat = true;
         String ePost = kontrolleraRuta.getText();
@@ -79,9 +78,5 @@ public class Validering {
         }
         return resultat;
     }
-    
-    
-    
-    
-    
+
 }

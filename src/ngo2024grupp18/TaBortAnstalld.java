@@ -45,8 +45,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
 
         }
-        
-        
 
     }
 
@@ -144,12 +142,12 @@ public class TaBortAnstalld extends javax.swing.JFrame {
 
     private void btnTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldActionPerformed
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
-        
+
         String fornamn = anstalld.split(" ")[0];
-                String efternamn = anstalld.split(" ")[1];
+        String efternamn = anstalld.split(" ")[1];
 
         try {
-            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
+            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '" + efternamn + "'";
             System.out.println(sqlFragaAid);
             String selectedAid = idb.fetchSingle(sqlFragaAid);
 
@@ -160,17 +158,14 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             String sqlFraga2 = "DELETE FROM admin WHERE aid = " + selectedAid;
             System.out.println(sqlFraga2);
             idb.delete(sqlFraga2);
-            
-                        String sqlFraga4 = "DELETE FROM handlaggare WHERE aid = " + selectedAid + " OR mentor = "+ selectedAid;
+
+            String sqlFraga4 = "DELETE FROM handlaggare WHERE aid = " + selectedAid + " OR mentor = " + selectedAid;
             System.out.println(sqlFraga4);
             idb.delete(sqlFraga4);
 
 //            String sqlFraga3 = "DELETE FROM handlaggare WHERE mentor = " + selectedAid;
 //            System.out.println(sqlFraga3);
 //            idb.delete(sqlFraga3);
-
-
-
             String sqlFraga5 = "DELETE FROM avdelning WHERE chef = " + selectedAid;
             System.out.println(sqlFraga5);
             idb.delete(sqlFraga5);
@@ -198,23 +193,21 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     private void cbTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTaBortAnstalldActionPerformed
         btnTaBortAnstalld.setVisible(true);
 
-
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
 
         try {
 
             String fornamn = anstalld.split(" ")[0];
             String efternamn = anstalld.split(" ")[1];
-            
-            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '"+efternamn+"'";
+
+            String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '" + efternamn + "'";
             System.out.println(sqlFragaAid);
             String aid = idb.fetchSingle(sqlFragaAid);
 
             String sqlFraga13 = "SELECT projektnamn FROM projekt WHERE projektchef =" + aid;
             System.out.println(sqlFraga13);
-            ArrayList<HashMap<String,String>> projektLista = idb.fetchRows(sqlFraga13);
-            
-           
+            ArrayList<HashMap<String, String>> projektLista = idb.fetchRows(sqlFraga13);
+
             if (!projektLista.isEmpty()) {
                 ArrayList<String> projektNamnLista = new ArrayList<>();
 
@@ -228,9 +221,9 @@ public class TaBortAnstalld extends javax.swing.JFrame {
                 }
 
                 JOptionPane.showMessageDialog(null, message);
-                btnTaBortAnstalld.setVisible(false); 
+                btnTaBortAnstalld.setVisible(false);
             }
-    
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
 

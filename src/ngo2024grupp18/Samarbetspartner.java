@@ -21,7 +21,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private String avdid;
 
     /**
-     * Creates new form 
+     * Creates new form
      */
     public Samarbetspartner(InfDB idb, String aid, String avdid) {
         initComponents();
@@ -50,8 +50,8 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
         }
     }
-        
-        public void fyllCBStad(){
+
+    public void fyllCBStad() {
         try {
             String sqlFraga = "SELECT DISTINCT namn FROM stad";
             System.out.println(sqlFraga);
@@ -64,8 +64,6 @@ public class Samarbetspartner extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
 
         }
-        
-        
 
     }
 
@@ -271,56 +269,54 @@ public class Samarbetspartner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaSamarbetspartnerActionPerformed
 
     private void btnSparAndringarSamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparAndringarSamActionPerformed
-          if(Validering.isKorrektFormatEpostPartner(tfEpostSam)){
-        try {
-            String partnerIDStr = tfPartnerIDSam.getText();
-            int partnerID = Integer.parseInt(partnerIDStr);
-            String namn = tfNamnSam.getText();
-            String kontaktperson = tfKontaktpersonSam.getText();
-            String kontaktEpost = tfEpostSam.getText();
-            String telefonnummer = tfTnrSam.getText();
-            String adress = tfAdressSam.getText();
-            String branch = tfBranchSam.getText();
-            String stadStr = cbValjStadSamarbetspartner.getSelectedItem().toString();
-            
-            String sqlFraga1 = "SELECT sid FROM stad WHERE namn = '" + stadStr + "'";
-            System.out.println(sqlFraga1);
-            String stadID = idb.fetchSingle(sqlFraga1);
-            
-            String sqlFraga2 = "UPDATE partner SET namn = '" + namn + "', kontaktperson = '" + kontaktperson + "', kontaktepost = '" + kontaktEpost + "', telefon = '" + telefonnummer + "', adress = '" + adress + "', branch = '" + branch + "', stad = " + stadID + " WHERE pid = '" + partnerID + "'";
-            idb.update(sqlFraga2);
-            
-            String sqlFraga3 = "UPDATE partner SET stad = " + stadID + " WHERE pid = '" + partnerID +"'";
-            idb.update(sqlFraga3);
-            
-            
-            JOptionPane.showMessageDialog(null, "Ändring sparad");
-            
-        } catch (Exception ex) {
+        if (Validering.isKorrektFormatEpostPartner(tfEpostSam)) {
+            try {
+                String partnerIDStr = tfPartnerIDSam.getText();
+                int partnerID = Integer.parseInt(partnerIDStr);
+                String namn = tfNamnSam.getText();
+                String kontaktperson = tfKontaktpersonSam.getText();
+                String kontaktEpost = tfEpostSam.getText();
+                String telefonnummer = tfTnrSam.getText();
+                String adress = tfAdressSam.getText();
+                String branch = tfBranchSam.getText();
+                String stadStr = cbValjStadSamarbetspartner.getSelectedItem().toString();
 
-            System.out.println(ex.getMessage());
+                String sqlFraga1 = "SELECT sid FROM stad WHERE namn = '" + stadStr + "'";
+                System.out.println(sqlFraga1);
+                String stadID = idb.fetchSingle(sqlFraga1);
 
+                String sqlFraga2 = "UPDATE partner SET namn = '" + namn + "', kontaktperson = '" + kontaktperson + "', kontaktepost = '" + kontaktEpost + "', telefon = '" + telefonnummer + "', adress = '" + adress + "', branch = '" + branch + "', stad = " + stadID + " WHERE pid = '" + partnerID + "'";
+                idb.update(sqlFraga2);
+
+                String sqlFraga3 = "UPDATE partner SET stad = " + stadID + " WHERE pid = '" + partnerID + "'";
+                idb.update(sqlFraga3);
+
+                JOptionPane.showMessageDialog(null, "Ändring sparad");
+
+            } catch (Exception ex) {
+
+                System.out.println(ex.getMessage());
+
+            }
         }
-          }
 
     }//GEN-LAST:event_btnSparAndringarSamActionPerformed
 
     private void cbValjSamarbetspartnerPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbValjSamarbetspartnerPopupMenuWillBecomeInvisible
 
         String partnerNamn = cbValjSamarbetspartner.getSelectedItem().toString();
-       
+
         try {
 
             String sqlFraga = "SELECT * FROM partner WHERE namn = '" + partnerNamn + "'";
             System.out.println(sqlFraga);
-            
- 
+
             HashMap<String, String> partnerNamnLista = idb.fetchRow(sqlFraga);
-           
+
             if (partnerNamnLista != null) {
                 String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + partnerNamnLista.get("stad") + "'";
                 String stad = idb.fetchSingle(sqlFraga2);
-                
+
                 tfPartnerIDSam.setText(partnerNamnLista.get("pid"));
                 tfNamnSam.setText(partnerNamnLista.get("namn"));
                 tfKontaktpersonSam.setText(partnerNamnLista.get("kontaktperson"));
@@ -328,7 +324,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 tfTnrSam.setText(partnerNamnLista.get("telefon"));
                 tfAdressSam.setText(partnerNamnLista.get("adress"));
                 tfBranchSam.setText(partnerNamnLista.get("branch"));
-                
+
                 cbValjStadSamarbetspartner.setSelectedItem(stad);
             }
 
@@ -345,7 +341,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
         try {
 
             String sqlFraga = " DELETE FROM partner WHERE pid = '" + partnerNamn + "'";
-            
+
             JOptionPane.showMessageDialog(null, "Samarbetspartner borttagen");
 
             // rensar textfields från uppgifter
@@ -363,8 +359,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
-        
+
 
     }//GEN-LAST:event_btnTaBortSamarbetspartnerActionPerformed
 

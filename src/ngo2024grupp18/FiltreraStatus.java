@@ -20,7 +20,6 @@ import oru.inf.InfException;
  *
  * @author User
  */
-
 public class FiltreraStatus extends javax.swing.JFrame {
 
     private InfDB idb;
@@ -52,6 +51,7 @@ public class FiltreraStatus extends javax.swing.JFrame {
     }
 
     public class CenterRenderer extends DefaultTableCellRenderer {
+
         public CenterRenderer() {
             setHorizontalAlignment(CENTER);
         }

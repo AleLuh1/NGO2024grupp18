@@ -791,7 +791,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         listModelPartners.removeElement(anstalld);
         cbValjPartnerMinaProjekt.addItem(anstalld);
         visaPartner.add(anstalld);
-         partnersSomSkaTasBort.add(anstalld);
+        partnersSomSkaTasBort.add(anstalld);
 
 
     }//GEN-LAST:event_btnTaBortPartnerMinaProjektActionPerformed
