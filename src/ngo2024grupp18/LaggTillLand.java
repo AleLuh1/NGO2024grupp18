@@ -197,12 +197,9 @@ public class LaggTillLand extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaLaggTillLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillLandActionPerformed
-        this.toBack();
+        this.dispose();
         Land nyttLand = new Land(idb, aid, avdid);
         nyttLand.setVisible(true);
-        nyttLand.toFront();
-
-
     }//GEN-LAST:event_btnTillbakaLaggTillLandActionPerformed
 
     private void btnSparaLaggTillLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillLandActionPerformed

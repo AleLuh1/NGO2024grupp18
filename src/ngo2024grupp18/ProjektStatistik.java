@@ -152,10 +152,9 @@ public class ProjektStatistik extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaProjStatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaProjStatActionPerformed
-        this.toBack();
+        this.dispose();
         MinaProjekt nyttMinaProjekt = new MinaProjekt(idb, aid, avdid);
         nyttMinaProjekt.setVisible(true);
-        nyttMinaProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaProjStatActionPerformed
 
     /**

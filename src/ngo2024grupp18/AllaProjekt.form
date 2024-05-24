@@ -73,7 +73,7 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="29" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTaBortProjAllaProj" alignment="1" min="-2" pref="234" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
@@ -87,32 +87,27 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnLaggTillHBMal" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblLaggTillProjekt" min="-2" pref="203" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="lblAllaProjLaggTillAnstalld" alignment="0" pref="199" max="32767" attributes="0"/>
-                                              <Component id="cbAllaAnstallda" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblLaggTillHBMal" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cbAllaHallbMal" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="btnLaggTillAnstalldAllaProj" max="32767" attributes="0"/>
-                                              <Component id="btnTaBortAnstalldAllaProj" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="lblLaggTillProjekt" min="-2" pref="203" max="-2" attributes="0"/>
+                                  <Component id="lblAllaProjLaggTillAnstalld" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="btnLaggTillHBMal" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbAllaAnstallda" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbAllaHallbMal" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnLaggTillAnstalldAllaProj" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnTaBortAnstalldAllaProj" alignment="0" pref="199" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                               <Component id="btnLaggTillProjAllaProj" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblLaggTillHBMal" min="-2" pref="61" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -135,21 +130,26 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="lblProduktchefAllaProjekt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="lblProduktchefAllaProjekt" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblAllaProjAnstallda" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblAllaProjLaggTillAnstalld" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                                      <Component id="lblAllaProjAnstallda" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblAllaProjLaggTillAnstalld" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cbAllaAnstallda" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
                               <Component id="btnLaggTillAnstalldAllaProj" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnTaBortAnstalldAllaProj" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -189,21 +189,20 @@
                           <Component id="cbLandAllaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblAllaProjHallbMal" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblLaggTillHBMal" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="cbAllaHallbMal" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblLaggTillHBMal" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cbAllaHallbMal" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnLaggTillHBMal" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -217,9 +216,9 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cbProjektchefAllaProjekt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnTillbakaAllaProj" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSparaAllaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -385,7 +384,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblLaggTillHBMal">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V&#xe4;lj h&#xe5;llbarhetsm&#xe5;l att l&#xe4;gga till"/>
+        <Property name="text" type="java.lang.String" value="V&#xe4;lj"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLaggTillHBMal">
@@ -435,7 +434,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblAllaProjLaggTillAnstalld">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V&#xe4;lj anst&#xe4;lld att l&#xe4;gga till i projektet"/>
+        <Property name="text" type="java.lang.String" value="V&#xe4;lj"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLaggTillAnstalldAllaProj">

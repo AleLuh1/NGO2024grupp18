@@ -59,9 +59,9 @@ public class TaBortAnstalld extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         cbTaBortAnstalld = new javax.swing.JComboBox<>();
-        btnTillbakaTaBortAnstalld = new javax.swing.JButton();
         btnTaBortAnstalld = new javax.swing.JButton();
         btnAndraProjketchefTaBortAnstalld = new javax.swing.JButton();
+        btnTillbakaTaBortAnstalld = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,13 +72,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         cbTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTaBortAnstalldActionPerformed(evt);
-            }
-        });
-
-        btnTillbakaTaBortAnstalld.setText("Tillbaka");
-        btnTillbakaTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTillbakaTaBortAnstalldActionPerformed(evt);
             }
         });
 
@@ -93,6 +86,13 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         btnAndraProjketchefTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAndraProjketchefTaBortAnstalldActionPerformed(evt);
+            }
+        });
+
+        btnTillbakaTaBortAnstalld.setText("Tillbaka");
+        btnTillbakaTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaTaBortAnstalldActionPerformed(evt);
             }
         });
 
@@ -125,20 +125,14 @@ public class TaBortAnstalld extends javax.swing.JFrame {
                 .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTillbakaTaBortAnstalld)
                     .addComponent(btnTaBortAnstalld)
-                    .addComponent(btnAndraProjketchefTaBortAnstalld))
+                    .addComponent(btnAndraProjketchefTaBortAnstalld)
+                    .addComponent(btnTillbakaTaBortAnstalld))
                 .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnTillbakaTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaTaBortAnstalldActionPerformed
-        this.toBack();
-        Meny nyTaBortAnstalld = new Meny(idb, aid, avdid);
-        nyTaBortAnstalld.setVisible(true);
-        nyTaBortAnstalld.toFront();        nyTaBortAnstalld.toFront();    }//GEN-LAST:event_btnTillbakaTaBortAnstalldActionPerformed
 
     private void btnTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldActionPerformed
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
@@ -235,6 +229,12 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         new AllaProjekt(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnAndraProjketchefTaBortAnstalldActionPerformed
+
+    private void btnTillbakaTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaTaBortAnstalldActionPerformed
+        this.dispose();
+        Meny nyTaBortAnstalld = new Meny(idb, aid, avdid);
+        nyTaBortAnstalld.setVisible(true);
+    }//GEN-LAST:event_btnTillbakaTaBortAnstalldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

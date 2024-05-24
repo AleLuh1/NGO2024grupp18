@@ -271,10 +271,9 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaLaggTillAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAvdActionPerformed
-        this.toBack();
+        this.dispose();
         AvdelningAdmin nyAvdAdmin = new AvdelningAdmin(idb, aid, avdid);
         nyAvdAdmin.setVisible(true);
-        nyAvdAdmin.toFront();
     }//GEN-LAST:event_btnTillbakaLaggTillAvdActionPerformed
 
     private void btnSparaLaggTillAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillAvdActionPerformed

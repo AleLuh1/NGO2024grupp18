@@ -261,10 +261,9 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillPartnerActionPerformed
-        this.toBack();
+        this.dispose();
         Samarbetspartner nyPartner = new Samarbetspartner(idb, aid, avdid);
         nyPartner.setVisible(true);
-        nyPartner.toFront();
     }//GEN-LAST:event_btnTillbakaLaggTillPartnerActionPerformed
 
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
