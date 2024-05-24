@@ -135,10 +135,9 @@ public class Avdelning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAvdActionPerformed
-        this.toBack();
+        this.dispose();
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
-        nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaAvdActionPerformed
 
     private void cbAvdAnstalldPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdAnstalldPopupMenuWillBecomeInvisible

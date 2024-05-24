@@ -383,10 +383,9 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed
 
     private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed
-        this.toBack();
+        this.dispose();
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
-        nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaLaggTillAnstalldActionPerformed
 
     private void cbRollNyAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRollNyAnstalldActionPerformed

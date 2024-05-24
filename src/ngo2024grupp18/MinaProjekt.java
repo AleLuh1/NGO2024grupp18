@@ -603,10 +603,9 @@ public class MinaProjekt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaMinaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMinaProjActionPerformed
-        this.toBack();
+        this.dispose();
         Projekt nyttProject = new Projekt(idb, aid, avdid);
         nyttProject.setVisible(true);
-        nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaMinaProjActionPerformed
 
     private void cbMinaProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbMinaProjektPopupMenuWillBecomeInvisible

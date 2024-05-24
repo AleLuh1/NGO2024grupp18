@@ -179,10 +179,9 @@ public class SokProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokProjektActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        this.toBack();
+        this.dispose();
         Projekt nyttProject = new Projekt(idb, aid, avdid);
         nyttProject.setVisible(true);
-        nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**

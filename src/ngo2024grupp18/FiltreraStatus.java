@@ -176,10 +176,9 @@ public class FiltreraStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_cbStatusActionPerformed
 
     private void btnTillbakaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaStatusActionPerformed
-        this.toBack();
+        this.dispose();
         Projekt nyttProjekt = new Projekt(idb, aid, avdid);
         nyttProjekt.setVisible(true);
-        nyttProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaStatusActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
