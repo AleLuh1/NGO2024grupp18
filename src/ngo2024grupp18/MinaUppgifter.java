@@ -29,8 +29,6 @@ public class MinaUppgifter extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-        //MinaUppgifter-fönstret stängs 
-        this.setDefaultCloseOperation(MinaUppgifter.DISPOSE_ON_CLOSE);
         try {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
             System.out.println(sqlFraga);
@@ -153,11 +151,6 @@ public class MinaUppgifter extends javax.swing.JFrame {
         btnMinaUppgifterRedigera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         lblAID.setText("AnställningsID");
 
@@ -286,15 +279,15 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
     private void btnTillbakaMUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMUActionPerformed
         this.dispose();
-//        Meny nyMeny = new Meny(idb, aid, avdid);
-//        nyMeny.setVisible(true);
+        Meny nyMeny = new Meny(idb, aid, avdid);
+        nyMeny.setVisible(true);
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
     private void btnMinaUppgifterRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterRedigeraActionPerformed
         if (btnMinaUppgifterRedigera.getText().equals("Ändra")) {
             btnMinaUppgifterRedigera.setText("Spara");
-            tfFornamnMinaUppgifter.setEditable(true);
-            tfEfternamnMinaUppgifter.setEditable(true);
+            
+            tfTelefonMinaUppgifter.setEditable(true);
             tfAdressMinaUppgifter.setEditable(true);
         } else {
             try {
@@ -324,17 +317,11 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 System.out.println(ex.getMessage());
             }
             btnMinaUppgifterRedigera.setText("Ändra");
-            tfFornamnMinaUppgifter.setEditable(false);
-            tfEfternamnMinaUppgifter.setEditable(false);
+            tfTelefonMinaUppgifter.setEditable(false);
             tfAdressMinaUppgifter.setEditable(false);
             
         }
     }//GEN-LAST:event_btnMinaUppgifterRedigeraActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Meny nyMeny = new Meny(idb, aid, avdid);
-        nyMeny.setVisible(true);
-    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

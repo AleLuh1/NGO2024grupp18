@@ -27,7 +27,6 @@ public class Projekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(Projekt.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -51,11 +50,6 @@ public class Projekt extends javax.swing.JFrame {
         btnFiltreraStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         lblProjekt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblProjekt.setText("Projekt");
@@ -211,9 +205,8 @@ public class Projekt extends javax.swing.JFrame {
 
     private void btnTillbakaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaProjektActionPerformed
         this.dispose();
-//        Meny nyMeny = new Meny(idb, aid, avdid);
-//        nyMeny.setVisible(true);
-//        nyMeny.toFront();
+        Meny nyMeny = new Meny(idb, aid, avdid);
+        nyMeny.setVisible(true);
     }//GEN-LAST:event_btnTillbakaProjektActionPerformed
 
     private void btnFiltreraStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltreraStatusActionPerformed
@@ -221,11 +214,6 @@ public class Projekt extends javax.swing.JFrame {
         filtreraStatusFonster.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnFiltreraStatusActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Meny nyMeny = new Meny(idb, aid, avdid);
-        nyMeny.setVisible(true);
-    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
