@@ -204,10 +204,9 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        this.toBack();
+        this.dispose();
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
-        nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
