@@ -29,6 +29,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
+        //MinaUppgifter-fönstret stängs 
         this.setDefaultCloseOperation(MinaUppgifter.DISPOSE_ON_CLOSE);
         try {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
