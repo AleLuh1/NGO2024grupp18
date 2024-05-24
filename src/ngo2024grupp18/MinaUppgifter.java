@@ -285,8 +285,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
     private void btnTillbakaMUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMUActionPerformed
         this.dispose();
-        Meny nyMeny = new Meny(idb, aid, avdid);
-        nyMeny.setVisible(true);
+//        Meny nyMeny = new Meny(idb, aid, avdid);
+//        nyMeny.setVisible(true);
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
     private void btnMinaUppgifterRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterRedigeraActionPerformed
