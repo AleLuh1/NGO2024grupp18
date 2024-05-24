@@ -212,10 +212,9 @@ public class Land extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLandActionPerformed
-        this.toBack();
+        this.dispose();
         Projekt nyttProject = new Projekt(idb, aid, avdid);
         nyttProject.setVisible(true);
-        nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaLandActionPerformed
 
     private void cbLandPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbLandPopupMenuWillBecomeInvisible
