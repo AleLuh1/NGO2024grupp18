@@ -41,26 +41,24 @@ public class MinaUppgifter extends javax.swing.JFrame {
             lblAID.requestFocus();
             lblRoll.setText("Roll: " + getRoll());
             tfFornamnMinaUppgifter.setText(anstalld.get("fornamn"));
-            tfEfternamnMinaUppgifter.setText(anstalld.get("efternamn"));
-            tfAdressMinaUppgifter.setText(anstalld.get("adress"));
-            tfEpostMinaUppgifter.setText(anstalld.get("epost"));
-            tfTelefonMinaUppgifter.setText(anstalld.get("telefon"));
-            tftAvdMinaUppgifter.setText(avdelning);
-            lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
-            
             tfFornamnMinaUppgifter.setEditable(false);
-            tfFornamnMinaUppgifter.requestFocus();
-            
+
+            tfEfternamnMinaUppgifter.setText(anstalld.get("efternamn"));
             tfEfternamnMinaUppgifter.setEditable(false);
-            tfEfternamnMinaUppgifter.requestFocus();
-            
+
+            tfAdressMinaUppgifter.setText(anstalld.get("adress"));
+            tfAdressMinaUppgifter.setEditable(false);
+
+            tfEpostMinaUppgifter.setText(anstalld.get("epost"));
             tfEpostMinaUppgifter.setEditable(false);
-            tfEpostMinaUppgifter.requestFocus();
-            
+
+            tfTelefonMinaUppgifter.setText(anstalld.get("telefon"));
+            tfTelefonMinaUppgifter.setEditable(false);
+
+            tftAvdMinaUppgifter.setText(avdelning);
             tftAvdMinaUppgifter.setEditable(false);
-            tftAvdMinaUppgifter.requestFocus();
-            
-            
+
+            lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -148,10 +146,9 @@ public class MinaUppgifter extends javax.swing.JFrame {
         lblAnstallningsDatum = new javax.swing.JLabel();
         lblAvdelning = new javax.swing.JLabel();
         tftAvdMinaUppgifter = new javax.swing.JTextField();
-        btnSparaMinaUppgifter = new javax.swing.JButton();
         btnTillbakaMU = new javax.swing.JButton();
         lblMinaUppgifterRuta = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        btnMinaUppgifterRedigera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,22 +160,15 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         lblEfternamn.setText("Efternamn");
 
-        lblAdress.setText("Adress*");
+        lblAdress.setText("Adress");
 
         lblEpost.setText("E-post");
 
-        lblTelefon.setText(" Telefonnummer*");
+        lblTelefon.setText("Telefonnummer");
 
         lblAnstallningsDatum.setText("Anställningsdatum");
 
         lblAvdelning.setText("Avdelning");
-
-        btnSparaMinaUppgifter.setText("Spara");
-        btnSparaMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSparaMinaUppgifterActionPerformed(evt);
-            }
-        });
 
         btnTillbakaMU.setText("Tillbaka");
         btnTillbakaMU.addActionListener(new java.awt.event.ActionListener() {
@@ -190,54 +180,58 @@ public class MinaUppgifter extends javax.swing.JFrame {
         lblMinaUppgifterRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblMinaUppgifterRuta.setText("Mina uppgifter");
 
-        jLabel1.setText("* = kan ändras");
+        btnMinaUppgifterRedigera.setText("Ändra");
+        btnMinaUppgifterRedigera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinaUppgifterRedigeraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
                         .addComponent(lblMinaUppgifterRuta)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnTillbakaMU)
-                                .addGap(357, 357, 357)
-                                .addComponent(btnSparaMinaUppgifter))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblAnstallningsDatum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(lblEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(lblAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(lblEfternamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(lblFornamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(lblAID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)))
-                                            .addGap(61, 61, 61))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblTelefon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGap(37, 37, 37)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfAdressMinaUppgifter)
-                                        .addComponent(tfFornamnMinaUppgifter)
-                                        .addComponent(tfEfternamnMinaUppgifter)
-                                        .addComponent(tfTelefonMinaUppgifter)
-                                        .addComponent(tfEpostMinaUppgifter)
-                                        .addComponent(tftAvdMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(49, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnMinaUppgifterRedigera))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(lblEfternamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblFornamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblAID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                                            .addComponent(lblTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(61, 61, 61)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfAdressMinaUppgifter)
+                                            .addComponent(tfFornamnMinaUppgifter)
+                                            .addComponent(tfEfternamnMinaUppgifter)
+                                            .addComponent(tfTelefonMinaUppgifter)
+                                            .addComponent(tfEpostMinaUppgifter)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(tftAvdMinaUppgifter)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblAnstallningsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addContainerGap(44, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,12 +267,10 @@ public class MinaUppgifter extends javax.swing.JFrame {
                     .addComponent(tftAvdMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblAnstallningsDatum)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSparaMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTillbakaMU))
+                    .addComponent(btnTillbakaMU)
+                    .addComponent(btnMinaUppgifterRedigera))
                 .addGap(27, 27, 27))
         );
 
@@ -286,55 +278,55 @@ public class MinaUppgifter extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaMUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaMUActionPerformed
-        //this.toBack();
         this.dispose();
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
-        //nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaMUActionPerformed
 
-    private void btnSparaMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaMinaUppgifterActionPerformed
-
-        try {
-
-            String fornamn = tfFornamnMinaUppgifter.getText();
+    private void btnMinaUppgifterRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterRedigeraActionPerformed
+        if (btnMinaUppgifterRedigera.getText().equals("Ändra")) {
+            btnMinaUppgifterRedigera.setText("Spara");
             
-            String efternamn = tfEfternamnMinaUppgifter.getText();
-            
-            String adress = tfAdressMinaUppgifter.getText();
-            if (adress.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i en adress");
-                return;
+            tfTelefonMinaUppgifter.setEditable(true);
+            tfAdressMinaUppgifter.setEditable(true);
+        } else {
+            try {
+                String fornamn = tfFornamnMinaUppgifter.getText();
+                String efternamn = tfEfternamnMinaUppgifter.getText();
+
+                String adress = tfAdressMinaUppgifter.getText();
+                if (adress.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i en adress");
+                    return;
+                }
+
+                String epost = tfEpostMinaUppgifter.getText();
+
+                String telefon = tfTelefonMinaUppgifter.getText();
+                if (telefon.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i ett telefonnummer");
+                    return;
+                }
+
+                String avdelning = tftAvdMinaUppgifter.getText();
+
+                String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;
+
+                idb.update(sqlFraga);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
+            btnMinaUppgifterRedigera.setText("Ändra");
+            tfTelefonMinaUppgifter.setEditable(false);
+            tfAdressMinaUppgifter.setEditable(false);
             
-            String epost = tfEpostMinaUppgifter.getText();
-           
-            
-            String telefon = tfTelefonMinaUppgifter.getText();
-            if (telefon.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i ett telefonnummer");
-                return;
-            }
-            
-            String avdelning = tftAvdMinaUppgifter.getText();
-
-            
-
-            String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;
-            idb.update(sqlFraga);
-            
-            JOptionPane.showMessageDialog(null, "Ändring sparad");
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
         }
-    }//GEN-LAST:event_btnSparaMinaUppgifterActionPerformed
+    }//GEN-LAST:event_btnMinaUppgifterRedigeraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSparaMinaUppgifter;
+    private javax.swing.JButton btnMinaUppgifterRedigera;
     private javax.swing.JButton btnTillbakaMU;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAID;
     private javax.swing.JLabel lblAdress;
     private javax.swing.JLabel lblAnstallningsDatum;

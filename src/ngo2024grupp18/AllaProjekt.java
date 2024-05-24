@@ -45,6 +45,18 @@ public class AllaProjekt extends javax.swing.JFrame {
         nyTillagdaAnstallda = new ArrayList<String>();
         nyTillagdaHBMal = new ArrayList<String>();
         anstalldaSomTasBortLista = new ArrayList<String>();
+        MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
+        if (ny.isAdmin()) {
+            lblLaggTillProjekt.setVisible(true);
+            btnLaggTillProjAllaProj.setVisible(true);
+            lblTaBortProjAllaProj.setVisible(true);
+            bnTaBortProj.setVisible(true);
+        } else {
+            lblLaggTillProjekt.setVisible(false);
+            btnLaggTillProjAllaProj.setVisible(false);
+            lblTaBortProjAllaProj.setVisible(false);
+            bnTaBortProj.setVisible(false);
+        }
     }
 
     // CB = combobox
@@ -59,7 +71,6 @@ public class AllaProjekt extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-
         }
 
     }
@@ -77,7 +88,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 String sqlFragaHBMalnamn = "SELECT namn FROM hallbarhetsmal WHERE hid = " + ettMal + "";
                 cbAllaHallbMal.addItem(idb.fetchSingle(sqlFragaHBMalnamn));
             }
-            //Loop through model and remove everything from the first list allaHBMalLista
+            //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
             for (int i = 0; i < jListHBMal.getModel().getSize(); i++) {
                 var hbMalNamn = jListHBMal.getModel().getElementAt(i);
                 cbAllaHallbMal.removeItem(hbMalNamn);
@@ -98,7 +109,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             for (String enAid : anstalldAidLista) {
                 cbAllaAnstallda.addItem(enAid);
             }
-            //Loop through model and remove everything from the first list anstalldAidLista
+            //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
             for (int i = 0; i < jListAllaAnstallda.getModel().getSize(); i++) {
                 var namn = jListAllaAnstallda.getModel().getElementAt(i);
                 cbAllaAnstallda.removeItem(namn);
@@ -224,7 +235,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         cbPrioAllaProjekt = new javax.swing.JComboBox<>();
         cbLandAllaProjekt = new javax.swing.JComboBox<>();
         btnTaBortAnstalldAllaProj = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblLaggTillProjekt = new javax.swing.JLabel();
         lblTaBortProjAllaProj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -339,8 +350,8 @@ public class AllaProjekt extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Lägg till ett nytt projekt");
+        lblLaggTillProjekt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLaggTillProjekt.setText("Lägg till ett nytt projekt");
 
         lblTaBortProjAllaProj.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTaBortProjAllaProj.setText("Ta bort aktuellt projekt");
@@ -408,7 +419,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                                         .addGap(96, 96, 96))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(lblAllaProjLaggTillAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                                                 .addComponent(cbAllaAnstallda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -428,7 +439,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAllaProjektRuta)
-                    .addComponent(jLabel1)
+                    .addComponent(lblLaggTillProjekt)
                     .addComponent(lblTaBortProjAllaProj))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -592,11 +603,9 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAllaProjektPopupMenuWillBecomeInvisible
 
     private void btnTillbakaAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAllaProjActionPerformed
-        //this.toBack();
         this.dispose();
         Projekt nyttProject = new Projekt(idb, aid, avdid);
         nyttProject.setVisible(true);
-        //nyttProject.toFront();
     }//GEN-LAST:event_btnTillbakaAllaProjActionPerformed
 
     private void btnSparaAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAllaProjektActionPerformed
@@ -667,9 +676,9 @@ public class AllaProjekt extends javax.swing.JFrame {
 
                 String sqlFragaAnstalldId = "SELECT aid FROM anstalld WHERE fornamn = '" + anstalldFornamn + "' AND efternamn = '" + anstalldEfternamn + "'";
                 String anstalldId = idb.fetchSingle(sqlFragaAnstalldId);
-                
-                if(!anstalldId.equals(aid)) {
-                     String sqlFragaTaBort = "DELETE FROM ans_proj WHERE pid =" + pid + " AND aid =" + anstalldId;
+
+                if (!anstalldId.equals(aid)) {
+                    String sqlFragaTaBort = "DELETE FROM ans_proj WHERE pid =" + pid + " AND aid =" + anstalldId;
                     idb.delete(sqlFragaTaBort);
                 } else {
                     JOptionPane.showMessageDialog(null, "Projektchef " + anstalldFornamn + " " + anstalldEfternamn + " kan inte tas bort");
@@ -798,7 +807,6 @@ public class AllaProjekt extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbPrioAllaProjekt;
     private javax.swing.JComboBox<String> cbProjektchefAllaProjekt;
     private javax.swing.JComboBox<String> cbStatusAllaProjekt;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jListAllaAnstallda;
     private javax.swing.JList<String> jListHBMal;
     private javax.swing.JScrollPane jScrollPane1;
@@ -810,6 +818,7 @@ public class AllaProjekt extends javax.swing.JFrame {
     private javax.swing.JLabel lblBeskrivningAllaProjekt;
     private javax.swing.JLabel lblKostnadAllaProjekt;
     private javax.swing.JLabel lblLaggTillHBMal;
+    private javax.swing.JLabel lblLaggTillProjekt;
     private javax.swing.JLabel lblLandAllaProjekt;
     private javax.swing.JLabel lblNyttProjektNyPid;
     private javax.swing.JLabel lblPrioAllaProjekt;

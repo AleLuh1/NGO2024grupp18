@@ -5,7 +5,11 @@
 package ngo2024grupp18;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import oru.inf.InfDB;
 
 /**
@@ -17,6 +21,10 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String avdid;
+    //listModelAllaAnstallda kommer fylla i alla anställda
+    private DefaultListModel<String> listModelAllaAnstallda;
+    //ArrayList för att lagra alla nytillagda anställda
+    private ArrayList<String> nyTillagdaAnstallda;
 
     /**
      * Creates new form LaggTillProjekt
@@ -26,13 +34,21 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
-        this.setLocationRelativeTo(null);
         LaggaTillNyttProjektPid();
         fyllCBVäljProjektchef();
+        fyllCBVäljHallbarhetsmal();
         fyllCBVäljStatus();
         fyllCBVäljPrioritet();
         fyllCBVäljLand();
-        fyllCBVäljHallbarhetsmal();
+        fyllCBAllaAnstallda();
+        nyTillagdaAnstallda = new ArrayList<String>();
+        listModelAllaAnstallda = new DefaultListModel<String>();
+        this.setLocationRelativeTo(null);
+        JList<String> jList = new JList<String>(listModelAllaAnstallda);
+        JScrollPane scrollPane = new JScrollPane(jList);
+        JPanel panel = new JPanel();
+        panel.add(scrollPane);
+        add(panel);
     }
 
     // Genererar ett nytt projekt-id (genom att hitta högsta pid och lägger till +1
@@ -61,7 +77,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     // Lägger till alla projektchefer i combobox
     public void fyllCBVäljProjektchef() {
         try {
-            String sqlFraga = "SELECT DISTINCT projektchef FROM projekt";
+            cbProjektChefLaggTillProjekt.removeAllItems();
+            String sqlFraga = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld JOIN handlaggare ON handlaggare.aid = anstalld.aid";
             System.out.println(sqlFraga);
             ArrayList<String> projektchefLista = idb.fetchColumn(sqlFraga);
 
@@ -129,7 +146,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     // Lägger till land i combobox
     public void fyllCBVäljLand() {
         try {
-            String sqlFraga = "SELECT DISTINCT lid FROM land";
+            cbLandLaggTillProjekt.removeAllItems();
+            String sqlFraga = "SELECT namn FROM land";
             System.out.println(sqlFraga);
             ArrayList<String> landLista = idb.fetchColumn(sqlFraga);
 
@@ -141,6 +159,27 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
         }
 
+    }
+
+    //Fyller i CB för alla anställda 
+    public void fyllCBAllaAnstallda() {
+        try {
+            cbLaggTillAnstalld.removeAllItems();
+            String sqlFraga = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld";
+            System.out.println(sqlFraga);
+            ArrayList<String> anstalldLista = idb.fetchColumn(sqlFraga);
+            for (String anstalld : anstalldLista) {
+                cbLaggTillAnstalld.addItem(anstalld);
+            }
+
+            //Loopar igenom listModel, det som finns i listModel tas bort från combo-boxen
+            for (int i = 0; i < jListAllaAnstallda.getModel().getSize(); i++) {
+                var namn = jListAllaAnstallda.getModel().getElementAt(i);
+                cbLaggTillAnstalld.removeItem(namn);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -180,6 +219,8 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         btnAnstalld = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListAllaAnstallda = new javax.swing.JList<>();
+        cbLaggTillAnstalld = new javax.swing.JComboBox<>();
+        btnLaggTillAnstalld = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -234,17 +275,14 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
         btnAnstalld.setText("Anställda i projektet");
 
-        jListAllaAnstallda.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jListAllaAnstallda.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jListAllaAnstalldaValueChanged(evt);
+        jScrollPane1.setViewportView(jListAllaAnstallda);
+
+        btnLaggTillAnstalld.setText("Lägg till");
+        btnLaggTillAnstalld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillAnstalldActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jListAllaAnstallda);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,7 +291,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(83, Short.MAX_VALUE)
+                        .addContainerGap(68, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
@@ -280,14 +318,14 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(155, Short.MAX_VALUE))
+                        .addContainerGap(265, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSparaLaggTIllProjekt)
                         .addGap(78, 78, 78))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfStartdatumLaggTIllProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addComponent(tfStartdatumLaggTIllProjekt)
                             .addComponent(tfBeskrivningLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbLandLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbPrioritetLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -296,8 +334,12 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                             .addComponent(cbProjektChefLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbStatusLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfProjektIDLaggTIllProjekt)
-                            .addComponent(tfProjektnamnLaggTIllProjekt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addComponent(tfProjektnamnLaggTIllProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbLaggTillAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLaggTillAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -322,36 +364,42 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                     .addComponent(lblProjektchefLaggTIllProjekt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnstalld))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStartdatumLaggTIllProjekt)
-                    .addComponent(tfStartdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSlutdatumLaggTIllProjekt)
-                    .addComponent(tfSlutdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblKostnadLaggTIllProjekt)
-                    .addComponent(tfKostnadLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbStatusLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStatusLaggTIllProjekt))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrioritetLaggTIllProjekt)
-                    .addComponent(cbPrioritetLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbLandLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLandLaggTIllProjekt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAnstalld)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStartdatumLaggTIllProjekt)
+                            .addComponent(tfStartdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSlutdatumLaggTIllProjekt)
+                            .addComponent(tfSlutdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblKostnadLaggTIllProjekt)
+                            .addComponent(tfKostnadLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbStatusLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStatusLaggTIllProjekt))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPrioritetLaggTIllProjekt)
+                            .addComponent(cbPrioritetLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbLandLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLandLaggTIllProjekt))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbLaggTillAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnLaggTillAnstalld)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaLaggTIllProjekt)
@@ -363,10 +411,9 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaLaggTIllProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTIllProjektActionPerformed
-        this.toBack();
+        this.dispose();
         AllaProjekt nyttAllaProjekt = new AllaProjekt(idb, aid, avdid);
         nyttAllaProjekt.setVisible(true);
-        nyttAllaProjekt.toFront();
     }//GEN-LAST:event_btnTillbakaLaggTIllProjektActionPerformed
 
     private void btnSparaLaggTIllProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTIllProjektActionPerformed
@@ -376,82 +423,109 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
 // säkerställer så användaren har fyllt alla textfields och comboboxar 
         String laggTillProjektNamn = tfProjektnamnLaggTIllProjekt.getText();
-
         if (laggTillProjektNamn.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i ett projektnamn");
         }
 
         String laggTillBeskrivning = tfBeskrivningLaggTillProjekt.getText();
-
         if (laggTillBeskrivning.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en beskrivning");
         }
 
         String laggTillProjektchefStr = cbProjektChefLaggTillProjekt.getSelectedItem().toString();
-        //Gör om projektchef från String till int för att kunna lägga in i db
-        int laggTillProjektchef = Integer.parseInt(laggTillProjektchefStr);
+        System.out.println(laggTillProjektchefStr);
 
         if (laggTillProjektchefStr.equals("Välj projektchef")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj en projektchef");
         }
 
         String laggTillStartdatum = tfStartdatumLaggTIllProjekt.getText();
-
         if (laggTillStartdatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en startdatum");
         }
 
         String laggTillSlutdatum = tfSlutdatumLaggTIllProjekt.getText();
-
         if (laggTillSlutdatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en slutdatum");
         }
 
-        String laggTillKostnad = tfKostnadLaggTIllProjekt.getText();
+        String laggTillKostnadStr = tfKostnadLaggTIllProjekt.getText();
+        //Gör om kostnad till en double så kan lägga in i db
+        double laggTillKostnad = Double.parseDouble(laggTillKostnadStr);
 
-        if (laggTillKostnad.isEmpty()) {
+        if (laggTillKostnadStr.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en kostnad");
         }
 
         String laggTillStatus = cbStatusLaggTillProjekt.getSelectedItem().toString();
-
         if (laggTillStatus.equals("Välj status")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj status");
         }
 
         String laggTillPrioritet = cbPrioritetLaggTillProjekt.getSelectedItem().toString();
-
         if (laggTillPrioritet.equals("Välj prioritet")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj prioritet");
         }
 
         String laggTillLandStr = cbLandLaggTillProjekt.getSelectedItem().toString();
-        // Gör om land från String till int för att kunna lägga in i db
-        int laggTillLand = Integer.parseInt(laggTillLandStr);
-
         if (laggTillLandStr.equals("Välj land")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj ett land");
         }
 
         String laggTillHallbarhetsmal = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
-
         if (laggTillHallbarhetsmal.equals("Välj hållbarhetsmål")) {
             JOptionPane.showMessageDialog(null, "Vänligen välj ett hållbarhetsmål");
         }
 
         try {
-            // String sqlFraga1 = "INSERT INTO projekt WHERE projekt.pid = (pid, projektnamn, projektchef, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, land) VALUES ('" + projektID + "','" + projektnamn + "', '" + projektchef + "', '" + beskrivning + "', '" + startdatum + "', '" + slutdatum + "', '" + kostnad + "', '" + status + "', '" + prioritet + "', '" + land + "')";
-            String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land)"
-                    + "VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), '" + laggTillKostnad + "', '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + laggTillProjektchef + ", " + laggTillLand + ")";
+            String sqlFragaProjchef = "SELECT aid FROM anstalld WHERE CONCAT(fornamn, ' ', efternamn) = '" + laggTillProjektchefStr + "'";
+            System.out.println(sqlFragaProjchef);
+            String projchefAid = idb.fetchSingle(sqlFragaProjchef);
+            //Gör om projektchef från String till int för att kunna lägga in i db
+            int projchefAidInt = Integer.parseInt(projchefAid);
+            System.out.println(projchefAidInt);
+
+            String sqlFragaLand = "SELECT lid FROM land WHERE namn = '" + laggTillLandStr + "'";
+            System.out.println(sqlFragaLand);
+            String landIdStr = idb.fetchSingle(sqlFragaLand);
+            // Gör om land från String till int för att kunna lägga in i db
+            int LandId = Integer.parseInt(landIdStr);
+            System.out.println(LandId);
+
+            String sqlFragaHallbMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + laggTillHallbarhetsmal + "'";
+            System.out.println(sqlFragaHallbMal);
+            String hidStr = idb.fetchSingle(sqlFragaHallbMal);
+            //Gör om hid från String till int för att kunna lägga in i db
+            int hidInt = Integer.parseInt(hidStr);
+            System.out.println(hidInt);
+
+            String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), " + laggTillKostnad + ", '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + projchefAidInt + ", " + LandId + ")";
+            System.out.println(sqlFraga1);
             idb.insert(sqlFraga1);
 
-            String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid)"
-                    + "VALUES (" + nyProjektPidInt + ", " + laggTillHallbarhetsmal + ")";
-            //WHERE namn = (malnummer, beskrivning, prioritet, hid) VALUES () ";
+            String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + nyProjektPidInt + ", " + hidInt + ")";
+            System.out.println(sqlFraga2);
             idb.insert(sqlFraga2);
 
-            //String sqlFraga3 = "INSERT INTO ans_proj (pid, aid) VALUES (" + nyProjektPidInt + ", " + laggTillAnstalld + ")";
-            //idb.insert(sqlFraga3);
+            for (String namn : nyTillagdaAnstallda) {
+                //Behöver konvertera namnet till aid igen för att kunna lägga in i db
+                String fornamn = namn.split(" ")[0];
+                String efternamn = namn.split(" ")[1];
+                String sqlFragaAid = "SELECT aid FROM anstalld WHERE fornamn = '" + fornamn + "' AND efternamn = '" + efternamn + "'";
+                System.out.println(sqlFragaAid);
+                String nyAnstalldAidStr = idb.fetchSingle(sqlFragaAid);
+                System.out.println(nyAnstalldAidStr);
+                int aid = Integer.parseInt(nyAnstalldAidStr);
+                System.out.println(aid);
+
+                String sqlFraga3 = "INSERT INTO ans_proj (pid, aid) VALUES (" + nyProjektPidInt + ", " + aid + ")";
+                System.out.println(sqlFraga3);
+                idb.insert(sqlFraga3);
+            }
+            JOptionPane.showMessageDialog(null, "Ändring sparad");
+            this.dispose();
+            new Meny(idb, aid, avdid).setVisible(true);
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -459,16 +533,22 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSparaLaggTIllProjektActionPerformed
 
-    private void jListAllaAnstalldaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListAllaAnstalldaValueChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jListAllaAnstalldaValueChanged
+    private void btnLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldActionPerformed
+        String anstalld = cbLaggTillAnstalld.getSelectedItem().toString();
+        listModelAllaAnstallda.addElement(anstalld);
+        jListAllaAnstallda.setModel(listModelAllaAnstallda);
+        fyllCBAllaAnstallda();
+        nyTillagdaAnstallda.add(anstalld);
+    }//GEN-LAST:event_btnLaggTillAnstalldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAnstalld;
+    private javax.swing.JButton btnLaggTillAnstalld;
     private javax.swing.JButton btnSparaLaggTIllProjekt;
     private javax.swing.JButton btnTillbakaLaggTIllProjekt;
     private javax.swing.JComboBox<String> cbHallbarhetsmalLaggTillProjekt;
+    private javax.swing.JComboBox<String> cbLaggTillAnstalld;
     private javax.swing.JComboBox<String> cbLandLaggTillProjekt;
     private javax.swing.JComboBox<String> cbPrioritetLaggTillProjekt;
     private javax.swing.JComboBox<String> cbProjektChefLaggTillProjekt;

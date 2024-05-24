@@ -259,9 +259,9 @@ public class Land extends javax.swing.JFrame {
 
             String sqlFraga = "UPDATE land SET lid = " + landID + ", sprak = '" + sprak + "', valuta = '" + valuta + "', tidszon = '" + tidszon + "', ekonomi = '" + ekonomi + "' WHERE namn = '" + namnLand + "'";
             idb.update(sqlFraga);
-            
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
-            
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

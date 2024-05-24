@@ -268,71 +268,69 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaLaggTillPartnerActionPerformed
 
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
-        
-        if(Validering.isKorrektFormatEpostPartner(tfEpostLaggTillPartner)){
-        try {
-            // kontrollerar om textfields är tomma
-            String PartnerID = tfPartnerIDLaggTillPartner.getText();
-            //Gör om nya partnerID till en int igen för att kunna lägga i db 
-            int nyPartnerIdInt = Integer.parseInt(PartnerID);
 
-            String partnerNamn = tfPartnerNamnLaggTillPartner.getText();
+        if (Validering.isKorrektFormatEpostPartner(tfEpostLaggTillPartner)) {
+            try {
+                // kontrollerar om textfields är tomma
+                String PartnerID = tfPartnerIDLaggTillPartner.getText();
+                //Gör om nya partnerID till en int igen för att kunna lägga i db 
+                int nyPartnerIdInt = Integer.parseInt(PartnerID);
 
-            String projektNamn = cbProjektIDSamarbetspartner.getSelectedItem().toString();
-            String projektIdFraga = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
-            int projektId = Integer.parseInt(idb.fetchSingle(projektIdFraga));
+                String partnerNamn = tfPartnerNamnLaggTillPartner.getText();
 
-            String laggTillKontaktperson = tfKontaktpersonLaggTillPartner.getText();
+                String projektNamn = cbProjektIDSamarbetspartner.getSelectedItem().toString();
+                String projektIdFraga = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
+                int projektId = Integer.parseInt(idb.fetchSingle(projektIdFraga));
 
-            if (laggTillKontaktperson.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i kontaktperson");
+                String laggTillKontaktperson = tfKontaktpersonLaggTillPartner.getText();
+
+                if (laggTillKontaktperson.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i kontaktperson");
+                }
+
+                String laggTillKontaktEpost = tfEpostLaggTillPartner.getText();
+
+                if (laggTillKontaktEpost.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
+                }
+
+                String laggTillTelefonnummer = tfTelefonLaggTillPartner.getText();
+
+                if (laggTillTelefonnummer.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
+                }
+
+                String laggTillAdress = tfAdressLaggTillPartner.getText();
+
+                if (laggTillAdress.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
+                }
+
+                String laggTillBranch = tfBranchLaggTillPartner.getText();
+
+                if (laggTillBranch.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i branch");
+                }
+
+                String stadNamn = cbValjStadLaggTillSamarbetspartner.getSelectedItem().toString();
+                if (stadNamn.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i stad");
+                }
+
+                String stadIdFraga = "SELECT sid FROM stad WHERE namn = '" + stadNamn + "'";
+                int laggTillStad = Integer.parseInt(idb.fetchSingle(stadIdFraga));
+
+                String sqlFraga = "INSERT INTO partner (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) VALUES (" + nyPartnerIdInt + ",'" + partnerNamn + "', '" + laggTillKontaktperson + "', '" + laggTillKontaktEpost + "', '" + laggTillTelefonnummer + "', '" + laggTillAdress + "', '" + laggTillBranch + "', " + laggTillStad + ")";
+                idb.insert(sqlFraga);
+
+                String sqlFragaProjektPartner = "INSERT INTO projekt_partner (pid, partner_pid) VALUES (" + projektId + "," + nyPartnerIdInt + ")";
+                idb.insert(sqlFragaProjektPartner);
+
+                JOptionPane.showMessageDialog(null, "Samarbetspartner tillagd");
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-
-            String laggTillKontaktEpost = tfEpostLaggTillPartner.getText();
-
-            if (laggTillKontaktEpost.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
-            }
-
-            String laggTillTelefonnummer = tfTelefonLaggTillPartner.getText();
-
-            if (laggTillTelefonnummer.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
-            }
-
-            String laggTillAdress = tfAdressLaggTillPartner.getText();
-
-            if (laggTillAdress.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
-            }
-
-            String laggTillBranch = tfBranchLaggTillPartner.getText();
-
-            if (laggTillBranch.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i branch");
-            }
-
-            String stadNamn = cbValjStadLaggTillSamarbetspartner.getSelectedItem().toString();
-            if (stadNamn.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Vänligen fyll i stad");
-            }
-            
-            String stadIdFraga = "SELECT sid FROM stad WHERE namn = '" + stadNamn + "'";
-            int laggTillStad = Integer.parseInt(idb.fetchSingle(stadIdFraga));
-            
-            
-
-            String sqlFraga = "INSERT INTO partner (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad) VALUES (" + nyPartnerIdInt + ",'" + partnerNamn + "', '" + laggTillKontaktperson + "', '" + laggTillKontaktEpost + "', '" + laggTillTelefonnummer + "', '" + laggTillAdress + "', '" + laggTillBranch + "', " + laggTillStad + ")";
-            idb.insert(sqlFraga);
-            
-            String sqlFragaProjektPartner = "INSERT INTO projekt_partner (pid, partner_pid) VALUES (" + projektId + "," + nyPartnerIdInt + ")";
-            idb.insert(sqlFragaProjektPartner);
-            
-          JOptionPane.showMessageDialog(null, "Samarbetspartner tillagd");  
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
         }
 
     }//GEN-LAST:event_btnSparaLaggTillPartnerActionPerformed

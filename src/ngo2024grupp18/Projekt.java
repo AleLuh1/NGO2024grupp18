@@ -204,10 +204,9 @@ public class Projekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSokAvdProjDatumActionPerformed
 
     private void btnTillbakaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaProjektActionPerformed
-        this.toBack();
+        this.dispose();
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
-        nyMeny.toFront();
     }//GEN-LAST:event_btnTillbakaProjektActionPerformed
 
     private void btnFiltreraStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltreraStatusActionPerformed

@@ -27,11 +27,11 @@ public class Meny extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
-//        if (ny.isAdmin()) {
-//            btnLaggTillAnstalld.setVisible(true);
-//        } else {
-//            btnLaggTillAnstalld.setVisible(false);
-//        }
+        if (ny.isAdmin()) {
+            btnLaggTillAnstalld.setVisible(true);
+        } else {
+            btnLaggTillAnstalld.setVisible(false);
+        }
     }
 
     /**
@@ -158,7 +158,7 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
         new MinaUppgifter(idb, aid, avdid).setVisible(true);
-        setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed

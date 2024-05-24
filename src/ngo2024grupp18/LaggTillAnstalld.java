@@ -332,54 +332,54 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
         String nyAnstalldAvd = cbAvdNyAnstalld.getSelectedItem().toString();
 
-        
-        if(Validering.isKorrektFormatEpostPartner(tfEpostNyAnstalld)){
-        try {
-            String sqlFragaAvdNamn = "SELECT avdid FROM avdelning WHERE namn = '" + nyAnstalldAvd + "'";
-            System.out.println(sqlFragaAvdNamn);
-            String avdIDStr = idb.fetchSingle(sqlFragaAvdNamn);
-            int nyAnstalldAvdInt = Integer.parseInt(avdIDStr);
-            // När man lägger till ny anställd som blir tilldelad en roll måste även admin/handläggare tabelln
-            // uppdateras beroende på vilken roll användaren får
-            //Därför måste man ha en if-sats för att lägga in aid i antingen admin om användaren är admin
-            // eller i handlaggare om användaren är handläggare
+        if (Validering.isKorrektFormatEpostPartner(tfEpostNyAnstalld)) {
+            try {
+                String sqlFragaAvdNamn = "SELECT avdid FROM avdelning WHERE namn = '" + nyAnstalldAvd + "'";
+                System.out.println(sqlFragaAvdNamn);
+                String avdIDStr = idb.fetchSingle(sqlFragaAvdNamn);
+                int nyAnstalldAvdInt = Integer.parseInt(avdIDStr);
+                // När man lägger till ny anställd som blir tilldelad en roll måste även admin/handläggare tabelln
+                // uppdateras beroende på vilken roll användaren får
+                //Därför måste man ha en if-sats för att lägga in aid i antingen admin om användaren är admin
+                // eller i handlaggare om användaren är handläggare
 
-            String sqlLaggTill = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES (" + nyAnstalldAidInt + ", '" + nyAnstalldFornamn + "', '" + nyAnstalldEfternamn + "', '" + nyAnstalldAdress + "', '" + nyAnstalldEpost + "', '" + nyAnstalldTelefon + "', str_to_date('" + NyAnstalldAnstallningsDatum + "', '%Y-%m-%d'), '" + NyAnstalldLosenord + "', " + nyAnstalldAvdInt + ")";
-            idb.insert(sqlLaggTill);
-            JOptionPane.showMessageDialog(null, "Den anställda har lagts till.");
+                String sqlLaggTill = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES (" + nyAnstalldAidInt + ", '" + nyAnstalldFornamn + "', '" + nyAnstalldEfternamn + "', '" + nyAnstalldAdress + "', '" + nyAnstalldEpost + "', '" + nyAnstalldTelefon + "', str_to_date('" + NyAnstalldAnstallningsDatum + "', '%Y-%m-%d'), '" + NyAnstalldLosenord + "', " + nyAnstalldAvdInt + ")";
+                idb.insert(sqlLaggTill);
+                JOptionPane.showMessageDialog(null, "Den anställda har lagts till.");
 
-            String nyAnstalldRoll = cbRollNyAnstalld.getSelectedItem().toString();
-            if (nyAnstalldRoll.equals("Admin")) {
-                try {
-                    String sqlLaggTillRollAdmin = "INSERT INTO admin(aid, behorighetsniva) VALUES (" + nyAnstalldAidInt + ", 1)";
-                    System.out.println(sqlLaggTillRollAdmin);
-                    idb.insert(sqlLaggTillRollAdmin);
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-                }
-            } else {
-                try {
-                    String nyHandlaggareAnsvOmrade = tfAnsvOmradeNyHandlaggare.getText();
-                    String mentorStr = cbMentorNyHandlaggare.getSelectedItem().toString();
-                    if (mentorStr.equals("Ingen mentor")) {
-                        String sqlFraga = "INSERT INTO handlaggare (aid, ansvarighetsomrade, mentor) VALUES (" + nyAnstalldAidInt + ", '" + nyHandlaggareAnsvOmrade + "', null)";
-                        System.out.println(sqlFraga);
-                        idb.insert(sqlFraga);
-                    } else {
-                        int mentorAid = Integer.parseInt(mentorStr);
-                        String sqlLaggTillRollHandlaggare = "INSERT INTO handlaggare (aid, ansvarighetsomrade, mentor) VALUES (" + nyAnstalldAidInt + ", '" + nyHandlaggareAnsvOmrade + "', " + mentorAid + ")";
-                        System.out.println(sqlLaggTillRollHandlaggare);
-                        idb.insert(sqlLaggTillRollHandlaggare);
+                String nyAnstalldRoll = cbRollNyAnstalld.getSelectedItem().toString();
+                if (nyAnstalldRoll.equals("Admin")) {
+                    try {
+                        String sqlLaggTillRollAdmin = "INSERT INTO admin(aid, behorighetsniva) VALUES (" + nyAnstalldAidInt + ", 1)";
+                        System.out.println(sqlLaggTillRollAdmin);
+                        idb.insert(sqlLaggTillRollAdmin);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
                     }
+                } else {
+                    try {
+                        String nyHandlaggareAnsvOmrade = tfAnsvOmradeNyHandlaggare.getText();
+                        String mentorStr = cbMentorNyHandlaggare.getSelectedItem().toString();
+                        if (mentorStr.equals("Ingen mentor")) {
+                            String sqlFraga = "INSERT INTO handlaggare (aid, ansvarighetsomrade, mentor) VALUES (" + nyAnstalldAidInt + ", '" + nyHandlaggareAnsvOmrade + "', null)";
+                            System.out.println(sqlFraga);
+                            idb.insert(sqlFraga);
+                        } else {
+                            int mentorAid = Integer.parseInt(mentorStr);
+                            String sqlLaggTillRollHandlaggare = "INSERT INTO handlaggare (aid, ansvarighetsomrade, mentor) VALUES (" + nyAnstalldAidInt + ", '" + nyHandlaggareAnsvOmrade + "', " + mentorAid + ")";
+                            System.out.println(sqlLaggTillRollHandlaggare);
+                            idb.insert(sqlLaggTillRollHandlaggare);
+                        }
 
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
                 }
-            }
 
-        } catch (InfException ex) {
-            System.out.println(ex.getMessage());
-        } }
+            } catch (InfException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed
 
     private void btnTillbakaLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaLaggTillAnstalldActionPerformed

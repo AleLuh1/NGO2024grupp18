@@ -26,7 +26,10 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblLaggTillAvdRuta" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblLaggTillAvdRuta" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="21" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblAvdIDLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -37,24 +40,26 @@
                           <Component id="lblTnrLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblStadLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblAvdchefLaggTillAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbHallbarhetsmalLaggTillAvd" max="32767" attributes="0"/>
                           <Component id="tfNamnLaggTillAvd" max="32767" attributes="0"/>
                           <Component id="tfBeskrivningLaggTillAvd" max="32767" attributes="0"/>
                           <Component id="tfAdressLaggTillAvd" max="32767" attributes="0"/>
                           <Component id="tfEpostLaggTillAvd" max="32767" attributes="0"/>
                           <Component id="tfTnrLaggTillAvd" max="32767" attributes="0"/>
-                          <Component id="tfStadLaggTillAvd" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="tfAvdIDLaggTillAvd" min="-2" pref="184" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="tfAvdchefLaggTillAvd" max="32767" attributes="0"/>
+                          <Component id="cbStadLaggTillPartner" max="32767" attributes="0"/>
+                          <Component id="cbAvdchefLaggTillavd" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -103,14 +108,19 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblStadLaggTillAvd" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfStadLaggTillAvd" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbStadLaggTillPartner" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAvdchefLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAvdchefLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbAvdchefLaggTillavd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cbHallbarhetsmalLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnTillbakaLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSparaLaggTillAvd" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -197,9 +207,40 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfTnrLaggTillAvd">
     </Component>
-    <Component class="javax.swing.JTextField" name="tfStadLaggTillAvd">
+    <Component class="javax.swing.JComboBox" name="cbStadLaggTillPartner">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfAvdchefLaggTillAvd">
+    <Component class="javax.swing.JComboBox" name="cbAvdchefLaggTillavd">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbHallbarhetsmalLaggTillAvd">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="H&#xe5;llbarhetsm&#xe5;l"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

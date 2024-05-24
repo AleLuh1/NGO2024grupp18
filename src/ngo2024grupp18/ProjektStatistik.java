@@ -25,7 +25,7 @@ public class ProjektStatistik extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-        
+
         try {
             String sqlFragaPagaendeProj = "SELECT SUM(kostnad) AS kostnadPagaende FROM projekt JOIN anstalld ON anstalld.aid = projekt.projektchef WHERE status = 'Pågående' AND anstalld.aid = " + aid + "";
             System.out.println(sqlFragaPagaendeProj);

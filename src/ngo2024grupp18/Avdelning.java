@@ -45,7 +45,6 @@ public class Avdelning extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
     }
 
     /**
