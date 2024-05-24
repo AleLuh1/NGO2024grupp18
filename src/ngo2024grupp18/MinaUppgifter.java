@@ -310,7 +310,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
                 String avdelning = tftAvdMinaUppgifter.getText();
 
-                String sqlFraga = "UPDATE anstalld SET fornamn = '" + fornamn + "', efternamn = '" + efternamn + "', adress = '" + adress + "' WHERE aid = " + aid;
+                String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;
 
                 idb.update(sqlFraga);
             } catch (Exception ex) {
