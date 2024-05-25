@@ -756,20 +756,26 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLaggTillHBMalActionPerformed
 
     private void btnLaggTillAnstalldAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldAllaProjActionPerformed
-        String anstalld = cbAllaAnstallda.getSelectedItem().toString();
-        listModelAnstallda.addElement(anstalld);
-        jListAllaAnstallda.setModel(listModelAnstallda);
-        String projektNamn = cbAllaProjekt.getSelectedItem().toString();
+//        String anstalld = cbAllaAnstallda.getSelectedItem().toString();
+//        listModelAnstallda.addElement(anstalld);
+//        jListAllaAnstallda.setModel(listModelAnstallda);
+//        String projektNamn = cbAllaProjekt.getSelectedItem().toString();
         try {
+            String anstalld = cbAllaAnstallda.getSelectedItem().toString();
+            listModelAnstallda.addElement(anstalld);
+            jListAllaAnstallda.setModel(listModelAnstallda);
+            String projektNamn = cbAllaProjekt.getSelectedItem().toString();
+
             String sqlProjnamnTillPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlProjnamnTillPid);
             String pidStr = idb.fetchSingle(sqlProjnamnTillPid);
             int pid = Integer.parseInt(pidStr);
             fyllCBAllaAnstallda(pid);
+            nyTillagdaAnstallda.add(anstalld);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        nyTillagdaAnstallda.add(anstalld);
+//        nyTillagdaAnstallda.add(anstalld);
     }//GEN-LAST:event_btnLaggTillAnstalldAllaProjActionPerformed
 
     private void jListAllaAnstalldaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListAllaAnstalldaValueChanged

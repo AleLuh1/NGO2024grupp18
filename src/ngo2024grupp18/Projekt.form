@@ -25,22 +25,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnTillbakaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lblProjekt" min="-2" pref="88" max="-2" attributes="0"/>
-                      <Component id="btnMinaProjekt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnAllaProjekt" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnAvdProjekt" max="32767" attributes="0"/>
-                      <Component id="btnLandProjekt" max="32767" attributes="0"/>
-                      <Component id="btnHallbarMalProjekt" max="32767" attributes="0"/>
-                      <Component id="btnSamarbetsPartnersProjekt" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnSokAvdProjDatum" max="32767" attributes="0"/>
-                  <Component id="btnFiltreraStatus" max="32767" attributes="0"/>
+                  <Component id="btnTillbakaProjekt" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProjekt" min="-2" pref="88" max="-2" attributes="0"/>
+                  <Component id="btnMinaProjekt" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnAvdProjekt" max="32767" attributes="0"/>
+                  <Component id="btnSokAvdProjDatum" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btnFiltreraStatus" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnAllaProjekt" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btnHallbarMalProjekt" alignment="0" pref="144" max="32767" attributes="0"/>
+                  <Component id="btnLandProjekt" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnSamarbetsPartnersProjekt" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
@@ -50,27 +48,29 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Component id="lblProjekt" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAllaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAllaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnFiltreraStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMinaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLandProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnMinaProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnAvdProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnLandProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnHallbarMalProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnSamarbetsPartnersProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnTillbakaProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSokAvdProjDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAvdProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnHallbarMalProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSokAvdProjDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSamarbetsPartnersProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnFiltreraStatus" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="142" max="32767" attributes="0"/>
+              <Component id="btnTillbakaProjekt" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
