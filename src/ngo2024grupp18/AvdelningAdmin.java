@@ -60,6 +60,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             for (String enStad : stadNamnLista) {
                 cbStadAvdAdmin.addItem(enStad);
             }
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
@@ -70,10 +71,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     // Lägger till alla projektchefer i combobox
     public void fyllCBValjProjektchef() {
         try {
-            cbAvdchefAdmin.removeAllItems();
+
             String sqlFraga = "SELECT aid FROM handlaggare";
             System.out.println(sqlFraga);
-            
+
             ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
 
             for (String enProjektchefId : projektchefIdLista) {
@@ -166,6 +167,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 cbValjAvdAdminActionPerformed(evt);
             }
         });
+
+        cbStadAvdAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj stad" }));
+
+        cbAvdchefAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj avdelningschef" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -290,8 +295,16 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 tfAdressAvdAdmin.setText(avdLista.get("adress"));
                 tfEpostAvdAdmin.setText(avdLista.get("epost"));
                 tfTnrAvdAdmin.setText(avdLista.get("telefon"));
+
                 cbStadAvdAdmin.setSelectedItem(stad);
+                if (stad == null) {
+                    cbStadAvdAdmin.setSelectedItem("Välj stad");
+                }
+
                 cbAvdchefAdmin.setSelectedItem(avdChef.get("fornamn") + " " + avdChef.get("efternamn"));
+                if (avdChef.get("fornamn") == null) {
+                    cbAvdchefAdmin.setSelectedItem("Välj avdelningschef");
+                }
             }
 
         } catch (Exception ex) {
