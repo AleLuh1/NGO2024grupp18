@@ -25,59 +25,53 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvdProjPrio" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAvdProjLand" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAvdProjChef" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnTillbakaAvdProj" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAvdelningensProjektRuta" pref="207" max="32767" attributes="0"/>
-                      <Component id="cbAvdelningensProjekt" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="lblAvdProjStatus" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnTillbakaAvdProj" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAvdelningensProjektRuta" min="-2" pref="207" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lblAvdProjNamn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblAvdProjKostn" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblAvdProjSlut" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblAvdProjSlut" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblAvdProjBesk" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblAvdProjStart" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="lblAvdProjStart" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblAvdProjID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblAvdProjID" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Component id="lblAvdProjBesk" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblAvdProjNamn" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="lblAvdProjKostn" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblAvdProjStatus" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAvdProjPrio" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAvdProjChef" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAvdProjLand" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjNamn" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjStart" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjSlut" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjKostn" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjStatus" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjPrio" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjChef" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjLand" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="tfAvdProjID" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjChef" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjLand" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjID" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjNamn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjStart" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjSlut" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjKostn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjStatus" max="32767" attributes="0"/>
+                          <Component id="tfAvdProjPrio" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="cbAvdelningensProjekt" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="83" max="32767" attributes="0"/>
           </Group>
@@ -100,12 +94,12 @@
                   <Component id="lblAvdProjNamn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfAvdProjNamn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvdProjBesk" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAvdProjBesk" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tfAvdProjStart" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblAvdProjStart" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,24 +110,24 @@
                   <Component id="tfAvdProjSlut" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvdProjKostn" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAvdProjKostn" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfAvdProjKostn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAvdProjKostn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvdProjStatus" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAvdProjStatus" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfAvdProjStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAvdProjStatus" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvdProjPrio" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAvdProjPrio" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfAvdProjPrio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAvdProjPrio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvdProjChef" min="-2" max="-2" attributes="0"/>
-                  <Component id="tfAvdProjChef" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfAvdProjChef" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAvdProjChef" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
