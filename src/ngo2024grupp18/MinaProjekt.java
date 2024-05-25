@@ -51,9 +51,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         this.avdid = avdid;
         fyllCBMinaProjekt();
         fyllPaLander();
-        fyllPaStatus();
-        cbStatusMinaProjekt.setSelectedItem("Ändra status");
-            
+        fyllPaStatus();          
         fyllPaPrioritet();
         fyllCBVäljProjektchef();
         fyllValjPartner();
@@ -98,7 +96,7 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     //fyller list model för anställda list genom att hämta alla aid (och därefter fornam och efternamn) från projekt id i ans_proj tabel
     public void fyllHallbarhetsmal(String pid) {
-        listModel.removeAllElements();
+        listModelhallbarhetsmal.removeAllElements();
         try {
             String sqlFraga = "SELECT hid FROM proj_hallbarhet WHERE pid = " + pid;
             System.out.println(sqlFraga);
@@ -691,7 +689,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             fyllAnstalldaCB(pid);
             fyllPartnerList(pid);
             fyllPartnerListInfo(pid);
-fyllHallbarhetsmal(pid);
+            fyllHallbarhetsmal(pid);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
