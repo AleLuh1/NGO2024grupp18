@@ -52,6 +52,8 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllCBMinaProjekt();
         fyllPaLander();
         fyllPaStatus();
+        cbStatusMinaProjekt.setSelectedItem("Ändra status");
+            
         fyllPaPrioritet();
         fyllCBVäljProjektchef();
         fyllValjPartner();
@@ -221,7 +223,6 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     private void fyllPaLander() {
         try {
-            cbLandMinaProjekt.removeAllItems();
             String sqlFraga4 = "SELECT namn FROM land";
             ArrayList<HashMap<String, String>> allaLander = idb.fetchRows(sqlFraga4);
             for (HashMap<String, String> ettLand : allaLander) {
@@ -235,7 +236,6 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     public void fyllCBVäljProjektchef() {
         try {
-            cbProjektchefMinaProjekt.removeAllItems();
             String sqlFraga = "SELECT aid FROM handlaggare";
             System.out.println(sqlFraga);
             ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
@@ -268,7 +268,6 @@ public class MinaProjekt extends javax.swing.JFrame {
     }
 
     private void fyllPaStatus() {
-        cbStatusMinaProjekt.removeAllItems();
         cbStatusMinaProjekt.addItem("Planerat");
         cbStatusMinaProjekt.addItem("Pågående");
         cbStatusMinaProjekt.addItem("Avslutat");
@@ -276,7 +275,6 @@ public class MinaProjekt extends javax.swing.JFrame {
     }
 
     private void fyllPaPrioritet() {
-        cbPrioritetMinaProjekt.removeAllItems();
         cbPrioritetMinaProjekt.addItem("Hög");
         cbPrioritetMinaProjekt.addItem("Medel");
         cbPrioritetMinaProjekt.addItem("Låg");
@@ -669,6 +667,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             HashMap<String, String> projektchef = idb.fetchRow(sqlFraga3);
 
             cbStatusMinaProjekt.setSelectedItem(minaProjekt.get("status"));
+            
             cbPrioritetMinaProjekt.setSelectedItem(minaProjekt.get("prioritet"));
             cbLandMinaProjekt.setSelectedItem(land);
             cbProjektchefMinaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
