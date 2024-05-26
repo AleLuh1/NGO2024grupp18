@@ -7,6 +7,7 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,8 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String avdid;
+    
+    private DefaultListModel<String> listModelhallbarhetsmal = new DefaultListModel<>();
 
     /**
      * Creates new form AvdelningAdmin
@@ -31,6 +34,29 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         fyllCBValjAVD();
         fyllCBValjStad();
         fyllCBValjProjektchef();
+    }
+    
+    //fyller list model för anställda list genom att hämta alla aid (och därefter fornam och efternamn) från projekt id i ans_proj tabel
+    public void fyllHallbarhetsmal(String pid) {
+        listModelhallbarhetsmal.removeAllElements();
+        try {
+            String sqlFraga = "SELECT avdid FROM avd_hallbarhet WHERE avdid = " + "hid";
+            System.out.println(sqlFraga);
+            ArrayList<HashMap<String, String>> hallbarhetsmalAvd = idb.fetchRows(sqlFraga);
+
+            for (HashMap<String, String> ettMal : hallbarhetsmalAvd) {
+                String sqlFraga1 = "SELECT namn FROM hallbarhetsmal WHERE hid=" + ettMal.get("hid");
+                String hallbarhetsmalNamn = idb.fetchSingle(sqlFraga1);
+
+                listModelhallbarhetsmal.addElement(hallbarhetsmalNamn);
+
+            }
+
+            jListHallbarhetsmalAvdAdmin.setModel(listModelhallbarhetsmal);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     // Lägger till alla avdelningar i combobox
@@ -118,6 +144,9 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         cbValjAvdAdmin = new javax.swing.JComboBox<>();
         cbStadAvdAdmin = new javax.swing.JComboBox<>();
         cbAvdchefAdmin = new javax.swing.JComboBox<>();
+        lblHallbarhetsmalAvdAdmin = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListHallbarhetsmalAvdAdmin = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,6 +201,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         cbAvdchefAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj avdelningschef" }));
 
+        lblHallbarhetsmalAvdAdmin.setText("Hållbarhetsmål");
+
+        jScrollPane1.setViewportView(jListHallbarhetsmalAvdAdmin);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,36 +219,35 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7))
-                                        .addGap(39, 39, 39)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cbAvdchefAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(tfNamnAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(tfBeskrivningAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(tfAdressAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(tfEpostAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(tfTnrAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cbStadAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jButton3)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnSparaAvdelningAdmin))))
-                            .addComponent(cbValjAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(102, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblHallbarhetsmalAvdAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbAvdchefAdmin, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfNamnAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfBeskrivningAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfAdressAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfEpostAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfTnrAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbStadAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(cbValjAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(26, 26, 26)
+                                .addComponent(jButton3)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnSparaAvdelningAdmin)))
+                        .addGap(19, 100, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,12 +288,20 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cbAvdchefAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblHallbarhetsmalAvdAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnSparaAvdelningAdmin)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -372,7 +412,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JList<String> jListHallbarhetsmalAvdAdmin;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAvdelningAdminRuta;
+    private javax.swing.JLabel lblHallbarhetsmalAvdAdmin;
     private javax.swing.JTextField tfAdressAvdAdmin;
     private javax.swing.JTextField tfAvdelningsIDAvdAdmin;
     private javax.swing.JTextField tfBeskrivningAvdAdmin;
