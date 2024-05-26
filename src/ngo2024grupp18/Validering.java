@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import oru.inf.InfDB;
 
 /**
@@ -29,13 +30,23 @@ public class Validering {
         boolean resultat = true;
 
         if (kontrolleraRuta.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vänligen ange en giltig e-postadress eller lösenord");
+            JOptionPane.showMessageDialog(null, "Vänligen ange en giltig e-postadress");
             resultat = false;
             kontrolleraRuta.requestFocus();
         }
         return resultat;
     }
 
+    public static boolean finnsTextPF(JPasswordField kontrolleraRutaPF) {
+        boolean resultat = true;
+        
+        if (kontrolleraRutaPF.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange ett giltigt lösenord");
+            resultat = false;
+            kontrolleraRutaPF.requestFocus();
+        }
+        return resultat;
+    }
     public static boolean finnsTextTA(JTextArea kontrolleraTA) {
         boolean resultat = true;
 
