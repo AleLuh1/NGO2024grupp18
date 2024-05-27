@@ -27,6 +27,11 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         this.idb = idb;
         fyllCBHallbarhetsmal();
         this.setLocationRelativeTo(null);
+        tfMalnummerHallbar.setEditable(false);
+        tfPrioritetHallbar.setEditable(false);
+        taBeskrivningHallbar.setLineWrap(true);
+        taBeskrivningHallbar.setWrapStyleWord(true);
+        taBeskrivningHallbar.setEditable(false);
     }
 // CB = ComboBox
 
