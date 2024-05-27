@@ -37,10 +37,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     }
     
     //fyller list model för anställda list genom att hämta alla aid (och därefter fornam och efternamn) från projekt id i ans_proj tabel
-    public void fyllHallbarhetsmal(String pid) {
+    public void fyllHallbarhetsmal(String avdId) {
         listModelhallbarhetsmal.removeAllElements();
         try {
-            String sqlFraga = "SELECT avdid FROM avd_hallbarhet WHERE avdid = " + "hid";
+            String sqlFraga = "SELECT hid FROM avd_hallbarhet WHERE avdid = " + avdId;
             System.out.println(sqlFraga);
             ArrayList<HashMap<String, String>> hallbarhetsmalAvd = idb.fetchRows(sqlFraga);
 
@@ -230,16 +230,16 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblHallbarhetsmalAvdAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cbAvdchefAdmin, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tfNamnAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfBeskrivningAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfAdressAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfEpostAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfTnrAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbStadAvdAdmin, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbAvdchefAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfAdressAvdAdmin)
+                                    .addComponent(tfEpostAvdAdmin)
+                                    .addComponent(tfTnrAvdAdmin)
+                                    .addComponent(cbStadAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfNamnAvdAdmin)
+                                    .addComponent(tfBeskrivningAvdAdmin)))
                             .addComponent(cbValjAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -247,7 +247,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                                 .addComponent(jButton3)
                                 .addGap(26, 26, 26)
                                 .addComponent(btnSparaAvdelningAdmin)))
-                        .addGap(19, 100, Short.MAX_VALUE))))
+                        .addGap(19, 61, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,6 +323,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             HashMap<String, String> avdLista = idb.fetchRow(sqlFraga);
 
             if (avdLista != null) {
+                fyllHallbarhetsmal(avdLista.get("avdid"));
                 String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + avdLista.get("stad") + "'";
                 String stad = idb.fetchSingle(sqlFraga2);
 
