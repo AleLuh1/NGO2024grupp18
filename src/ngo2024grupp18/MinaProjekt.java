@@ -4,7 +4,6 @@
  */
 package ngo2024grupp18;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.ComboBoxEditor;
@@ -66,8 +65,9 @@ public class MinaProjekt extends javax.swing.JFrame {
         lblTaBortPartnerMinaProj.setVisible(false);
         btnTaBortPartnerMinaProjekt.setVisible(false);
         lblValjLaggTillAnstalldMinaProj.setVisible(false);
-        //lblAnstalldaMinaProj.setVisible(false);
-        //jListAnstalldaMinaProjekt.setVisible(false);
+        lblAnstalldaMinaProj.setVisible(false);
+        jListAnstalldaMinaProjekt.setVisible(false);
+        jScrollPane1.setVisible(false);
         cbAnstalldaMinaProjekt.setVisible(false);
         btnLaggTillAnstalld.setVisible(false);
         lblTaBortAnstalldMinaProj.setVisible(false);
@@ -186,16 +186,13 @@ public class MinaProjekt extends javax.swing.JFrame {
             String sqlFraga = "SELECT aid FROM ans_proj WHERE pid = " + pid;
             System.out.println(sqlFraga);
             ArrayList<HashMap<String, String>> anstalldaIProjekt = idb.fetchRows(sqlFraga);
-
             //skapa en arrayList med alla aid som jobbar i projektet
             ArrayList<String> aidList = new ArrayList<>();
             for (HashMap<String, String> enAnstall : anstalldaIProjekt) {
                 aidList.add(enAnstall.get("aid"));
             }
-
             // bygger en string med alla aid tex: "1,2,5,4"
             String allaAid = String.join(",", aidList);
-
             String sqlFraga1;
             if (aidList.isEmpty()) {
                 sqlFraga1 = "SELECT fornamn, efternamn FROM anstalld";
@@ -203,10 +200,8 @@ public class MinaProjekt extends javax.swing.JFrame {
                 //använder string med alla aid för att hämta alla namn och efternamn på anställda som inte är med i listan
                 sqlFraga1 = "SELECT fornamn, efternamn FROM anstalld WHERE aid NOT IN (" + allaAid + ")";
             }
-
             System.out.println(sqlFraga1);
             ArrayList<HashMap<String, String>> availableAnstallda = idb.fetchRows(sqlFraga1);
-
             for (HashMap<String, String> anstalld : availableAnstallda) {
                 cbAnstalldaMinaProjekt.addItem(anstalld.get("fornamn") + " " + anstalld.get("efternamn"));
             }
@@ -244,14 +239,21 @@ public class MinaProjekt extends javax.swing.JFrame {
     }
 
     //Fyller CB med partners som inte redan finns kopplade till det valda projektet
-    public void fyllCBValjPartner() {
-        cbValjPartnerMinaProjekt.removeAllItems();
+    public void fyllCBValjPartner(String pid) {
         try {
-            String sqlFraga = "SELECT namn FROM partner";
-            System.out.println(sqlFraga);
-            ArrayList<String> partnerLista = idb.fetchColumn(sqlFraga);
-            for (String enPartner : partnerLista) {
-                cbValjPartnerMinaProjekt.addItem(enPartner);
+            //Hämtar alla partner_pid som jobbar i projektet
+            String sqlFragaPartnerPid = "SELECT DISTINCT partner_pid FROM projekt_partner JOIN partner ON partner.pid = partner_pid WHERE NOT partner.pid IN (SELECT partner_pid FROM projekt_partner WHERE pid = " + pid + ")";
+            System.out.println(sqlFragaPartnerPid);
+            ArrayList<String> partnersIProjekt = idb.fetchColumn(sqlFragaPartnerPid);
+            cbValjPartnerMinaProjekt.removeAllItems();
+            for (String partnerPid : partnersIProjekt) {
+                String sqlFragaPartnerNamn = "SELECT namn FROM partner WHERE pid = " + partnerPid + "";
+                cbValjPartnerMinaProjekt.addItem(idb.fetchSingle(sqlFragaPartnerNamn));
+            }
+            //Loopar igenom listModel, det som redan finns i listModel tas bort från cb
+            for (int i = 0; i < jListPartnerMinaProjekt.getModel().getSize(); i++) {
+                var partnerNamn = jListPartnerMinaProjekt.getModel().getElementAt(i);
+                cbValjPartnerMinaProjekt.removeItem(partnerNamn);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -540,8 +542,11 @@ public class MinaProjekt extends javax.swing.JFrame {
                 btnLaggTillPartnerMinaProjekt.setVisible(true);
                 lblTaBortPartnerMinaProj.setVisible(true);
                 btnTaBortPartnerMinaProjekt.setVisible(true);
-//                lblAnstalldaMinaProj.setVisible(true);
-//                jListAnstalldaMinaProjekt.setVisible(true);
+                lblAnstalldaMinaProj.setVisible(true);
+                jListAnstalldaMinaProjekt.setVisible(true);
+                
+                jScrollPane1.setVisible(true);
+                
                 lblValjLaggTillAnstalldMinaProj.setVisible(true);
                 cbAnstalldaMinaProjekt.setVisible(true);
                 btnLaggTillAnstalld.setVisible(true);
@@ -563,8 +568,11 @@ public class MinaProjekt extends javax.swing.JFrame {
                 btnLaggTillPartnerMinaProjekt.setVisible(false);
                 lblTaBortPartnerMinaProj.setVisible(false);
                 btnTaBortPartnerMinaProjekt.setVisible(false);
-//                lblAnstalldaMinaProj.setVisible(false);
-                //jListAnstalldaMinaProjekt.setVisible(false);
+                lblAnstalldaMinaProj.setVisible(false);
+                jListAnstalldaMinaProjekt.setVisible(false);
+                
+                jScrollPane1.setVisible(false);
+                
                 lblValjLaggTillAnstalldMinaProj.setVisible(false);
                 cbAnstalldaMinaProjekt.setVisible(false);
                 btnLaggTillAnstalld.setVisible(false);
@@ -590,6 +598,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             cbProjektchefMinaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
 
             String pid = minaProjekt.get("pid");
+            int pidInt = Integer.parseInt(pid);
             tfProjektID.setText(pid);
             tfProjektID.setEditable(false);
             lblProjektID.requestFocus();
@@ -609,7 +618,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             fyllPartnerList(pid);
             //fyllPartnerListInfo(pid);
             fyllHallbarhetsmal(pid);
-            fyllCBValjPartner();
+            fyllCBValjPartner(pid);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
