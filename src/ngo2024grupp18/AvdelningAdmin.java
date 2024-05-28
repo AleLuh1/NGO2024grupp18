@@ -175,9 +175,9 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         tfAdressAvdAdmin = new javax.swing.JTextField();
         tfEpostAvdAdmin = new javax.swing.JTextField();
         tfTnrAvdAdmin = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnTillbaka = new javax.swing.JButton();
         btnSparaAvdelningAdmin = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnLaggTillAvd = new javax.swing.JButton();
         cbValjAvdAdmin = new javax.swing.JComboBox<>();
         cbStadAvdAdmin = new javax.swing.JComboBox<>();
         cbAvdchefAdmin = new javax.swing.JComboBox<>();
@@ -213,10 +213,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         jLabel8.setText("AvdelningsID");
 
-        jButton1.setText("Tillbaka");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTillbakaActionPerformed(evt);
             }
         });
 
@@ -227,10 +227,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Lägg till avdelning");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnLaggTillAvd.setText("Lägg till avdelning");
+        btnLaggTillAvd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnLaggTillAvdActionPerformed(evt);
             }
         });
 
@@ -285,7 +285,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jButton1))
+                            .addComponent(btnTillbaka))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbAvdchefAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -327,7 +327,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cbValjAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(btnLaggTillAvd)))
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -342,7 +342,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLaggTillAvd, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -392,7 +392,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 .addComponent(btnLaggTillMal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnTillbaka)
                     .addComponent(btnSparaAvdelningAdmin))
                 .addGap(21, 21, 21))
         );
@@ -400,11 +400,11 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         this.dispose();
         Meny nyMeny = new Meny(idb, aid, avdid);
         nyMeny.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void cbValjAvdAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjAvdAdminActionPerformed
 
@@ -449,10 +449,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cbValjAvdAdminActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnLaggTillAvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAvdActionPerformed
         new LaggTillAvdelning(idb, aid, avdid).setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnLaggTillAvdActionPerformed
 
     private void btnSparaAvdelningAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAvdelningAdminActionPerformed
 
@@ -534,15 +534,15 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLaggTillAvd;
     private javax.swing.JButton btnLaggTillMal;
     private javax.swing.JButton btnSparaAvdelningAdmin;
     private javax.swing.JButton btnTaBortMal;
+    private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbAvdchefAdmin;
     private javax.swing.JComboBox<String> cbMal;
     private javax.swing.JComboBox<String> cbStadAvdAdmin;
     private javax.swing.JComboBox<String> cbValjAvdAdmin;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
