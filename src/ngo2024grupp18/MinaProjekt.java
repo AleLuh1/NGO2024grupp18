@@ -52,6 +52,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllCBValjProjektchef();
         this.setLocationRelativeTo(null);
         hbMalSomTasBortLista = new ArrayList<String>();
+        jListHallbarhetsmalMinaProjekt.setModel(listModelhallbarhetsmal);
         cbEditor(cbStatusMinaProjekt);
         cbEditor(cbPrioritetMinaProjekt);
         cbEditor(cbProjektchefMinaProjekt);
@@ -260,6 +261,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 cbValjHbMalMinaProj.addItem(idb.fetchSingle(sqlFragaHBMalnamn));
             }
             //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
+            //Could call getModel directly on the model (try to fix later)
             for (int i = 0; i < jListHallbarhetsmalMinaProjekt.getModel().getSize(); i++) {
                 var hbMalNamn = jListHallbarhetsmalMinaProjekt.getModel().getElementAt(i);
                 cbValjHbMalMinaProj.removeItem(hbMalNamn);
@@ -657,11 +659,10 @@ public class MinaProjekt extends javax.swing.JFrame {
             System.out.println(sqlFragaHBMal);
             ArrayList<String> projektHallbMal = idb.fetchColumn(sqlFragaHBMal);
 
+            listModelhallbarhetsmal.clear();
             for (int i = 0; i < projektHallbMal.size(); i++) {
                 listModelhallbarhetsmal.addElement(projektHallbMal.get(i));
             }
-            jListHallbarhetsmalMinaProjekt.setModel(listModelhallbarhetsmal);
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
