@@ -42,12 +42,12 @@
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnLaggTillAnstalld" max="32767" attributes="0"/>
-                                  <Component id="btnSokAnstalld" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnSokHandlaggare" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="72" max="32767" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -66,7 +66,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSokAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSokHandlaggare" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -121,12 +121,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillAnstalldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSokAnstalld">
+    <Component class="javax.swing.JButton" name="btnSokHandlaggare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="S&#xf6;k anst&#xe4;lld"/>
+        <Property name="text" type="java.lang.String" value="S&#xf6;k handl&#xe4;ggare"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokAnstalldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokHandlaggareActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
