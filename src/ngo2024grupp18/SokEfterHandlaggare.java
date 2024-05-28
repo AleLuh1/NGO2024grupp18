@@ -186,7 +186,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 System.out.println(ex.getMessage());
             }
         } else if (!sokEpost.isEmpty()) {
-            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokEpost + "' AND avdelning = " + avdelning;
+            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE epost = '" + sokEpost + "' AND avdelning = " + avdelning;
             try {
                 ArrayList<HashMap<String, String>> listaEpost = idb.fetchRows(sqlFraga);
                 for (int i = 0; i < listaEpost.size(); i++) {
