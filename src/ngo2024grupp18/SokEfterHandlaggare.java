@@ -7,6 +7,7 @@ package ngo2024grupp18;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import ngo2024grupp18.Validering;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -146,9 +147,9 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
         String sokEpost = tfSokEpost.getText();
         int avdelning = Integer.parseInt(this.avdid);
         taListaInfo.setText("");
-        if (sokFornamn.isEmpty() && sokEfternamn.isEmpty() && sokEpost.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
-        } else if (!sokFornamn.isEmpty()) {
+        //if (sokFornamn.isEmpty() && sokEfternamn.isEmpty() && sokEpost.isEmpty()) {
+        //    JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
+        if (!sokFornamn.isEmpty()) {
             System.out.println("Söker på förnamn");
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld "
                     + "JOIN handlaggare ON handlaggare.aid = anstalld.aid "
@@ -190,6 +191,27 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
+        } else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty()) {
+            System.out.println("Söker på fullständigt namn");
+            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokFornamn + "' AND efternamn = '" + sokEfternamn + "' AND avdelning = " + avdelning;
+            try {
+                ArrayList<HashMap<String, String>> listaFullstandigtNamn = idb.fetchRows(sqlFraga);
+                for (int i = 0; i < listaFullstandigtNamn.size(); i++) {
+                    taListaInfo.append(" Förnamn: " + listaFullstandigtNamn.get(i).get("fornamn") + "\n "
+                            + "Efternamn: " + listaFullstandigtNamn.get(i).get("efternamn") + "\n "
+                            + "Telefon: " + listaFullstandigtNamn.get(i).get("telefon") + "\n "
+                            + "E-post: " + listaFullstandigtNamn.get(i).get("epost") + "\n "
+                            + "Adress: " + listaFullstandigtNamn.get(i).get("adress") + "\n "
+                            + "------------------- \n");
+                }
+                if (!Validering.finnsTextTA(taListaInfo)) {
+                    JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
+                }
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+
         } else if (!sokEpost.isEmpty()) {
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE epost = '" + sokEpost + "' AND avdelning = " + avdelning;
             try {
@@ -209,10 +231,33 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
+        
+        } else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty() && !sokEpost.isEmpty()) {
+            String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokFornamn + "' AND efternamn = '" + sokEfternamn + "' AND epost = '" + sokEpost + "' AND avdelning = " + avdelning;
+            try {
+                ArrayList<HashMap<String, String>> listaFullstandigInfo = idb.fetchRows(sqlFraga);
+                for (int i = 0; i < listaFullstandigInfo.size(); i++) {
+                    taListaInfo.append(" Förnamn: " + listaFullstandigInfo.get(i).get("fornamn") + "\n "
+                            + "Efternamn: " + listaFullstandigInfo.get(i).get("efternamn") + "\n "
+                            + "Telefon: " + listaFullstandigInfo.get(i).get("telefon") + "\n "
+                            + "E-post: " + listaFullstandigInfo.get(i).get("epost") + "\n "
+                            + "Adress: " + listaFullstandigInfo.get(i).get("adress") + "\n "
+                            + "------------------- \n");
+                }
+                
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
         }
 
-    }//GEN-LAST:event_btnSokActionPerformed
 
+
+//else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty() && !sokEpost.isEmpty()) {
+    
+        else {JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
+
+    }//GEN-LAST:event_btnSokActionPerformed
+    }
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         this.dispose();
         Meny nyMeny = new Meny(idb, aid, avdid);
