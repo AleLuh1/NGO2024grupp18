@@ -22,9 +22,11 @@ public class HallbarhetsMal extends javax.swing.JFrame {
     /**
      * Creates new form HallbarhetsMal
      */
-    public HallbarhetsMal(InfDB idb) {
+    public HallbarhetsMal(InfDB idb, String aid, String avdid) {
         initComponents();
         this.idb = idb;
+        this.aid = aid;
+        this.avdid = avdid;
         fyllCBHallbarhetsmal();
         this.setLocationRelativeTo(null);
         tfMalnummerHallbar.setEditable(false);

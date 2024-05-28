@@ -193,7 +193,7 @@ public class Projekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLandProjektActionPerformed
 
     private void btnHallbarMalProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarMalProjektActionPerformed
-        new HallbarhetsMal(idb).setVisible(true);
+        new HallbarhetsMal(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnHallbarMalProjektActionPerformed
 
