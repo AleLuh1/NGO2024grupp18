@@ -35,8 +35,8 @@ public class MinaProjekt extends javax.swing.JFrame {
     private ArrayList<String> partnersSomSkaTasBort = new ArrayList<>();
     private ArrayList<String> visaPartnerInfo = new ArrayList<>();
     private DefaultListModel<String> listModelhallbarhetsmal = new DefaultListModel<>();
-    private ArrayList<String> nyTillagdaHBMal;
-
+    private ArrayList<String> nyTillagdaHBMal = new ArrayList<String>();
+    private ArrayList<String> hbMalSomTasBortLista;
     /**
      * Creates new form MinaProjekt
      */
@@ -51,6 +51,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllPaPrioritet();
         fyllCBVäljProjektchef();
         this.setLocationRelativeTo(null);
+        hbMalSomTasBortLista = new ArrayList<String>();
         cbEditor(cbStatusMinaProjekt);
         cbEditor(cbPrioritetMinaProjekt);
         cbEditor(cbProjektchefMinaProjekt);
@@ -516,12 +517,22 @@ public class MinaProjekt extends javax.swing.JFrame {
         getContentPane().add(cbValjHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 190, -1));
 
         btnLaggTillHbMalMinaProj.setText("Lägg till");
+        btnLaggTillHbMalMinaProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillHbMalMinaProjActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLaggTillHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 190, -1));
 
         lblTaBortHbMalMinaProj.setText("Markera hallbarhetsmål att ta bort");
         getContentPane().add(lblTaBortHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, 190, -1));
 
         btnTaBortHbMalMinaProj.setText("Ta bort");
+        btnTaBortHbMalMinaProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortHbMalMinaProjActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnTaBortHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 190, -1));
 
         pack();
@@ -704,7 +715,6 @@ public class MinaProjekt extends javax.swing.JFrame {
                         + "WHERE NOT EXISTS (SELECT 1 FROM ans_proj WHERE pid = " + projektId + " AND aid = " + anstalldId + ")";
 
                 idb.insert(sqlFragaProjektAnst);
-
             }
 
             for (String tagitBortAnstalld : anstalldaSomSkaTasBort) {
@@ -720,9 +730,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                     idb.delete(sqlFragaTaBort);
                 } else {
                     JOptionPane.showMessageDialog(null, "Projektchef " + anstalldFornamn + " " + anstalldEfternamn + " kan inte tas bort");
-
                 }
-
             }
 
             for (int i = 0; i < listModelPartners.size(); i++) {
@@ -737,7 +745,6 @@ public class MinaProjekt extends javax.swing.JFrame {
                         + "WHERE NOT EXISTS (SELECT 1 FROM projekt_partner WHERE pid = " + projektId + " AND partner_pid = " + partnerId + ")";
 
                 idb.insert(sqlFragaProjektPartner);
-
             }
 
             for (String tagitBortPartner : partnersSomSkaTasBort) {
@@ -746,7 +753,6 @@ public class MinaProjekt extends javax.swing.JFrame {
 
                 String sqlFragaTaBortPartner = "DELETE FROM projekt_partner WHERE pid =" + projektId + " AND partner_pid =" + partnerId;
                 idb.delete(sqlFragaTaBortPartner);
-
             }
 
             for (String malNamn : nyTillagdaHBMal) {
@@ -760,7 +766,21 @@ public class MinaProjekt extends javax.swing.JFrame {
                 System.out.println(sqlFrHBMal);
                 idb.insert(sqlFrHBMal);
             }
+            nyTillagdaHBMal.clear();
 
+            //Behöver en loop för att ta bort HB-mål också!
+            //Får skrivas här
+            for (String hbMalAttTaBort : hbMalSomTasBortLista) {
+                String sqlFragaTaBortHid = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + hbMalAttTaBort + "'";
+                System.out.println(sqlFragaTaBortHid);
+                String hid = idb.fetchSingle(sqlFragaTaBortHid);
+                
+                String sqlFragaHBMalTasBort = "DELETE FROM proj_hallbarhet WHERE pid = " + projektId + " AND hid = " + hid + ""; 
+                idb.delete(sqlFragaHBMalTasBort);
+            }
+            hbMalSomTasBortLista.clear();
+            
+            
             JOptionPane.showMessageDialog(null, "Ändring sparad");
 
             //laddar om listan
@@ -812,6 +832,30 @@ public class MinaProjekt extends javax.swing.JFrame {
             fyllPaInfoTa(partnerNamn);
         }
     }//GEN-LAST:event_jListPartnerMinaProjektValueChanged
+
+    private void btnLaggTillHbMalMinaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillHbMalMinaProjActionPerformed
+        String malNamn = cbValjHbMalMinaProj.getSelectedItem().toString();
+        listModelhallbarhetsmal.addElement(malNamn);
+        jListHallbarhetsmalMinaProjekt.setModel(listModelhallbarhetsmal);
+        String projektNamn = cbMinaProjekt.getSelectedItem().toString();
+        try {
+            String sqlProjnamnTillPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
+            System.out.println(sqlProjnamnTillPid);
+            String pid = idb.fetchSingle(sqlProjnamnTillPid);
+//            int pid = Integer.parseInt(pidStr);
+            fyllCBHallbarMal(pid);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        nyTillagdaHBMal.add(malNamn);
+    }//GEN-LAST:event_btnLaggTillHbMalMinaProjActionPerformed
+
+    private void btnTaBortHbMalMinaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortHbMalMinaProjActionPerformed
+        String hbMal = jListHallbarhetsmalMinaProjekt.getSelectedValue();
+        listModelhallbarhetsmal.removeElement(hbMal);
+        cbValjHbMalMinaProj.addItem(hbMal);
+        hbMalSomTasBortLista.add(hbMal);
+    }//GEN-LAST:event_btnTaBortHbMalMinaProjActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
