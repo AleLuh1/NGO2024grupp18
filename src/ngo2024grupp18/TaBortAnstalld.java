@@ -57,7 +57,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblRubrikTaBortAnstalld = new javax.swing.JLabel();
         cbTaBortAnstalld = new javax.swing.JComboBox<>();
         btnTaBortAnstalld = new javax.swing.JButton();
         btnAndraProjketchefTaBortAnstalld = new javax.swing.JButton();
@@ -65,8 +65,8 @@ public class TaBortAnstalld extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel1.setText("Ta bort anställd");
+        lblRubrikTaBortAnstalld.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblRubrikTaBortAnstalld.setText("Ta bort anställd");
 
         cbTaBortAnstalld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj anställd" }));
         cbTaBortAnstalld.addActionListener(new java.awt.event.ActionListener() {
@@ -113,14 +113,14 @@ public class TaBortAnstalld extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(lblRubrikTaBortAnstalld))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(lblRubrikTaBortAnstalld)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbTaBortAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
@@ -242,6 +242,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
     private javax.swing.JButton btnTaBortAnstalld;
     private javax.swing.JButton btnTillbakaTaBortAnstalld;
     private javax.swing.JComboBox<String> cbTaBortAnstalld;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblRubrikTaBortAnstalld;
     // End of variables declaration//GEN-END:variables
 }

@@ -486,7 +486,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblV&#xe4;ljPartnerMinaProj">
+    <Component class="javax.swing.JLabel" name="lblValjPartnerMinaProj">
       <Properties>
         <Property name="text" type="java.lang.String" value="V&#xe4;lj partner att l&#xe4;gga till i projektet"/>
       </Properties>
