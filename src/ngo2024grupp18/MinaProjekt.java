@@ -35,6 +35,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private ArrayList<String> partnersSomSkaTasBort = new ArrayList<>();
     private ArrayList<String> visaPartnerInfo = new ArrayList<>();
     private DefaultListModel<String> listModelhallbarhetsmal = new DefaultListModel<>();
+    private ArrayList<String> nyTillagdaHBMal;
 
     /**
      * Creates new form MinaProjekt
@@ -69,6 +70,10 @@ public class MinaProjekt extends javax.swing.JFrame {
         lblTaBortAnstalldMinaProj.setVisible(false);
         btnTaBortAnstalld.setVisible(false);
         btnMinaProjektRedigera.setEnabled(false);
+        cbValjHbMalMinaProj.setVisible(false);
+        btnLaggTillHbMalMinaProj.setVisible(false);
+        lblTaBortHbMalMinaProj.setVisible(false);
+        btnTaBortHbMalMinaProj.setVisible(false);
     }
 
     // 
@@ -109,26 +114,6 @@ public class MinaProjekt extends javax.swing.JFrame {
                 listModel.addElement(anstalld.get("fornamn") + " " + anstalld.get("efternamn"));
             }
             jListAnstalldaMinaProjekt.setModel(listModel);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    //fyller list model för anställda list genom att hämta alla aid (och därefter fornam och efternamn) från projekt id i ans_proj tabel
-    public void fyllHallbarhetsmal(String pid) {
-        listModelhallbarhetsmal.removeAllElements();
-        try {
-            String sqlFraga = "SELECT hid FROM proj_hallbarhet WHERE pid = " + pid;
-            System.out.println(sqlFraga);
-            ArrayList<HashMap<String, String>> hallbarhetsmalIProjekt = idb.fetchRows(sqlFraga);
-
-            for (HashMap<String, String> ettMal : hallbarhetsmalIProjekt) {
-                String sqlFraga1 = "SELECT namn FROM hallbarhetsmal WHERE hid=" + ettMal.get("hid");
-                String hallbarhetsmalNamn = idb.fetchSingle(sqlFraga1);
-
-                listModelhallbarhetsmal.addElement(hallbarhetsmalNamn);
-            }
-            jListHallbarhetsmalMinaProjekt.setModel(listModelhallbarhetsmal);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -198,19 +183,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
     }
 
-    private void fyllPaLander() {
-        try {
-            String sqlFraga4 = "SELECT namn FROM land";
-            ArrayList<HashMap<String, String>> allaLander = idb.fetchRows(sqlFraga4);
-            for (HashMap<String, String> ettLand : allaLander) {
-                cbLandMinaProjekt.addItem(ettLand.get("namn"));
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void fyllCBValjProjektchef() {
+    public void fyllCBVäljProjektchef() {
         try {
             String sqlFraga = "SELECT aid FROM handlaggare";
             System.out.println(sqlFraga);
@@ -258,6 +231,41 @@ public class MinaProjekt extends javax.swing.JFrame {
         cbPrioritetMinaProjekt.addItem("Hög");
         cbPrioritetMinaProjekt.addItem("Medel");
         cbPrioritetMinaProjekt.addItem("Låg");
+    }
+
+    private void fyllPaLander() {
+        try {
+            String sqlFraga4 = "SELECT namn FROM land";
+            ArrayList<HashMap<String, String>> allaLander = idb.fetchRows(sqlFraga4);
+            for (HashMap<String, String> ettLand : allaLander) {
+                cbLandMinaProjekt.addItem(ettLand.get("namn"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    //Fyller CB för HB-mål som inte redan finns kopplade till projektet
+    private void fyllCBHallbarMal(String pid) {
+        try {
+            String sqlFraga = "SELECT DISTINCT hallbarhetsmal.hid FROM hallbarhetsmal "
+                    + "JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid "
+                    + "WHERE NOT hallbarhetsmal.hid IN (SELECT hid FROM proj_hallbarhet WHERE pid = " + pid + ")";
+            System.out.println(sqlFraga);
+            ArrayList<String> allaHBMalLista = idb.fetchColumn(sqlFraga);
+            cbValjHbMalMinaProj.removeAllItems();
+            for (String ettMal : allaHBMalLista) {
+                String sqlFragaHBMalnamn = "SELECT namn FROM hallbarhetsmal WHERE hid = " + ettMal + "";
+                cbValjHbMalMinaProj.addItem(idb.fetchSingle(sqlFragaHBMalnamn));
+            }
+            //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
+            for (int i = 0; i < jListHallbarhetsmalMinaProjekt.getModel().getSize(); i++) {
+                var hbMalNamn = jListHallbarhetsmalMinaProjekt.getModel().getElementAt(i);
+                cbValjHbMalMinaProj.removeItem(hbMalNamn);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -316,6 +324,10 @@ public class MinaProjekt extends javax.swing.JFrame {
         lblTaBortPartnerMinaProj = new javax.swing.JLabel();
         lblTaBortAnstalldMinaProj = new javax.swing.JLabel();
         lblKontaktUppgifterPartnerMinaProj = new javax.swing.JLabel();
+        cbValjHbMalMinaProj = new javax.swing.JComboBox<>();
+        btnLaggTillHbMalMinaProj = new javax.swing.JButton();
+        lblTaBortHbMalMinaProj = new javax.swing.JLabel();
+        btnTaBortHbMalMinaProj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 800));
@@ -489,7 +501,7 @@ public class MinaProjekt extends javax.swing.JFrame {
 
         jScrollPane5.setViewportView(jListHallbarhetsmalMinaProjekt);
 
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 504, 183, 80));
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 504, 183, 110));
 
         lblTaBortPartnerMinaProj.setText("Markera partner att ta bort ");
         getContentPane().add(lblTaBortPartnerMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 394, 195, -1));
@@ -499,6 +511,18 @@ public class MinaProjekt extends javax.swing.JFrame {
 
         lblKontaktUppgifterPartnerMinaProj.setText("Kontaktuppgifter");
         getContentPane().add(lblKontaktUppgifterPartnerMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
+
+        cbValjHbMalMinaProj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj hållbarhetsmål" }));
+        getContentPane().add(cbValjHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 190, -1));
+
+        btnLaggTillHbMalMinaProj.setText("Lägg till");
+        getContentPane().add(btnLaggTillHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 190, -1));
+
+        lblTaBortHbMalMinaProj.setText("Markera hallbarhetsmål att ta bort");
+        getContentPane().add(lblTaBortHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, 190, -1));
+
+        btnTaBortHbMalMinaProj.setText("Ta bort");
+        getContentPane().add(btnTaBortHbMalMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 190, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -542,6 +566,10 @@ public class MinaProjekt extends javax.swing.JFrame {
                 cbPrioritetMinaProjekt.setEnabled(true);
                 cbProjektchefMinaProjekt.setEnabled(true);
                 cbLandMinaProjekt.setEnabled(true);
+                cbValjHbMalMinaProj.setVisible(true);
+                btnLaggTillHbMalMinaProj.setVisible(true);
+                lblTaBortHbMalMinaProj.setVisible(true);
+                btnTaBortHbMalMinaProj.setVisible(true);
             } else {
                 btnMinaProjektRedigera.setEnabled(false);
                 btnStatistikMinaProjekt.setVisible(false);
@@ -561,6 +589,10 @@ public class MinaProjekt extends javax.swing.JFrame {
                 tfBeskrivningProjekt.setEditable(false);
                 tfSlutdatum.setEditable(false);
                 tfKostnad.setEditable(false);
+                cbValjHbMalMinaProj.setVisible(false);
+                btnLaggTillHbMalMinaProj.setVisible(false);
+                lblTaBortHbMalMinaProj.setVisible(false);
+                btnTaBortHbMalMinaProj.setVisible(false);
                 cbEditor(cbStatusMinaProjekt);
                 cbEditor(cbPrioritetMinaProjekt);
                 cbEditor(cbProjektchefMinaProjekt);
@@ -604,8 +636,21 @@ public class MinaProjekt extends javax.swing.JFrame {
             fyllAnstalldaList(pid);
             fyllAnstalldaCB(pid);
             fyllPartnerList(pid);
-            fyllHallbarhetsmal(pid);
             fyllCBValjPartner(pid);
+            fyllCBHallbarMal(pid);
+
+            String sqlFragaHBMal = "SELECT DISTINCT namn FROM hallbarhetsmal "
+                    + "JOIN proj_hallbarhet ON proj_hallbarhet.hid = hallbarhetsmal.hid "
+                    + "JOIN projekt ON projekt.pid = proj_hallbarhet.pid "
+                    + "WHERE projektnamn = '" + minaProjektNamn + "'";
+            System.out.println(sqlFragaHBMal);
+            ArrayList<String> projektHallbMal = idb.fetchColumn(sqlFragaHBMal);
+
+            for (int i = 0; i < projektHallbMal.size(); i++) {
+                listModelhallbarhetsmal.addElement(projektHallbMal.get(i));
+            }
+            jListHallbarhetsmalMinaProjekt.setModel(listModelhallbarhetsmal);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -704,6 +749,18 @@ public class MinaProjekt extends javax.swing.JFrame {
 
             }
 
+            for (String malNamn : nyTillagdaHBMal) {
+                String sqlFragaHBMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + malNamn + "'";
+                System.out.println(sqlFragaHBMal);
+                String hallbMalStr = idb.fetchSingle(sqlFragaHBMal);
+                System.out.println(hallbMalStr);
+                int hid = Integer.parseInt(hallbMalStr);
+                System.out.println(hid);
+                String sqlFrHBMal = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + projektId + ", " + hid + ")";
+                System.out.println(sqlFrHBMal);
+                idb.insert(sqlFrHBMal);
+            }
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
 
             //laddar om listan
@@ -734,23 +791,18 @@ public class MinaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_jListAnstalldaMinaProjektValueChanged
 
     private void btnLaggTillPartnerMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerMinaProjektActionPerformed
-
         visaPartner.clear();
         String selectedAnstalld = cbValjPartnerMinaProjekt.getSelectedItem().toString();
         cbValjPartnerMinaProjekt.removeItem(selectedAnstalld);
         listModelPartners.addElement(selectedAnstalld);
-
     }//GEN-LAST:event_btnLaggTillPartnerMinaProjektActionPerformed
 
     private void btnTaBortPartnerMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortPartnerMinaProjektActionPerformed
-
         String anstalld = jListPartnerMinaProjekt.getSelectedValue();
         listModelPartners.removeElement(anstalld);
         cbValjPartnerMinaProjekt.addItem(anstalld);
         visaPartner.add(anstalld);
         partnersSomSkaTasBort.add(anstalld);
-
-
     }//GEN-LAST:event_btnTaBortPartnerMinaProjektActionPerformed
 
     private void jListPartnerMinaProjektValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPartnerMinaProjektValueChanged
@@ -764,10 +816,12 @@ public class MinaProjekt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLaggTillAnstalld;
+    private javax.swing.JButton btnLaggTillHbMalMinaProj;
     private javax.swing.JButton btnLaggTillPartnerMinaProjekt;
     private javax.swing.JButton btnMinaProjektRedigera;
     private javax.swing.JButton btnStatistikMinaProjekt;
     private javax.swing.JButton btnTaBortAnstalld;
+    private javax.swing.JButton btnTaBortHbMalMinaProj;
     private javax.swing.JButton btnTaBortPartnerMinaProjekt;
     private javax.swing.JButton btnTillbakaMinaProj;
     private javax.swing.JComboBox<String> cbAnstalldaMinaProjekt;
@@ -776,6 +830,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbPrioritetMinaProjekt;
     private javax.swing.JComboBox<String> cbProjektchefMinaProjekt;
     private javax.swing.JComboBox<String> cbStatusMinaProjekt;
+    private javax.swing.JComboBox<String> cbValjHbMalMinaProj;
     private javax.swing.JComboBox<String> cbValjPartnerMinaProjekt;
     private javax.swing.JList<String> jListAnstalldaMinaProjekt;
     private javax.swing.JList<String> jListHallbarhetsmalMinaProjekt;
@@ -800,6 +855,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private javax.swing.JLabel lblStartdatum;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTaBortAnstalldMinaProj;
+    private javax.swing.JLabel lblTaBortHbMalMinaProj;
     private javax.swing.JLabel lblTaBortPartnerMinaProj;
     private javax.swing.JLabel lblValjLaggTillAnstalldMinaProj;
     private javax.swing.JLabel lblValjPartnerMinaProj;
