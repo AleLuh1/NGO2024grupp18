@@ -72,9 +72,9 @@ public class Land extends javax.swing.JFrame {
         tfTidszonLand = new javax.swing.JTextField();
         tfPolitiskStrukturLand = new javax.swing.JTextField();
         tfEkonomiLand = new javax.swing.JTextField();
-        btnSparaÄndringarLand = new javax.swing.JButton();
+        btnSparaAndringarLand = new javax.swing.JButton();
         cbLand = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnLaggTillLand = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,10 +102,10 @@ public class Land extends javax.swing.JFrame {
 
         lblEkonomiLand.setText("Ekonomi");
 
-        btnSparaÄndringarLand.setText("Spara ändringar");
-        btnSparaÄndringarLand.addActionListener(new java.awt.event.ActionListener() {
+        btnSparaAndringarLand.setText("Spara ändringar");
+        btnSparaAndringarLand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSparaÄndringarLandActionPerformed(evt);
+                btnSparaAndringarLandActionPerformed(evt);
             }
         });
 
@@ -120,10 +120,10 @@ public class Land extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Lägg till land");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLaggTillLand.setText("Lägg till land");
+        btnLaggTillLand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLaggTillLandActionPerformed(evt);
             }
         });
 
@@ -135,7 +135,7 @@ public class Land extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(btnTillbakaLand)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSparaÄndringarLand)
+                .addComponent(btnSparaAndringarLand)
                 .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
@@ -161,7 +161,7 @@ public class Land extends javax.swing.JFrame {
                                 .addComponent(tfTidszonLand)
                                 .addComponent(tfPolitiskStrukturLand)
                                 .addComponent(tfEkonomiLand, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                            .addComponent(jButton1))))
+                            .addComponent(btnLaggTillLand))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -170,7 +170,7 @@ public class Land extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLandRuta)
-                    .addComponent(jButton1))
+                    .addComponent(btnLaggTillLand))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
@@ -203,7 +203,7 @@ public class Land extends javax.swing.JFrame {
                     .addComponent(tfEkonomiLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSparaÄndringarLand)
+                    .addComponent(btnSparaAndringarLand)
                     .addComponent(btnTillbakaLand))
                 .addGap(21, 21, 21))
         );
@@ -244,7 +244,7 @@ public class Land extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cbLandPopupMenuWillBecomeInvisible
 
-    private void btnSparaÄndringarLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaÄndringarLandActionPerformed
+    private void btnSparaAndringarLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAndringarLandActionPerformed
 
         String namnLand = cbLand.getSelectedItem().toString();
         try {
@@ -266,21 +266,21 @@ public class Land extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btnSparaÄndringarLandActionPerformed
+    }//GEN-LAST:event_btnSparaAndringarLandActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLaggTillLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillLandActionPerformed
         new LaggTillLand(idb, aid, avdid).setVisible(true);
         setVisible(false);
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLaggTillLandActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSparaÄndringarLand;
+    private javax.swing.JButton btnLaggTillLand;
+    private javax.swing.JButton btnSparaAndringarLand;
     private javax.swing.JButton btnTillbakaLand;
     private javax.swing.JComboBox<String> cbLand;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblEkonomiLand;
     private javax.swing.JLabel lblLandIDLand;
     private javax.swing.JLabel lblLandRuta;

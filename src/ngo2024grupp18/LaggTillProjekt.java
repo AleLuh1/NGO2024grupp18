@@ -35,11 +35,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         LaggaTillNyttProjektPid();
-        fyllCBVäljProjektchef();
-        fyllCBVäljHallbarhetsmal();
-        fyllCBVäljStatus();
-        fyllCBVäljPrioritet();
-        fyllCBVäljLand();
+        fyllCBValjProjektchef();
+        fyllCBValjHallbarhetsmal();
+        fyllCBValjStatus();
+        fyllCBValjPrioritet();
+        fyllCBValjLand();
         fyllCBAllaAnstallda();
         nyTillagdaAnstallda = new ArrayList<String>();
         listModelAllaAnstallda = new DefaultListModel<String>();
@@ -75,7 +75,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }
 
     // Lägger till alla projektchefer i combobox
-    public void fyllCBVäljProjektchef() {
+    public void fyllCBValjProjektchef() {
         try {
             cbProjektChefLaggTillProjekt.removeAllItems();
             String sqlFraga = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld JOIN handlaggare ON handlaggare.aid = anstalld.aid";
@@ -93,7 +93,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }
 
     // Lägger till beskrivning i combobox
-    public void fyllCBVäljHallbarhetsmal() {
+    public void fyllCBValjHallbarhetsmal() {
         try {
             String sqlFraga = "SELECT DISTINCT namn FROM hallbarhetsmal";
             System.out.println(sqlFraga);
@@ -110,7 +110,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }
 
     // Lägger till status i comboboxen
-    public void fyllCBVäljStatus() {
+    public void fyllCBValjStatus() {
         try {
             String sqlFraga = "SELECT DISTINCT status FROM projekt";
             System.out.println(sqlFraga);
@@ -127,7 +127,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }
 
     // Lägger till prioritet i combobox
-    public void fyllCBVäljPrioritet() {
+    public void fyllCBValjPrioritet() {
         try {
             String sqlFraga = "SELECT DISTINCT prioritet FROM projekt";
             System.out.println(sqlFraga);
@@ -144,7 +144,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }
 
     // Lägger till land i combobox
-    public void fyllCBVäljLand() {
+    public void fyllCBValjLand() {
         try {
             cbLandLaggTillProjekt.removeAllItems();
             String sqlFraga = "SELECT namn FROM land";
