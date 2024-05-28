@@ -183,7 +183,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
     }
 
-    public void fyllCBVäljProjektchef() {
+    public void fyllCBValjProjektchef() {
         try {
             String sqlFraga = "SELECT aid FROM handlaggare";
             System.out.println(sqlFraga);
