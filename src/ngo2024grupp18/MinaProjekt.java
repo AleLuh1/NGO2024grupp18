@@ -9,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -49,16 +50,11 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllPaPrioritet();
         fyllCBVäljProjektchef();
         this.setLocationRelativeTo(null);
-        btnStatistikMinaProjekt.setEnabled(false);
-        btnLaggTillPartnerMinaProjekt.setEnabled(false);
-        btnTaBortPartnerMinaProjekt.setEnabled(false);
-        btnLaggTillAnstalld.setEnabled(false);
-        btnTaBortAnstalld.setEnabled(false);
         cbEditor(cbStatusMinaProjekt);
         cbEditor(cbPrioritetMinaProjekt);
         cbEditor(cbProjektchefMinaProjekt);
         cbEditor(cbLandMinaProjekt);
-
+        btnStatistikMinaProjekt.setVisible(false);
         lblVäljPartnerMinaProj.setVisible(false);
         cbValjPartnerMinaProjekt.setVisible(false);
         btnLaggTillPartnerMinaProjekt.setVisible(false);
@@ -72,6 +68,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         btnLaggTillAnstalld.setVisible(false);
         lblTaBortAnstalldMinaProj.setVisible(false);
         btnTaBortAnstalld.setVisible(false);
+        btnMinaProjektRedigera.setEnabled(false);
     }
 
     // 
@@ -87,7 +84,9 @@ public class MinaProjekt extends javax.swing.JFrame {
     // Fyller combobox
     public void fyllCBMinaProjekt() {
         try {
-            String sqlFraga = "SELECT DISTINCT projektnamn FROM projekt JOIN ans_proj ON ans_proj.pid = projekt.pid JOIN anstalld ON anstalld.aid = ans_proj.aid WHERE anstalld.aid = " + aid;
+            String sqlFraga = "SELECT DISTINCT projektnamn FROM projekt\n"
+                    + "LEFT OUTER JOIN ans_proj on ans_proj.pid = projekt.pid\n"
+                    + "WHERE ans_proj.aid = " + aid + " OR projektchef = " + aid;
             System.out.println(sqlFraga);
             ArrayList<String> minaProjektLista = idb.fetchColumn(sqlFraga);
             for (String ettProjekt : minaProjektLista) {
@@ -152,28 +151,14 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
     }
 
-//    public void fyllPartnerListInfo(String pid) {
-//        listModelPartnersInfo.removeAllElements();
-//        try {
-//            String sqlFraga = "SELECT * FROM partner WHERE pid=" + pid;
-//            System.out.println(sqlFraga);
-//            ArrayList<HashMap<String, String>> allInfoPartner = idb.fetchRows(sqlFraga);
-//            for (HashMap<String, String> enPartner : allInfoPartner) {
-//                listModelPartnersInfo.addElement(enPartner.get("namn"));
-//            }
-//            jListPartnerInfoMinaUppgifter.setModel(listModelPartnersInfo);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//    }
     // fyller på uppgifter om en samarbetspartner i text area
     public void fyllPaInfoTa(String partnerNamn) {
 
         try {
             String sqlFragaPartner = "SELECT * FROM partner WHERE namn ='" + partnerNamn + "'";
             HashMap<String, String> partner = idb.fetchRow(sqlFragaPartner);
-            
-            String sqlStad = "SELECT namn FROM stad WHERE sid ='"+partner.get("stad")+"'";
+
+            String sqlStad = "SELECT namn FROM stad WHERE sid ='" + partner.get("stad") + "'";
             String stadNamn = idb.fetchSingle(sqlStad);
             taPartnerInfoMinaUppgifter.setText(partner.get("namn") + "\n" + partner.get("kontaktperson") + "\n" + partner.get("kontaktepost") + "\n" + partner.get("telefon") + "\n" + partner.get("adress") + "\n" + partner.get("branch") + "\n" + stadNamn + "\n -------------------------");
         } catch (Exception ex) {
@@ -267,14 +252,12 @@ public class MinaProjekt extends javax.swing.JFrame {
         cbStatusMinaProjekt.addItem("Planerat");
         cbStatusMinaProjekt.addItem("Pågående");
         cbStatusMinaProjekt.addItem("Avslutat");
-
     }
 
     private void fyllPaPrioritet() {
         cbPrioritetMinaProjekt.addItem("Hög");
         cbPrioritetMinaProjekt.addItem("Medel");
         cbPrioritetMinaProjekt.addItem("Låg");
-
     }
 
     /**
@@ -332,6 +315,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         jListHallbarhetsmalMinaProjekt = new javax.swing.JList<>();
         lblTaBortPartnerMinaProj = new javax.swing.JLabel();
         lblTaBortAnstalldMinaProj = new javax.swing.JLabel();
+        lblKontaktUppgifterPartnerMinaProj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 800));
@@ -389,7 +373,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 btnMinaProjektRedigeraActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMinaProjektRedigera, new org.netbeans.lib.awtextra.AbsoluteConstraints(745, 638, -1, -1));
+        getContentPane().add(btnMinaProjektRedigera, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, -1, -1));
 
         lblMinaProjektRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblMinaProjektRuta.setText("Mina projekt");
@@ -513,6 +497,9 @@ public class MinaProjekt extends javax.swing.JFrame {
         lblTaBortAnstalldMinaProj.setText("Markera anställd att ta bort");
         getContentPane().add(lblTaBortAnstalldMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 539, 190, -1));
 
+        lblKontaktUppgifterPartnerMinaProj.setText("Kontaktuppgifter");
+        getContentPane().add(lblKontaktUppgifterPartnerMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -526,20 +513,15 @@ public class MinaProjekt extends javax.swing.JFrame {
         String minaProjektNamn = cbMinaProjekt.getSelectedItem().toString();
 
         try {
+            if (minaProjektNamn.equals("Välj ett projekt")) {
+                return;
+            }
             String sqlFragaProjNamnForProjChef = "SELECT DISTINCT projektnamn FROM projekt JOIN anstalld ON anstalld.aid = projektchef WHERE aid = " + aid;
             System.out.println(sqlFragaProjNamnForProjChef);
-            String ProjNamnForProjChef = idb.fetchSingle(sqlFragaProjNamnForProjChef);
-            if (minaProjektNamn.equals(ProjNamnForProjChef)) {
-                btnLaggTillPartnerMinaProjekt.setEnabled(true);
-                btnTaBortPartnerMinaProjekt.setEnabled(true);
-                btnLaggTillAnstalld.setEnabled(true);
-                btnTaBortAnstalld.setEnabled(true);
-                btnStatistikMinaProjekt.setEnabled(true);
-                cbStatusMinaProjekt.setEnabled(true);
-                cbPrioritetMinaProjekt.setEnabled(true);
-                cbProjektchefMinaProjekt.setEnabled(true);
-                cbLandMinaProjekt.setEnabled(true);
-
+            ArrayList<String> ProjNamnForProjChef = idb.fetchColumn(sqlFragaProjNamnForProjChef);
+            if (ProjNamnForProjChef.contains(minaProjektNamn)) {
+                btnMinaProjektRedigera.setEnabled(true);
+                btnStatistikMinaProjekt.setVisible(true);
                 lblVäljPartnerMinaProj.setVisible(true);
                 cbValjPartnerMinaProjekt.setVisible(true);
                 btnLaggTillPartnerMinaProjekt.setVisible(true);
@@ -547,25 +529,22 @@ public class MinaProjekt extends javax.swing.JFrame {
                 btnTaBortPartnerMinaProjekt.setVisible(true);
                 lblAnstalldaMinaProj.setVisible(true);
                 jListAnstalldaMinaProjekt.setVisible(true);
-                
                 jScrollPane1.setVisible(true);
-                
                 lblValjLaggTillAnstalldMinaProj.setVisible(true);
                 cbAnstalldaMinaProjekt.setVisible(true);
                 btnLaggTillAnstalld.setVisible(true);
                 lblTaBortAnstalldMinaProj.setVisible(true);
                 btnTaBortAnstalld.setVisible(true);
+                tfBeskrivningProjekt.setEditable(true);
+                tfSlutdatum.setEditable(true);
+                tfKostnad.setEditable(true);
+                cbStatusMinaProjekt.setEnabled(true);
+                cbPrioritetMinaProjekt.setEnabled(true);
+                cbProjektchefMinaProjekt.setEnabled(true);
+                cbLandMinaProjekt.setEnabled(true);
             } else {
-                btnLaggTillPartnerMinaProjekt.setEnabled(false);
-                btnTaBortPartnerMinaProjekt.setEnabled(false);
-                btnLaggTillAnstalld.setEnabled(false);
-                btnTaBortAnstalld.setEnabled(false);
-                btnStatistikMinaProjekt.setEnabled(false);
-                cbStatusMinaProjekt.setEnabled(false);
-                cbPrioritetMinaProjekt.setEnabled(false);
-                cbProjektchefMinaProjekt.setEnabled(false);
-                cbLandMinaProjekt.setEnabled(false);
-
+                btnMinaProjektRedigera.setEnabled(false);
+                btnStatistikMinaProjekt.setVisible(false);
                 lblVäljPartnerMinaProj.setVisible(false);
                 cbValjPartnerMinaProjekt.setVisible(false);
                 btnLaggTillPartnerMinaProjekt.setVisible(false);
@@ -573,19 +552,27 @@ public class MinaProjekt extends javax.swing.JFrame {
                 btnTaBortPartnerMinaProjekt.setVisible(false);
                 lblAnstalldaMinaProj.setVisible(false);
                 jListAnstalldaMinaProjekt.setVisible(false);
-                
                 jScrollPane1.setVisible(false);
-                
                 lblValjLaggTillAnstalldMinaProj.setVisible(false);
                 cbAnstalldaMinaProjekt.setVisible(false);
                 btnLaggTillAnstalld.setVisible(false);
                 lblTaBortAnstalldMinaProj.setVisible(false);
                 btnTaBortAnstalld.setVisible(false);
+                tfBeskrivningProjekt.setEditable(false);
+                tfSlutdatum.setEditable(false);
+                tfKostnad.setEditable(false);
+                cbEditor(cbStatusMinaProjekt);
+                cbEditor(cbPrioritetMinaProjekt);
+                cbEditor(cbProjektchefMinaProjekt);
+                cbEditor(cbLandMinaProjekt);
             }
 
-            String sqlFraga1 = "SELECT * FROM projekt JOIN ans_proj ON projekt.pid = ans_proj.pid "
-                    + "WHERE ans_proj.aid = " + aid + " AND projektnamn = '" + minaProjektNamn + "'";
+            System.out.println(aid);
+            String sqlFraga1 = "SELECT DISTINCT projekt.pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land  FROM projekt\n"
+                    + "    LEFT OUTER JOIN ans_proj ON ans_proj.pid = projekt.pid\n"
+                    + "         WHERE (ans_proj.aid = " + aid + " OR projektchef = " + aid + ") AND projektnamn = '" + minaProjektNamn + "'";
             System.out.println(sqlFraga1);
+
             HashMap<String, String> minaProjekt = idb.fetchRow(sqlFraga1);
 
             String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + minaProjekt.get("land") + "'";
@@ -601,6 +588,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             cbProjektchefMinaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
 
             String pid = minaProjekt.get("pid");
+            System.out.println(pid);
             int pidInt = Integer.parseInt(pid);
             tfProjektID.setText(pid);
             tfProjektID.setEditable(false);
@@ -608,18 +596,14 @@ public class MinaProjekt extends javax.swing.JFrame {
             tfProjektNamn.setText(minaProjekt.get("projektnamn"));
             tfProjektNamn.setEditable(false);
             tfBeskrivningProjekt.setText(minaProjekt.get("beskrivning"));
-            tfBeskrivningProjekt.setEditable(false);
             tfStartdatum.setText(minaProjekt.get("startdatum"));
             tfStartdatum.setEditable(false);
             tfSlutdatum.setText(minaProjekt.get("slutdatum"));
-            tfSlutdatum.setEditable(false);
             tfKostnad.setText(minaProjekt.get("kostnad"));
-            tfKostnad.setEditable(false);
 
             fyllAnstalldaList(pid);
             fyllAnstalldaCB(pid);
             fyllPartnerList(pid);
-            //fyllPartnerListInfo(pid);
             fyllHallbarhetsmal(pid);
             fyllCBValjPartner(pid);
         } catch (Exception ex) {
@@ -803,6 +787,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private javax.swing.JLabel lblAnstalldaMinaProj;
     private javax.swing.JLabel lblBeskrivningProjekt;
     private javax.swing.JLabel lblHallbarhetsmalMinaProjekt;
+    private javax.swing.JLabel lblKontaktUppgifterPartnerMinaProj;
     private javax.swing.JLabel lblKostnad;
     private javax.swing.JLabel lblLand;
     private javax.swing.JLabel lblMinaProjektRuta;
