@@ -448,12 +448,6 @@ public class AllaProjekt extends javax.swing.JFrame {
             }
             jListHBMal.setModel(listModelHBMal);
 
-            JList<String> jList = new JList<String>(listModelHBMal);
-            JScrollPane scrollPane = new JScrollPane(jList);
-            JPanel panel = new JPanel();
-            panel.add(scrollPane);
-            add(panel);
-
             if (projektNamnLista != null) {
                 String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + projektNamnLista.get("land") + "'";
                 String land = idb.fetchSingle(sqlFraga2);
