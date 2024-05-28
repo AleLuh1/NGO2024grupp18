@@ -75,6 +75,39 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         }
     }
+    
+    public void fyllCBMal(String avdId) {
+        cbMal.removeAllItems();
+       try {
+            String sqlFraga = "SELECT hid FROM avd_hallbarhet WHERE avdid = " + avdId;
+            System.out.println(sqlFraga);
+            ArrayList<HashMap<String, String>> hallbarhetsmalAvd = idb.fetchRows(sqlFraga);
+            
+             ArrayList<String> hidList = new ArrayList<>();
+            for (HashMap<String, String> ettMal : hallbarhetsmalAvd) {
+                hidList.add(ettMal.get("hid"));
+            }
+            
+            String allaHid = String.join(",", hidList);
+            String sqlFraga1;
+            if (hidList.isEmpty()) {
+                sqlFraga1 = "SELECT namn FROM hallbarhetsmal";
+            } else {
+                //använder string med alla aid för att hämta alla namn och efternamn på anställda som inte är med i listan
+                sqlFraga1 = "SELECT namn FROM hallbarhetsmal WHERE hid NOT IN (" + allaHid + ")";
+            }
+            System.out.println(sqlFraga1);
+            ArrayList<HashMap<String, String>> availableMal = idb.fetchRows(sqlFraga1);
+
+            for (HashMap<String, String> avdMal : availableMal) {
+                cbMal.addItem(avdMal.get("namn"));
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
 
     // Lägger till alla städer i combobox
     public void fyllCBValjStad() {
@@ -147,6 +180,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         lblHallbarhetsmalAvdAdmin = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListHallbarhetsmalAvdAdmin = new javax.swing.JList<>();
+        cbMal = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,38 +250,40 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                         .addComponent(lblAvdelningAdminRuta)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblHallbarhetsmalAvdAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbAvdchefAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tfAdressAvdAdmin)
-                                    .addComponent(tfEpostAvdAdmin)
-                                    .addComponent(tfTnrAvdAdmin)
-                                    .addComponent(cbStadAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfNamnAvdAdmin)
-                                    .addComponent(tfBeskrivningAvdAdmin)))
-                            .addComponent(cbValjAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(26, 26, 26)
                                 .addComponent(jButton3)
                                 .addGap(26, 26, 26)
-                                .addComponent(btnSparaAvdelningAdmin)))
-                        .addGap(19, 61, Short.MAX_VALUE))))
+                                .addComponent(btnSparaAvdelningAdmin))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cbValjAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(21, 21, 21)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblHallbarhetsmalAvdAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(39, 39, 39)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cbAvdchefAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfAdressAvdAdmin)
+                                        .addComponent(tfEpostAvdAdmin)
+                                        .addComponent(tfTnrAvdAdmin)
+                                        .addComponent(cbStadAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                                        .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfNamnAvdAdmin)
+                                        .addComponent(tfBeskrivningAvdAdmin))))
+                            .addComponent(cbMal, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 45, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,16 +328,18 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(lblHallbarhetsmalAvdAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
+                        .addComponent(cbMal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnSparaAvdelningAdmin)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -322,8 +360,10 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
             HashMap<String, String> avdLista = idb.fetchRow(sqlFraga);
 
+            String avdId = avdLista.get("avdid");
             if (avdLista != null) {
-                fyllHallbarhetsmal(avdLista.get("avdid"));
+                fyllCBMal(avdId);
+                fyllHallbarhetsmal(avdId);
                 String sqlFraga2 = " SELECT namn FROM stad WHERE sid = '" + avdLista.get("stad") + "'";
                 String stad = idb.fetchSingle(sqlFraga2);
 
@@ -401,6 +441,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaAvdelningAdmin;
     private javax.swing.JComboBox<String> cbAvdchefAdmin;
+    private javax.swing.JComboBox<String> cbMal;
     private javax.swing.JComboBox<String> cbStadAvdAdmin;
     private javax.swing.JComboBox<String> cbValjAvdAdmin;
     private javax.swing.JButton jButton1;
