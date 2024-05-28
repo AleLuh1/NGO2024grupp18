@@ -23,62 +23,55 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Component id="lblMinaUppgifterRuta" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblMinaUppgifterRuta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnTillbakaMU" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnMinaUppgifterRedigera" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                          <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                          <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                                          <Component id="lblTelefon" min="-2" pref="104" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="lblBehorighetsnivaAdmin" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblEfternamn" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblFornamn" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblAID" alignment="0" pref="99" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tfAdressMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfFornamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfEfternamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfTelefonMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfEpostMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tftAvdMinaUppgifter" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="tfBehorighetsnivaAdmin" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblAnstallningsDatum" min="-2" pref="509" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="lblTelefon" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="lblBehorighetsnivaAdmin" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                          <Component id="lblEfternamn" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                          <Component id="lblFornamn" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                          <Component id="lblAID" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                          <Component id="lblAnsvarsomradeMinaUppgifter" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="tfAdressMinaUppgifter" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="tfFornamnMinaUppgifter" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="tfEfternamnMinaUppgifter" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="tfTelefonMinaUppgifter" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="tfEpostMinaUppgifter" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="tftAvdMinaUppgifter" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="tfBehorighetsnivaAdmin" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="tfAnsvarsomradeMinaUppgifter" min="-2" pref="344" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblAnstallningsDatum" min="-2" pref="509" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="btnTillbakaMU" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnMinaUppgifterRedigera" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -127,13 +120,18 @@
                   <Component id="tftAvdMinaUppgifter" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAnsvarsomradeMinaUppgifter" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfAnsvarsomradeMinaUppgifter" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblAnstallningsDatum" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnTillbakaMU" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnMinaUppgifterRedigera" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -226,6 +224,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfBehorighetsnivaAdmin">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAnsvarsomradeMinaUppgifter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ansvarsomr&#xe5;de"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAnsvarsomradeMinaUppgifter">
     </Component>
   </SubComponents>
 </Form>
