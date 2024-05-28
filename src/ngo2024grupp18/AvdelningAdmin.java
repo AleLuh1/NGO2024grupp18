@@ -19,8 +19,9 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String avdid;
-    
+
     private DefaultListModel<String> listModelhallbarhetsmal = new DefaultListModel<>();
+    private ArrayList<String> hallbarhetsmalSomSkaTasBort = new ArrayList<>();
 
     /**
      * Creates new form AvdelningAdmin
@@ -35,7 +36,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         fyllCBValjStad();
         fyllCBValjProjektchef();
     }
-    
+
     //fyller list model för anställda list genom att hämta alla aid (och därefter fornam och efternamn) från projekt id i ans_proj tabel
     public void fyllHallbarhetsmal(String avdId) {
         listModelhallbarhetsmal.removeAllElements();
@@ -75,19 +76,19 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         }
     }
-    
+
     public void fyllCBMal(String avdId) {
         cbMal.removeAllItems();
-       try {
+        try {
             String sqlFraga = "SELECT hid FROM avd_hallbarhet WHERE avdid = " + avdId;
             System.out.println(sqlFraga);
             ArrayList<HashMap<String, String>> hallbarhetsmalAvd = idb.fetchRows(sqlFraga);
-            
-             ArrayList<String> hidList = new ArrayList<>();
+
+            ArrayList<String> hidList = new ArrayList<>();
             for (HashMap<String, String> ettMal : hallbarhetsmalAvd) {
                 hidList.add(ettMal.get("hid"));
             }
-            
+
             String allaHid = String.join(",", hidList);
             String sqlFraga1;
             if (hidList.isEmpty()) {
@@ -107,7 +108,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }
-    
 
     // Lägger till alla städer i combobox
     public void fyllCBValjStad() {
@@ -182,6 +182,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         jListHallbarhetsmalAvdAdmin = new javax.swing.JList<>();
         cbMal = new javax.swing.JComboBox<>();
         btnLaggTillMal = new javax.swing.JButton();
+        btnTaBortMal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -247,6 +248,13 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnTaBortMal.setText("Ta bort hållbarhetsmål");
+        btnTaBortMal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortMalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,17 +289,22 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                                         .addComponent(lblHallbarhetsmalAvdAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(39, 39, 39)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cbMal, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbAvdchefAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(tfAdressAvdAdmin)
-                                            .addComponent(tfEpostAvdAdmin)
-                                            .addComponent(tfTnrAvdAdmin)
-                                            .addComponent(cbStadAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane1)
-                                            .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfNamnAvdAdmin)
-                                            .addComponent(tfBeskrivningAvdAdmin))))
+                                        .addComponent(cbAvdchefAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfAdressAvdAdmin)
+                                        .addComponent(tfEpostAvdAdmin)
+                                        .addComponent(tfTnrAvdAdmin)
+                                        .addComponent(cbStadAvdAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1)
+                                        .addComponent(tfNamnAvdAdmin)
+                                        .addComponent(tfBeskrivningAvdAdmin)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(0, 0, Short.MAX_VALUE)
+                                            .addComponent(btnTaBortMal))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(cbMal, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(tfAvdelningsIDAvdAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(0, 0, Short.MAX_VALUE))))
                                 .addComponent(btnLaggTillMal, javax.swing.GroupLayout.Alignment.TRAILING)))
                         .addGap(19, 141, Short.MAX_VALUE))))
         );
@@ -343,7 +356,9 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnTaBortMal)
+                .addGap(28, 28, 28)
                 .addComponent(cbMal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLaggTillMal)
@@ -437,8 +452,8 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
             String sqlFragaUpdate = "UPDATE avdelning SET namn = '" + avdNamn + "', beskrivning = '" + avdBeskrivning + "', adress = '" + avdAddress + "', epost = '" + avdEpost + "', telefon = '" + avdTnr + "', stad = " + stadId + ", chef = " + chefId + " WHERE avdid=" + avdId;
             idb.update(sqlFragaUpdate);
-            
-             for (int i = 0; i < listModelhallbarhetsmal.size(); i++) {
+
+            for (int i = 0; i < listModelhallbarhetsmal.size(); i++) {
                 String mal = listModelhallbarhetsmal.getElementAt(i);
 
                 //hämtar aid från anstalld tabell genom att använda fornamn och efternamn
@@ -454,6 +469,16 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
             }
 
+            for (String tagitBortMal : hallbarhetsmalSomSkaTasBort) {
+
+                String sqlFragaTagitBortMalId = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + tagitBortMal + "'";
+                String hid = idb.fetchSingle(sqlFragaTagitBortMalId);
+
+                String sqlFragaTaBort = "DELETE FROM avd_hallbarhet WHERE avdid =" + avdId + " AND hid =" + hid;
+                idb.delete(sqlFragaTaBort);
+
+            }
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -464,15 +489,27 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSparaAvdelningAdminActionPerformed
 
     private void btnLaggTillMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillMalActionPerformed
+        if(cbMal.getItemCount()> 0) {
+         hallbarhetsmalSomSkaTasBort.clear();
         String selectedMal = cbMal.getSelectedItem().toString();
         cbMal.removeItem(selectedMal);
         listModelhallbarhetsmal.addElement(selectedMal);
+        }
+       
     }//GEN-LAST:event_btnLaggTillMalActionPerformed
+
+    private void btnTaBortMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortMalActionPerformed
+        String mal = jListHallbarhetsmalAvdAdmin.getSelectedValue();
+        listModelhallbarhetsmal.removeElement(mal);
+        cbMal.addItem(mal);
+        hallbarhetsmalSomSkaTasBort.add(mal);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTaBortMalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLaggTillMal;
     private javax.swing.JButton btnSparaAvdelningAdmin;
+    private javax.swing.JButton btnTaBortMal;
     private javax.swing.JComboBox<String> cbAvdchefAdmin;
     private javax.swing.JComboBox<String> cbMal;
     private javax.swing.JComboBox<String> cbStadAvdAdmin;

@@ -56,17 +56,24 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbMal" min="-2" pref="313" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cbAvdchefAdmin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfAdressAvdAdmin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfEpostAvdAdmin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfTnrAvdAdmin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbStadAvdAdmin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfAvdelningsIDAvdAdmin" min="-2" pref="297" max="-2" attributes="0"/>
-                                          <Component id="tfNamnAvdAdmin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="tfBeskrivningAvdAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbAvdchefAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfAdressAvdAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfEpostAvdAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfTnrAvdAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbStadAvdAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfNamnAvdAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfBeskrivningAvdAdmin" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="btnTaBortMal" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="cbMal" min="-2" pref="313" max="-2" attributes="0"/>
+                                              <Component id="tfAvdelningsIDAvdAdmin" min="-2" pref="297" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -138,7 +145,9 @@
                       <EmptySpace type="unrelated" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnTaBortMal" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="cbMal" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnLaggTillMal" min="-2" max="-2" attributes="0"/>
@@ -317,6 +326,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillMalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTaBortMal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort h&#xe5;llbarhetsm&#xe5;l"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortMalActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
