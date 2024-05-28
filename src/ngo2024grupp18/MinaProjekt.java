@@ -49,7 +49,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllPaLander();
         fyllPaStatus();
         fyllPaPrioritet();
-        fyllCBVäljProjektchef();
+        fyllCBValjProjektchef();
         this.setLocationRelativeTo(null);
         hbMalSomTasBortLista = new ArrayList<String>();
         cbEditor(cbStatusMinaProjekt);
@@ -57,7 +57,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         cbEditor(cbProjektchefMinaProjekt);
         cbEditor(cbLandMinaProjekt);
         btnStatistikMinaProjekt.setVisible(false);
-        lblVäljPartnerMinaProj.setVisible(false);
+        lblValjPartnerMinaProj.setVisible(false);
         cbValjPartnerMinaProjekt.setVisible(false);
         btnLaggTillPartnerMinaProjekt.setVisible(false);
         lblTaBortPartnerMinaProj.setVisible(false);
@@ -184,7 +184,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
     }
 
-    public void fyllCBVäljProjektchef() {
+    public void fyllCBValjProjektchef() {
         try {
             String sqlFraga = "SELECT aid FROM handlaggare";
             System.out.println(sqlFraga);
@@ -316,7 +316,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         cbValjPartnerMinaProjekt = new javax.swing.JComboBox<>();
         btnLaggTillPartnerMinaProjekt = new javax.swing.JButton();
         btnTaBortPartnerMinaProjekt = new javax.swing.JButton();
-        lblVäljPartnerMinaProj = new javax.swing.JLabel();
+        lblValjPartnerMinaProj = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         taPartnerInfoMinaUppgifter = new javax.swing.JTextArea();
         lblHallbarhetsmalMinaProjekt = new javax.swing.JLabel();
@@ -488,8 +488,8 @@ public class MinaProjekt extends javax.swing.JFrame {
         });
         getContentPane().add(btnTaBortPartnerMinaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 428, 195, -1));
 
-        lblVäljPartnerMinaProj.setText("Välj partner att lägga till i projektet");
-        getContentPane().add(lblVäljPartnerMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 276, 195, -1));
+        lblValjPartnerMinaProj.setText("Välj partner att lägga till i projektet");
+        getContentPane().add(lblValjPartnerMinaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 276, 195, -1));
 
         taPartnerInfoMinaUppgifter.setColumns(20);
         taPartnerInfoMinaUppgifter.setRows(5);
@@ -557,7 +557,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             if (ProjNamnForProjChef.contains(minaProjektNamn)) {
                 btnMinaProjektRedigera.setEnabled(true);
                 btnStatistikMinaProjekt.setVisible(true);
-                lblVäljPartnerMinaProj.setVisible(true);
+                lblValjPartnerMinaProj.setVisible(true);
                 cbValjPartnerMinaProjekt.setVisible(true);
                 btnLaggTillPartnerMinaProjekt.setVisible(true);
                 lblTaBortPartnerMinaProj.setVisible(true);
@@ -584,7 +584,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             } else {
                 btnMinaProjektRedigera.setEnabled(false);
                 btnStatistikMinaProjekt.setVisible(false);
-                lblVäljPartnerMinaProj.setVisible(false);
+                lblValjPartnerMinaProj.setVisible(false);
                 cbValjPartnerMinaProjekt.setVisible(false);
                 btnLaggTillPartnerMinaProjekt.setVisible(false);
                 lblTaBortPartnerMinaProj.setVisible(false);
@@ -902,7 +902,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private javax.swing.JLabel lblTaBortHbMalMinaProj;
     private javax.swing.JLabel lblTaBortPartnerMinaProj;
     private javax.swing.JLabel lblValjLaggTillAnstalldMinaProj;
-    private javax.swing.JLabel lblVäljPartnerMinaProj;
+    private javax.swing.JLabel lblValjPartnerMinaProj;
     private javax.swing.JTextArea taPartnerInfoMinaUppgifter;
     private javax.swing.JTextField tfBeskrivningProjekt;
     private javax.swing.JTextField tfKostnad;

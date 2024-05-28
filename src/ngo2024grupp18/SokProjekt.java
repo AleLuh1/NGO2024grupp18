@@ -42,26 +42,26 @@ public class SokProjekt extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblRubrikSokAktivaProj = new javax.swing.JLabel();
+        lblFranDatum = new javax.swing.JLabel();
+        lblTillDatum = new javax.swing.JLabel();
         tfStartDatum = new javax.swing.JTextField();
         tfSlutDatum = new javax.swing.JTextField();
         btnSokProjekt = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taResultatSoktaProjekt = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblDatumFormat1 = new javax.swing.JLabel();
+        lblDatumFormat2 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Sök efter aktiva projekt");
+        lblRubrikSokAktivaProj.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblRubrikSokAktivaProj.setText("Sök efter aktiva projekt");
 
-        jLabel2.setText("Från datum");
+        lblFranDatum.setText("Från datum");
 
-        jLabel3.setText("Till datum");
+        lblTillDatum.setText("Till datum");
 
         btnSokProjekt.setText("Sök");
         btnSokProjekt.addActionListener(new java.awt.event.ActionListener() {
@@ -74,11 +74,11 @@ public class SokProjekt extends javax.swing.JFrame {
         taResultatSoktaProjekt.setRows(5);
         jScrollPane1.setViewportView(taResultatSoktaProjekt);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel4.setText("ÅÅÅÅ-MM-DD");
+        lblDatumFormat1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblDatumFormat1.setText("ÅÅÅÅ-MM-DD");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel5.setText("ÅÅÅÅ-MM-DD");
+        lblDatumFormat2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblDatumFormat2.setText("ÅÅÅÅ-MM-DD");
 
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -94,20 +94,20 @@ public class SokProjekt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
+                    .addComponent(lblRubrikSokAktivaProj)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lblFranDatum)
                             .addComponent(tfStartDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(lblDatumFormat1))
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tfSlutDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
                                 .addComponent(btnSokProjekt))
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)))
+                            .addComponent(lblTillDatum)
+                            .addComponent(lblDatumFormat2)))
                     .addComponent(jScrollPane1))
                 .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -119,11 +119,11 @@ public class SokProjekt extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lblRubrikSokAktivaProj)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lblFranDatum)
+                    .addComponent(lblTillDatum))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfStartDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,8 +131,8 @@ public class SokProjekt extends javax.swing.JFrame {
                     .addComponent(btnSokProjekt))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(lblDatumFormat1)
+                    .addComponent(lblDatumFormat2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
@@ -191,12 +191,12 @@ public class SokProjekt extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSokProjekt;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDatumFormat1;
+    private javax.swing.JLabel lblDatumFormat2;
+    private javax.swing.JLabel lblFranDatum;
+    private javax.swing.JLabel lblRubrikSokAktivaProj;
+    private javax.swing.JLabel lblTillDatum;
     private javax.swing.JTextArea taResultatSoktaProjekt;
     private javax.swing.JTextField tfSlutDatum;
     private javax.swing.JTextField tfStartDatum;
