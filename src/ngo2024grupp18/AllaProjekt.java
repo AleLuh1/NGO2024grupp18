@@ -237,6 +237,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         lblTaBortProjAllaProj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnTillbakaAllaProj.setText("Tillbaka");
         btnTillbakaAllaProj.addActionListener(new java.awt.event.ActionListener() {
@@ -244,9 +245,11 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnTillbakaAllaProjActionPerformed(evt);
             }
         });
+        getContentPane().add(btnTillbakaAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 705, -1, -1));
 
         lblAllaProjektRuta.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblAllaProjektRuta.setText("Alla projekt");
+        getContentPane().add(lblAllaProjektRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 28, -1, -1));
 
         cbAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj projekt" }));
         cbAllaProjekt.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -258,22 +261,35 @@ public class AllaProjekt extends javax.swing.JFrame {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
+        getContentPane().add(cbAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 52, 102, -1));
 
         lblBeskrivningAllaProjekt.setText("Beskrivning");
+        getContentPane().add(lblBeskrivningAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 330, -1, -1));
 
         lblStartDatumAllaProjekt.setText("Startdatum");
+        getContentPane().add(lblStartDatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 364, -1, 17));
 
         lblSlutdatumAllaProjekt.setText("Slutdatum");
+        getContentPane().add(lblSlutdatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 404, -1, 17));
 
         lblKostnadAllaProjekt.setText("Kostnad");
+        getContentPane().add(lblKostnadAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 433, -1, -1));
 
         lblStatusAllaProjekt.setText("Status");
+        getContentPane().add(lblStatusAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 467, -1, -1));
 
         lblPrioAllaProjekt.setText("Prioritet");
+        getContentPane().add(lblPrioAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 501, -1, -1));
 
         lblLandAllaProjekt.setText("Land");
+        getContentPane().add(lblLandAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 535, -1, -1));
 
         lblProjektchefAllaProjekt.setText("Projektchef");
+        getContentPane().add(lblProjektchefAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 161, 75, -1));
+        getContentPane().add(tfBeskrivningAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 327, 214, -1));
+        getContentPane().add(tfStartdatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 361, 214, -1));
+        getContentPane().add(tfSlutDatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 401, 214, -1));
+        getContentPane().add(tfKostnadAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 430, 214, -1));
 
         bnTaBortProj.setText("Ta bort");
         bnTaBortProj.addActionListener(new java.awt.event.ActionListener() {
@@ -281,6 +297,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 bnTaBortProjActionPerformed(evt);
             }
         });
+        getContentPane().add(bnTaBortProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 52, -1, -1));
 
         btnSparaAllaProjekt.setText("Spara");
         btnSparaAllaProjekt.addActionListener(new java.awt.event.ActionListener() {
@@ -288,10 +305,15 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnSparaAllaProjektActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSparaAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 705, -1, -1));
 
         lblProjektnamnAllaProjekt.setText("Projektnamn");
+        getContentPane().add(lblProjektnamnAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 133, 75, 17));
+        getContentPane().add(tfProjektnamnAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 130, 214, -1));
+        getContentPane().add(tfNyttProjektNyPid, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 102, 214, -1));
 
         lblNyttProjektNyPid.setText("Projekt-ID");
+        getContentPane().add(lblNyttProjektNyPid, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 105, 83, -1));
 
         btnLaggTillProjAllaProj.setText("Lägg till");
         btnLaggTillProjAllaProj.addActionListener(new java.awt.event.ActionListener() {
@@ -299,14 +321,20 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnLaggTillProjAllaProjActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLaggTillProjAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 52, -1, -1));
 
         lblAllaProjHallbMal.setText("Aktuella hållbarhetsmål");
+        getContentPane().add(lblAllaProjHallbMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 566, 136, -1));
 
         jScrollPane1.setViewportView(jListHBMal);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 566, 214, 83));
+
         cbAllaHallbMal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj ett mål" }));
+        getContentPane().add(cbAllaHallbMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 588, 199, -1));
 
         lblLaggTillHBMal.setText("Välj");
+        getContentPane().add(lblLaggTillHBMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 566, 61, -1));
 
         btnLaggTillHBMal.setText("Lägg till");
         btnLaggTillHBMal.addActionListener(new java.awt.event.ActionListener() {
@@ -314,8 +342,10 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnLaggTillHBMalActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLaggTillHBMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 626, 199, -1));
 
         lblAllaProjAnstallda.setText("Anställda i projektet");
+        getContentPane().add(lblAllaProjAnstallda, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 189, 117, -1));
 
         jListAllaAnstallda.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -324,7 +354,12 @@ public class AllaProjekt extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListAllaAnstallda);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 189, 214, 108));
+
+        getContentPane().add(cbAllaAnstallda, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 211, 199, -1));
+
         lblAllaProjLaggTillAnstalld.setText("Välj");
+        getContentPane().add(lblAllaProjLaggTillAnstalld, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 189, -1, -1));
 
         btnLaggTillAnstalldAllaProj.setText("Lägg till");
         btnLaggTillAnstalldAllaProj.addActionListener(new java.awt.event.ActionListener() {
@@ -332,14 +367,19 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnLaggTillAnstalldAllaProjActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLaggTillAnstalldAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 239, 199, -1));
 
         cbProjektchefAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra projektchef" }));
+        getContentPane().add(cbProjektchefAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 158, 214, -1));
 
         cbStatusAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra status" }));
+        getContentPane().add(cbStatusAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 464, 214, -1));
 
         cbPrioAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra prioritet" }));
+        getContentPane().add(cbPrioAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 498, 214, -1));
 
         cbLandAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra land" }));
+        getContentPane().add(cbLandAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 532, 214, -1));
 
         btnTaBortAnstalldAllaProj.setText("Ta bort anställd från projektet");
         btnTaBortAnstalldAllaProj.addActionListener(new java.awt.event.ActionListener() {
@@ -347,170 +387,15 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnTaBortAnstalldAllaProjActionPerformed(evt);
             }
         });
+        getContentPane().add(btnTaBortAnstalldAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 274, 199, -1));
 
         lblLaggTillProjekt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblLaggTillProjekt.setText("Lägg till ett nytt projekt");
+        getContentPane().add(lblLaggTillProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 27, 203, -1));
 
         lblTaBortProjAllaProj.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTaBortProjAllaProj.setText("Ta bort aktuellt projekt");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAllaProjektRuta)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblProjektnamnAllaProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblProjektchefAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblNyttProjektNyPid, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAllaProjAnstallda, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBeskrivningAllaProjekt)
-                    .addComponent(lblStartDatumAllaProjekt)
-                    .addComponent(lblSlutdatumAllaProjekt)
-                    .addComponent(lblKostnadAllaProjekt)
-                    .addComponent(lblStatusAllaProjekt)
-                    .addComponent(lblPrioAllaProjekt)
-                    .addComponent(lblLandAllaProjekt)
-                    .addComponent(lblAllaProjHallbMal, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTillbakaAllaProj))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbLandAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbPrioAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbStatusAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbProjektchefAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfKostnadAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfProjektnamnAllaProjekt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfNyttProjektNyPid, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfBeskrivningAllaProjekt)
-                            .addComponent(tfStartdatumAllaProjekt)
-                            .addComponent(tfSlutDatumAllaProjekt)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTaBortProjAllaProj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bnTaBortProj)
-                                .addGap(104, 104, 104)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAllaProjLaggTillAnstalld)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnSparaAllaProjekt)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnLaggTillHBMal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbAllaAnstallda, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbAllaHallbMal, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLaggTillAnstalldAllaProj, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnTaBortAnstalldAllaProj, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(btnLaggTillProjAllaProj))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblLaggTillHBMal, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAllaProjektRuta)
-                    .addComponent(lblLaggTillProjekt)
-                    .addComponent(lblTaBortProjAllaProj))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLaggTillProjAllaProj)
-                    .addComponent(bnTaBortProj))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(59, 59, 59)
-                                        .addComponent(lblProjektchefAllaProjekt)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblAllaProjAnstallda))
-                                    .addComponent(lblAllaProjLaggTillAnstalld, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbAllaAnstallda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLaggTillAnstalldAllaProj)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnTaBortAnstalldAllaProj)))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfBeskrivningAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblBeskrivningAllaProjekt))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfStartdatumAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblStartDatumAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfSlutDatumAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSlutdatumAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNyttProjektNyPid)
-                            .addComponent(tfNyttProjektNyPid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblProjektnamnAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfProjektnamnAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbProjektchefAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfKostnadAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblKostnadAllaProjekt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatusAllaProjekt)
-                    .addComponent(cbStatusAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrioAllaProjekt)
-                    .addComponent(cbPrioAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLandAllaProjekt)
-                    .addComponent(cbLandAllaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAllaProjHallbMal)
-                            .addComponent(lblLaggTillHBMal))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbAllaHallbMal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLaggTillHBMal)))
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTillbakaAllaProj)
-                    .addComponent(btnSparaAllaProjekt))
-                .addGap(20, 20, 20))
-        );
+        getContentPane().add(lblTaBortProjAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 27, 234, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
