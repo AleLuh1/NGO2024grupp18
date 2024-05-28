@@ -176,7 +176,12 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             try {
                 ArrayList<HashMap<String, String>> listaEfternamn = idb.fetchRows(sqlFraga);
                 for (int i = 0; i < listaEfternamn.size(); i++) {
-                    taListaInfo.append(listaEfternamn.get(i).get("fornamn") + "\n" + listaEfternamn.get(i).get("efternamn") + "\n" + listaEfternamn.get(i).get("telefon") + "\n" + listaEfternamn.get(i).get("epost") + "\n" + listaEfternamn.get(i).get("adress") + "\n" + "------------------- \n");
+                    taListaInfo.append(" Förnamn: " + listaEfternamn.get(i).get("fornamn") + "\n "
+                            + "Efternamn: " + listaEfternamn.get(i).get("efternamn") + "\n "
+                            + "Telefon: " + listaEfternamn.get(i).get("telefon") + "\n "
+                            + "E-post: " + listaEfternamn.get(i).get("epost") + "\n "
+                            + "Adress: " + listaEfternamn.get(i).get("adress") + "\n "
+                            + "------------------- \n");
                 }
                 if (!Validering.finnsTextTA(taListaInfo)) {
                     JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
@@ -190,7 +195,12 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             try {
                 ArrayList<HashMap<String, String>> listaEpost = idb.fetchRows(sqlFraga);
                 for (int i = 0; i < listaEpost.size(); i++) {
-                    taListaInfo.append(listaEpost.get(i).get("fornamn") + "\n" + listaEpost.get(i).get("efternamn") + "\n" + listaEpost.get(i).get("telefon") + "\n" + listaEpost.get(i).get("epost") + "\n" + listaEpost.get(i).get("adress") + "\n" + "------------------- \n");
+                    taListaInfo.append(" Förnamn: " + listaEpost.get(i).get("fornamn") + "\n "
+                            + "Efternamn: " + listaEpost.get(i).get("efternamn") + "\n "
+                            + "Telefon: " + listaEpost.get(i).get("telefon") + "\n "
+                            + "E-post: " + listaEpost.get(i).get("epost") + "\n "
+                            + "Adress: " + listaEpost.get(i).get("adress") + "\n "
+                            + "------------------- \n");
                 }
                 if (!Validering.finnsTextTA(taListaInfo)) {
                     JOptionPane.showMessageDialog(null, "Vänligen skriv in en giltig e-post");
