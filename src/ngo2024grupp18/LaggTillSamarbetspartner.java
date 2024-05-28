@@ -51,7 +51,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
             tfPartnerIDLaggTillPartner.setEditable(false);
             lblPartnerIDLaggTillPartner.requestFocus();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return nyPartnerId;
     }
@@ -67,7 +67,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 cbProjektIDSamarbetspartner.addItem(ettProjekt);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
     }
@@ -83,7 +83,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 cbValjStadLaggTillSamarbetspartner.addItem(enStad);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -328,7 +328,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Samarbetspartner tillagd");
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         }
 

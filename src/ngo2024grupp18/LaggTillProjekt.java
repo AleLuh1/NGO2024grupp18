@@ -69,7 +69,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             tfProjektIDLaggTIllProjekt.setEditable(false);
             lblPorjektIDLaggTIllProjekt.requestFocus();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return nyttProjektPid;
     }
@@ -86,7 +86,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 cbProjektChefLaggTillProjekt.addItem(enProjektchef);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -103,7 +103,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 cbHallbarhetsmalLaggTillProjekt.addItem(ettHallbarhetsmal);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -120,7 +120,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 cbStatusLaggTillProjekt.addItem(enStatus);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -137,7 +137,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 cbPrioritetLaggTillProjekt.addItem(enPrioritet);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -155,7 +155,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 cbLandLaggTillProjekt.addItem(ettLand);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -178,7 +178,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 cbLaggTillAnstalld.removeItem(namn);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -527,7 +527,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             new Meny(idb, aid, avdid).setVisible(true);
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
 

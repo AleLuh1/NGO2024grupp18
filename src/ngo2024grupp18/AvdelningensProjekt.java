@@ -54,7 +54,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -273,7 +273,7 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             tfAvdProjChef.setText(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
             tfAvdProjLand.setText(land);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
     }//GEN-LAST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible

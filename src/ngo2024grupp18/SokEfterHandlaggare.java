@@ -169,7 +169,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 }
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         } else if (!sokEfternamn.isEmpty()) {
             System.out.println("Söker på efternamn");
@@ -189,7 +189,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 }
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         } else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty()) {
             System.out.println("Söker på fullständigt namn");
@@ -209,7 +209,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 }
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
 
         } else if (!sokEpost.isEmpty()) {
@@ -229,7 +229,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 }
 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         
         } else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty() && !sokEpost.isEmpty()) {
@@ -246,7 +246,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 }
                 
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         }
 

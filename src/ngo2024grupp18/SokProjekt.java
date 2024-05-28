@@ -173,7 +173,7 @@ public class SokProjekt extends javax.swing.JFrame {
                 }
                 taResultatSoktaProjekt.setCaretPosition(0);
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_btnSokProjektActionPerformed

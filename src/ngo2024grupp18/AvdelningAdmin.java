@@ -61,7 +61,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             jListHallbarhetsmalAvdAdmin.setModel(listModelhallbarhetsmal);
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -77,7 +77,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
     }
@@ -110,7 +110,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -126,7 +126,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -147,7 +147,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 cbAvdchefAdmin.addItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
     }
@@ -444,7 +444,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
     }//GEN-LAST:event_cbValjAvdAdminActionPerformed
@@ -508,7 +508,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Ändring sparad");
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 

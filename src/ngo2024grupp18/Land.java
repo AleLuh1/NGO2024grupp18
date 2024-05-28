@@ -41,7 +41,7 @@ public class Land extends javax.swing.JFrame {
                 cbLand.addItem(ettProjekt);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -237,7 +237,7 @@ public class Land extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -262,7 +262,7 @@ public class Land extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ändring sparad");
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
 

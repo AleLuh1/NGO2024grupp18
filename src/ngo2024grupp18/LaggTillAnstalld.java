@@ -58,7 +58,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
             tfAidNyAnstalld.setEditable(false);
             lblAidNyAnstalld.requestFocus();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -85,7 +85,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                 cbAvdNyAnstalld.addItem(avdNamn);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -99,7 +99,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                 cbMentorNyHandlaggare.addItem(anstalldAid);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -354,7 +354,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                         System.out.println(sqlLaggTillRollAdmin);
                         idb.insert(sqlLaggTillRollAdmin);
                     } catch (Exception ex) {
-                        System.out.println(ex.getMessage());
+                        ex.printStackTrace();
                     }
                 } else {
                     try {
@@ -372,12 +372,12 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                         }
 
                     } catch (Exception ex) {
-                        System.out.println(ex.getMessage());
+                        ex.printStackTrace();
                     }
                 }
 
             } catch (InfException ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_btnSparaNyAnstalldActionPerformed

@@ -46,7 +46,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 cbValjSamarbetspartner.addItem(enPartner);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
     }
@@ -61,7 +61,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 cbValjStadSamarbetspartner.addItem(enStad);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -294,7 +294,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
             } catch (Exception ex) {
 
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
 
             }
         }
@@ -328,7 +328,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -364,7 +364,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             cbValjSamarbetspartner.removeAllItems();
             fyllCBValjSamarbetspartner();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
 

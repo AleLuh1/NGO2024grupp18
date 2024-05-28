@@ -52,7 +52,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             tfAvdIDLaggTillAvd.setEditable(false);
             lblAvdIDLaggTillAvd.requestFocus();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return nyAvdId;
     }
@@ -68,7 +68,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                 cbStadLaggTillPartner.addItem(enStad);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -88,7 +88,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                 cbAvdchefLaggTillavd.addItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -105,7 +105,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -365,7 +365,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                         + "VALUES (" + avdid + ", " + hid + ")";
                 idb.insert(sqlFraga2);
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_btnSparaLaggTillAvdActionPerformed

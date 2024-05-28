@@ -48,7 +48,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -173,7 +173,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
             taBeskrivningHallbar.setCaretPosition(0);
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_cbHallbarhetsmalPopupMenuWillBecomeInvisible
 

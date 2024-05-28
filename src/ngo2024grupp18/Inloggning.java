@@ -128,7 +128,7 @@ public class Inloggning extends javax.swing.JFrame {
                     lblFelLosenord.setVisible(true);
                 }
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
 
         }

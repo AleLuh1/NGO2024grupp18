@@ -55,7 +55,7 @@ public class ProjektStatistik extends javax.swing.JFrame {
             tfTotKostnadMinaProj.setEditable(false);
             lblTotKostnadMinaProj.requestFocus();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 

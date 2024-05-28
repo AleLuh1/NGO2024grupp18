@@ -42,7 +42,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
                 cbTaBortAnstalld.addItem(ettNamn.get("fornamn") + " " + ettNamn.get("efternamn"));
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 
@@ -178,7 +178,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             fyllCBTaBortAnstalld();
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
 
@@ -219,7 +219,7 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
 

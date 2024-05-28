@@ -94,7 +94,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 cbMinaProjekt.addItem(ettProjekt);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -111,7 +111,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             }
             jListAnstalldaMinaProjekt.setModel(listModel);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -131,7 +131,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             }
             jListHallbarhetsmalMinaProjekt.setModel(listModelhallbarhetsmal);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -148,7 +148,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             }
             jListPartnerMinaProjekt.setModel(listModelPartners);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -163,7 +163,7 @@ public class MinaProjekt extends javax.swing.JFrame {
 //            }
 //            jListPartnerInfoMinaUppgifter.setModel(listModelPartnersInfo);
 //        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
+//            ex.printStackTrace();
 //        }
 //    }
     // fyller på uppgifter om en samarbetspartner i text area
@@ -177,7 +177,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             String stadNamn = idb.fetchSingle(sqlStad);
             taPartnerInfoMinaUppgifter.setText(partner.get("namn") + "\n" + partner.get("kontaktperson") + "\n" + partner.get("kontaktepost") + "\n" + partner.get("telefon") + "\n" + partner.get("adress") + "\n" + partner.get("branch") + "\n" + stadNamn + "\n -------------------------");
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -209,7 +209,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 cbAnstalldaMinaProjekt.addItem(anstalld.get("fornamn") + " " + anstalld.get("efternamn"));
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -221,7 +221,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 cbLandMinaProjekt.addItem(ettLand.get("namn"));
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -237,7 +237,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 cbProjektchefMinaProjekt.addItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -259,7 +259,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 cbValjPartnerMinaProjekt.removeItem(partnerNamn);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -623,7 +623,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             fyllHallbarhetsmal(pid);
             fyllCBValjPartner(pid);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_cbMinaProjektPopupMenuWillBecomeInvisible
 
@@ -725,7 +725,7 @@ public class MinaProjekt extends javax.swing.JFrame {
             //laddar om listan
             fyllAnstalldaList(projektId);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
 

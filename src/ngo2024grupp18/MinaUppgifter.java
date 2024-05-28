@@ -77,7 +77,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -99,7 +99,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
             aidSomKollas = idb.fetchSingle(sqlFraga);
             System.out.println("Aid som kollas: " + aidSomKollas);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return aidSomKollas != null;
     }
@@ -111,7 +111,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
             String behorighetsniva = idb.fetchSingle(sqlFraga);
             tfBehorighetsnivaAdmin.setText(behorighetsniva);
           } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -123,7 +123,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
             aidSomKollas = idb.fetchSingle(sqlFraga);
             System.out.println("Aid som kollas: " + aidSomKollas);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         if (aidSomKollas != null) {
             return true;
@@ -139,7 +139,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
             aidSomKollas = idb.fetchSingle(sqlFraga);
             System.out.println("Aid som kollas: " + aidSomKollas);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         if (aidSomKollas != null) {
             return true;
@@ -355,7 +355,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
                 idb.update(sqlFraga);
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
             btnMinaUppgifterRedigera.setText("Ändra");
             tfTelefonMinaUppgifter.setEditable(false);

@@ -70,7 +70,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbAllaProjekt.addItem(ettProjekt);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
     }
@@ -94,7 +94,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbAllaHallbMal.removeItem(hbMalNamn);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -115,7 +115,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbAllaAnstallda.removeItem(namn);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -131,7 +131,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbProjektchefAllaProjekt.addItem(enProjektchef);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
 
         }
     }
@@ -146,7 +146,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbLandAllaProjekt.addItem(ettLand.get("namn"));
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -180,7 +180,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             nyProjektPid = Integer.toString(nyProjektPidInt);
             tfNyttProjektNyPid.setText(nyProjektPid);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return nyProjektPid;
     }
@@ -467,7 +467,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbLandAllaProjekt.setSelectedItem(land);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
 
@@ -562,7 +562,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             this.dispose();
             new Meny(idb, aid, avdid).setVisible(true);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_btnSparaAllaProjektActionPerformed
 
@@ -608,7 +608,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_bnTaBortProjActionPerformed
 
@@ -629,7 +629,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             int pid = Integer.parseInt(pidStr);
             fyllCBhallbarMal(pid);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         nyTillagdaHBMal.add(malNamn);
     }//GEN-LAST:event_btnLaggTillHBMalActionPerformed
@@ -652,7 +652,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             fyllCBAllaAnstallda(pid);
             nyTillagdaAnstallda.add(anstalld);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 //        nyTillagdaAnstallda.add(anstalld);
     }//GEN-LAST:event_btnLaggTillAnstalldAllaProjActionPerformed

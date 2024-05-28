@@ -48,7 +48,7 @@ public class LaggTillLand extends javax.swing.JFrame {
             tfLandIDLaggTillLand.setEditable(false);
             lblLandIDLaggTillLand.requestFocus();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return nyLid;
     }
@@ -249,7 +249,7 @@ public class LaggTillLand extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Land tillagt");
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
 

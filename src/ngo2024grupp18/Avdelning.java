@@ -43,7 +43,7 @@ public class Avdelning extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -153,7 +153,7 @@ public class Avdelning extends javax.swing.JFrame {
             tfEpostAvd.setText(avdelning.get("epost"));
             tfEpostAvd.setEditable(false);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_cbAvdAnstalldPopupMenuWillBecomeInvisible
 
