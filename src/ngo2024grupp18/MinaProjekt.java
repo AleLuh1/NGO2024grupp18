@@ -172,7 +172,10 @@ public class MinaProjekt extends javax.swing.JFrame {
         try {
             String sqlFragaPartner = "SELECT * FROM partner WHERE namn ='" + partnerNamn + "'";
             HashMap<String, String> partner = idb.fetchRow(sqlFragaPartner);
-            taPartnerInfoMinaUppgifter.setText(partner.get("namn") + "\n" + partner.get("kontaktperson") + "\n" + partner.get("kontaktepost") + "\n" + partner.get("telefon") + "\n" + partner.get("adress") + "\n" + partner.get("branch") + "\n" + partner.get("stad") + "\n -------------------------");
+            
+            String sqlStad = "SELECT namn FROM stad WHERE sid ='"+partner.get("stad")+"'";
+            String stadNamn = idb.fetchSingle(sqlStad);
+            taPartnerInfoMinaUppgifter.setText(partner.get("namn") + "\n" + partner.get("kontaktperson") + "\n" + partner.get("kontaktepost") + "\n" + partner.get("telefon") + "\n" + partner.get("adress") + "\n" + partner.get("branch") + "\n" + stadNamn + "\n -------------------------");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
