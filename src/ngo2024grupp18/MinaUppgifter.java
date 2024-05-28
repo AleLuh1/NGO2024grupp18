@@ -59,13 +59,25 @@ public class MinaUppgifter extends javax.swing.JFrame {
             tftAvdMinaUppgifter.setEditable(false);
 
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
+            
+            if (isAdmin()) {
+                fyllBehorighetsnivaAdmin();
+                lblBehorighetsnivaAdmin.setVisible(true);
+                tfBehorighetsnivaAdmin.setVisible(true);
+                tfBehorighetsnivaAdmin.setEditable(false);
+            } else {
+                lblBehorighetsnivaAdmin.setVisible(false);
+                tfBehorighetsnivaAdmin.setVisible(false);
+                tfBehorighetsnivaAdmin.setEditable(false);
+
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
 
     public String getRoll() {
-        if (isAdmin() == true) {
+        if (isAdmin()) {
             return "Admin";
         } else if (isProjektledare() == true) {
             return "Projektledare";
@@ -84,10 +96,18 @@ public class MinaUppgifter extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        if (aidSomKollas != null) {
-            return true;
+        return aidSomKollas != null;
+    }
+    
+    private void fyllBehorighetsnivaAdmin(){
+        try{
+            String sqlFraga = "SELECT behorighetsniva FROM admin WHERE aid = " + aid;
+            System.out.println(sqlFraga);
+            String behorighetsniva = idb.fetchSingle(sqlFraga);
+            tfBehorighetsnivaAdmin.setText(behorighetsniva);
+          } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
-        return false;
     }
 
     public boolean isProjektledare() {
@@ -149,6 +169,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
         btnTillbakaMU = new javax.swing.JButton();
         lblMinaUppgifterRuta = new javax.swing.JLabel();
         btnMinaUppgifterRedigera = new javax.swing.JButton();
+        lblBehorighetsnivaAdmin = new javax.swing.JLabel();
+        tfBehorighetsnivaAdmin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +209,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
             }
         });
 
+        lblBehorighetsnivaAdmin.setText("Behörighetsnivå");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,11 +236,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
                                             .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(lblBehorighetsnivaAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(lblEfternamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(lblFornamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblAID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
-                                            .addComponent(lblTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(lblAID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)))
                                         .addGap(61, 61, 61)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(tfAdressMinaUppgifter)
@@ -224,11 +249,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
                                             .addComponent(tfEfternamnMinaUppgifter)
                                             .addComponent(tfTelefonMinaUppgifter)
                                             .addComponent(tfEpostMinaUppgifter)
+                                            .addComponent(tftAvdMinaUppgifter)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(tftAvdMinaUppgifter)))
-                                    .addGroup(layout.createSequentialGroup()
+                                            .addComponent(tfBehorighetsnivaAdmin)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(lblAnstallningsDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addContainerGap(44, Short.MAX_VALUE))))
@@ -241,7 +267,11 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAID)
                     .addComponent(lblRoll))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBehorighetsnivaAdmin)
+                    .addComponent(tfBehorighetsnivaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFornamn)
                     .addComponent(tfFornamnMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -267,7 +297,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
                     .addComponent(tftAvdMinaUppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblAnstallningsDatum)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaMU)
                     .addComponent(btnMinaUppgifterRedigera))
@@ -331,6 +361,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdress;
     private javax.swing.JLabel lblAnstallningsDatum;
     private javax.swing.JLabel lblAvdelning;
+    private javax.swing.JLabel lblBehorighetsnivaAdmin;
     private javax.swing.JLabel lblEfternamn;
     private javax.swing.JLabel lblEpost;
     private javax.swing.JLabel lblFornamn;
@@ -338,6 +369,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
     private javax.swing.JLabel lblRoll;
     private javax.swing.JLabel lblTelefon;
     private javax.swing.JTextField tfAdressMinaUppgifter;
+    private javax.swing.JTextField tfBehorighetsnivaAdmin;
     private javax.swing.JTextField tfEfternamnMinaUppgifter;
     private javax.swing.JTextField tfEpostMinaUppgifter;
     private javax.swing.JTextField tfFornamnMinaUppgifter;

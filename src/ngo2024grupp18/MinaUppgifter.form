@@ -46,12 +46,13 @@
                                           <Component id="lblAdress" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                                           <Component id="lblEpost" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                                           <Component id="lblAvdelning" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                          <Component id="lblTelefon" min="-2" pref="104" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="lblBehorighetsnivaAdmin" alignment="0" max="32767" attributes="0"/>
                                               <Component id="lblEfternamn" alignment="0" max="32767" attributes="0"/>
                                               <Component id="lblFornamn" alignment="0" max="32767" attributes="0"/>
                                               <Component id="lblAID" alignment="0" pref="99" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="lblTelefon" min="-2" pref="104" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -60,14 +61,15 @@
                                           <Component id="tfEfternamnMinaUppgifter" alignment="0" max="32767" attributes="0"/>
                                           <Component id="tfTelefonMinaUppgifter" alignment="0" max="32767" attributes="0"/>
                                           <Component id="tfEpostMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="tftAvdMinaUppgifter" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Component id="lblRoll" min="-2" pref="133" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="tftAvdMinaUppgifter" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="tfBehorighetsnivaAdmin" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblAnstallningsDatum" min="-2" pref="509" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -89,7 +91,12 @@
                   <Component id="lblAID" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblRoll" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblBehorighetsnivaAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfBehorighetsnivaAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblFornamn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfFornamnMinaUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -119,9 +126,9 @@
                   <Component id="lblAvdelning" min="-2" max="-2" attributes="0"/>
                   <Component id="tftAvdMinaUppgifter" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblAnstallningsDatum" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnTillbakaMU" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnMinaUppgifterRedigera" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -212,6 +219,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinaUppgifterRedigeraActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBehorighetsnivaAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Beh&#xf6;righetsniv&#xe5;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfBehorighetsnivaAdmin">
     </Component>
   </SubComponents>
 </Form>
