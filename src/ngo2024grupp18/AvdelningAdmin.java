@@ -240,7 +240,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jListHallbarhetsmalAvdAdmin);
 
-        btnLaggTillMal.setText("jButton2");
+        btnLaggTillMal.setText("Lägg till hållbarhetsmål");
         btnLaggTillMal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLaggTillMalActionPerformed(evt);
@@ -437,9 +437,22 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
             String sqlFragaUpdate = "UPDATE avdelning SET namn = '" + avdNamn + "', beskrivning = '" + avdBeskrivning + "', adress = '" + avdAddress + "', epost = '" + avdEpost + "', telefon = '" + avdTnr + "', stad = " + stadId + ", chef = " + chefId + " WHERE avdid=" + avdId;
             idb.update(sqlFragaUpdate);
+            
+             for (int i = 0; i < listModelhallbarhetsmal.size(); i++) {
+                String mal = listModelhallbarhetsmal.getElementAt(i);
 
-            cbValjAvdAdmin.removeAllItems();
-            fyllCBValjAVD();
+                //hämtar aid från anstalld tabell genom att använda fornamn och efternamn
+                String sqlFragaMalId = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + mal + "'";
+                String hid = idb.fetchSingle(sqlFragaMalId);
+
+                //skapa ny item i tabellen ans_proj med pid och aid. Använder WHERE NOT EXIST för att kontrollera att det inte finns en annan item som har redan pid+aid
+                String sqlFragaAvdMall = "INSERT INTO avd_hallbarhet (avdid, hid) "
+                        + "SELECT " + avdId + ", " + hid + " "
+                        + "WHERE NOT EXISTS (SELECT 1 FROM avd_hallbarhet WHERE avdid = " + avdId + " AND hid = " + hid + ")";
+
+                idb.insert(sqlFragaAvdMall);
+
+            }
 
             JOptionPane.showMessageDialog(null, "Ändring sparad");
         } catch (Exception ex) {
