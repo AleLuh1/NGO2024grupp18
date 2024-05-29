@@ -9,6 +9,8 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -112,6 +114,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         lblLaggTillAnstalldRuta = new javax.swing.JLabel();
         lblFornamnNyAnstalld = new javax.swing.JLabel();
         lblEfternamnNyAnstalld = new javax.swing.JLabel();
@@ -139,6 +142,20 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         lblMentorNyHandlaggare = new javax.swing.JLabel();
         tfAnsvOmradeNyHandlaggare = new javax.swing.JTextField();
         cbMentorNyHandlaggare = new javax.swing.JComboBox<>();
+        jDateAnstallningsdatumLaggTillProjekt = new com.toedter.calendar.JDateChooser();
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,6 +211,8 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
 
         cbMentorNyHandlaggare.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingen mentor" }));
 
+        jDateAnstallningsdatumLaggTillProjekt.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,47 +228,53 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblAvdNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblLosenordNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblTelefonNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEpostNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblAdressNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblFornamnNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEfternamnNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                                .addComponent(lblAidNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                                .addComponent(lblAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-                            .addComponent(lblRollNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAdressNyAnstalld)
-                            .addComponent(tfEpostNyAnstalld)
-                            .addComponent(tfTelefonNyAnstalld)
-                            .addComponent(cbRollNyAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfFornamnNyAnstalld)
-                            .addComponent(tfAidNyAnstalld)
-                            .addComponent(tfEfternamnNyAnstalld)
-                            .addComponent(tfLosenordNyAnstalld)
-                            .addComponent(tfAnstallningsdatumNyAnstalld)
-                            .addComponent(cbAvdNyAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lblAvdNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblLosenordNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblTelefonNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblEpostNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblAdressNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblFornamnNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblEfternamnNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblAidNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblRollNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfAdressNyAnstalld)
+                                    .addComponent(tfEpostNyAnstalld)
+                                    .addComponent(tfTelefonNyAnstalld)
+                                    .addComponent(cbRollNyAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfFornamnNyAnstalld)
+                                    .addComponent(tfAidNyAnstalld)
+                                    .addComponent(tfEfternamnNyAnstalld)
+                                    .addComponent(tfLosenordNyAnstalld)
+                                    .addComponent(cbAvdNyAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jDateAnstallningsdatumLaggTillProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAnsvOmradeNyHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblMentorNyHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfAnsvOmradeNyHandlaggare)
+                                    .addComponent(cbMentorNyHandlaggare, 0, 350, Short.MAX_VALUE))))
+                        .addGap(77, 77, 77))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblLaggTillAnstalldRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAnsvOmradeNyHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMentorNyHandlaggare, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAnsvOmradeNyHandlaggare)
-                            .addComponent(cbMentorNyHandlaggare, 0, 350, Short.MAX_VALUE))))
-                .addGap(77, 77, 77))
+                        .addGap(29, 29, 29)
+                        .addComponent(tfAnstallningsdatumNyAnstalld)
+                        .addGap(48, 48, 48))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblLaggTillAnstalldRuta)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblLaggTillAnstalldRuta)
+                    .addComponent(tfAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -279,8 +304,8 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAnstallningsdatumNyAnstalld)
-                    .addComponent(tfAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jDateAnstallningsdatumLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLosenordNyAnstalld)
                     .addComponent(tfLosenordNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -325,7 +350,17 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         String nyAnstalldAdress = tfAdressNyAnstalld.getText();
         String nyAnstalldEpost = tfEpostNyAnstalld.getText();
         String nyAnstalldTelefon = tfTelefonNyAnstalld.getText();
-        String NyAnstalldAnstallningsDatum = tfAnstallningsdatumNyAnstalld.getText();
+
+        Date valtDatum = jDateAnstallningsdatumLaggTillProjekt.getDate();
+        String formateratDatum = null; 
+        
+        if (valtDatum != null) {
+            SimpleDateFormat ymd = new SimpleDateFormat("yyyy-MM-dd");
+            formateratDatum = ymd.format(valtDatum);
+        } else {
+            JOptionPane.showMessageDialog(null, "Vänligen välj ett datum.");
+        }
+
         //String NyAnstalldLosenord = skapaSlumpatLosenord();
         String NyAnstalldLosenord = tfLosenordNyAnstalld.getText();
         //tfLosenordNyAnstalld.setText(NyAnstalldLosenord);
@@ -343,7 +378,7 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                 //Därför måste man ha en if-sats för att lägga in aid i antingen admin om användaren är admin
                 // eller i handlaggare om användaren är handläggare
 
-                String sqlLaggTill = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES (" + nyAnstalldAidInt + ", '" + nyAnstalldFornamn + "', '" + nyAnstalldEfternamn + "', '" + nyAnstalldAdress + "', '" + nyAnstalldEpost + "', '" + nyAnstalldTelefon + "', str_to_date('" + NyAnstalldAnstallningsDatum + "', '%Y-%m-%d'), '" + NyAnstalldLosenord + "', " + nyAnstalldAvdInt + ")";
+                String sqlLaggTill = "INSERT INTO anstalld (aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES (" + nyAnstalldAidInt + ", '" + nyAnstalldFornamn + "', '" + nyAnstalldEfternamn + "', '" + nyAnstalldAdress + "', '" + nyAnstalldEpost + "', '" + nyAnstalldTelefon + "', str_to_date('" + formateratDatum + "', '%Y-%m-%d'), '" + NyAnstalldLosenord + "', " + nyAnstalldAvdInt + ")";
                 idb.insert(sqlLaggTill);
                 JOptionPane.showMessageDialog(null, "Den anställda har lagts till.");
 
@@ -408,6 +443,8 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbAvdNyAnstalld;
     private javax.swing.JComboBox<String> cbMentorNyHandlaggare;
     private javax.swing.JComboBox<String> cbRollNyAnstalld;
+    private com.toedter.calendar.JDateChooser jDateAnstallningsdatumLaggTillProjekt;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel lblAdressNyAnstalld;
     private javax.swing.JLabel lblAidNyAnstalld;
     private javax.swing.JLabel lblAnstallningsdatumNyAnstalld;
