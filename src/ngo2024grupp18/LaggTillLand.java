@@ -6,6 +6,7 @@ package ngo2024grupp18;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static ngo2024grupp18.Validering.isKorrektValuta;
 import oru.inf.InfDB;
 
 /**
@@ -31,6 +32,7 @@ public class LaggTillLand extends javax.swing.JFrame {
     }
 
     //Genererar ny land-id vid tillägg av nytt land genom att +1 på högsta befintliga land-id
+    //Valt att inte validera lägg till land (lid) då det genereras automatiskt genom att alltid öka med 1 från det högsta befintliga värdet, det är ingenting som man manuellt matar in
     private String LaggaTillNyLid() {
         String nyLid = null;
         try {
@@ -225,6 +227,10 @@ public class LaggTillLand extends javax.swing.JFrame {
         if (laggTillValuta.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i valuta");
         }
+        
+           if (!isKorrektValuta(tfValutaLaggTillLand)) {
+           return; 
+        }
 
         String laggTillTidszon = tfTidszonLaggTillLand.getText();
 
@@ -251,7 +257,6 @@ public class LaggTillLand extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
 
     }//GEN-LAST:event_btnSparaLaggTillLandActionPerformed
 
