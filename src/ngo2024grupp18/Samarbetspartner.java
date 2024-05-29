@@ -77,7 +77,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitelSamarbetspartner = new javax.swing.JLabel();
         cbValjSamarbetspartner = new javax.swing.JComboBox<>();
         btnTillbakaSamarbetspartner = new javax.swing.JButton();
         btnSparAndringarSam = new javax.swing.JButton();
@@ -104,8 +104,8 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel1.setText("Samarbetspartner");
+        lblTitelSamarbetspartner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblTitelSamarbetspartner.setText("Samarbetspartner");
 
         cbValjSamarbetspartner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj samarbetspartner" }));
         cbValjSamarbetspartner.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -178,7 +178,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(lblTitelSamarbetspartner)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblProjektIDSam)
@@ -213,7 +213,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addComponent(lblTitelSamarbetspartner)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbValjSamarbetspartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,7 +388,6 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private javax.swing.JButton btnTillbakaSamarbetspartner;
     private javax.swing.JComboBox<String> cbValjSamarbetspartner;
     private javax.swing.JComboBox<String> cbValjStadSamarbetspartner;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblAdressSam;
     private javax.swing.JLabel lblBranchSam;
@@ -397,6 +396,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     private javax.swing.JLabel lblNamnSam;
     private javax.swing.JLabel lblProjektIDSam;
     private javax.swing.JLabel lblStadSam;
+    private javax.swing.JLabel lblTitelSamarbetspartner;
     private javax.swing.JLabel lblTnrSam;
     private javax.swing.JTextField tfAdressSam;
     private javax.swing.JTextField tfBranchSam;
