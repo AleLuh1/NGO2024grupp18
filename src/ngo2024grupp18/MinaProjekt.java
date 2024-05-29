@@ -820,11 +820,11 @@ public class MinaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLaggTillPartnerMinaProjektActionPerformed
 
     private void btnTaBortPartnerMinaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortPartnerMinaProjektActionPerformed
-        String anstalld = jListPartnerMinaProjekt.getSelectedValue();
-        listModelPartners.removeElement(anstalld);
-        cbValjPartnerMinaProjekt.addItem(anstalld);
-        visaPartner.add(anstalld);
-        partnersSomSkaTasBort.add(anstalld);
+        String partner = jListPartnerMinaProjekt.getSelectedValue();
+        listModelPartners.removeElement(partner);
+        cbValjPartnerMinaProjekt.addItem(partner);
+        visaPartner.add(partner);
+        partnersSomSkaTasBort.add(partner);
     }//GEN-LAST:event_btnTaBortPartnerMinaProjektActionPerformed
 
     private void jListPartnerMinaProjektValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListPartnerMinaProjektValueChanged
