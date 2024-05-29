@@ -68,7 +68,7 @@ public class Validering {
         // Skapar ett Matcher-objekt 
         Matcher ePostMatchar = mall.matcher(ePost);
         if (!(ePostMatchar.matches())) {
-            JOptionPane.showMessageDialog(null, "Vänligen ange korrekt e-post eller lösenord");
+            JOptionPane.showMessageDialog(null, "Vänligen ange korrekt e-postformat som slutar på '@example.com'");
             resultat = false;
         }
         return resultat;

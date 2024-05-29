@@ -149,6 +149,12 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
         int avdelning = Integer.parseInt(this.avdid);
         taListaInfo.setText("");
 
+        //Validering av e-postformat
+        if (!sokEpost.isEmpty() && !Validering.isKorrektFormatEpost(tfSokEpost)) {
+            System.out.println("E-postformat felaktigt");
+            return;
+        }
+        //Söker på förnamn
         if (!sokFornamn.isEmpty()) {
             System.out.println("Söker på förnamn");
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld "
@@ -171,6 +177,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+            //Söker på efternamn
         } else if (!sokEfternamn.isEmpty()) {
             System.out.println("Söker på efternamn");
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE efternamn = '" + sokEfternamn + "' AND avdelning = " + avdelning;
@@ -191,6 +198,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+            //Söker på förnamn och efternamn
         } else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty()) {
             System.out.println("Söker på fullständigt namn");
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokFornamn + "' AND efternamn = '" + sokEfternamn + "' AND avdelning = " + avdelning;
@@ -212,6 +220,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
 
+            //Söker på e-post
         } else if (!sokEpost.isEmpty()) {
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE epost = '" + sokEpost + "' AND avdelning = " + avdelning;
             try {
@@ -232,6 +241,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
 
+            //söker på alla tre rutor samtidigt
         } else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty() && !sokEpost.isEmpty()) {
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokFornamn + "' AND efternamn = '" + sokEfternamn + "' AND epost = '" + sokEpost + "' AND avdelning = " + avdelning;
             try {
@@ -248,6 +258,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+            //Felmeddelande om inga fält har fyllts i
         } else {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
 
