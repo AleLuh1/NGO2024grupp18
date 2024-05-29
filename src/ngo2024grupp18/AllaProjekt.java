@@ -34,6 +34,8 @@ public class AllaProjekt extends javax.swing.JFrame {
     private ArrayList<String> anstalldaIProjLista;
     private ArrayList<String> nyTillagdaAnstallda;
     private ArrayList<String> nyTillagdaHBMal;
+    private ArrayList<String> hbMalSomSkaTasBortLista = new ArrayList<>();
+
     private ArrayList<String> anstalldaSomTasBortLista;
 
     /**
@@ -94,8 +96,8 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbAllaHallbMal.addItem(idb.fetchSingle(sqlFragaHBMalnamn));
             }
             //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
-            for (int i = 0; i < jListHBMal.getModel().getSize(); i++) {
-                var hbMalNamn = jListHBMal.getModel().getElementAt(i);
+            for (int i = 0; i < jListHBmalAllaProj.getModel().getSize(); i++) {
+                var hbMalNamn = jListHBmalAllaProj.getModel().getElementAt(i);
                 cbAllaHallbMal.removeItem(hbMalNamn);
             }
         } catch (Exception ex) {
@@ -261,7 +263,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         btnLaggTillProjAllaProj = new javax.swing.JButton();
         lblAllaProjHallbMal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jListHBMal = new javax.swing.JList<>();
+        jListHBmalAllaProj = new javax.swing.JList<>();
         cbAllaHallbMal = new javax.swing.JComboBox<>();
         lblLaggTillHBMal = new javax.swing.JLabel();
         btnLaggTillHBMal = new javax.swing.JButton();
@@ -383,7 +385,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         lblAllaProjHallbMal.setText("Aktuella hållbarhetsmål");
         getContentPane().add(lblAllaProjHallbMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 136, -1));
 
-        jScrollPane1.setViewportView(jListHBMal);
+        jScrollPane1.setViewportView(jListHBmalAllaProj);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 214, 140));
 
@@ -492,6 +494,11 @@ public class AllaProjekt extends javax.swing.JFrame {
         getContentPane().add(lblValjHbMalTaBortAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, -1, -1));
 
         btnTaBortHbMalAllaProj.setText("Ta bort");
+        btnTaBortHbMalAllaProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortHbMalAllaProjActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnTaBortHbMalAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, 200, -1));
 
         pack();
@@ -502,6 +509,10 @@ public class AllaProjekt extends javax.swing.JFrame {
         String projektNamn = cbAllaProjekt.getSelectedItem().toString();
 
         try {
+            if(projektNamn.equals("Välj projekt")) {
+                return;
+            }
+            
             String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFraga);
 
@@ -545,7 +556,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             for (int i = 0; i < projektHallbMal.size(); i++) {
                 listModelHBMal.addElement(projektHallbMal.get(i));
             }
-            jListHBMal.setModel(listModelHBMal);
+            jListHBmalAllaProj.setModel(listModelHBMal);
 
 //            String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid ='" + projektNamnLista.get("projektchef") + "'";
 //            HashMap<String, String> projektchef = idb.fetchRow(sqlFraga3);
@@ -653,6 +664,17 @@ public class AllaProjekt extends javax.swing.JFrame {
                 System.out.println(sqlFrHBMal);
                 idb.insert(sqlFrHBMal);
             }
+            nyTillagdaHBMal.clear();
+
+            for (String hbMalAttTaBort : hbMalSomSkaTasBortLista) {
+                String sqlFragaTaBortHid = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + hbMalAttTaBort + "'";
+                System.out.println(sqlFragaTaBortHid);
+                String hid = idb.fetchSingle(sqlFragaTaBortHid);
+
+                String sqlFragaHBMalTasBort = "DELETE FROM proj_hallbarhet WHERE pid = " + pid + " AND hid = " + hid + "";
+                idb.delete(sqlFragaHBMalTasBort);
+            }
+            hbMalSomSkaTasBortLista.clear();
 
             for (String anstalldAttTaBort : anstalldaSomTasBortLista) {
                 String anstalldFornamn = anstalldAttTaBort.split(" ")[0];
@@ -668,6 +690,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Projektchef " + anstalldFornamn + " " + anstalldEfternamn + " kan inte tas bort");
                 }
             }
+            anstalldaSomTasBortLista.clear();
 
             for (int i = 0; i < listModelPartners.size(); i++) {
                 String partnerNamn = listModelPartners.getElementAt(i);
@@ -694,8 +717,8 @@ public class AllaProjekt extends javax.swing.JFrame {
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
             JOptionPane.showMessageDialog(null, "Ändring sparad");
-            this.dispose();
-            new Meny(idb, aid, avdid).setVisible(true);
+//            this.dispose();
+//            new Meny(idb, aid, avdid).setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -742,6 +765,8 @@ public class AllaProjekt extends javax.swing.JFrame {
             // uppdaterar comboboxen
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
+            cbAllaProjektPopupMenuWillBecomeInvisible(null);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -755,7 +780,7 @@ public class AllaProjekt extends javax.swing.JFrame {
     private void btnLaggTillHBMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillHBMalActionPerformed
         String malNamn = cbAllaHallbMal.getSelectedItem().toString();
         listModelHBMal.addElement(malNamn);
-        jListHBMal.setModel(listModelHBMal);
+        jListHBmalAllaProj.setModel(listModelHBMal);
         String projektNamn = cbAllaProjekt.getSelectedItem().toString();
         try {
             String sqlProjnamnTillPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
@@ -818,6 +843,13 @@ public class AllaProjekt extends javax.swing.JFrame {
         partnersSomSkaTasBortLista.add(partner);
     }//GEN-LAST:event_btnTaBortPartnerAllaProjActionPerformed
 
+    private void btnTaBortHbMalAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortHbMalAllaProjActionPerformed
+        String hbMal = jListHBmalAllaProj.getSelectedValue();
+        listModelHBMal.removeElement(hbMal);
+        cbAllaHallbMal.addItem(hbMal);
+        hbMalSomSkaTasBortLista.add(hbMal);
+    }//GEN-LAST:event_btnTaBortHbMalAllaProjActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnTaBortProj;
@@ -839,7 +871,7 @@ public class AllaProjekt extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbProjektchefAllaProjekt;
     private javax.swing.JComboBox<String> cbStatusAllaProjekt;
     private javax.swing.JList<String> jListAllaAnstallda;
-    private javax.swing.JList<String> jListHBMal;
+    private javax.swing.JList<String> jListHBmalAllaProj;
     private javax.swing.JList<String> jListPartnersAllaProj;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
