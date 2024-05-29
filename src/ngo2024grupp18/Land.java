@@ -256,7 +256,7 @@ public class Land extends javax.swing.JFrame {
             String politiskStruktur = tfPolitiskStrukturLand.getText();
             String ekonomi = tfEkonomiLand.getText();
 
-            String sqlFraga = "UPDATE land SET lid = " + landID + ", sprak = '" + sprak + "', valuta = '" + valuta + "', tidszon = '" + tidszon + "', ekonomi = '" + ekonomi + "' WHERE namn = '" + namnLand + "'";
+            String sqlFraga = "UPDATE land SET namn ='"+namn+"',sprak = '" + sprak + "', valuta = '" + valuta + "', tidszon = '" + tidszon + "', ekonomi = '" + ekonomi + "' WHERE lid="+landID;
             idb.update(sqlFraga);
 
             JOptionPane.showMessageDialog(null, "Ändring sparad");
