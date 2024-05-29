@@ -755,6 +755,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 String sqlFragaTaBortPartner = "DELETE FROM projekt_partner WHERE pid =" + projektId + " AND partner_pid =" + partnerId;
                 idb.delete(sqlFragaTaBortPartner);
             }
+            partnersSomSkaTasBort.clear();
 
             for (String malNamn : nyTillagdaHBMal) {
                 String sqlFragaHBMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + malNamn + "'";
