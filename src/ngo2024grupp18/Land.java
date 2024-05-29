@@ -29,6 +29,25 @@ public class Land extends javax.swing.JFrame {
         this.avdid = avdid;
         fyllCBLand();
         this.setLocationRelativeTo(null);
+
+        if (isAdmin()) {
+            btnLaggTillLand.setVisible(true);
+            btnSparaAndringarLand.setVisible(true);
+        } else {
+            btnLaggTillLand.setVisible(false);
+            btnSparaAndringarLand.setVisible(false);
+        }
+    }
+
+    private boolean isAdmin() {
+        String aidSomKollas = null;
+        try {
+            String sqlFraga = "SELECT aid FROM admin WHERE aid = " + aid;
+            aidSomKollas = idb.fetchSingle(sqlFraga);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return aidSomKollas != null;
     }
 
     public void fyllCBLand() {
@@ -42,9 +61,7 @@ public class Land extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     /**
@@ -240,8 +257,6 @@ public class Land extends javax.swing.JFrame {
             ex.printStackTrace();
 
         }
-
-
     }//GEN-LAST:event_cbLandPopupMenuWillBecomeInvisible
 
     private void btnSparaAndringarLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAndringarLandActionPerformed
@@ -256,7 +271,7 @@ public class Land extends javax.swing.JFrame {
             String politiskStruktur = tfPolitiskStrukturLand.getText();
             String ekonomi = tfEkonomiLand.getText();
 
-            String sqlFraga = "UPDATE land SET namn ='"+namn+"',sprak = '" + sprak + "', valuta = '" + valuta + "', tidszon = '" + tidszon + "', ekonomi = '" + ekonomi + "' WHERE lid="+landID;
+            String sqlFraga = "UPDATE land SET namn ='" + namn + "',sprak = '" + sprak + "', valuta = '" + valuta + "', tidszon = '" + tidszon + "', ekonomi = '" + ekonomi + "' WHERE lid=" + landID;
             idb.update(sqlFraga);
 
             JOptionPane.showMessageDialog(null, "Ändring sparad");
