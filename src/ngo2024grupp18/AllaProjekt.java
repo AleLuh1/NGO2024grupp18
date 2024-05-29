@@ -652,6 +652,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 System.out.println(sqlFr);
                 idb.insert(sqlFr);
             }
+            nyTillagdaAnstallda.clear();
 
             for (String malNamn : nyTillagdaHBMal) {
                 String sqlFragaHBMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + malNamn + "'";
