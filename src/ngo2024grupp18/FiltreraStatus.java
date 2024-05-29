@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
-import ngo2024grupp18.Validering;
+//import ngo2024grupp18.Validering;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
