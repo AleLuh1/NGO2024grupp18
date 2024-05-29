@@ -35,7 +35,9 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         fyllCBValjAVD();
         fyllCBValjStad();
         fyllCBValjProjektchef();
-        
+
+        tfAvdelningsIDAvdAdmin.setEditable(false);
+
         // Delar upp en textrad i flera rader. 
         taBeskrivningAvdAdmin.setLineWrap(true);
         taBeskrivningAvdAdmin.setWrapStyleWord(true);
@@ -114,7 +116,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         }
     }
 
-    // Lägger till alla städer i combobox
+    
     public void fyllCBValjStad() {
         try {
             String sqlFraga = "SELECT DISTINCT namn FROM stad";
@@ -132,7 +134,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
     }
 
-    // Lägger till alla projektchefer i combobox
+ 
     public void fyllCBValjProjektchef() {
         try {
 
@@ -458,6 +460,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         try {
             String avdId = tfAvdelningsIDAvdAdmin.getText();
+
             String avdNamn = tfNamnAvdAdmin.getText();
             String avdBeskrivning = taBeskrivningAvdAdmin.getText();
             String avdAddress = tfAdressAvdAdmin.getText();
@@ -516,20 +519,20 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSparaAvdelningAdminActionPerformed
 
     private void btnLaggTillMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillMalActionPerformed
-        if(cbMal.getItemCount()> 0) {
-         hallbarhetsmalSomSkaTasBort.clear();
-        String selectedMal = cbMal.getSelectedItem().toString();
-        cbMal.removeItem(selectedMal);
-        listModelhallbarhetsmal.addElement(selectedMal);
+        if (cbMal.getItemCount() > 0) {
+            hallbarhetsmalSomSkaTasBort.clear();
+            String selectedMal = cbMal.getSelectedItem().toString();
+            cbMal.removeItem(selectedMal);
+            listModelhallbarhetsmal.addElement(selectedMal);
         }
-       
+
     }//GEN-LAST:event_btnLaggTillMalActionPerformed
 
     private void btnTaBortMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortMalActionPerformed
         String mal = jListHallbarhetsmalAvdAdmin.getSelectedValue();
         listModelhallbarhetsmal.removeElement(mal);
         cbMal.addItem(mal);
-        hallbarhetsmalSomSkaTasBort.add(mal);        // TODO add your handling code here:
+        hallbarhetsmalSomSkaTasBort.add(mal);        
     }//GEN-LAST:event_btnTaBortMalActionPerformed
 
 
