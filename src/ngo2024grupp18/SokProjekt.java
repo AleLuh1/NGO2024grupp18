@@ -151,7 +151,12 @@ public class SokProjekt extends javax.swing.JFrame {
         taResultatSoktaProjekt.setText("");
         if (sokStartDatum.isEmpty() && sokSlutDatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i båda fälten");
-        } else {
+        }
+        //if (!Validering.isKorrektFormatDatum(sokStartDatum)) || (!Validering.isKorrektFormatDatum(sokSlutDatum)) {
+          //          return;
+        //        }
+        //}
+        else {
             String sqlFraga = "select distinct projekt.pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land FROM projekt "
                     + "join ans_proj on ans_proj.pid = projekt.pid "
                     + "join anstalld on anstalld.aid = ans_proj.aid "

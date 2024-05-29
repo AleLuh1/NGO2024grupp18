@@ -460,6 +460,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbProjektchefAllaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
                 tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
                 tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
+                
                 tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
                 tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
                 cbStatusAllaProjekt.setSelectedItem(projektNamnLista.get("status"));

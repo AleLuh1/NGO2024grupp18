@@ -98,5 +98,13 @@ public class Validering {
         
         
     }
+    public static boolean isKorrektFormatDatum(String datum) {
+        String datumFormat = "^(\\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$";
+           if (!datum.matches(datumFormat)) {
+               JOptionPane.showMessageDialog(null, "Vänligen ange datum i formatet ÅÅÅÅ-MM-DD");
+               return false;
+           }
+           return true;
+    }
 
 }

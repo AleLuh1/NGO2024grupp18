@@ -222,6 +222,9 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
 
             //Söker på e-post
         } else if (!sokEpost.isEmpty()) {
+            if (!Validering.isKorrektFormatEpost(tfSokEpost)) {
+                return;
+            }
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE epost = '" + sokEpost + "' AND avdelning = " + avdelning;
             try {
                 ArrayList<HashMap<String, String>> listaEpost = idb.fetchRows(sqlFraga);

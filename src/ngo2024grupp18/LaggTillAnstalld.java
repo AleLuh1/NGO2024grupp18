@@ -329,6 +329,9 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                     return;
                 }
         String NyAnstalldAnstallningsDatum = tfAnstallningsdatumNyAnstalld.getText();
+        if (!Validering.isKorrektFormatDatum(NyAnstalldAnstallningsDatum)) {
+                    return;
+                }
         //String NyAnstalldLosenord = skapaSlumpatLosenord();
         String NyAnstalldLosenord = tfLosenordNyAnstalld.getText();
         //tfLosenordNyAnstalld.setText(NyAnstalldLosenord);
