@@ -44,22 +44,22 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
         lblTitel = new javax.swing.JLabel();
         tfSokFornamn = new javax.swing.JTextField();
         tfSokEpost = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblSokFornamn = new javax.swing.JLabel();
+        lblSokEpost = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taListaInfo = new javax.swing.JTextArea();
         btnSok = new javax.swing.JButton();
         btnTillbaka = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblSokEfternamn = new javax.swing.JLabel();
         tfSokEfternamn = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTitel.setText("Sök efter handläggare på min avdelning");
 
-        jLabel1.setText("Sök på förnamn");
+        lblSokFornamn.setText("Sök på förnamn");
 
-        jLabel2.setText("Sök på e-post:");
+        lblSokEpost.setText("Sök på e-post:");
 
         taListaInfo.setColumns(20);
         taListaInfo.setRows(5);
@@ -79,7 +79,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Sök på efternamn");
+        lblSokEfternamn.setText("Sök på efternamn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +96,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                         .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(lblSokEpost)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tfSokEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,8 +104,8 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                                 .addComponent(btnSok)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3))
+                                        .addComponent(lblSokFornamn)
+                                        .addComponent(lblSokEfternamn))
                                     .addGap(113, 113, 113)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(tfSokFornamn, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
@@ -119,16 +119,16 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                 .addComponent(lblTitel)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblSokFornamn)
                     .addComponent(tfSokFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblSokEfternamn)
                     .addComponent(tfSokEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfSokEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblSokEpost))
                 .addGap(23, 23, 23)
                 .addComponent(btnSok)
                 .addGap(27, 27, 27)
@@ -280,10 +280,10 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSok;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSokEfternamn;
+    private javax.swing.JLabel lblSokEpost;
+    private javax.swing.JLabel lblSokFornamn;
     private javax.swing.JLabel lblTitel;
     private javax.swing.JTextArea taListaInfo;
     private javax.swing.JTextField tfSokEfternamn;

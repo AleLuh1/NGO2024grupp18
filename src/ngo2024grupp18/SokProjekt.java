@@ -165,6 +165,14 @@ public class SokProjekt extends javax.swing.JFrame {
             try {
                 ArrayList<HashMap<String, String>> resultatListaProjekt = idb.fetchRows(sqlFraga);
                 for (int i = 0; i < resultatListaProjekt.size(); i++) {
+                    
+                    String fragaChef = "SELECT fornamn, efternamn FROM anstalld WHERE aid="+resultatListaProjekt.get(i).get("projektchef");
+                    HashMap<String,String> chefNamnEfternamn = idb.fetchRow(fragaChef);
+                    String chef = chefNamnEfternamn.get("fornamn")+" "+chefNamnEfternamn.get("efternamn");
+                    
+                    String fragaLand = "SELECT namn FROM land WHERE lid="+resultatListaProjekt.get(i).get("land");
+                    String land = idb.fetchSingle(fragaLand);
+                    
                     taResultatSoktaProjekt.append("Pid: " + resultatListaProjekt.get(i).get("pid") + "\n "
                             + "Namn: " + resultatListaProjekt.get(i).get("projektnamn") + "\n "
                             + "Beskrivning: " + resultatListaProjekt.get(i).get("beskrivning") + "\n "
@@ -173,8 +181,8 @@ public class SokProjekt extends javax.swing.JFrame {
                             + "Kostnad: " + resultatListaProjekt.get(i).get("kostnad") + "\n "
                             + "Status: " + resultatListaProjekt.get(i).get("status") + "\n "
                             + "Prioritet: " + resultatListaProjekt.get(i).get("prioritet") + "\n "
-                            + "Projektchef(aid): " + resultatListaProjekt.get(i).get("projektchef") + "\n "
-                            + "Land(lid): " + resultatListaProjekt.get(i).get("land") + "\n " + "------------------- \n");
+                            + "Projektchef(aid): " + chef + "\n "
+                            + "Land(lid): " + land + "\n " + "------------------- \n");
                 }
                 taResultatSoktaProjekt.setCaretPosition(0);
             } catch (Exception ex) {

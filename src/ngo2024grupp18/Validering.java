@@ -39,7 +39,7 @@ public class Validering {
 
     public static boolean finnsTextPF(JPasswordField kontrolleraRutaPF) {
         boolean resultat = true;
-        
+
         if (kontrolleraRutaPF.getPassword().length == 0) {
             JOptionPane.showMessageDialog(null, "Vänligen ange ett giltigt lösenord");
             resultat = false;
@@ -47,6 +47,7 @@ public class Validering {
         }
         return resultat;
     }
+
     public static boolean finnsTextTA(JTextArea kontrolleraTA) {
         boolean resultat = true;
 
@@ -107,4 +108,59 @@ public class Validering {
            return true;
     }
 
+    public static boolean isKorrektValuta(JTextField kontrolleraRuta) {
+        boolean resultat = true;
+        String valuta = kontrolleraRuta.getText();
+        //Regex för att kontrollera så att när en admin skapar ett nytt land så blir formatet på valutan rätt ex. xx.xxx, eller att det kan variera på siffror framför och efter punkten
+        String regex = "^\\d+\\.\\d$";
+        Pattern mall = Pattern.compile(regex);
+        Matcher valutaMatchar = mall.matcher(valuta);
+        if (!valutaMatchar.matches()) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange en korrekt valuta i detta format xx.xx");
+            resultat = false;
+        }
+        return resultat;
+    }
+
+    public static boolean isKorrektKontaktPerson(JTextField kontrolleraRuta) {
+        boolean resultat = true;
+        String namn = kontrolleraRuta.getText();
+         // Kontrollerar så att namnet när man skapar ny samarbetspartner består av bokstäver och ett mellanslag, som visar på att det ska vara ett för och efternamn
+        String regex = ("[a-zA-Z]+\\s[a-zA-Z]+");
+        Pattern mall = Pattern.compile(regex);
+        Matcher namnMatchar = mall.matcher(namn);
+        if (!namnMatchar.matches()) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange ett giltigt för och efternamn för kontaktpersonen");
+            resultat = false;
+        }
+        return resultat;      
+    }
+
+    public static boolean isKorrektAdress(JTextField kontrolleraRuta) {
+        boolean resultat = true;
+        String adress = kontrolleraRuta.getText();
+        // Kontrollerar så att adressen när man skapar ny samarbetspartner innehåller bokstäver och siffror med eventuellt mellanslag
+        String regex =  "^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d\\s]+$";
+        Pattern mall = Pattern.compile(regex);
+        Matcher adressMatchar = mall.matcher(adress);
+        if (!adressMatchar.matches()) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange en giltigt adress");
+            resultat = false;
+        }
+        return resultat;
+    }
+    
+    public static boolean isKorrektTelefon(JTextField kontrolleraRuta) {
+         boolean resultat = true;
+        String telefon = kontrolleraRuta.getText();
+        // Kontrollerar så att telefonnumret när man skapar ny samarbetspartner följer något av de angivna formaten +xxxxxxxxxx eller xxx-xxx-xxxx
+        String regex = ("\\+?\\d{10}|\\d{3}-\\d{3}-\\d{4}");
+        Pattern mall = Pattern.compile(regex);
+        Matcher telefonMatchar = mall.matcher(telefon);
+        if (!telefonMatchar.matches()) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange ett giltigt telefonnummer, +xxxxxxxxxx eller xxx-xxx-xxxx");
+            resultat = false;
+        }
+        return resultat;       
+    }
 }

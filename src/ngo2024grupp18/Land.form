@@ -37,7 +37,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblNamnLand" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSpråkLand" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSprakLand" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblValutaLand" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTidzonLand" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPolitiskStrukturLand" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblSpråkLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSprakLand" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfSprakLand" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -146,7 +146,7 @@
         <Property name="text" type="java.lang.String" value="Namn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblSpr&#xe5;kLand">
+    <Component class="javax.swing.JLabel" name="lblSprakLand">
       <Properties>
         <Property name="text" type="java.lang.String" value="Spr&#xe5;k"/>
       </Properties>
