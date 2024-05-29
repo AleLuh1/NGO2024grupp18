@@ -29,7 +29,8 @@ public class AllaProjekt extends javax.swing.JFrame {
 
     private DefaultListModel<String> listModelPartners = new DefaultListModel<>();
     private ArrayList<String> NyTillagdaPartners = new ArrayList<>();
-    
+    private ArrayList<String> partnersSomSkaTasBortLista = new ArrayList<>();
+
     private ArrayList<String> anstalldaIProjLista;
     private ArrayList<String> nyTillagdaAnstallda;
     private ArrayList<String> nyTillagdaHBMal;
@@ -184,7 +185,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    
+
     private void fyllCBValjPartner(int pid) {
         try {
             //Hämtar alla partner_pid som jobbar i projektet
@@ -475,6 +476,11 @@ public class AllaProjekt extends javax.swing.JFrame {
         getContentPane().add(lblPartnerTaBortAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 200, 20));
 
         btnTaBortPartnerAllaProj.setText("Ta bort");
+        btnTaBortPartnerAllaProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortPartnerAllaProjActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnTaBortPartnerAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 200, -1));
 
         getContentPane().add(cbPartnerAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 200, -1));
@@ -675,8 +681,16 @@ public class AllaProjekt extends javax.swing.JFrame {
                         + "WHERE NOT EXISTS (SELECT 1 FROM projekt_partner WHERE pid = " + pid + " AND partner_pid = " + partnerId + ")";
                 idb.insert(sqlFragaProjektPartner);
             }
-            
-            
+
+            for (String tagitBortPartner : partnersSomSkaTasBortLista) {
+                String sqlFragaPartnerId = "SELECT pid FROM partner WHERE namn = '" + tagitBortPartner + "'";
+                String partnerId = idb.fetchSingle(sqlFragaPartnerId);
+
+                String sqlFragaTaBortPartner = "DELETE FROM projekt_partner WHERE pid =" + pid + " AND partner_pid =" + partnerId;
+                idb.delete(sqlFragaTaBortPartner);
+            }
+            partnersSomSkaTasBortLista.clear();
+
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
             JOptionPane.showMessageDialog(null, "Ändring sparad");
@@ -795,6 +809,14 @@ public class AllaProjekt extends javax.swing.JFrame {
         cbPartnerAllaProj.removeItem(partner);
         listModelPartners.addElement(partner);
     }//GEN-LAST:event_btnLaggTillPartnerAllaProjActionPerformed
+
+    private void btnTaBortPartnerAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortPartnerAllaProjActionPerformed
+        String partner = jListPartnersAllaProj.getSelectedValue();
+        listModelPartners.removeElement(partner);
+        cbPartnerAllaProj.addItem(partner);
+        NyTillagdaPartners.add(partner);
+        partnersSomSkaTasBortLista.add(partner);
+    }//GEN-LAST:event_btnTaBortPartnerAllaProjActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
