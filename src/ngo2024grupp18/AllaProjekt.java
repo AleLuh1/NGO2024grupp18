@@ -26,6 +26,9 @@ public class AllaProjekt extends javax.swing.JFrame {
     private DefaultListModel<String> listModelHBMal;
     //listModelAnstallda fyller i anställda
     private DefaultListModel<String> listModelAnstallda;
+
+    private DefaultListModel<String> listModelPartners = new DefaultListModel<>();
+
     private ArrayList<String> anstalldaIProjLista;
     private ArrayList<String> nyTillagdaAnstallda;
     private ArrayList<String> nyTillagdaHBMal;
@@ -164,6 +167,44 @@ public class AllaProjekt extends javax.swing.JFrame {
         cbPrioAllaProjekt.addItem("Låg");
     }
 
+    public void fyllPartnerList(String pid) {
+        listModelPartners.removeAllElements();
+        try {
+            String sqlFraga = "SELECT partner_pid FROM projekt_partner WHERE pid=" + pid;
+            System.out.println(sqlFraga);
+            ArrayList<HashMap<String, String>> allaPartnersForProjektet = idb.fetchRows(sqlFraga);
+            for (HashMap<String, String> enPartner : allaPartnersForProjektet) {
+                String sqlFragaPartnerName = "SELECT namn FROM partner WHERE pid=" + enPartner.get("partner_pid");
+                String partnerName = idb.fetchSingle(sqlFragaPartnerName);
+                listModelPartners.addElement(partnerName);
+            }
+            jListPartnersAllaProj.setModel(listModelPartners);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void fyllCBValjPartner(int pid) {
+        try {
+            //Hämtar alla partner_pid som jobbar i projektet
+            String sqlFragaPartnerPid = "SELECT DISTINCT partner_pid FROM projekt_partner JOIN partner ON partner.pid = partner_pid WHERE NOT partner.pid IN (SELECT partner_pid FROM projekt_partner WHERE pid = " + pid + ")";
+            System.out.println(sqlFragaPartnerPid);
+            ArrayList<String> partnersIProjekt = idb.fetchColumn(sqlFragaPartnerPid);
+            cbPartnerAllaProj.removeAllItems();
+            for (String partnerPid : partnersIProjekt) {
+                String sqlFragaPartnerNamn = "SELECT namn FROM partner WHERE pid = " + partnerPid + "";
+                cbPartnerAllaProj.addItem(idb.fetchSingle(sqlFragaPartnerNamn));
+            }
+            //Loopar igenom listModel, det som redan finns i listModel tas bort från cb
+            for (int i = 0; i < jListPartnersAllaProj.getModel().getSize(); i++) {
+                var partnerNamn = jListPartnersAllaProj.getModel().getElementAt(i);
+                cbPartnerAllaProj.removeItem(partnerNamn);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     // Genererar ny projekt-id (pid) genom att lägga till +1 på största befintliga pid
     private String LaggaTillNyPid() {
         String nyProjektPid = null;
@@ -235,8 +276,22 @@ public class AllaProjekt extends javax.swing.JFrame {
         btnTaBortAnstalldAllaProj = new javax.swing.JButton();
         lblLaggTillProjekt = new javax.swing.JLabel();
         lblTaBortProjAllaProj = new javax.swing.JLabel();
+        lblSamarbetspartnerAllProj = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListPartnersAllaProj = new javax.swing.JList<>();
+        lblValjPartnerLaggTillAllaProj = new javax.swing.JLabel();
+        btnLaggTillPartnerAllaProj = new javax.swing.JButton();
+        lblPartnerTaBortAllaProj = new javax.swing.JLabel();
+        btnTaBortPartnerAllaProj = new javax.swing.JButton();
+        cbPartnerAllaProj = new javax.swing.JComboBox<>();
+        lblAnstalldTaBortAllaProj = new javax.swing.JLabel();
+        lblValjHbMalTaBortAllaProj = new javax.swing.JLabel();
+        btnTaBortHbMalAllaProj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusTraversalPolicyProvider(true);
+        setMinimumSize(new java.awt.Dimension(1010, 750));
+        setPreferredSize(new java.awt.Dimension(1010, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnTillbakaAllaProj.setText("Tillbaka");
@@ -245,7 +300,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnTillbakaAllaProjActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTillbakaAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 705, -1, -1));
+        getContentPane().add(btnTillbakaAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 660, -1, -1));
 
         lblAllaProjektRuta.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         lblAllaProjektRuta.setText("Alla projekt");
@@ -264,32 +319,32 @@ public class AllaProjekt extends javax.swing.JFrame {
         getContentPane().add(cbAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 52, 102, -1));
 
         lblBeskrivningAllaProjekt.setText("Beskrivning");
-        getContentPane().add(lblBeskrivningAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 330, -1, -1));
+        getContentPane().add(lblBeskrivningAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         lblStartDatumAllaProjekt.setText("Startdatum");
-        getContentPane().add(lblStartDatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 364, -1, 17));
+        getContentPane().add(lblStartDatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 17));
 
         lblSlutdatumAllaProjekt.setText("Slutdatum");
-        getContentPane().add(lblSlutdatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 404, -1, 17));
+        getContentPane().add(lblSlutdatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, 17));
 
         lblKostnadAllaProjekt.setText("Kostnad");
-        getContentPane().add(lblKostnadAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 433, -1, -1));
+        getContentPane().add(lblKostnadAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
         lblStatusAllaProjekt.setText("Status");
-        getContentPane().add(lblStatusAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 467, -1, -1));
+        getContentPane().add(lblStatusAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
         lblPrioAllaProjekt.setText("Prioritet");
-        getContentPane().add(lblPrioAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 501, -1, -1));
+        getContentPane().add(lblPrioAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         lblLandAllaProjekt.setText("Land");
-        getContentPane().add(lblLandAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 535, -1, -1));
+        getContentPane().add(lblLandAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
         lblProjektchefAllaProjekt.setText("Projektchef");
         getContentPane().add(lblProjektchefAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 161, 75, -1));
-        getContentPane().add(tfBeskrivningAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 327, 214, -1));
-        getContentPane().add(tfStartdatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 361, 214, -1));
-        getContentPane().add(tfSlutDatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 401, 214, -1));
-        getContentPane().add(tfKostnadAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 430, 214, -1));
+        getContentPane().add(tfBeskrivningAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 214, -1));
+        getContentPane().add(tfStartdatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 214, -1));
+        getContentPane().add(tfSlutDatumAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 214, -1));
+        getContentPane().add(tfKostnadAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 214, -1));
 
         bnTaBortProj.setText("Ta bort");
         bnTaBortProj.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +352,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 bnTaBortProjActionPerformed(evt);
             }
         });
-        getContentPane().add(bnTaBortProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 52, -1, -1));
+        getContentPane().add(bnTaBortProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, -1, -1));
 
         btnSparaAllaProjekt.setText("Spara");
         btnSparaAllaProjekt.addActionListener(new java.awt.event.ActionListener() {
@@ -305,15 +360,15 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnSparaAllaProjektActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSparaAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 705, -1, -1));
+        getContentPane().add(btnSparaAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 660, -1, -1));
 
         lblProjektnamnAllaProjekt.setText("Projektnamn");
-        getContentPane().add(lblProjektnamnAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 133, 75, 17));
-        getContentPane().add(tfProjektnamnAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 130, 214, -1));
-        getContentPane().add(tfNyttProjektNyPid, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 102, 214, -1));
+        getContentPane().add(lblProjektnamnAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 75, 17));
+        getContentPane().add(tfProjektnamnAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 214, -1));
+        getContentPane().add(tfNyttProjektNyPid, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 214, -1));
 
         lblNyttProjektNyPid.setText("Projekt-ID");
-        getContentPane().add(lblNyttProjektNyPid, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 105, 83, -1));
+        getContentPane().add(lblNyttProjektNyPid, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 83, -1));
 
         btnLaggTillProjAllaProj.setText("Lägg till");
         btnLaggTillProjAllaProj.addActionListener(new java.awt.event.ActionListener() {
@@ -321,20 +376,20 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnLaggTillProjAllaProjActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLaggTillProjAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 52, -1, -1));
+        getContentPane().add(btnLaggTillProjAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 610, -1, -1));
 
         lblAllaProjHallbMal.setText("Aktuella hållbarhetsmål");
-        getContentPane().add(lblAllaProjHallbMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 566, 136, -1));
+        getContentPane().add(lblAllaProjHallbMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 136, -1));
 
         jScrollPane1.setViewportView(jListHBMal);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 566, 214, 83));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 214, 140));
 
         cbAllaHallbMal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj ett mål" }));
-        getContentPane().add(cbAllaHallbMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 588, 199, -1));
+        getContentPane().add(cbAllaHallbMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 199, -1));
 
         lblLaggTillHBMal.setText("Välj");
-        getContentPane().add(lblLaggTillHBMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 566, 61, -1));
+        getContentPane().add(lblLaggTillHBMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 61, -1));
 
         btnLaggTillHBMal.setText("Lägg till");
         btnLaggTillHBMal.addActionListener(new java.awt.event.ActionListener() {
@@ -342,10 +397,10 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnLaggTillHBMalActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLaggTillHBMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 626, 199, -1));
+        getContentPane().add(btnLaggTillHBMal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 199, -1));
 
         lblAllaProjAnstallda.setText("Anställda i projektet");
-        getContentPane().add(lblAllaProjAnstallda, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 189, 117, -1));
+        getContentPane().add(lblAllaProjAnstallda, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, 117, -1));
 
         jListAllaAnstallda.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -354,12 +409,12 @@ public class AllaProjekt extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListAllaAnstallda);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 189, 214, 108));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 210, 130));
 
-        getContentPane().add(cbAllaAnstallda, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 211, 199, -1));
+        getContentPane().add(cbAllaAnstallda, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 210, -1));
 
         lblAllaProjLaggTillAnstalld.setText("Välj");
-        getContentPane().add(lblAllaProjLaggTillAnstalld, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 189, -1, -1));
+        getContentPane().add(lblAllaProjLaggTillAnstalld, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, -1, -1));
 
         btnLaggTillAnstalldAllaProj.setText("Lägg till");
         btnLaggTillAnstalldAllaProj.addActionListener(new java.awt.event.ActionListener() {
@@ -367,35 +422,65 @@ public class AllaProjekt extends javax.swing.JFrame {
                 btnLaggTillAnstalldAllaProjActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLaggTillAnstalldAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 239, 199, -1));
+        getContentPane().add(btnLaggTillAnstalldAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, 210, -1));
 
         cbProjektchefAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra projektchef" }));
-        getContentPane().add(cbProjektchefAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 158, 214, -1));
+        getContentPane().add(cbProjektchefAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 214, -1));
 
         cbStatusAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra status" }));
-        getContentPane().add(cbStatusAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 464, 214, -1));
+        getContentPane().add(cbStatusAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 214, -1));
 
         cbPrioAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra prioritet" }));
-        getContentPane().add(cbPrioAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 498, 214, -1));
+        getContentPane().add(cbPrioAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 214, -1));
 
         cbLandAllaProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ändra land" }));
-        getContentPane().add(cbLandAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 532, 214, -1));
+        getContentPane().add(cbLandAllaProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 214, -1));
 
-        btnTaBortAnstalldAllaProj.setText("Ta bort anställd från projektet");
+        btnTaBortAnstalldAllaProj.setText("Ta bort");
         btnTaBortAnstalldAllaProj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaBortAnstalldAllaProjActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTaBortAnstalldAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 274, 199, -1));
+        getContentPane().add(btnTaBortAnstalldAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 400, 210, -1));
 
         lblLaggTillProjekt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblLaggTillProjekt.setText("Lägg till ett nytt projekt");
-        getContentPane().add(lblLaggTillProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 27, 203, -1));
+        getContentPane().add(lblLaggTillProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 570, 203, -1));
 
         lblTaBortProjAllaProj.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTaBortProjAllaProj.setText("Ta bort aktuellt projekt");
-        getContentPane().add(lblTaBortProjAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 27, 234, -1));
+        getContentPane().add(lblTaBortProjAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 470, 234, -1));
+
+        lblSamarbetspartnerAllProj.setText("Samarbetspartner");
+        getContentPane().add(lblSamarbetspartnerAllProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 140, -1));
+
+        jScrollPane3.setViewportView(jListPartnersAllaProj);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 200, -1));
+
+        lblValjPartnerLaggTillAllaProj.setText("Välj partner att lägga till i projektet");
+        getContentPane().add(lblValjPartnerLaggTillAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 200, -1));
+
+        btnLaggTillPartnerAllaProj.setText("Lägg till");
+        getContentPane().add(btnLaggTillPartnerAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 200, -1));
+
+        lblPartnerTaBortAllaProj.setText("Markera partner att ta bort");
+        getContentPane().add(lblPartnerTaBortAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 200, 20));
+
+        btnTaBortPartnerAllaProj.setText("Ta bort");
+        getContentPane().add(btnTaBortPartnerAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 200, -1));
+
+        getContentPane().add(cbPartnerAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 200, -1));
+
+        lblAnstalldTaBortAllaProj.setText("Markera anställd att ta bort");
+        getContentPane().add(lblAnstalldTaBortAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 380, 200, -1));
+
+        lblValjHbMalTaBortAllaProj.setText("Markera hållbarhetsmål att ta bort");
+        getContentPane().add(lblValjHbMalTaBortAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, -1, -1));
+
+        btnTaBortHbMalAllaProj.setText("Ta bort");
+        getContentPane().add(btnTaBortHbMalAllaProj, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -418,6 +503,8 @@ public class AllaProjekt extends javax.swing.JFrame {
             fyllCBLander();
             fyllPaStatus();
             fyllPaPrioritet();
+            fyllPartnerList(pidStr);
+            fyllCBValjPartner(pid);
 
             HashMap<String, String> projektNamnLista = idb.fetchRow(sqlFraga);
 
@@ -448,6 +535,20 @@ public class AllaProjekt extends javax.swing.JFrame {
             }
             jListHBMal.setModel(listModelHBMal);
 
+//            String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid ='" + projektNamnLista.get("projektchef") + "'";
+//            HashMap<String, String> projektchef = idb.fetchRow(sqlFraga3);
+//
+//            tfNyttProjektNyPid.setText(projektNamnLista.get("pid"));
+//            tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
+//            cbProjektchefAllaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
+//            tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
+//            tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
+//
+//            tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
+//            tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
+//            cbStatusAllaProjekt.setSelectedItem(projektNamnLista.get("status"));
+//            cbPrioAllaProjekt.setSelectedItem(projektNamnLista.get("prioritet"));
+//            cbLandAllaProjekt.setSelectedItem(land);
             if (projektNamnLista != null) {
                 String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + projektNamnLista.get("land") + "'";
                 String land = idb.fetchSingle(sqlFraga2);
@@ -460,7 +561,6 @@ public class AllaProjekt extends javax.swing.JFrame {
                 cbProjektchefAllaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
                 tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
                 tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
-                
                 tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
                 tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
                 cbStatusAllaProjekt.setSelectedItem(projektNamnLista.get("status"));
@@ -674,38 +774,49 @@ public class AllaProjekt extends javax.swing.JFrame {
     private javax.swing.JButton bnTaBortProj;
     private javax.swing.JButton btnLaggTillAnstalldAllaProj;
     private javax.swing.JButton btnLaggTillHBMal;
+    private javax.swing.JButton btnLaggTillPartnerAllaProj;
     private javax.swing.JButton btnLaggTillProjAllaProj;
     private javax.swing.JButton btnSparaAllaProjekt;
     private javax.swing.JButton btnTaBortAnstalldAllaProj;
+    private javax.swing.JButton btnTaBortHbMalAllaProj;
+    private javax.swing.JButton btnTaBortPartnerAllaProj;
     private javax.swing.JButton btnTillbakaAllaProj;
     private javax.swing.JComboBox<String> cbAllaAnstallda;
     private javax.swing.JComboBox<String> cbAllaHallbMal;
     private javax.swing.JComboBox<String> cbAllaProjekt;
     private javax.swing.JComboBox<String> cbLandAllaProjekt;
+    private javax.swing.JComboBox<String> cbPartnerAllaProj;
     private javax.swing.JComboBox<String> cbPrioAllaProjekt;
     private javax.swing.JComboBox<String> cbProjektchefAllaProjekt;
     private javax.swing.JComboBox<String> cbStatusAllaProjekt;
     private javax.swing.JList<String> jListAllaAnstallda;
     private javax.swing.JList<String> jListHBMal;
+    private javax.swing.JList<String> jListPartnersAllaProj;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAllaProjAnstallda;
     private javax.swing.JLabel lblAllaProjHallbMal;
     private javax.swing.JLabel lblAllaProjLaggTillAnstalld;
     private javax.swing.JLabel lblAllaProjektRuta;
+    private javax.swing.JLabel lblAnstalldTaBortAllaProj;
     private javax.swing.JLabel lblBeskrivningAllaProjekt;
     private javax.swing.JLabel lblKostnadAllaProjekt;
     private javax.swing.JLabel lblLaggTillHBMal;
     private javax.swing.JLabel lblLaggTillProjekt;
     private javax.swing.JLabel lblLandAllaProjekt;
     private javax.swing.JLabel lblNyttProjektNyPid;
+    private javax.swing.JLabel lblPartnerTaBortAllaProj;
     private javax.swing.JLabel lblPrioAllaProjekt;
     private javax.swing.JLabel lblProjektchefAllaProjekt;
     private javax.swing.JLabel lblProjektnamnAllaProjekt;
+    private javax.swing.JLabel lblSamarbetspartnerAllProj;
     private javax.swing.JLabel lblSlutdatumAllaProjekt;
     private javax.swing.JLabel lblStartDatumAllaProjekt;
     private javax.swing.JLabel lblStatusAllaProjekt;
     private javax.swing.JLabel lblTaBortProjAllaProj;
+    private javax.swing.JLabel lblValjHbMalTaBortAllaProj;
+    private javax.swing.JLabel lblValjPartnerLaggTillAllaProj;
     private javax.swing.JTextField tfBeskrivningAllaProjekt;
     private javax.swing.JTextField tfKostnadAllaProjekt;
     private javax.swing.JTextField tfNyttProjektNyPid;
