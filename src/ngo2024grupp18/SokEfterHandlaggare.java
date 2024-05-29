@@ -141,14 +141,14 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Metod för att söka efter handläggare på avdelningen
     private void btnSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokActionPerformed
         String sokFornamn = tfSokFornamn.getText();
         String sokEfternamn = tfSokEfternamn.getText();
         String sokEpost = tfSokEpost.getText();
         int avdelning = Integer.parseInt(this.avdid);
         taListaInfo.setText("");
-        //if (sokFornamn.isEmpty() && sokEfternamn.isEmpty() && sokEpost.isEmpty()) {
-        //    JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
+
         if (!sokFornamn.isEmpty()) {
             System.out.println("Söker på förnamn");
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld "
@@ -165,7 +165,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                             + "------------------- \n");
                 }
                 if (!Validering.finnsTextTA(taListaInfo)) {
-                    JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
+                    JOptionPane.showMessageDialog(null, "Anställd finns ej på avdelningen");
                 }
 
             } catch (Exception ex) {
@@ -185,7 +185,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                             + "------------------- \n");
                 }
                 if (!Validering.finnsTextTA(taListaInfo)) {
-                    JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
+                    JOptionPane.showMessageDialog(null, "Anställd finns ej på avdelningen");
                 }
 
             } catch (Exception ex) {
@@ -205,7 +205,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                             + "------------------- \n");
                 }
                 if (!Validering.finnsTextTA(taListaInfo)) {
-                    JOptionPane.showMessageDialog(null, "Vänligen skriv in ett giltigt namn");
+                    JOptionPane.showMessageDialog(null, "Anställd finns ej på avdelningen");
                 }
 
             } catch (Exception ex) {
@@ -225,13 +225,13 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                             + "------------------- \n");
                 }
                 if (!Validering.finnsTextTA(taListaInfo)) {
-                    JOptionPane.showMessageDialog(null, "Vänligen skriv in en giltig e-post");
+                    JOptionPane.showMessageDialog(null, "Anställd finns ej på avdelningen");
                 }
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        
+
         } else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty() && !sokEpost.isEmpty()) {
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE fornamn = '" + sokFornamn + "' AND efternamn = '" + sokEfternamn + "' AND epost = '" + sokEpost + "' AND avdelning = " + avdelning;
             try {
@@ -244,17 +244,12 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
                             + "Adress: " + listaFullstandigInfo.get(i).get("adress") + "\n "
                             + "------------------- \n");
                 }
-                
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }
-
-
-
-//else if (!sokFornamn.isEmpty() && !sokEfternamn.isEmpty() && !sokEpost.isEmpty()) {
-    
-        else {JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
+        } else {
+            JOptionPane.showMessageDialog(null, "Vänligen fyll i minst ett fält");
 
     }//GEN-LAST:event_btnSokActionPerformed
     }
