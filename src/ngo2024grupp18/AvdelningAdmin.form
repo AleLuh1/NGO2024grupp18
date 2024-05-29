@@ -28,9 +28,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTelnrAvd" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStadAvd" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAvdelningschef" min="-2" max="-2" attributes="0"/>
                           <Component id="btnTillbaka" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -46,8 +46,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnLaggTillMal" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnTaBortMal" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMarkeraTaBortHB" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblValjHBAttLaggaTill" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -55,14 +55,14 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEpostAvd" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAdressAvd" min="-2" max="-2" attributes="0"/>
                           <Component id="lblAvdelningAdminRuta" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAvdelningsID" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNamnAvd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblBeskrivningAvd" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -108,36 +108,36 @@
                       <Component id="btnLaggTillAvd" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAvdelningsID" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfAvdelningsIDAvdAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNamnAvd" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfNamnAvdAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBeskrivningAvd" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAdressAvd" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tfAdressAvdAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEpostAvd" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tfEpostAvdAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTelnrAvd" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tfTnrAvdAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblStadAvd" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbStadAvdAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -145,7 +145,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAvdelningschef" min="-2" max="-2" attributes="0"/>
                           <Component id="cbAvdchefAdmin" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -154,13 +154,13 @@
                           <Component id="jScrollPane1" min="-2" pref="87" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="8" max="32767" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMarkeraTaBortHB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnTaBortMal" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+              <Component id="lblValjHBAttLaggaTill" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cbMal" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -184,42 +184,42 @@
         <Property name="text" type="java.lang.String" value="Avdelning "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblNamnAvd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Namn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblBeskrivningAvd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Beskrivning"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblAdressAvd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adress"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblEpostAvd">
       <Properties>
         <Property name="text" type="java.lang.String" value="E-post"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lblTelnrAvd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telefonnummer"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lblStadAvd">
       <Properties>
         <Property name="text" type="java.lang.String" value="Stad"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lblAvdelningschef">
       <Properties>
         <Property name="text" type="java.lang.String" value="Avdelningschef"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="lblAvdelningsID">
       <Properties>
         <Property name="text" type="java.lang.String" value="AvdelningsID"/>
       </Properties>
@@ -364,12 +364,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="lblMarkeraTaBortHB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Markera f&#xf6;r att ta bort h&#xe5;llbarhetsm&#xe5;l"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class="javax.swing.JLabel" name="lblValjHBAttLaggaTill">
       <Properties>
         <Property name="text" type="java.lang.String" value="V&#xe4;lj h&#xe5;llbarhetsm&#xe5;l att l&#xe4;gga till"/>
       </Properties>

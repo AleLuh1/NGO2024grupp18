@@ -138,7 +138,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         cbStadLaggTillPartner = new javax.swing.JComboBox<>();
         cbAvdchefLaggTillavd = new javax.swing.JComboBox<>();
         cbHallbarhetsmalLaggTillAvd = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        lblHallbarhetsmalLaggTillAvd = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,7 +175,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Hållbarhetsmål");
+        lblHallbarhetsmalLaggTillAvd.setText("Hållbarhetsmål");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,7 +197,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                             .addComponent(lblTnrLaggTillAvd)
                             .addComponent(lblStadLaggTillAvd)
                             .addComponent(lblAvdchefLaggTillAvd)
-                            .addComponent(jLabel1))
+                            .addComponent(lblHallbarhetsmalLaggTillAvd))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbHallbarhetsmalLaggTillAvd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,7 +259,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbHallbarhetsmalLaggTillAvd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblHallbarhetsmalLaggTillAvd))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbakaLaggTillAvd)
@@ -377,12 +377,12 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbAvdchefLaggTillavd;
     private javax.swing.JComboBox<String> cbHallbarhetsmalLaggTillAvd;
     private javax.swing.JComboBox<String> cbStadLaggTillPartner;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAdressLaggTillAvd;
     private javax.swing.JLabel lblAvdIDLaggTillAvd;
     private javax.swing.JLabel lblAvdchefLaggTillAvd;
     private javax.swing.JLabel lblBeskrivningLaggTillAvd;
     private javax.swing.JLabel lblEpostLaggTillAvd;
+    private javax.swing.JLabel lblHallbarhetsmalLaggTillAvd;
     private javax.swing.JLabel lblLaggTillAvdRuta;
     private javax.swing.JLabel lblNamnLaggTillAvd;
     private javax.swing.JLabel lblStadLaggTillAvd;
