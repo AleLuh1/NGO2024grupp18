@@ -33,9 +33,26 @@ public class Land extends javax.swing.JFrame {
         if (isAdmin()) {
             btnLaggTillLand.setVisible(true);
             btnSparaAndringarLand.setVisible(true);
+            
+            tfLandID.setEditable(true);
+            tfNamnLand.setEditable(true);
+            tfSprakLand.setEditable(true);
+            tfValutaLand.setEditable(true);
+            tfTidszonLand.setEditable(true);
+            tfPolitiskStrukturLand.setEditable(true);
+            tfEkonomiLand.setEditable(true);
+            
         } else {
             btnLaggTillLand.setVisible(false);
             btnSparaAndringarLand.setVisible(false);
+            
+            tfLandID.setEditable(false);
+            tfNamnLand.setEditable(false);
+            tfSprakLand.setEditable(false);
+            tfValutaLand.setEditable(false);
+            tfTidszonLand.setEditable(false);
+            tfPolitiskStrukturLand.setEditable(false);
+            tfEkonomiLand.setEditable(false);
         }
     }
 
