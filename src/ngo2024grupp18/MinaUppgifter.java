@@ -342,13 +342,17 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 }
 
                 String epost = tfEpostMinaUppgifter.getText();
-
+                
                 String telefon = tfTelefonMinaUppgifter.getText();
                 if (telefon.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i ett telefonnummer");
                     return;
                 }
 
+                if (!Validering.isKorrektFormatTelnr(telefon)) {
+                    return;
+                }
+                    
                 String avdelning = tftAvdMinaUppgifter.getText();
 
                 String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;

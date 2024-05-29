@@ -89,5 +89,14 @@ public class Validering {
         }
         return resultat;
     }
+    public static boolean isKorrektFormatTelnr(String telefon) {
+        if (!telefon.matches("\\d+(-\\d+)*")) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange endast tillåtna tecken för telefonnummer (siffror och bindestreck)");
+            return false;
+        }
+        return true;
+        
+        
+    }
 
 }

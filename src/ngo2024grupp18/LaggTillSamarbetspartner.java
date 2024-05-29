@@ -294,11 +294,12 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 }
 
                 String laggTillTelefonnummer = tfTelefonLaggTillPartner.getText();
-
                 if (laggTillTelefonnummer.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
                 }
-
+                if (!Validering.isKorrektFormatTelnr(laggTillTelefonnummer)) {
+                    return;
+                }
                 String laggTillAdress = tfAdressLaggTillPartner.getText();
 
                 if (laggTillAdress.isEmpty()) {
