@@ -467,6 +467,9 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
             String avdEpost = tfEpostAvdAdmin.getText();
             String avdTnr = tfTnrAvdAdmin.getText();
+            if (!Validering.isKorrektFormatTelnr(avdTnr)) {
+                    return;
+                }
             String avdStad = cbStadAvdAdmin.getSelectedItem().toString();
             String avdChef = cbAvdchefAdmin.getSelectedItem().toString();;
 

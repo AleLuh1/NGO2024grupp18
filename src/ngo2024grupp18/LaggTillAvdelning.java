@@ -311,6 +311,9 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         if (laggTillTelefonnummer.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
         }
+        if (!Validering.isKorrektFormatTelnr(laggTillTelefonnummer)) {
+                    return;
+                }
 
         String laggTillStad = cbStadLaggTillPartner.getSelectedItem().toString();
 

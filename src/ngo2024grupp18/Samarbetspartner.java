@@ -276,6 +276,12 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 String kontaktperson = tfKontaktpersonSam.getText();
                 String kontaktEpost = tfEpostSam.getText();
                 String telefonnummer = tfTnrSam.getText();
+                if (telefonnummer.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
+                }
+                if (!Validering.isKorrektFormatTelnr(telefonnummer)) {
+                    return;
+                }
                 String adress = tfAdressSam.getText();
                 String branch = tfBranchSam.getText();
                 String stadStr = cbValjStadSamarbetspartner.getSelectedItem().toString();
@@ -338,17 +344,16 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
         String partnerNamn = cbValjSamarbetspartner.getSelectedItem().toString();
         try {
-            
-            
+
             String sqlFragaPid = "SELECT pid FROM partner WHERE namn = '" + partnerNamn + "'";
             String pid = idb.fetchSingle(sqlFragaPid);
 
             String sqlFragaDelete = "DELETE FROM projekt_partner WHERE partner_pid = " + pid;
             idb.delete(sqlFragaDelete);
-            
+
             String sqlFraga = "DELETE FROM partner WHERE namn = '" + partnerNamn + "'";
             idb.delete(sqlFraga);
-            
+
             JOptionPane.showMessageDialog(null, "Samarbetspartner borttagen");
 
             // rensar textfields från uppgifter

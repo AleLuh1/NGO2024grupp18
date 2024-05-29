@@ -325,6 +325,9 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         String nyAnstalldAdress = tfAdressNyAnstalld.getText();
         String nyAnstalldEpost = tfEpostNyAnstalld.getText();
         String nyAnstalldTelefon = tfTelefonNyAnstalld.getText();
+        if (!Validering.isKorrektFormatTelnr(nyAnstalldTelefon)) {
+                    return;
+                }
         String NyAnstalldAnstallningsDatum = tfAnstallningsdatumNyAnstalld.getText();
         //String NyAnstalldLosenord = skapaSlumpatLosenord();
         String NyAnstalldLosenord = tfLosenordNyAnstalld.getText();
