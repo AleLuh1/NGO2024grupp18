@@ -37,8 +37,8 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lblStadLaggTillPartner" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEpostLaggTillPartner" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblKontaktpersonLaggTillPartner" max="32767" attributes="0"/>
+                                  <Component id="lblEpostLaggTillPartner" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblTnrLaggTillPartner" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAdressLaggTillPartner" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblBranchLaggTillPartner" min="-2" max="-2" attributes="0"/>
@@ -102,12 +102,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblEpostLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblKontaktpersonLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfKontaktpersonLaggTillPartner" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEpostLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="tfEpostLaggTillPartner" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -157,12 +157,12 @@
         <Property name="text" type="java.lang.String" value="Projektnamn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblEpostLaggTillPartner">
+    <Component class="javax.swing.JLabel" name="lblKontaktpersonLaggTillPartner">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kontaktperson"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblEpostLaggTillPartner">
       <Properties>
         <Property name="text" type="java.lang.String" value="E-post"/>
       </Properties>
@@ -242,9 +242,8 @@
     <Component class="javax.swing.JComboBox" name="cbValjStadLaggTillSamarbetspartner">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
+          <StringArray count="1">
             <StringItem index="0" value="V&#xe4;lj stad"/>
-            <StringItem index="1" value=" "/>
           </StringArray>
         </Property>
       </Properties>

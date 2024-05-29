@@ -94,7 +94,7 @@ public class Land extends javax.swing.JFrame {
         lblLandRuta = new javax.swing.JLabel();
         lblLandIDLand = new javax.swing.JLabel();
         lblNamnLand = new javax.swing.JLabel();
-        lblSpråkLand = new javax.swing.JLabel();
+        lblSprakLand = new javax.swing.JLabel();
         lblValutaLand = new javax.swing.JLabel();
         lblTidzonLand = new javax.swing.JLabel();
         lblPolitiskStrukturLand = new javax.swing.JLabel();
@@ -126,7 +126,7 @@ public class Land extends javax.swing.JFrame {
 
         lblNamnLand.setText("Namn");
 
-        lblSpråkLand.setText("Språk");
+        lblSprakLand.setText("Språk");
 
         lblValutaLand.setText("Valuta");
 
@@ -178,7 +178,7 @@ public class Land extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNamnLand)
-                            .addComponent(lblSpråkLand)
+                            .addComponent(lblSprakLand)
                             .addComponent(lblValutaLand)
                             .addComponent(lblTidzonLand)
                             .addComponent(lblPolitiskStrukturLand)
@@ -217,7 +217,7 @@ public class Land extends javax.swing.JFrame {
                     .addComponent(tfNamnLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSpråkLand)
+                    .addComponent(lblSprakLand)
                     .addComponent(tfSprakLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +318,7 @@ public class Land extends javax.swing.JFrame {
     private javax.swing.JLabel lblLandRuta;
     private javax.swing.JLabel lblNamnLand;
     private javax.swing.JLabel lblPolitiskStrukturLand;
-    private javax.swing.JLabel lblSpråkLand;
+    private javax.swing.JLabel lblSprakLand;
     private javax.swing.JLabel lblTidzonLand;
     private javax.swing.JLabel lblValutaLand;
     private javax.swing.JTextField tfEkonomiLand;

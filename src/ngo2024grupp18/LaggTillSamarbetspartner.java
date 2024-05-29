@@ -7,7 +7,9 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
+import static ngo2024grupp18.Validering.*;               
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -86,7 +88,6 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
             ex.printStackTrace();
 
         }
-
     }
 
     /**
@@ -100,8 +101,8 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
 
         lblSamarbetspartnerRuta = new javax.swing.JLabel();
         lblProjektIDLaggTillPartner = new javax.swing.JLabel();
+        lblKontaktpersonLaggTillPartner = new javax.swing.JLabel();
         lblEpostLaggTillPartner = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lblTnrLaggTillPartner = new javax.swing.JLabel();
         lblAdressLaggTillPartner = new javax.swing.JLabel();
         lblBranchLaggTillPartner = new javax.swing.JLabel();
@@ -127,9 +128,9 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
 
         lblProjektIDLaggTillPartner.setText("Projektnamn");
 
-        lblEpostLaggTillPartner.setText("Kontaktperson");
+        lblKontaktpersonLaggTillPartner.setText("Kontaktperson");
 
-        jLabel4.setText("E-post");
+        lblEpostLaggTillPartner.setText("E-post");
 
         lblTnrLaggTillPartner.setText("Telefon");
 
@@ -159,7 +160,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
 
         cbProjektIDSamarbetspartner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj projekt" }));
 
-        cbValjStadLaggTillSamarbetspartner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj stad", " " }));
+        cbValjStadLaggTillSamarbetspartner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj stad" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,8 +179,8 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblStadLaggTillPartner)
-                                    .addComponent(lblEpostLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4)
+                                    .addComponent(lblKontaktpersonLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblEpostLaggTillPartner)
                                     .addComponent(lblTnrLaggTillPartner)
                                     .addComponent(lblAdressLaggTillPartner)
                                     .addComponent(lblBranchLaggTillPartner))
@@ -227,11 +228,11 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEpostLaggTillPartner)
+                            .addComponent(lblKontaktpersonLaggTillPartner)
                             .addComponent(tfKontaktpersonLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEpostLaggTillPartner, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tfEpostLaggTillPartner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +269,11 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
 
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
 
-        if (Validering.isKorrektFormatEpostPartner(tfEpostLaggTillPartner)) {
+        if (isKorrektKontaktPerson(tfKontaktpersonLaggTillPartner) &&
+            isKorrektFormatEpostPartner(tfEpostLaggTillPartner) &&
+            isKorrektTelefon(tfTelefonLaggTillPartner) &&
+            isKorrektAdress(tfAdressLaggTillPartner)) {
+
             try {
                 // kontrollerar om textfields är tomma
                 String PartnerID = tfPartnerIDLaggTillPartner.getText();
@@ -298,13 +303,13 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 if (laggTillTelefonnummer.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
                 }
-
+                
                 String laggTillAdress = tfAdressLaggTillPartner.getText();
 
                 if (laggTillAdress.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
                 }
-
+                  
                 String laggTillBranch = tfBranchLaggTillPartner.getText();
 
                 if (laggTillBranch.isEmpty()) {
@@ -331,6 +336,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
         }
+        
 
     }//GEN-LAST:event_btnSparaLaggTillPartnerActionPerformed
 
@@ -340,10 +346,10 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     private javax.swing.JButton btnTillbakaLaggTillPartner;
     private javax.swing.JComboBox<String> cbProjektIDSamarbetspartner;
     private javax.swing.JComboBox<String> cbValjStadLaggTillSamarbetspartner;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblAdressLaggTillPartner;
     private javax.swing.JLabel lblBranchLaggTillPartner;
     private javax.swing.JLabel lblEpostLaggTillPartner;
+    private javax.swing.JLabel lblKontaktpersonLaggTillPartner;
     private javax.swing.JLabel lblPartnerIDLaggTillPartner;
     private javax.swing.JLabel lblPartnerNamnLaggTillPartner;
     private javax.swing.JLabel lblProjektIDLaggTillPartner;

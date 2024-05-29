@@ -6,7 +6,7 @@ package ngo2024grupp18;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import static ngo2024grupp18.Validering.isKorrektValuta;
+import static ngo2024grupp18.Validering.*;
 import oru.inf.InfDB;
 
 /**
@@ -64,11 +64,11 @@ public class LaggTillLand extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblLaggTillLand = new javax.swing.JLabel();
         lblLandIDLaggTillLand = new javax.swing.JLabel();
         lblNamnLaggTillLand = new javax.swing.JLabel();
+        lblSprakLaggTillLand = new javax.swing.JLabel();
         lblValutaLaggTillLand = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         lblTidszonLaggTillLand = new javax.swing.JLabel();
         lblPolitiskStrukturLaggTillLand = new javax.swing.JLabel();
         lblEkonomiLaggTillLand = new javax.swing.JLabel();
@@ -84,16 +84,16 @@ public class LaggTillLand extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel1.setText("Lägg till land ");
+        lblLaggTillLand.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblLaggTillLand.setText("Lägg till land ");
 
         lblLandIDLaggTillLand.setText("Land-ID");
 
         lblNamnLaggTillLand.setText("Namn");
 
-        lblValutaLaggTillLand.setText("Språk");
+        lblSprakLaggTillLand.setText("Språk");
 
-        jLabel5.setText("Valuta");
+        lblValutaLaggTillLand.setText("Valuta");
 
         lblTidszonLaggTillLand.setText("Tidszon");
 
@@ -124,7 +124,7 @@ public class LaggTillLand extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(lblLaggTillLand)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnSparaLaggTillLand)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -140,8 +140,8 @@ public class LaggTillLand extends javax.swing.JFrame {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(lblLandIDLaggTillLand)
                                                 .addComponent(lblNamnLaggTillLand)
+                                                .addComponent(lblSprakLaggTillLand)
                                                 .addComponent(lblValutaLaggTillLand)
-                                                .addComponent(jLabel5)
                                                 .addComponent(lblTidszonLaggTillLand))
                                             .addGap(60, 60, 60)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +159,7 @@ public class LaggTillLand extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addComponent(lblLaggTillLand)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLandIDLaggTillLand)
@@ -170,11 +170,11 @@ public class LaggTillLand extends javax.swing.JFrame {
                     .addComponent(tfNamnLaggTillLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblValutaLaggTillLand)
+                    .addComponent(lblSprakLaggTillLand)
                     .addComponent(tfSprakLaggTillLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(lblValutaLaggTillLand)
                     .addComponent(tfValutaLaggTillLand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -264,12 +264,12 @@ public class LaggTillLand extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSparaLaggTillLand;
     private javax.swing.JButton btnTillbakaLaggTillLand;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblEkonomiLaggTillLand;
+    private javax.swing.JLabel lblLaggTillLand;
     private javax.swing.JLabel lblLandIDLaggTillLand;
     private javax.swing.JLabel lblNamnLaggTillLand;
     private javax.swing.JLabel lblPolitiskStrukturLaggTillLand;
+    private javax.swing.JLabel lblSprakLaggTillLand;
     private javax.swing.JLabel lblTidszonLaggTillLand;
     private javax.swing.JLabel lblValutaLaggTillLand;
     private javax.swing.JTextField tfEkonomiLaggTillLand;
