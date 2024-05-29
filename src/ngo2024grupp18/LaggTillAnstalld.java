@@ -131,7 +131,6 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         lblTelefonNyAnstalld = new javax.swing.JLabel();
         tfTelefonNyAnstalld = new javax.swing.JTextField();
         lblAnstallningsdatumNyAnstalld = new javax.swing.JLabel();
-        tfAnstallningsdatumNyAnstalld = new javax.swing.JTextField();
         lblLosenordNyAnstalld = new javax.swing.JLabel();
         tfLosenordNyAnstalld = new javax.swing.JTextField();
         lblAvdNyAnstalld = new javax.swing.JLabel();
@@ -264,17 +263,13 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
                         .addGap(77, 77, 77))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblLaggTillAnstalldRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(tfAnstallningsdatumNyAnstalld)
-                        .addGap(48, 48, 48))))
+                        .addGap(48, 427, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLaggTillAnstalldRuta)
-                    .addComponent(tfAnstallningsdatumNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(lblLaggTillAnstalldRuta)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -460,7 +455,6 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelefonNyAnstalld;
     private javax.swing.JTextField tfAdressNyAnstalld;
     private javax.swing.JTextField tfAidNyAnstalld;
-    private javax.swing.JTextField tfAnstallningsdatumNyAnstalld;
     private javax.swing.JTextField tfAnsvOmradeNyHandlaggare;
     private javax.swing.JTextField tfEfternamnNyAnstalld;
     private javax.swing.JTextField tfEpostNyAnstalld;
