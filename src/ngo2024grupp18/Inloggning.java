@@ -111,7 +111,7 @@ public class Inloggning extends javax.swing.JFrame {
 
 // Kollar att användaren har angett text i rutorna för E-post och lösenord
         if (Validering.finnsTextTF(tfEpost) && Validering.finnsTextPF(pfLosenord)
-                && Validering.isKorrektFormatEpost(tfEpost)) {
+                && Validering.isKorrektFormatEpostTF(tfEpost)) {
             try {
                 String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
                 System.out.println(sqlFraga);

@@ -59,7 +59,7 @@ public class Validering {
     }
 
 // En klassmetod för att kolla om e-posten som användaren har skrivit in slutar med @example.com
-    public static boolean isKorrektFormatEpost(JTextField kontrolleraRuta) {
+    public static boolean isKorrektFormatEpostTF(JTextField kontrolleraRuta) {
         boolean resultat = true;
         String ePost = kontrolleraRuta.getText();
         // Regex för att kontrollera om användaren har skrivit in e-post som slutar med "@example.com"
@@ -74,8 +74,17 @@ public class Validering {
         }
         return resultat;
     }
-
-    public static boolean isKorrektFormatEpostPartner(JTextField kontrolleraRuta) {
+    public static boolean isKorrektFormatEpostString(String epost) {
+        boolean resultat = true;
+        String epostFormat = ".+@example\\.com";
+           if (!(epost.matches(epostFormat))) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange korrekt e-postformat som slutar på '@example.com'");
+            resultat = false;
+        }
+        return resultat;
+    }
+    
+    public static boolean isKorrektFormatEpostPartnerTF(JTextField kontrolleraRuta) {
         boolean resultat = true;
         String ePost = kontrolleraRuta.getText();
         // Regex för att kontrollera om användaren har skrivit in e-post som slutar med "@example.com"
@@ -89,6 +98,16 @@ public class Validering {
             resultat = false;
         }
         return resultat;
+    }
+    
+    public static boolean isKorrektFormatEpostPartner(String epostPartner) {
+       
+         // Skapar ett Pattern-objekt
+        if (!epostPartner.matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$")) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange korrekt epost-format som innehåller @-tecken");
+            return false;
+        }
+        return true;
     }
     public static boolean isKorrektFormatTelnr(String telefon) {
         if (!telefon.matches("\\d+(-\\d+)*")) {

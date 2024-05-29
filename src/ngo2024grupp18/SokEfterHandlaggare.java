@@ -150,7 +150,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
         taListaInfo.setText("");
 
         //Validering av e-postformat
-        if (!sokEpost.isEmpty() && !Validering.isKorrektFormatEpost(tfSokEpost)) {
+        if (!sokEpost.isEmpty() && !Validering.isKorrektFormatEpostTF(tfSokEpost)) {
             System.out.println("E-postformat felaktigt");
             return;
         }
@@ -222,7 +222,7 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
 
             //Söker på e-post
         } else if (!sokEpost.isEmpty()) {
-            if (!Validering.isKorrektFormatEpost(tfSokEpost)) {
+            if (!Validering.isKorrektFormatEpostTF(tfSokEpost)) {
                 return;
             }
             String sqlFraga = "SELECT fornamn, efternamn, telefon, epost, adress FROM anstalld WHERE epost = '" + sokEpost + "' AND avdelning = " + avdelning;

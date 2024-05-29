@@ -327,7 +327,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i avdelningschef");
         }
 
-        if (Validering.isKorrektFormatEpostPartner(tfEpostLaggTillAvd)) {
+        if (Validering.isKorrektFormatEpostPartnerTF(tfEpostLaggTillAvd)) {
             try {
                 //Gör om avdID till en int för att kunna lägga in i db
                 String avdIDStr = tfAvdIDLaggTillAvd.getText();
