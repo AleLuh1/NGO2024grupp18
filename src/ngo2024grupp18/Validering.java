@@ -110,8 +110,8 @@ public class Validering {
         return true;
     }
     public static boolean isKorrektFormatTelnr(String telefon) {
-        if (!telefon.matches("\\d+(-\\d+)*")) {
-            JOptionPane.showMessageDialog(null, "Vänligen ange endast tillåtna tecken för telefonnummer (siffror och bindestreck)");
+        if (!telefon.matches("\\+?\\d+(-\\d+)*")) {
+            JOptionPane.showMessageDialog(null, "Vänligen ange endast tillåtna tecken för telefonnummer (siffror, + och -)");
             return false;
         }
         return true;
