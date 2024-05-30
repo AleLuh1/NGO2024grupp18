@@ -29,9 +29,9 @@ public class Projekt extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
         btnAllaProjekt.setVisible(false);
-        if(ny.isAdmin()) {
-             btnAllaProjekt.setVisible(true);
-             btnSamarbetsPartnersProjekt.setVisible (true);
+        if (ny.isAdmin()) {
+            btnAllaProjekt.setVisible(true);
+            btnSamarbetsPartnersProjekt.setVisible(true);
         } else {
             btnSamarbetsPartnersProjekt.setVisible(false);
         }

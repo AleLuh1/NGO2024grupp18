@@ -33,7 +33,7 @@ public class Land extends javax.swing.JFrame {
         if (isAdmin()) {
             btnLaggTillLand.setVisible(true);
             btnSparaAndringarLand.setVisible(true);
-            
+
             tfLandID.setEditable(true);
             tfNamnLand.setEditable(true);
             tfSprakLand.setEditable(true);
@@ -41,11 +41,11 @@ public class Land extends javax.swing.JFrame {
             tfTidszonLand.setEditable(true);
             tfPolitiskStrukturLand.setEditable(true);
             tfEkonomiLand.setEditable(true);
-            
+
         } else {
             btnLaggTillLand.setVisible(false);
             btnSparaAndringarLand.setVisible(false);
-            
+
             tfLandID.setEditable(false);
             tfNamnLand.setEditable(false);
             tfSprakLand.setEditable(false);

@@ -227,9 +227,9 @@ public class LaggTillLand extends javax.swing.JFrame {
         if (laggTillValuta.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i valuta");
         }
-        
-           if (!isKorrektValuta(tfValutaLaggTillLand)) {
-           return; 
+
+        if (!isKorrektValuta(tfValutaLaggTillLand)) {
+            return;
         }
 
         String laggTillTidszon = tfTidszonLaggTillLand.getText();

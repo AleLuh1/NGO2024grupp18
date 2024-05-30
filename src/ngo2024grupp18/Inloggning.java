@@ -107,7 +107,7 @@ public class Inloggning extends javax.swing.JFrame {
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
         String ePost = tfEpost.getText();
-        String losen = new String (pfLosenord.getPassword());
+        String losen = new String(pfLosenord.getPassword());
 
 // Kollar att användaren har angett text i rutorna för E-post och lösenord
         if (Validering.finnsTextTF(tfEpost) && Validering.finnsTextPF(pfLosenord)

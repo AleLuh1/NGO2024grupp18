@@ -190,7 +190,6 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         }
     }
 
-   
     private void fyllCBPartners() {
         try {
             cbPartnersLaggTillProj.removeAllItems();
@@ -570,20 +569,9 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             int LandId = Integer.parseInt(landIdStr);
             System.out.println(LandId);
 
-//            String sqlFragaHallbMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + laggTillHallbarhetsmal + "'";
-//            System.out.println(sqlFragaHallbMal);
-//            String hidStr = idb.fetchSingle(sqlFragaHallbMal);
-//            //Gör om hid från String till int för att kunna lägga in i db
-//            int hidInt = Integer.parseInt(hidStr);
-//            System.out.println(hidInt);
-//
             String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), " + laggTillKostnad + ", '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + projchefAidInt + ", " + LandId + ")";
             System.out.println(sqlFraga1);
             idb.insert(sqlFraga1);
-//
-//            String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + nyProjektPidInt + ", " + hidInt + ")";
-//            System.out.println(sqlFraga2);
-//            idb.insert(sqlFraga2);
 
             for (String namn : nyTillagdaAnstallda) {
                 //Behöver konvertera namnet till aid igen för att kunna lägga in i db
@@ -604,7 +592,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 idb.insert(sqlFraga3);
             }
             nyTillagdaAnstallda.clear();
-            
+
             for (String enPartner : nyTillagdaPartners) {
                 String sqlFragaPartner = "SELECT namn FROM partner WHERE namn = '" + enPartner + "'";
                 System.out.println(sqlFragaPartner);
@@ -620,8 +608,6 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 idb.insert(sqlFragaPartner2);
             }
             nyTillagdaPartners.clear();
-            
-            
 
             for (String ettMal : nyTillagdaHBMal) {
                 String sqlFragaHBMalNamn = "SELECT namn FROM hallbarhetsmal WHERE namn = '" + ettMal + "'";

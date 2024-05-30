@@ -57,14 +57,14 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
             tftAvdMinaUppgifter.setText(avdelning);
             tftAvdMinaUppgifter.setEditable(false);
-            
-            String fragaHandlaggare = "SELECT ansvarighetsomrade FROM handlaggare WHERE aid='"+this.aid +"'";
+
+            String fragaHandlaggare = "SELECT ansvarighetsomrade FROM handlaggare WHERE aid='" + this.aid + "'";
             String ansvarsomrade = idb.fetchSingle(fragaHandlaggare);
             tfAnsvarsomradeMinaUppgifter.setText(ansvarsomrade);
             tfAnsvarsomradeMinaUppgifter.setEditable(false);
 
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
-            
+
             if (isAdmin()) {
                 fyllBehorighetsnivaAdmin();
                 lblBehorighetsnivaAdmin.setVisible(true);
@@ -103,14 +103,14 @@ public class MinaUppgifter extends javax.swing.JFrame {
         }
         return aidSomKollas != null;
     }
-    
-    private void fyllBehorighetsnivaAdmin(){
-        try{
+
+    private void fyllBehorighetsnivaAdmin() {
+        try {
             String sqlFraga = "SELECT behorighetsniva FROM admin WHERE aid = " + aid;
             System.out.println(sqlFraga);
             String behorighetsniva = idb.fetchSingle(sqlFraga);
             tfBehorighetsnivaAdmin.setText(behorighetsniva);
-          } catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
@@ -327,7 +327,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
     private void btnMinaUppgifterRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterRedigeraActionPerformed
         if (btnMinaUppgifterRedigera.getText().equals("Ändra")) {
             btnMinaUppgifterRedigera.setText("Spara");
-            
+
             tfTelefonMinaUppgifter.setEditable(true);
             tfAdressMinaUppgifter.setEditable(true);
         } else {
@@ -342,7 +342,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 }
 
                 String epost = tfEpostMinaUppgifter.getText();
-                
+
                 String telefon = tfTelefonMinaUppgifter.getText();
                 if (telefon.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i ett telefonnummer");
@@ -352,21 +352,21 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 if (!Validering.isKorrektFormatTelnr(telefon)) {
                     return;
                 }
-                    
+
                 String avdelning = tftAvdMinaUppgifter.getText();
 
                 String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;
 
                 idb.update(sqlFraga);
                 JOptionPane.showMessageDialog(null, "Ändringen sparad");
-                
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
             btnMinaUppgifterRedigera.setText("Ändra");
             tfTelefonMinaUppgifter.setEditable(false);
             tfAdressMinaUppgifter.setEditable(false);
-            
+
         }
     }//GEN-LAST:event_btnMinaUppgifterRedigeraActionPerformed
 

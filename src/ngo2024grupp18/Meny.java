@@ -29,10 +29,10 @@ public class Meny extends javax.swing.JFrame {
         MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
         if (ny.isAdmin()) {
             btnLaggTillAnstalld.setVisible(true);
-            btnTaBortAnstalld.setVisible (true);
+            btnTaBortAnstalld.setVisible(true);
         } else {
             btnLaggTillAnstalld.setVisible(false);
-            btnTaBortAnstalld.setVisible (false);
+            btnTaBortAnstalld.setVisible(false);
         }
     }
 

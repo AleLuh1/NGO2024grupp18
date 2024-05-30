@@ -7,9 +7,8 @@ package ngo2024grupp18;
 import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
-import static ngo2024grupp18.Validering.*;               
+import static ngo2024grupp18.Validering.*;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -269,10 +268,10 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
 
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
 
-        if (isKorrektKontaktPerson(tfKontaktpersonLaggTillPartner) &&
-            isKorrektFormatEpostPartnerTF(tfEpostLaggTillPartner) &&
-            isKorrektTelefon(tfTelefonLaggTillPartner) &&
-            isKorrektAdress(tfAdressLaggTillPartner)) {
+        if (isKorrektKontaktPerson(tfKontaktpersonLaggTillPartner)
+                && isKorrektFormatEpostPartnerTF(tfEpostLaggTillPartner)
+                && isKorrektTelefon(tfTelefonLaggTillPartner)
+                && isKorrektAdress(tfAdressLaggTillPartner)) {
 
             try {
                 // kontrollerar om textfields är tomma
@@ -314,7 +313,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 if (laggTillAdress.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
                 }
-                  
+
                 String laggTillBranch = tfBranchLaggTillPartner.getText();
 
                 if (laggTillBranch.isEmpty()) {
@@ -341,7 +340,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
         }
-        
+
 
     }//GEN-LAST:event_btnSparaLaggTillPartnerActionPerformed
 
