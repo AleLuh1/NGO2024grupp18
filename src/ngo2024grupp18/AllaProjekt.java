@@ -509,10 +509,10 @@ public class AllaProjekt extends javax.swing.JFrame {
         String projektNamn = cbAllaProjekt.getSelectedItem().toString();
 
         try {
-            if(projektNamn.equals("Välj projekt")) {
+            if (projektNamn.equals("Välj projekt")) {
                 return;
             }
-            
+
             String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFraga);
 
@@ -623,12 +623,12 @@ public class AllaProjekt extends javax.swing.JFrame {
             String beskrivning = tfBeskrivningAllaProjekt.getText();
             String startdatum = tfStartdatumAllaProjekt.getText();
             if (!Validering.isKorrektFormatDatum(startdatum)) {
-            return;
-        }
+                return;
+            }
             String slutdatum = tfSlutDatumAllaProjekt.getText();
             if (!Validering.isKorrektFormatDatum(slutdatum)) {
-            return;
-        }
+                return;
+            }
             String kostnadStr = tfKostnadAllaProjekt.getText();
             double kostnad = Double.parseDouble(kostnadStr);
             String status = cbStatusAllaProjekt.getSelectedItem().toString();
@@ -773,7 +773,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
             cbAllaProjektPopupMenuWillBecomeInvisible(null);
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
