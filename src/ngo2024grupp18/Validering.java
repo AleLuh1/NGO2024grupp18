@@ -127,6 +127,7 @@ public class Validering {
            return true;
     }
 
+    
     public static boolean isKorrektValuta(JTextField kontrolleraRuta) {
         boolean resultat = true;
         String valuta = kontrolleraRuta.getText();
