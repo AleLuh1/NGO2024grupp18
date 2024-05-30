@@ -9,7 +9,6 @@ import java.util.HashMap;
 import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -25,18 +24,18 @@ public class MinaProjekt extends javax.swing.JFrame {
     private String aid;
     private String avdid;
 
-    //List model som innehåller jlist items av typen String
+    //ListModel för anställda som innehåller jlist items av typen String
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     //ArrayList som håller koll på vilka anställda tas bort
     private ArrayList<String> anstalldaSomSkaTasBort = new ArrayList<>();
+    
     private DefaultListModel<String> listModelPartners = new DefaultListModel<>();
     private ArrayList<String> visaPartner = new ArrayList<>();
-    private DefaultListModel<String> listModelPartnersInfo = new DefaultListModel<>();
     private ArrayList<String> partnersSomSkaTasBort = new ArrayList<>();
-    private ArrayList<String> visaPartnerInfo = new ArrayList<>();
+    
     private DefaultListModel<String> listModelhallbarhetsmal = new DefaultListModel<>();
     private ArrayList<String> nyTillagdaHBMal = new ArrayList<String>();
-    private ArrayList<String> hbMalSomTasBortLista;
+    private ArrayList<String> hbMalSomTasBortLista = new ArrayList<String>();
 
     /**
      * Creates new form MinaProjekt
@@ -52,7 +51,6 @@ public class MinaProjekt extends javax.swing.JFrame {
         fyllPaPrioritet();
         fyllCBValjProjektchef();
         this.setLocationRelativeTo(null);
-        hbMalSomTasBortLista = new ArrayList<String>();
         jListHallbarhetsmalMinaProjekt.setModel(listModelhallbarhetsmal);
         cbEditor(cbStatusMinaProjekt);
         cbEditor(cbPrioritetMinaProjekt);
@@ -79,7 +77,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         btnTaBortHbMalMinaProj.setVisible(false);
     }
 
-    // 
+    // Justerar färgen på text och bakgrund för inaktiverade cb
     public static void cbEditor(JComboBox cb) {
         cb.setEditable(true);
         ComboBoxEditor editor = cb.getEditor();
@@ -154,7 +152,7 @@ public class MinaProjekt extends javax.swing.JFrame {
         }
     }
 
-    //fyll på anställd combobox med alla anställda som jobbar inte i projektet
+    //fyll på anställd combobox med alla anställda som inte jobbar i projektet
     public void fyllAnstalldaCB(String pid) {
         cbAnstalldaMinaProjekt.removeAllItems();
         try {
@@ -205,7 +203,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     //Fyller CB med partners som inte redan finns kopplade till det valda projektet
     public void fyllCBValjPartner(String pid) {
         try {
-            //Hämtar alla partner_pid som jobbar i projektet
+            //Hämtar alla partner_pid som inte jobbar i projektet
             String sqlFragaPartnerPid = "SELECT DISTINCT partner_pid FROM projekt_partner JOIN partner ON partner.pid = partner_pid WHERE NOT partner.pid IN (SELECT partner_pid FROM projekt_partner WHERE pid = " + pid + ")";
             System.out.println(sqlFragaPartnerPid);
             ArrayList<String> partnersIProjekt = idb.fetchColumn(sqlFragaPartnerPid);
@@ -214,7 +212,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 String sqlFragaPartnerNamn = "SELECT namn FROM partner WHERE pid = " + partnerPid + "";
                 cbValjPartnerMinaProjekt.addItem(idb.fetchSingle(sqlFragaPartnerNamn));
             }
-            //Loopar igenom listModel, det som redan finns i listModel tas bort från cb
+            //Partners som redan finns i listModel tas bort från cb
             for (int i = 0; i < jListPartnerMinaProjekt.getModel().getSize(); i++) {
                 var partnerNamn = jListPartnerMinaProjekt.getModel().getElementAt(i);
                 cbValjPartnerMinaProjekt.removeItem(partnerNamn);
@@ -261,8 +259,7 @@ public class MinaProjekt extends javax.swing.JFrame {
                 String sqlFragaHBMalnamn = "SELECT namn FROM hallbarhetsmal WHERE hid = " + ettMal + "";
                 cbValjHbMalMinaProj.addItem(idb.fetchSingle(sqlFragaHBMalnamn));
             }
-            //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
-            //Could call getModel directly on the model (try to fix later)
+            //Hållbarhetsmål som finns i listModel tas bort från comboboxen
             for (int i = 0; i < jListHallbarhetsmalMinaProjekt.getModel().getSize(); i++) {
                 var hbMalNamn = jListHallbarhetsmalMinaProjekt.getModel().getElementAt(i);
                 cbValjHbMalMinaProj.removeItem(hbMalNamn);
@@ -777,8 +774,6 @@ public class MinaProjekt extends javax.swing.JFrame {
             }
             nyTillagdaHBMal.clear();
 
-            //Behöver en loop för att ta bort HB-mål också!
-            //Får skrivas här
             for (String hbMalAttTaBort : hbMalSomTasBortLista) {
                 String sqlFragaTaBortHid = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + hbMalAttTaBort + "'";
                 System.out.println(sqlFragaTaBortHid);
@@ -850,7 +845,6 @@ public class MinaProjekt extends javax.swing.JFrame {
             String sqlProjnamnTillPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlProjnamnTillPid);
             String pid = idb.fetchSingle(sqlProjnamnTillPid);
-//            int pid = Integer.parseInt(pidStr);
             fyllCBHallbarMal(pid);
         } catch (Exception ex) {
             ex.printStackTrace();
