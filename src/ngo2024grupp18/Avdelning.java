@@ -141,7 +141,6 @@ public class Avdelning extends javax.swing.JFrame {
 
     private void cbAvdAnstalldPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAvdAnstalldPopupMenuWillBecomeInvisible
         String anstalld = cbAvdAnstalld.getSelectedItem().toString();
-        // WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
         try {
             String sqlFraga = "SELECT * FROM avdelning JOIN anstalld ON anstalld.avdelning = avdid "
                     + "WHERE avdid = " + avdid + " AND CONCAT(fornamn, ' ', efternamn) = '" + anstalld + "'";
