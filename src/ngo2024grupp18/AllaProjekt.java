@@ -52,7 +52,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         nyTillagdaAnstallda = new ArrayList<String>();
         nyTillagdaHBMal = new ArrayList<String>();
         anstalldaSomTasBortLista = new ArrayList<String>();
-        MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
+        var ny = new Anstalld(idb, aid);
         if (ny.isAdmin()) {
             lblLaggTillProjekt.setVisible(true);
             btnLaggTillProjAllaProj.setVisible(true);

@@ -29,6 +29,9 @@ public class MinaUppgifter extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
+        var ny = new Anstalld(idb, aid);
+        
+        
         try {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
             System.out.println(sqlFraga);
@@ -39,7 +42,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
             lblAID.setText(("AnställningsID: " + anstalld.get("aid")));
             lblAID.requestFocus();
-            lblRoll.setText("Roll: " + getRoll());
+            lblRoll.setText("Roll: " + ny.getRoll());
             tfFornamnMinaUppgifter.setText(anstalld.get("fornamn"));
             tfFornamnMinaUppgifter.setEditable(false);
 
@@ -64,8 +67,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
             tfAnsvarsomradeMinaUppgifter.setEditable(false);
 
             lblAnstallningsDatum.setText("Anställningsdatum: " + anstalld.get("anstallningsdatum"));
-
-            if (isAdmin()) {
+            
+            if (ny.isAdmin()) {
                 fyllBehorighetsnivaAdmin();
                 lblBehorighetsnivaAdmin.setVisible(true);
                 tfBehorighetsnivaAdmin.setVisible(true);
@@ -81,31 +84,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
         }
     }
 
-    public String getRoll() {
-        if (isAdmin()) {
-            return "Admin";
-        } else if (isProjektledare() == true) {
-            return "Projektledare";
-        } else {
-            return "Handläggare";
-        }
-    }
-
-    public boolean isAdmin() {
-        String aidSomKollas = null;
-        try {
-            String sqlFraga = "SELECT aid FROM admin WHERE aid = " + aid;
-            System.out.println(sqlFraga);
-            aidSomKollas = idb.fetchSingle(sqlFraga);
-            System.out.println("Aid som kollas: " + aidSomKollas);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return aidSomKollas != null;
-    }
-
-    private void fyllBehorighetsnivaAdmin() {
-        try {
+    private void fyllBehorighetsnivaAdmin(){
+        try{
             String sqlFraga = "SELECT behorighetsniva FROM admin WHERE aid = " + aid;
             System.out.println(sqlFraga);
             String behorighetsniva = idb.fetchSingle(sqlFraga);
@@ -115,37 +95,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
         }
     }
 
-    public boolean isProjektledare() {
-        String aidSomKollas = null;
-        try {
-            String sqlFraga = "SELECT aid FROM anstalld JOIN projekt ON projektchef = anstalld.aid WHERE anstalld.aid = " + aid;
-            System.out.println(sqlFraga);
-            aidSomKollas = idb.fetchSingle(sqlFraga);
-            System.out.println("Aid som kollas: " + aidSomKollas);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        if (aidSomKollas != null) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isHandlaggare() {
-        String aidSomKollas = null;
-        try {
-            String sqlFraga = "SELECT aid FROM handlaggare WHERE aid = " + aid;
-            System.out.println(sqlFraga);
-            aidSomKollas = idb.fetchSingle(sqlFraga);
-            System.out.println("Aid som kollas: " + aidSomKollas);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        if (aidSomKollas != null) {
-            return true;
-        }
-        return false;
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

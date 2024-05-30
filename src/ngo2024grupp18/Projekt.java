@@ -27,7 +27,7 @@ public class Projekt extends javax.swing.JFrame {
         this.aid = aid;
         this.avdid = avdid;
         this.setLocationRelativeTo(null);
-        MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
+        var ny = new Anstalld(idb, aid);
         btnAllaProjekt.setVisible(false);
         if (ny.isAdmin()) {
             btnAllaProjekt.setVisible(true);

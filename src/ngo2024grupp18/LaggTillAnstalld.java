@@ -404,6 +404,11 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
             tfAnsvOmradeNyHandlaggare.setVisible(true);
             lblMentorNyHandlaggare.setVisible(true);
             cbMentorNyHandlaggare.setVisible(true);
+        } else {
+            lblAnsvOmradeNyHandlaggare.setVisible(false);
+            tfAnsvOmradeNyHandlaggare.setVisible(false);
+            lblMentorNyHandlaggare.setVisible(false);
+            cbMentorNyHandlaggare.setVisible(false);
         }
     }//GEN-LAST:event_cbRollNyAnstalldActionPerformed
 
