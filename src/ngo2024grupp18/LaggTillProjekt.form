@@ -218,12 +218,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblStartdatumLaggTIllProjekt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Startdatum"/>
+        <Property name="text" type="java.lang.String" value="Startdatum YYYY-MM-DD"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSlutdatumLaggTIllProjekt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Slutdatum"/>
+        <Property name="text" type="java.lang.String" value="Slutdatum YYYY-MM-DD"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKostnadLaggTIllProjekt">

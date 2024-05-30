@@ -272,9 +272,9 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
         lblBeskrivningLaggTIllProjekt.setText("Beskrivning");
 
-        lblStartdatumLaggTIllProjekt.setText("Startdatum");
+        lblStartdatumLaggTIllProjekt.setText("Startdatum YYYY-MM-DD");
 
-        lblSlutdatumLaggTIllProjekt.setText("Slutdatum");
+        lblSlutdatumLaggTIllProjekt.setText("Slutdatum YYYY-MM-DD");
 
         lblKostnadLaggTIllProjekt.setText("Kostnad");
 
