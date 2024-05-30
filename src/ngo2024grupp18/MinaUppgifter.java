@@ -358,6 +358,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
                 String sqlFraga = "UPDATE anstalld SET adress = '" + adress + "', telefon = '" + telefon + "' WHERE aid = " + aid;
 
                 idb.update(sqlFraga);
+                JOptionPane.showMessageDialog(null, "Ändringen sparad");
+                
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
