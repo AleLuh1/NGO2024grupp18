@@ -5,11 +5,13 @@
 package ngo2024grupp18;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
 import oru.inf.InfDB;
 
 /**
@@ -26,6 +28,9 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     //ArrayList för att lagra alla nytillagda anställda
     private ArrayList<String> nyTillagdaAnstallda;
 
+    private DefaultListModel<String> listModelPartners = new DefaultListModel<>();
+    private ArrayList<String> nyTillagdaPartners;
+
     /**
      * Creates new form LaggTillProjekt
      */
@@ -41,8 +46,10 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         fyllCBValjPrioritet();
         fyllCBValjLand();
         fyllCBAllaAnstallda();
+        fyllCBPartners();
         nyTillagdaAnstallda = new ArrayList<String>();
         listModelAllaAnstallda = new DefaultListModel<String>();
+        nyTillagdaPartners = new ArrayList<String>();
         this.setLocationRelativeTo(null);
         JList<String> jList = new JList<String>(listModelAllaAnstallda);
         JScrollPane scrollPane = new JScrollPane(jList);
@@ -87,9 +94,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     // Lägger till beskrivning i combobox
@@ -104,9 +109,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     // Lägger till status i comboboxen
@@ -121,9 +124,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     // Lägger till prioritet i combobox
@@ -138,9 +139,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     // Lägger till land i combobox
@@ -156,9 +155,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     //Fyller i CB för alla anställda 
@@ -176,6 +173,43 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             for (int i = 0; i < jListAllaAnstallda.getModel().getSize(); i++) {
                 var namn = jListAllaAnstallda.getModel().getElementAt(i);
                 cbLaggTillAnstalld.removeItem(namn);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void fyllPartnerList(String pid) {
+        listModelPartners.removeAllElements();
+        try {
+            String sqlFraga = "SELECT partner_pid FROM projekt_partner WHERE pid=" + pid;
+            System.out.println(sqlFraga);
+            ArrayList<HashMap<String, String>> allaPartnersForProjektet = idb.fetchRows(sqlFraga);
+            for (HashMap<String, String> enPartner : allaPartnersForProjektet) {
+                String sqlFragaPartnerName = "SELECT namn FROM partner WHERE pid=" + enPartner.get("partner_pid");
+                String partnerName = idb.fetchSingle(sqlFragaPartnerName);
+                listModelPartners.addElement(partnerName);
+            }
+            jListPartnersLaggTillProj.setModel(listModelPartners);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void fyllCBPartners() {
+        try {
+            String sqlFragaPartnerPid = "SELECT namn FROM partner";
+            System.out.println(sqlFragaPartnerPid);
+            ArrayList<String> allaPartnersLista = idb.fetchColumn(sqlFragaPartnerPid);
+            cbPartnersLaggTillProj.removeAllItems();
+
+            for (String enPartner : allaPartnersLista) {
+                cbPartnersLaggTillProj.addItem(enPartner);
+            }
+
+            for (int i = 0; i < jListPartnersLaggTillProj.getModel().getSize(); i++) {
+                var partnerNamn = jListPartnersLaggTillProj.getModel().getElementAt(i);
+                cbPartnersLaggTillProj.removeItem(partnerNamn);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -221,6 +255,14 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         jListAllaAnstallda = new javax.swing.JList<>();
         cbLaggTillAnstalld = new javax.swing.JComboBox<>();
         btnLaggTillAnstalld = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jListHBMal = new javax.swing.JList<>();
+        btnLaggTIllHBMal = new javax.swing.JButton();
+        lblPartnersLaggTillProj = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListPartnersLaggTillProj = new javax.swing.JList<>();
+        cbPartnersLaggTillProj = new javax.swing.JComboBox<>();
+        btnLaggTillPartner = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -271,11 +313,13 @@ public class LaggTillProjekt extends javax.swing.JFrame {
 
         lblHallbarhetsmalLaggTillProjekt.setText("Hållbarhetsmål");
 
-        cbHallbarhetsmalLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj hållbarhetsmål" }));
+        cbHallbarhetsmalLaggTillProjekt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         btnAnstalld.setText("Anställda i projektet");
 
         jScrollPane1.setViewportView(jListAllaAnstallda);
+
+        cbLaggTillAnstalld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         btnLaggTillAnstalld.setText("Lägg till");
         btnLaggTillAnstalld.addActionListener(new java.awt.event.ActionListener() {
@@ -284,63 +328,78 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setViewportView(jListHBMal);
+
+        btnLaggTIllHBMal.setText("Lägg till");
+
+        lblPartnersLaggTillProj.setText("Samarbetspartners");
+
+        jScrollPane3.setViewportView(jListPartnersLaggTillProj);
+
+        cbPartnersLaggTillProj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj partner" }));
+
+        btnLaggTillPartner.setText("Lägg till samarbetspartner");
+        btnLaggTillPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillPartnerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(68, Short.MAX_VALUE)
+                        .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPorjektIDLaggTIllProjekt)
-                                    .addComponent(lblLaggTillProjektRuta)))
-                            .addComponent(lblSlutdatumLaggTIllProjekt)
-                            .addComponent(lblKostnadLaggTIllProjekt)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblProjektNamnLaggTIllProjekt)
-                                .addComponent(lblBeskrivningLaggTIllProjekt, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(lblProjektchefLaggTIllProjekt)
-                            .addComponent(lblStartdatumLaggTIllProjekt)
-                            .addComponent(lblStatusLaggTIllProjekt)
-                            .addComponent(lblPrioritetLaggTIllProjekt)
-                            .addComponent(lblHallbarhetsmalLaggTillProjekt)
-                            .addComponent(lblLandLaggTIllProjekt)
-                            .addComponent(btnAnstalld))
-                        .addGap(27, 27, 27))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(btnTillbakaLaggTIllProjekt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(265, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSparaLaggTIllProjekt)
-                        .addGap(78, 78, 78))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfStartdatumLaggTIllProjekt)
-                            .addComponent(tfBeskrivningLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbLandLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbPrioritetLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfSlutdatumLaggTIllProjekt)
-                            .addComponent(tfKostnadLaggTIllProjekt)
-                            .addComponent(cbProjektChefLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbStatusLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfProjektIDLaggTIllProjekt)
-                            .addComponent(tfProjektnamnLaggTIllProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbLaggTillAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLaggTillAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(lblPorjektIDLaggTIllProjekt)
+                            .addComponent(lblLaggTillProjektRuta)))
+                    .addComponent(lblSlutdatumLaggTIllProjekt)
+                    .addComponent(lblKostnadLaggTIllProjekt)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblProjektNamnLaggTIllProjekt)
+                        .addComponent(lblBeskrivningLaggTIllProjekt, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(lblProjektchefLaggTIllProjekt)
+                    .addComponent(lblStartdatumLaggTIllProjekt)
+                    .addComponent(lblStatusLaggTIllProjekt)
+                    .addComponent(lblPrioritetLaggTIllProjekt)
+                    .addComponent(lblHallbarhetsmalLaggTillProjekt)
+                    .addComponent(lblLandLaggTIllProjekt)
+                    .addComponent(btnAnstalld))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfStartdatumLaggTIllProjekt)
+                    .addComponent(tfBeskrivningLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbLandLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbPrioritetLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfSlutdatumLaggTIllProjekt)
+                    .addComponent(tfKostnadLaggTIllProjekt)
+                    .addComponent(cbProjektChefLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbStatusLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfProjektIDLaggTIllProjekt)
+                    .addComponent(tfProjektnamnLaggTIllProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbHallbarhetsmalLaggTillProjekt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbLaggTillAnstalld, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLaggTillAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                    .addComponent(btnLaggTIllHBMal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPartnersLaggTillProj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(cbPartnersLaggTillProj, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(106, 106, 106))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(btnTillbakaLaggTIllProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSparaLaggTIllProjekt)
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,21 +417,30 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBeskrivningLaggTIllProjekt)
                     .addComponent(tfBeskrivningLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbProjektChefLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblProjektchefLaggTIllProjekt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAnstalld)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblStartdatumLaggTIllProjekt)
                             .addComponent(tfStartdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cbLaggTillAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnLaggTillAnstalld)
+                        .addGap(24, 24, 24)
+                        .addComponent(lblPartnersLaggTillProj)
+                        .addGap(6, 6, 6)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblSlutdatumLaggTIllProjekt)
                             .addComponent(tfSlutdatumLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,28 +451,34 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbStatusLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblStatusLaggTIllProjekt))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPrioritetLaggTIllProjekt)
-                            .addComponent(cbPrioritetLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbLandLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLandLaggTIllProjekt))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbLaggTillAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addComponent(btnLaggTillAnstalld)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lblStatusLaggTIllProjekt)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTillbakaLaggTIllProjekt)
-                    .addComponent(btnSparaLaggTIllProjekt))
-                .addContainerGap())
+                    .addComponent(lblPrioritetLaggTIllProjekt)
+                    .addComponent(cbPrioritetLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbPartnersLaggTillProj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbLandLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLandLaggTIllProjekt)
+                    .addComponent(btnLaggTillPartner))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbHallbarhetsmalLaggTillProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLaggTIllHBMal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSparaLaggTIllProjekt)
+                            .addComponent(btnTillbakaLaggTIllProjekt))
+                        .addGap(39, 39, 39))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblHallbarhetsmalLaggTillProjekt))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -522,6 +596,21 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 System.out.println(sqlFraga3);
                 idb.insert(sqlFraga3);
             }
+            nyTillagdaAnstallda.clear();
+
+            for (int i = 0; i < listModelPartners.size(); i++) {
+                String partnerNamn = listModelPartners.getElementAt(i);
+
+                String sqlFragaPartnerdId = "SELECT pid FROM partner WHERE namn = '" + partnerNamn + "'";
+                String partnerId = idb.fetchSingle(sqlFragaPartnerdId);
+
+                //skapa ny item i tabellen projekt_partner med pid och partner_pid. Använder WHERE NOT EXIST för att kontrollera att det inte finns en annan item som har redan pid+partner_pid
+                String sqlFragaProjektPartner = "INSERT INTO projekt_partner (pid, partner_pid) "
+                        + "SELECT " + nyProjektPidInt + ", " + partnerId + " "
+                        + "WHERE NOT EXISTS (SELECT 1 FROM projekt_partner WHERE pid = " + nyProjektPidInt + " AND partner_pid = " + partnerId + ")";
+                idb.insert(sqlFragaProjektPartner);
+            }
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
             this.dispose();
             new Meny(idb, aid, avdid).setVisible(true);
@@ -541,25 +630,40 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         nyTillagdaAnstallda.add(anstalld);
     }//GEN-LAST:event_btnLaggTillAnstalldActionPerformed
 
+    private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
+        nyTillagdaPartners.clear();
+        String partner = cbPartnersLaggTillProj.getSelectedItem().toString();
+        cbPartnersLaggTillProj.removeItem(partner);
+        listModelPartners.addElement(partner);
+    }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAnstalld;
+    private javax.swing.JButton btnLaggTIllHBMal;
     private javax.swing.JButton btnLaggTillAnstalld;
+    private javax.swing.JButton btnLaggTillPartner;
     private javax.swing.JButton btnSparaLaggTIllProjekt;
     private javax.swing.JButton btnTillbakaLaggTIllProjekt;
     private javax.swing.JComboBox<String> cbHallbarhetsmalLaggTillProjekt;
     private javax.swing.JComboBox<String> cbLaggTillAnstalld;
     private javax.swing.JComboBox<String> cbLandLaggTillProjekt;
+    private javax.swing.JComboBox<String> cbPartnersLaggTillProj;
     private javax.swing.JComboBox<String> cbPrioritetLaggTillProjekt;
     private javax.swing.JComboBox<String> cbProjektChefLaggTillProjekt;
     private javax.swing.JComboBox<String> cbStatusLaggTillProjekt;
     private javax.swing.JList<String> jListAllaAnstallda;
+    private javax.swing.JList<String> jListHBMal;
+    private javax.swing.JList<String> jListPartnersLaggTillProj;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblBeskrivningLaggTIllProjekt;
     private javax.swing.JLabel lblHallbarhetsmalLaggTillProjekt;
     private javax.swing.JLabel lblKostnadLaggTIllProjekt;
     private javax.swing.JLabel lblLaggTillProjektRuta;
     private javax.swing.JLabel lblLandLaggTIllProjekt;
+    private javax.swing.JLabel lblPartnersLaggTillProj;
     private javax.swing.JLabel lblPorjektIDLaggTIllProjekt;
     private javax.swing.JLabel lblPrioritetLaggTIllProjekt;
     private javax.swing.JLabel lblProjektNamnLaggTIllProjekt;
