@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * @author alex
  */
 public class Avdelning extends javax.swing.JFrame {
-
     private InfDB idb;
     private String aid;
     private String avdid;
@@ -146,7 +145,6 @@ public class Avdelning extends javax.swing.JFrame {
         try {
             String sqlFraga = "SELECT * FROM avdelning JOIN anstalld ON anstalld.avdelning = avdid "
                     + "WHERE avdid = " + avdid + " AND CONCAT(fornamn, ' ', efternamn) = '" + anstalld + "'";
-            System.out.println(sqlFraga);
             HashMap<String, String> avdelning = idb.fetchRow(sqlFraga);
             tfTnrAvd.setText(avdelning.get("telefon"));
             tfTnrAvd.setEditable(false);
@@ -156,7 +154,6 @@ public class Avdelning extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_cbAvdAnstalldPopupMenuWillBecomeInvisible
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaAvd;

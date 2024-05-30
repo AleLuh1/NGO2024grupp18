@@ -11,7 +11,6 @@ import oru.inf.InfDB;
  * @author alex
  */
 public class ProjektStatistik extends javax.swing.JFrame {
-
     private InfDB idb;
     private String aid;
     private String avdid;
@@ -28,28 +27,24 @@ public class ProjektStatistik extends javax.swing.JFrame {
 
         try {
             String sqlFragaPagaendeProj = "SELECT SUM(kostnad) AS kostnadPagaende FROM projekt JOIN anstalld ON anstalld.aid = projekt.projektchef WHERE status = 'Pågående' AND anstalld.aid = " + aid + "";
-            System.out.println(sqlFragaPagaendeProj);
             String pagaendeProjKostnad = idb.fetchSingle(sqlFragaPagaendeProj);
             tfKostnadPagaendeProj.setText(pagaendeProjKostnad);
             tfKostnadPagaendeProj.setEditable(false);
             lblKostnadPagaendeProj.requestFocus();
 
             String sqlFragaPlanProj = "SELECT SUM(kostnad) AS kostnadPlanerade FROM projekt JOIN anstalld ON anstalld.aid = projekt.projektchef WHERE status = 'Planerat' AND anstalld.aid = " + aid + "";
-            System.out.println(sqlFragaPlanProj);
             String planProjKostnad = idb.fetchSingle(sqlFragaPlanProj);
             tfKostnadPlanProj.setText(planProjKostnad);
             tfKostnadPlanProj.setEditable(false);
             lblKostnadPlanProj.requestFocus();
 
             String sqlFragaAvslutProj = "SELECT SUM(kostnad) AS kostnadAvslutade FROM projekt JOIN anstalld ON anstalld.aid = projekt.projektchef WHERE status = 'Avslutat' AND anstalld.aid = " + aid + "";
-            System.out.println(sqlFragaAvslutProj);
             String avslutProjKostnad = idb.fetchSingle(sqlFragaAvslutProj);
             tfKostnadAvslutProj.setText(avslutProjKostnad);
             tfKostnadAvslutProj.setEditable(false);
             lblKostnadAvslutProj.requestFocus();
 
             String sqlFragatotKostnadMinaProj = "SELECT SUM(kostnad) AS totKostnad FROM projekt JOIN anstalld ON anstalld.aid = projekt.projektchef WHERE anstalld.aid = " + aid + "";
-            System.out.println(sqlFragatotKostnadMinaProj);
             String totKostnadMinaProj = idb.fetchSingle(sqlFragatotKostnadMinaProj);
             tfTotKostnadMinaProj.setText(totKostnadMinaProj);
             tfTotKostnadMinaProj.setEditable(false);

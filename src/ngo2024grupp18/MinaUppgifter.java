@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
  * @author alex
  */
 public class MinaUppgifter extends javax.swing.JFrame {
-
     private InfDB idb;
     private String aid;
     private String avdid;
@@ -34,7 +33,6 @@ public class MinaUppgifter extends javax.swing.JFrame {
         
         try {
             String sqlFraga = "SELECT * FROM anstalld WHERE aid = " + aid;
-            System.out.println(sqlFraga);
             HashMap<String, String> anstalld = idb.fetchRow(sqlFraga);
 
             String sqlFraga2 = "SELECT namn FROM avdelning WHERE avdid = '" + anstalld.get("avdelning") + "'";
@@ -87,15 +85,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
     private void fyllBehorighetsnivaAdmin(){
         try{
             String sqlFraga = "SELECT behorighetsniva FROM admin WHERE aid = " + aid;
-            System.out.println(sqlFraga);
             String behorighetsniva = idb.fetchSingle(sqlFraga);
             tfBehorighetsnivaAdmin.setText(behorighetsniva);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,14 +272,12 @@ public class MinaUppgifter extends javax.swing.JFrame {
     private void btnMinaUppgifterRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterRedigeraActionPerformed
         if (btnMinaUppgifterRedigera.getText().equals("Ändra")) {
             btnMinaUppgifterRedigera.setText("Spara");
-
             tfTelefonMinaUppgifter.setEditable(true);
             tfAdressMinaUppgifter.setEditable(true);
         } else {
             try {
                 String fornamn = tfFornamnMinaUppgifter.getText();
                 String efternamn = tfEfternamnMinaUppgifter.getText();
-
                 String adress = tfAdressMinaUppgifter.getText();
                 if (adress.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i en adress");
@@ -316,10 +309,8 @@ public class MinaUppgifter extends javax.swing.JFrame {
             btnMinaUppgifterRedigera.setText("Ändra");
             tfTelefonMinaUppgifter.setEditable(false);
             tfAdressMinaUppgifter.setEditable(false);
-
         }
     }//GEN-LAST:event_btnMinaUppgifterRedigeraActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMinaUppgifterRedigera;

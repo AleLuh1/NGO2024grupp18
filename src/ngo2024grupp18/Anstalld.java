@@ -74,5 +74,4 @@ public class Anstalld {
             return "Handläggare";
         }
     }
-
 }

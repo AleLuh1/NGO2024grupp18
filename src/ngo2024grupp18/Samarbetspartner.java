@@ -15,7 +15,6 @@ import javax.swing.JTextField;
  * @author ellenor
  */
 public class Samarbetspartner extends javax.swing.JFrame {
-
     private InfDB idb;
     private String aid;
     private String avdid;
@@ -32,7 +31,6 @@ public class Samarbetspartner extends javax.swing.JFrame {
         fyllCBValjSamarbetspartner();
         fyllCBStad();
         tfPartnerIDSam.setEditable(false);
-
     }
 
     // Lägger till alla samarbetspartner i combobox
@@ -47,7 +45,6 @@ public class Samarbetspartner extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
     }
 
@@ -62,9 +59,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     /**
@@ -299,20 +294,14 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ändring sparad");
 
             } catch (Exception ex) {
-
                 ex.printStackTrace();
-
             }
         }
-
     }//GEN-LAST:event_btnSparAndringarSamActionPerformed
 
     private void cbValjSamarbetspartnerPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbValjSamarbetspartnerPopupMenuWillBecomeInvisible
-
         String partnerNamn = cbValjSamarbetspartner.getSelectedItem().toString();
-
         try {
-
             String sqlFraga = "SELECT * FROM partner WHERE namn = '" + partnerNamn + "'";
             System.out.println(sqlFraga);
 
@@ -329,13 +318,11 @@ public class Samarbetspartner extends javax.swing.JFrame {
                 tfTnrSam.setText(partnerNamnLista.get("telefon"));
                 tfAdressSam.setText(partnerNamnLista.get("adress"));
                 tfBranchSam.setText(partnerNamnLista.get("branch"));
-
                 cbValjStadSamarbetspartner.setSelectedItem(stad);
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
 
     }//GEN-LAST:event_cbValjSamarbetspartnerPopupMenuWillBecomeInvisible
@@ -344,7 +331,6 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
         String partnerNamn = cbValjSamarbetspartner.getSelectedItem().toString();
         try {
-
             String sqlFragaPid = "SELECT pid FROM partner WHERE namn = '" + partnerNamn + "'";
             String pid = idb.fetchSingle(sqlFragaPid);
 
@@ -371,15 +357,12 @@ public class Samarbetspartner extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
     }//GEN-LAST:event_btnTaBortSamarbetspartnerActionPerformed
 
     private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
         new LaggTillSamarbetspartner(idb, aid, avdid).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLaggTillPartner;

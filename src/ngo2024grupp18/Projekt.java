@@ -12,7 +12,6 @@ import oru.inf.InfDB;
  * @author alex
  */
 public class Projekt extends javax.swing.JFrame {
-
     private InfDB idb;
     private String pid;
     private String aid;

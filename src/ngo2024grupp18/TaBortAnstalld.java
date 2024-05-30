@@ -41,11 +41,10 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             for (HashMap<String, String> ettNamn : anstalldaNamnLista) {
                 cbTaBortAnstalld.addItem(ettNamn.get("fornamn") + " " + ettNamn.get("efternamn"));
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     /**
@@ -136,7 +135,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
 
     private void btnTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldActionPerformed
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
-
         String fornamn = anstalld.split(" ")[0];
         String efternamn = anstalld.split(" ")[1];
 
@@ -146,31 +144,22 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             String selectedAid = idb.fetchSingle(sqlFragaAid);
 
             String sqlFraga1 = "DELETE FROM ans_proj WHERE aid = " + selectedAid;
-            System.out.println(sqlFraga1);
             idb.delete(sqlFraga1);
 
             String sqlFraga2 = "DELETE FROM admin WHERE aid = " + selectedAid;
-            System.out.println(sqlFraga2);
             idb.delete(sqlFraga2);
 
-            String sqlFraga4 = "DELETE FROM handlaggare WHERE aid = " + selectedAid + " OR mentor = " + selectedAid;
-            System.out.println(sqlFraga4);
+            String sqlFraga3 = "DELETE FROM handlaggare WHERE aid = " + selectedAid + " OR mentor = " + selectedAid;
+            idb.delete(sqlFraga3);
+
+            String sqlFraga4 = "DELETE FROM avdelning WHERE chef = " + selectedAid;
             idb.delete(sqlFraga4);
 
-//            String sqlFraga3 = "DELETE FROM handlaggare WHERE mentor = " + selectedAid;
-//            System.out.println(sqlFraga3);
-//            idb.delete(sqlFraga3);
-            String sqlFraga5 = "DELETE FROM avdelning WHERE chef = " + selectedAid;
-            System.out.println(sqlFraga5);
+            String sqlFraga5 = "DELETE FROM ans_proj WHERE aid =" + selectedAid;
             idb.delete(sqlFraga5);
 
-            String sqlFraga6 = "DELETE FROM ans_proj WHERE aid =" + selectedAid;
-            System.out.println(sqlFraga6);
+            String sqlFraga6 = "DELETE FROM anstalld WHERE aid = " + selectedAid;
             idb.delete(sqlFraga6);
-
-            String sqlFraga7 = "DELETE FROM anstalld WHERE aid = " + selectedAid;
-            System.out.println(sqlFraga7);
-            idb.delete(sqlFraga7);
 
             JOptionPane.showMessageDialog(null, "Anställd borttagen");
 
@@ -181,7 +170,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-
     }//GEN-LAST:event_btnTaBortAnstalldActionPerformed
 
     private void cbTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTaBortAnstalldActionPerformed
@@ -190,7 +178,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         String anstalld = cbTaBortAnstalld.getSelectedItem().toString();
 
         try {
-
             String fornamn = anstalld.split(" ")[0];
             String efternamn = anstalld.split(" ")[1];
 
@@ -222,7 +209,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
             ex.printStackTrace();
 
         }
-
     }//GEN-LAST:event_cbTaBortAnstalldActionPerformed
 
     private void btnAndraProjketchefTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraProjketchefTaBortAnstalldActionPerformed
@@ -235,7 +221,6 @@ public class TaBortAnstalld extends javax.swing.JFrame {
         Meny nyTaBortAnstalld = new Meny(idb, aid, avdid);
         nyTaBortAnstalld.setVisible(true);
     }//GEN-LAST:event_btnTillbakaTaBortAnstalldActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndraProjketchefTaBortAnstalld;

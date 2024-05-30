@@ -163,11 +163,9 @@ public class SokProjekt extends javax.swing.JFrame {
             try {
                 ArrayList<HashMap<String, String>> resultatListaProjekt = idb.fetchRows(sqlFraga);
                 for (int i = 0; i < resultatListaProjekt.size(); i++) {
-
                     String fragaChef = "SELECT fornamn, efternamn FROM anstalld WHERE aid=" + resultatListaProjekt.get(i).get("projektchef");
                     HashMap<String, String> chefNamnEfternamn = idb.fetchRow(fragaChef);
                     String chef = chefNamnEfternamn.get("fornamn") + " " + chefNamnEfternamn.get("efternamn");
-
                     String fragaLand = "SELECT namn FROM land WHERE lid=" + resultatListaProjekt.get(i).get("land");
                     String land = idb.fetchSingle(fragaLand);
 

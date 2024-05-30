@@ -151,7 +151,6 @@ public class SokEfterHandlaggare extends javax.swing.JFrame {
 
         //Validering av e-postformat
         if (!sokEpost.isEmpty() && !Validering.isKorrektFormatEpostTF(tfSokEpost)) {
-            System.out.println("E-postformat felaktigt");
             return;
         }
         //Söker på förnamn
