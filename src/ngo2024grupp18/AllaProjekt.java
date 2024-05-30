@@ -8,10 +8,7 @@ import oru.inf.InfDB;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -22,21 +19,22 @@ public class AllaProjekt extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String avdid;
-    //listModelHBMal fyller i hållbarhetsmål
-    private DefaultListModel<String> listModelHBMal;
-    //listModelAnstallda fyller i anställda
-    private DefaultListModel<String> listModelAnstallda;
 
+    //ListModel och ArrayList för hållbarhetsmål
+    private DefaultListModel<String> listModelHBMal = new DefaultListModel<>();
+    private ArrayList<String> nyTillagdaHBMal = new ArrayList<String>();
+    private ArrayList<String> hbMalSomSkaTasBortLista = new ArrayList<>();
+
+    //ListModel och ArrayList för anställda
+    private DefaultListModel<String> listModelAnstallda = new DefaultListModel<String>();
+    private ArrayList<String> anstalldaIProjLista;
+    private ArrayList<String> nyTillagdaAnstallda = new ArrayList<String>();
+    private ArrayList<String> anstalldaSomTasBortLista = new ArrayList<String>();
+
+    //ListModel och ArrayList för samarbetspartners 
     private DefaultListModel<String> listModelPartners = new DefaultListModel<>();
     private ArrayList<String> NyTillagdaPartners = new ArrayList<>();
     private ArrayList<String> partnersSomSkaTasBortLista = new ArrayList<>();
-
-    private ArrayList<String> anstalldaIProjLista;
-    private ArrayList<String> nyTillagdaAnstallda;
-    private ArrayList<String> nyTillagdaHBMal;
-    private ArrayList<String> hbMalSomSkaTasBortLista = new ArrayList<>();
-
-    private ArrayList<String> anstalldaSomTasBortLista;
 
     /**
      * Creates new form AllaProjekt
@@ -46,14 +44,13 @@ public class AllaProjekt extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         this.avdid = avdid;
+        //Anropar metoden som fyller i cb med namn på alla projekt
         fyllCBAllaProjekt();
         this.setLocationRelativeTo(null);
         btnTaBortAnstalldAllaProj.setVisible(false);
-        nyTillagdaAnstallda = new ArrayList<String>();
-        nyTillagdaHBMal = new ArrayList<String>();
-        anstalldaSomTasBortLista = new ArrayList<String>();
-        var ny = new Anstalld(idb, aid);
-        if (ny.isAdmin()) {
+        //Skapar nytt objekt av klassen Anstalld för att kunna anropa metoder som kollar användarens roll
+        var enAnstalld = new Anstalld(idb, aid);
+        if (enAnstalld.isAdmin()) {
             lblLaggTillProjekt.setVisible(true);
             btnLaggTillProjAllaProj.setVisible(true);
             lblTaBortProjAllaProj.setVisible(true);
@@ -66,7 +63,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         }
     }
 
-    // CB = combobox
+    // CB = combobox, fylls med namn på alla projekt 
     public void fyllCBAllaProjekt() {
         try {
             String sqlFraga = "SELECT projektnamn FROM projekt";
@@ -79,7 +76,6 @@ public class AllaProjekt extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     // Fyller i CB för hallbarhetsmål som inte redan finns kopplade till projektet
@@ -91,11 +87,12 @@ public class AllaProjekt extends javax.swing.JFrame {
             System.out.println(sqlFraga);
             ArrayList<String> allaHBMalLista = idb.fetchColumn(sqlFraga);
             cbAllaHallbMal.removeAllItems();
+
             for (String ettMal : allaHBMalLista) {
                 String sqlFragaHBMalnamn = "SELECT namn FROM hallbarhetsmal WHERE hid = " + ettMal + "";
                 cbAllaHallbMal.addItem(idb.fetchSingle(sqlFragaHBMalnamn));
             }
-            //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
+            //Alla mål som finns i listModel tas bort från comboboxen
             for (int i = 0; i < jListHBmalAllaProj.getModel().getSize(); i++) {
                 var hbMalNamn = jListHBmalAllaProj.getModel().getElementAt(i);
                 cbAllaHallbMal.removeItem(hbMalNamn);
@@ -105,7 +102,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         }
     }
 
-    //Fyller i Cb för alla anställda som inte jobbar i projektet
+    //Fyller i CB för alla anställda som inte redan jobbar i det valda projektet
     public void fyllCBAllaAnstallda(int pid) {
         try {
             String sqlFraga = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld LEFT OUTER "
@@ -113,10 +110,11 @@ public class AllaProjekt extends javax.swing.JFrame {
             System.out.println(sqlFraga);
             ArrayList<String> anstalldAidLista = idb.fetchColumn(sqlFraga);
             cbAllaAnstallda.removeAllItems();
+
             for (String enAid : anstalldAidLista) {
                 cbAllaAnstallda.addItem(enAid);
             }
-            //Loopar igenom listModel, det som finns i listModel tas bort från comboboxen
+            //Alla anställda som finns i listModel tas bort från comboboxen
             for (int i = 0; i < jListAllaAnstallda.getModel().getSize(); i++) {
                 var namn = jListAllaAnstallda.getModel().getElementAt(i);
                 cbAllaAnstallda.removeItem(namn);
@@ -171,6 +169,7 @@ public class AllaProjekt extends javax.swing.JFrame {
         cbPrioAllaProjekt.addItem("Låg");
     }
 
+    //Fyller i listModel för samarbetspartners 
     public void fyllPartnerList(String pid) {
         listModelPartners.removeAllElements();
         try {
@@ -188,9 +187,10 @@ public class AllaProjekt extends javax.swing.JFrame {
         }
     }
 
+    //Fyller i CB för partners som inte redan jobbar i det valda projektet 
     private void fyllCBValjPartner(int pid) {
         try {
-            //Hämtar alla partner_pid som jobbar i projektet
+            //Hämtar alla partners som inte jobbar i det valda projektet 
             String sqlFragaPartnerPid = "SELECT DISTINCT partner_pid FROM projekt_partner JOIN partner ON partner.pid = partner_pid WHERE NOT partner.pid IN (SELECT partner_pid FROM projekt_partner WHERE pid = " + pid + ")";
             System.out.println(sqlFragaPartnerPid);
             ArrayList<String> partnersIProjekt = idb.fetchColumn(sqlFragaPartnerPid);
@@ -199,7 +199,7 @@ public class AllaProjekt extends javax.swing.JFrame {
                 String sqlFragaPartnerNamn = "SELECT namn FROM partner WHERE pid = " + partnerPid + "";
                 cbPartnerAllaProj.addItem(idb.fetchSingle(sqlFragaPartnerNamn));
             }
-            //Loopar igenom listModel, det som redan finns i listModel tas bort från cb
+            //Partners som redan finns i listModel tas bort från cb
             for (int i = 0; i < jListPartnersAllaProj.getModel().getSize(); i++) {
                 var partnerNamn = jListPartnersAllaProj.getModel().getElementAt(i);
                 cbPartnerAllaProj.removeItem(partnerNamn);
@@ -505,14 +505,12 @@ public class AllaProjekt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbAllaProjektPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbAllaProjektPopupMenuWillBecomeInvisible
-        // Hämtar ut projektnamnet för det selekterade projektet
+        // Hämtar ut projektnamnet för det valda projektet
         String projektNamn = cbAllaProjekt.getSelectedItem().toString();
-
         try {
             if (projektNamn.equals("Välj projekt")) {
                 return;
             }
-
             String sqlFraga = "SELECT * FROM projekt WHERE projektnamn = '" + projektNamn + "'";
             System.out.println(sqlFraga);
 
@@ -520,6 +518,7 @@ public class AllaProjekt extends javax.swing.JFrame {
             System.out.println(sqlProjnamnTillPid);
             String pidStr = idb.fetchSingle(sqlProjnamnTillPid);
             int pid = Integer.parseInt(pidStr);
+
             fyllCBAllaAnstallda(pid);
             fyllCBhallbarMal(pid);
             fyllCBProjektChef();
@@ -538,40 +537,23 @@ public class AllaProjekt extends javax.swing.JFrame {
             System.out.println(sqlFragaHallbMal);
             ArrayList<String> projektHallbMal = idb.fetchColumn(sqlFragaHallbMal);
 
-            // Hämtar namn på alla anställda som jobbar 
+            // Hämtar namn på alla anställda som jobbar i det valda projektet
             String sqlFragaAnstalldNamn = "SELECT CONCAT(fornamn, ' ', efternamn) FROM anstalld "
                     + "JOIN ans_proj ON ans_proj.aid = anstalld.aid WHERE ans_proj.pid = " + pid;
             System.out.println(sqlFragaAnstalldNamn);
             anstalldaIProjLista = idb.fetchColumn(sqlFragaAnstalldNamn);
 
-            //JList för att fylla i namn på alla anställda som jobbar på projektet som har selekterats
-            listModelAnstallda = new DefaultListModel<String>();
+            //Fyller i namn på alla anställda som jobbar i det valda projektet
             for (int i = 0; i < anstalldaIProjLista.size(); i++) {
                 listModelAnstallda.addElement(anstalldaIProjLista.get(i));
             }
             jListAllaAnstallda.setModel(listModelAnstallda);
 
-            //JList för att visa alla hallbarhetsmål 
-            listModelHBMal = new DefaultListModel<String>();
             for (int i = 0; i < projektHallbMal.size(); i++) {
                 listModelHBMal.addElement(projektHallbMal.get(i));
             }
             jListHBmalAllaProj.setModel(listModelHBMal);
 
-//            String sqlFraga3 = "SELECT fornamn, efternamn FROM anstalld WHERE aid ='" + projektNamnLista.get("projektchef") + "'";
-//            HashMap<String, String> projektchef = idb.fetchRow(sqlFraga3);
-//
-//            tfNyttProjektNyPid.setText(projektNamnLista.get("pid"));
-//            tfProjektnamnAllaProjekt.setText(projektNamnLista.get("projektnamn"));
-//            cbProjektchefAllaProjekt.setSelectedItem(projektchef.get("fornamn") + " " + projektchef.get("efternamn"));
-//            tfBeskrivningAllaProjekt.setText(projektNamnLista.get("beskrivning"));
-//            tfStartdatumAllaProjekt.setText(projektNamnLista.get("startdatum"));
-//
-//            tfSlutDatumAllaProjekt.setText(projektNamnLista.get("slutdatum"));
-//            tfKostnadAllaProjekt.setText(projektNamnLista.get("kostnad"));
-//            cbStatusAllaProjekt.setSelectedItem(projektNamnLista.get("status"));
-//            cbPrioAllaProjekt.setSelectedItem(projektNamnLista.get("prioritet"));
-//            cbLandAllaProjekt.setSelectedItem(land);
             if (projektNamnLista != null) {
                 String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + projektNamnLista.get("land") + "'";
                 String land = idb.fetchSingle(sqlFraga2);
@@ -593,8 +575,6 @@ public class AllaProjekt extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
     }//GEN-LAST:event_cbAllaProjektPopupMenuWillBecomeInvisible
 
     private void btnTillbakaAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaAllaProjActionPerformed
@@ -724,15 +704,12 @@ public class AllaProjekt extends javax.swing.JFrame {
             cbAllaProjekt.removeAllItems();
             fyllCBAllaProjekt();
             JOptionPane.showMessageDialog(null, "Ändring sparad");
-//            this.dispose();
-//            new Meny(idb, aid, avdid).setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnSparaAllaProjektActionPerformed
 
     private void bnTaBortProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnTaBortProjActionPerformed
-
         try {
             String projektNamn = cbAllaProjekt.getSelectedItem().toString();
             String sqlFragaPid = "SELECT pid FROM projekt WHERE projektnamn = '" + projektNamn + "'";
@@ -802,10 +779,6 @@ public class AllaProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLaggTillHBMalActionPerformed
 
     private void btnLaggTillAnstalldAllaProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldAllaProjActionPerformed
-//        String anstalld = cbAllaAnstallda.getSelectedItem().toString();
-//        listModelAnstallda.addElement(anstalld);
-//        jListAllaAnstallda.setModel(listModelAnstallda);
-//        String projektNamn = cbAllaProjekt.getSelectedItem().toString();
         try {
             String anstalld = cbAllaAnstallda.getSelectedItem().toString();
             listModelAnstallda.addElement(anstalld);
@@ -821,7 +794,6 @@ public class AllaProjekt extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-//        nyTillagdaAnstallda.add(anstalld);
     }//GEN-LAST:event_btnLaggTillAnstalldAllaProjActionPerformed
 
     private void jListAllaAnstalldaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListAllaAnstalldaValueChanged
