@@ -297,7 +297,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 if (laggTillKontaktEpost.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
                 }
-                if (!Validering.isKorrektFormatEpostString(laggTillKontaktEpost)) {
+                if (!Validering.isKorrektFormatEpostPartner(laggTillKontaktEpost)) {
                     return;
                 }
                 String laggTillTelefonnummer = tfTelefonLaggTillPartner.getText();

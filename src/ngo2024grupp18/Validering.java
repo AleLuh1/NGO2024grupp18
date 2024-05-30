@@ -163,7 +163,7 @@ public class Validering {
         Pattern mall = Pattern.compile(regex);
         Matcher adressMatchar = mall.matcher(adress);
         if (!adressMatchar.matches()) {
-            JOptionPane.showMessageDialog(null, "Vänligen ange en giltigt adress");
+            JOptionPane.showMessageDialog(null, "Vänligen ange en giltigt adress Ex. Gatan 1");
             resultat = false;
         }
         return resultat;
