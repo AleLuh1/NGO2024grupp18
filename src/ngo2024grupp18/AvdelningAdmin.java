@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
  * @author ellenor
  */
 public class AvdelningAdmin extends javax.swing.JFrame {
-
     private InfDB idb;
     private String aid;
     private String avdid;
@@ -57,7 +56,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 String hallbarhetsmalNamn = idb.fetchSingle(sqlFraga1);
 
                 listModelhallbarhetsmal.addElement(hallbarhetsmalNamn);
-
             }
 
             jListHallbarhetsmalAvdAdmin.setModel(listModelhallbarhetsmal);
@@ -70,9 +68,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     // Lägger till alla avdelningar i combobox
     public void fyllCBValjAVD() {
         try {
-
             String sqlFraga = "SELECT DISTINCT namn FROM avdelning";
-            System.out.println(sqlFraga);
             ArrayList<String> avdLista = idb.fetchColumn(sqlFraga);
             for (String enAvd : avdLista) {
                 cbValjAvdAdmin.addItem(enAvd);
@@ -88,7 +84,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         cbMal.removeAllItems();
         try {
             String sqlFraga = "SELECT hid FROM avd_hallbarhet WHERE avdid = " + avdId;
-            System.out.println(sqlFraga);
             ArrayList<HashMap<String, String>> hallbarhetsmalAvd = idb.fetchRows(sqlFraga);
 
             ArrayList<String> hidList = new ArrayList<>();
@@ -104,7 +99,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
                 //använder string med alla aid för att hämta alla namn och efternamn på anställda som inte är med i listan
                 sqlFraga1 = "SELECT namn FROM hallbarhetsmal WHERE hid NOT IN (" + allaHid + ")";
             }
-            System.out.println(sqlFraga1);
             ArrayList<HashMap<String, String>> availableMal = idb.fetchRows(sqlFraga1);
 
             for (HashMap<String, String> avdMal : availableMal) {
@@ -119,7 +113,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
     public void fyllCBValjStad() {
         try {
             String sqlFraga = "SELECT DISTINCT namn FROM stad";
-            System.out.println(sqlFraga);
             ArrayList<String> stadNamnLista = idb.fetchColumn(sqlFraga);
 
             for (String enStad : stadNamnLista) {
@@ -128,16 +121,12 @@ public class AvdelningAdmin extends javax.swing.JFrame {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
-
     }
 
     public void fyllCBValjProjektchef() {
         try {
-
             String sqlFraga = "SELECT aid FROM handlaggare";
-            System.out.println(sqlFraga);
 
             ArrayList<String> projektchefIdLista = idb.fetchColumn(sqlFraga);
 
@@ -148,7 +137,6 @@ public class AvdelningAdmin extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
     }
 

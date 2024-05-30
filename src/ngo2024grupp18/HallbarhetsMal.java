@@ -14,7 +14,6 @@ import java.util.HashMap;
  * @author alex
  */
 public class HallbarhetsMal extends javax.swing.JFrame {
-
     private InfDB idb;
     private String aid;
     private String avdid;
@@ -40,13 +39,12 @@ public class HallbarhetsMal extends javax.swing.JFrame {
     private void fyllCBHallbarhetsmal() {
         try {
             String sqlFraga = "SELECT namn FROM hallbarhetsmal";
-            System.out.println(sqlFraga);
             ArrayList<String> hallbarhetsNamnLista;
             hallbarhetsNamnLista = idb.fetchColumn(sqlFraga);
             for (String ettNamn : hallbarhetsNamnLista) {
                 cbHallbarhetsmal.addItem(ettNamn);
-
             }
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -165,7 +163,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         String hbMal = (String) cbHallbarhetsmal.getSelectedItem();
         try {
             String sqlFraga = " SELECT * FROM hallbarhetsmal WHERE namn = '" + hbMal + "'";
-            System.out.println(sqlFraga);
             HashMap<String, String> hallbarhetsmal = idb.fetchRow(sqlFraga);
             tfMalnummerHallbar.setText(hallbarhetsmal.get("malnummer"));
             taBeskrivningHallbar.setText(hallbarhetsmal.get("beskrivning"));
@@ -182,7 +179,6 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         Projekt nyttProject = new Projekt(idb, aid, avdid);
         nyttProject.setVisible(true);
     }//GEN-LAST:event_btnTillbakaHallbarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbakaHallbar;

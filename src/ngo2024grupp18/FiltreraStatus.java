@@ -47,7 +47,8 @@ public class FiltreraStatus extends javax.swing.JFrame {
 
             public void actionPerformed(ActionEvent e) {
             }
-        });
+        }
+        );
     }
 
     public class CenterRenderer extends DefaultTableCellRenderer {
@@ -168,8 +169,10 @@ public class FiltreraStatus extends javax.swing.JFrame {
                     rad.get("pid"),
                     rad.get("projektnamn"),
                     rad.get("status")
-                });
+                }
+                );
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

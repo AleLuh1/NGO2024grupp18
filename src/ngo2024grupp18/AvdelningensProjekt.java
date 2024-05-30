@@ -51,7 +51,6 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
             avdelningensProjektLista = idb.fetchColumn(sqlFraga);
             for (String ettProjektNamn : avdelningensProjektLista) {
                 cbAvdelningensProjekt.addItem(ettProjektNamn);
-
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -252,7 +251,6 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
                     + "JOIN ans_proj ON anstalld.aid = ans_proj.aid "
                     + "JOIN projekt ON ans_proj.pid = projekt.pid "
                     + "WHERE anstalld.avdelning = " + avdid + " AND projektnamn = '" + avdProj + "'";
-            System.out.println(sqlFraga);
             HashMap<String, String> avdelningensProjekt = idb.fetchRow(sqlFraga);
 
             String sqlFraga2 = "SELECT namn FROM land WHERE lid = '" + avdelningensProjekt.get("land") + "'";
@@ -275,7 +273,6 @@ public class AvdelningensProjekt extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }//GEN-LAST:event_cbAvdelningensProjektPopupMenuWillBecomeInvisible
 
 
