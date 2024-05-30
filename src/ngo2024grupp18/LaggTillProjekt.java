@@ -31,6 +31,9 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     private DefaultListModel<String> listModelPartners = new DefaultListModel<>();
     private ArrayList<String> nyTillagdaPartners;
 
+    private DefaultListModel<String> listModelHBMal = new DefaultListModel<>();
+    private ArrayList<String> nyTillagdaHBMal = new ArrayList<>();
+
     /**
      * Creates new form LaggTillProjekt
      */
@@ -100,13 +103,20 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     // Lägger till beskrivning i combobox
     public void fyllCBValjHallbarhetsmal() {
         try {
-            String sqlFraga = "SELECT DISTINCT namn FROM hallbarhetsmal";
+            cbHallbarhetsmalLaggTillProjekt.removeAllItems();
+            String sqlFraga = "SELECT namn FROM hallbarhetsmal";
             System.out.println(sqlFraga);
             ArrayList<String> hallbarhetsmalLista = idb.fetchColumn(sqlFraga);
 
             for (String ettHallbarhetsmal : hallbarhetsmalLista) {
                 cbHallbarhetsmalLaggTillProjekt.addItem(ettHallbarhetsmal);
             }
+
+            for (int i = 0; i < jListHBMal.getModel().getSize(); i++) {
+                var partnerNamn = jListHBMal.getModel().getElementAt(i);
+                cbHallbarhetsmalLaggTillProjekt.removeItem(partnerNamn);
+            }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -174,34 +184,19 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 var namn = jListAllaAnstallda.getModel().getElementAt(i);
                 cbLaggTillAnstalld.removeItem(namn);
             }
+            listModelPartners.removeAllElements();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public void fyllPartnerList(String pid) {
-        listModelPartners.removeAllElements();
-        try {
-            String sqlFraga = "SELECT partner_pid FROM projekt_partner WHERE pid=" + pid;
-            System.out.println(sqlFraga);
-            ArrayList<HashMap<String, String>> allaPartnersForProjektet = idb.fetchRows(sqlFraga);
-            for (HashMap<String, String> enPartner : allaPartnersForProjektet) {
-                String sqlFragaPartnerName = "SELECT namn FROM partner WHERE pid=" + enPartner.get("partner_pid");
-                String partnerName = idb.fetchSingle(sqlFragaPartnerName);
-                listModelPartners.addElement(partnerName);
-            }
-            jListPartnersLaggTillProj.setModel(listModelPartners);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
+   
     private void fyllCBPartners() {
         try {
+            cbPartnersLaggTillProj.removeAllItems();
             String sqlFragaPartnerPid = "SELECT namn FROM partner";
             System.out.println(sqlFragaPartnerPid);
             ArrayList<String> allaPartnersLista = idb.fetchColumn(sqlFragaPartnerPid);
-            cbPartnersLaggTillProj.removeAllItems();
 
             for (String enPartner : allaPartnersLista) {
                 cbPartnersLaggTillProj.addItem(enPartner);
@@ -331,6 +326,11 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jListHBMal);
 
         btnLaggTIllHBMal.setText("Lägg till");
+        btnLaggTIllHBMal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTIllHBMalActionPerformed(evt);
+            }
+        });
 
         lblPartnersLaggTillProj.setText("Samarbetspartners");
 
@@ -566,20 +566,20 @@ public class LaggTillProjekt extends javax.swing.JFrame {
             int LandId = Integer.parseInt(landIdStr);
             System.out.println(LandId);
 
-            String sqlFragaHallbMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + laggTillHallbarhetsmal + "'";
-            System.out.println(sqlFragaHallbMal);
-            String hidStr = idb.fetchSingle(sqlFragaHallbMal);
-            //Gör om hid från String till int för att kunna lägga in i db
-            int hidInt = Integer.parseInt(hidStr);
-            System.out.println(hidInt);
-
+//            String sqlFragaHallbMal = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + laggTillHallbarhetsmal + "'";
+//            System.out.println(sqlFragaHallbMal);
+//            String hidStr = idb.fetchSingle(sqlFragaHallbMal);
+//            //Gör om hid från String till int för att kunna lägga in i db
+//            int hidInt = Integer.parseInt(hidStr);
+//            System.out.println(hidInt);
+//
             String sqlFraga1 = "INSERT INTO projekt (pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES (" + nyProjektPidInt + ", '" + laggTillProjektNamn + "', '" + laggTillBeskrivning + "', str_to_date('" + laggTillStartdatum + "', '%Y-%m-%d'),  str_to_date('" + laggTillSlutdatum + "', '%Y-%m-%d'), " + laggTillKostnad + ", '" + laggTillStatus + "', '" + laggTillPrioritet + "', " + projchefAidInt + ", " + LandId + ")";
             System.out.println(sqlFraga1);
             idb.insert(sqlFraga1);
-
-            String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + nyProjektPidInt + ", " + hidInt + ")";
-            System.out.println(sqlFraga2);
-            idb.insert(sqlFraga2);
+//
+//            String sqlFraga2 = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + nyProjektPidInt + ", " + hidInt + ")";
+//            System.out.println(sqlFraga2);
+//            idb.insert(sqlFraga2);
 
             for (String namn : nyTillagdaAnstallda) {
                 //Behöver konvertera namnet till aid igen för att kunna lägga in i db
@@ -592,24 +592,49 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 int aid = Integer.parseInt(nyAnstalldAidStr);
                 System.out.println(aid);
 
-                String sqlFraga3 = "INSERT INTO ans_proj (pid, aid) VALUES (" + nyProjektPidInt + ", " + aid + ")";
+                String nyProjPidStr = tfProjektIDLaggTIllProjekt.getText();
+                int pid = Integer.parseInt(nyProjektPidStr);
+
+                String sqlFraga3 = "INSERT INTO ans_proj (pid, aid) VALUES (" + pid + ", " + aid + ")";
                 System.out.println(sqlFraga3);
                 idb.insert(sqlFraga3);
             }
             nyTillagdaAnstallda.clear();
+            
+            for (String enPartner : nyTillagdaPartners) {
+                String sqlFragaPartner = "SELECT namn FROM partner WHERE namn = '" + enPartner + "'";
+                System.out.println(sqlFragaPartner);
+                String partnerNamn = idb.fetchSingle(sqlFragaPartner);
+                System.out.println(partnerNamn);
 
-            for (int i = 0; i < listModelPartners.size(); i++) {
-                String partnerNamn = listModelPartners.getElementAt(i);
+                String partnerIDsqlFraga = "SELECT pid FROM partner WHERE namn = '" + partnerNamn + "'";
+                System.out.println(partnerIDsqlFraga);
+                String partnerID = idb.fetchSingle(partnerIDsqlFraga);
 
-                String sqlFragaPartnerdId = "SELECT pid FROM partner WHERE namn = '" + partnerNamn + "'";
-                String partnerId = idb.fetchSingle(sqlFragaPartnerdId);
-
-                //skapa ny item i tabellen projekt_partner med pid och partner_pid. Använder WHERE NOT EXIST för att kontrollera att det inte finns en annan item som har redan pid+partner_pid
-                String sqlFragaProjektPartner = "INSERT INTO projekt_partner (pid, partner_pid) "
-                        + "SELECT " + nyProjektPidInt + ", " + partnerId + " "
-                        + "WHERE NOT EXISTS (SELECT 1 FROM projekt_partner WHERE pid = " + nyProjektPidInt + " AND partner_pid = " + partnerId + ")";
-                idb.insert(sqlFragaProjektPartner);
+                String sqlFragaPartner2 = "INSERT INTO projekt_partner (pid, partner_pid) VALUES (" + nyProjektPidInt + ", " + partnerID + ")";
+                System.out.println(sqlFragaPartner2);
+                idb.insert(sqlFragaPartner2);
             }
+            nyTillagdaPartners.clear();
+            
+            
+
+            for (String ettMal : nyTillagdaHBMal) {
+                String sqlFragaHBMalNamn = "SELECT namn FROM hallbarhetsmal WHERE namn = '" + ettMal + "'";
+                System.out.println(sqlFragaHBMalNamn);
+                String hbMalNamn = idb.fetchSingle(sqlFragaHBMalNamn);
+                System.out.println(hbMalNamn);
+
+                String malIDSqlFraga = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + hbMalNamn + "'";
+                System.out.println(malIDSqlFraga);
+                String hbmalIDStr = idb.fetchSingle(malIDSqlFraga);
+                int hbMalID = Integer.parseInt(hbmalIDStr);
+
+                String sqlFragaHBProj = "INSERT INTO proj_hallbarhet (pid, hid) VALUES (" + nyProjektPidInt + ", " + hbMalID + ")";
+                System.out.println(sqlFragaHBProj);
+                idb.insert(sqlFragaHBProj);
+            }
+            nyTillagdaHBMal.clear();
 
             JOptionPane.showMessageDialog(null, "Ändring sparad");
             this.dispose();
@@ -631,11 +656,20 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLaggTillAnstalldActionPerformed
 
     private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
-        nyTillagdaPartners.clear();
         String partner = cbPartnersLaggTillProj.getSelectedItem().toString();
-        cbPartnersLaggTillProj.removeItem(partner);
         listModelPartners.addElement(partner);
+        jListPartnersLaggTillProj.setModel(listModelPartners);
+        fyllCBPartners();
+        nyTillagdaPartners.add(partner);
     }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
+
+    private void btnLaggTIllHBMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTIllHBMalActionPerformed
+        String malNamn = cbHallbarhetsmalLaggTillProjekt.getSelectedItem().toString();
+        listModelHBMal.addElement(malNamn);
+        jListHBMal.setModel(listModelHBMal);
+        fyllCBValjHallbarhetsmal();
+        nyTillagdaHBMal.add(malNamn);
+    }//GEN-LAST:event_btnLaggTIllHBMalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
