@@ -87,8 +87,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="lblLaggTillProjektRuta" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPorjektIDLaggTIllProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfProjektIDLaggTIllProjekt" alignment="3" min="-2" max="-2" attributes="0"/>

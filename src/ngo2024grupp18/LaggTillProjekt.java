@@ -5,13 +5,11 @@
 package ngo2024grupp18;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.event.ListSelectionEvent;
 import oru.inf.InfDB;
 
 /**
@@ -23,14 +21,14 @@ public class LaggTillProjekt extends javax.swing.JFrame {
     private InfDB idb;
     private String aid;
     private String avdid;
-    //listModelAllaAnstallda kommer fylla i alla anställda
-    private DefaultListModel<String> listModelAllaAnstallda;
-    //ArrayList för att lagra alla nytillagda anställda
-    private ArrayList<String> nyTillagdaAnstallda;
 
+    //ListModel och ArrayList för anställda
+    private DefaultListModel<String> listModelAllaAnstallda = new DefaultListModel<String>();
+    private ArrayList<String> nyTillagdaAnstallda = new ArrayList<String>();
+    //ListModel och ArrayList för partners
     private DefaultListModel<String> listModelPartners = new DefaultListModel<>();
-    private ArrayList<String> nyTillagdaPartners;
-
+    private ArrayList<String> nyTillagdaPartners = new ArrayList<String>();
+    //ListModel och ArrayList för hållbarhetsmål
     private DefaultListModel<String> listModelHBMal = new DefaultListModel<>();
     private ArrayList<String> nyTillagdaHBMal = new ArrayList<>();
 
@@ -50,18 +48,10 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         fyllCBValjLand();
         fyllCBAllaAnstallda();
         fyllCBPartners();
-        nyTillagdaAnstallda = new ArrayList<String>();
-        listModelAllaAnstallda = new DefaultListModel<String>();
-        nyTillagdaPartners = new ArrayList<String>();
         this.setLocationRelativeTo(null);
-        JList<String> jList = new JList<String>(listModelAllaAnstallda);
-        JScrollPane scrollPane = new JScrollPane(jList);
-        JPanel panel = new JPanel();
-        panel.add(scrollPane);
-        add(panel);
     }
 
-    // Genererar ett nytt projekt-id (genom att hitta högsta pid och lägger till +1
+    // Genererar ett nytt projekt-id (genom att hitta högsta pid och lägger till +1)
     private String LaggaTillNyttProjektPid() {
         String nyttProjektPid = null;
         try {
@@ -84,7 +74,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         return nyttProjektPid;
     }
 
-    // Lägger till alla projektchefer i combobox
+    // Lägger till alla handläggare som skulle kunna läggas till som projektchefer i cb
     public void fyllCBValjProjektchef() {
         try {
             cbProjektChefLaggTillProjekt.removeAllItems();
@@ -100,7 +90,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         }
     }
 
-    // Lägger till beskrivning i combobox
+    // Fyller i cb för hållbarhetsmål
     public void fyllCBValjHallbarhetsmal() {
         try {
             cbHallbarhetsmalLaggTillProjekt.removeAllItems();
@@ -179,7 +169,7 @@ public class LaggTillProjekt extends javax.swing.JFrame {
                 cbLaggTillAnstalld.addItem(anstalld);
             }
 
-            //Loopar igenom listModel, det som finns i listModel tas bort från combo-boxen
+            //Anställda som finns i listModel tas bort från combo-boxen
             for (int i = 0; i < jListAllaAnstallda.getModel().getSize(); i++) {
                 var namn = jListAllaAnstallda.getModel().getElementAt(i);
                 cbLaggTillAnstalld.removeItem(namn);
@@ -403,8 +393,9 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(30, 30, 30)
                 .addComponent(lblLaggTillProjektRuta)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPorjektIDLaggTIllProjekt)
                     .addComponent(tfProjektIDLaggTIllProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -633,8 +624,6 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
     }//GEN-LAST:event_btnSparaLaggTIllProjektActionPerformed
 
     private void btnLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldActionPerformed
