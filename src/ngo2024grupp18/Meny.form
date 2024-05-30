@@ -26,30 +26,23 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="btnAvdAdmin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblMeny" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnProjekt" max="32767" attributes="0"/>
-                                  <Component id="btnAvdelning" max="32767" attributes="0"/>
-                                  <Component id="btnMinaUppgifter" pref="125" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnLaggTillAnstalld" max="32767" attributes="0"/>
-                                  <Component id="btnSokHandlaggare" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnTaBortAnstalld" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                  <Component id="btnAvdelning" min="-2" pref="125" max="-2" attributes="0"/>
+                  <Component id="lblMeny" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnProjekt" max="32767" attributes="0"/>
+                          <Component id="btnMinAvdelning" max="32767" attributes="0"/>
+                          <Component id="btnMinaUppgifter" pref="125" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnLaggTillAnstalld" max="32767" attributes="0"/>
+                          <Component id="btnSokHandlaggare" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnTaBortAnstalld" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
+              <EmptySpace pref="70" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,11 +63,11 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAvdelning" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMinAvdelning" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTaBortAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnAvdAdmin" min="-2" max="-2" attributes="0"/>
+              <Component id="btnAvdelning" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="90" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -97,12 +90,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProjektActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAvdelning">
+    <Component class="javax.swing.JButton" name="btnMinAvdelning">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Avdelning"/>
+        <Property name="text" type="java.lang.String" value="Min avdelning"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvdelningActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinAvdelningActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMeny">
@@ -129,12 +122,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSokHandlaggareActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAvdAdmin">
+    <Component class="javax.swing.JButton" name="btnAvdelning">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Avdelning ADMIN"/>
+        <Property name="text" type="java.lang.String" value="Avdelning "/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvdAdminActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvdelningActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTaBortAnstalld">

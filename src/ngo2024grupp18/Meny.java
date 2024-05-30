@@ -29,8 +29,10 @@ public class Meny extends javax.swing.JFrame {
         MinaUppgifter ny = new MinaUppgifter(idb, aid, avdid);
         if (ny.isAdmin()) {
             btnLaggTillAnstalld.setVisible(true);
+            btnTaBortAnstalld.setVisible (true);
         } else {
             btnLaggTillAnstalld.setVisible(false);
+            btnTaBortAnstalld.setVisible (false);
         }
     }
 
@@ -45,11 +47,11 @@ public class Meny extends javax.swing.JFrame {
 
         btnMinaUppgifter = new javax.swing.JButton();
         btnProjekt = new javax.swing.JButton();
-        btnAvdelning = new javax.swing.JButton();
+        btnMinAvdelning = new javax.swing.JButton();
         lblMeny = new javax.swing.JLabel();
         btnLaggTillAnstalld = new javax.swing.JButton();
         btnSokHandlaggare = new javax.swing.JButton();
-        btnAvdAdmin = new javax.swing.JButton();
+        btnAvdelning = new javax.swing.JButton();
         btnTaBortAnstalld = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,10 +70,10 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
-        btnAvdelning.setText("Avdelning");
-        btnAvdelning.addActionListener(new java.awt.event.ActionListener() {
+        btnMinAvdelning.setText("Min avdelning");
+        btnMinAvdelning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAvdelningActionPerformed(evt);
+                btnMinAvdelningActionPerformed(evt);
             }
         });
 
@@ -92,10 +94,10 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
-        btnAvdAdmin.setText("Avdelning ADMIN");
-        btnAvdAdmin.addActionListener(new java.awt.event.ActionListener() {
+        btnAvdelning.setText("Avdelning ");
+        btnAvdelning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAvdAdminActionPerformed(evt);
+                btnAvdelningActionPerformed(evt);
             }
         });
 
@@ -113,23 +115,19 @@ public class Meny extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMeny, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAvdAdmin)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMeny, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnLaggTillAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSokHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnTaBortAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(70, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMinAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLaggTillAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSokHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTaBortAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,10 +144,10 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(btnSokHandlaggare))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAvdelning)
+                    .addComponent(btnMinAvdelning)
                     .addComponent(btnTaBortAnstalld))
                 .addGap(18, 18, 18)
-                .addComponent(btnAvdAdmin)
+                .addComponent(btnAvdelning)
                 .addContainerGap(90, Short.MAX_VALUE))
         );
 
@@ -166,10 +164,10 @@ public class Meny extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnProjektActionPerformed
 
-    private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
+    private void btnMinAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinAvdelningActionPerformed
         new Avdelning(idb, avdid, aid).setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_btnAvdelningActionPerformed
+    }//GEN-LAST:event_btnMinAvdelningActionPerformed
 
     private void btnLaggTillAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldActionPerformed
         new LaggTillAnstalld(idb, aid, avdid).setVisible(true);
@@ -181,10 +179,10 @@ public class Meny extends javax.swing.JFrame {
         new SokEfterHandlaggare(idb, aid, avdid).setVisible(true);
     }//GEN-LAST:event_btnSokHandlaggareActionPerformed
 
-    private void btnAvdAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdAdminActionPerformed
+    private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
         new AvdelningAdmin(idb, aid, avdid).setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_btnAvdAdminActionPerformed
+    }//GEN-LAST:event_btnAvdelningActionPerformed
 
     private void btnTaBortAnstalldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldActionPerformed
         new TaBortAnstalld(idb, aid, avdid).setVisible(true);
@@ -193,9 +191,9 @@ public class Meny extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAvdAdmin;
     private javax.swing.JButton btnAvdelning;
     private javax.swing.JButton btnLaggTillAnstalld;
+    private javax.swing.JButton btnMinAvdelning;
     private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnProjekt;
     private javax.swing.JButton btnSokHandlaggare;
