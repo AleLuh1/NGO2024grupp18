@@ -37,6 +37,7 @@ public class MinaProjekt extends javax.swing.JFrame {
     private DefaultListModel<String> listModelhallbarhetsmal = new DefaultListModel<>();
     private ArrayList<String> nyTillagdaHBMal = new ArrayList<String>();
     private ArrayList<String> hbMalSomTasBortLista;
+
     /**
      * Creates new form MinaProjekt
      */
@@ -679,7 +680,13 @@ public class MinaProjekt extends javax.swing.JFrame {
             String projektNamn = tfProjektNamn.getText();
             String projektBeskrivning = tfBeskrivningProjekt.getText();
             String projektStartDatum = tfStartdatum.getText();
+            if (!Validering.isKorrektFormatDatum(projektStartDatum)) {
+                return;
+            }
             String projektSlutDatum = tfSlutdatum.getText();
+            if (!Validering.isKorrektFormatDatum(projektSlutDatum)) {
+                return;
+            }
             String projektKostnad = tfKostnad.getText();
             String status = cbStatusMinaProjekt.getSelectedItem().toString();
             String prioritet = cbPrioritetMinaProjekt.getSelectedItem().toString();
@@ -776,13 +783,12 @@ public class MinaProjekt extends javax.swing.JFrame {
                 String sqlFragaTaBortHid = "SELECT hid FROM hallbarhetsmal WHERE namn = '" + hbMalAttTaBort + "'";
                 System.out.println(sqlFragaTaBortHid);
                 String hid = idb.fetchSingle(sqlFragaTaBortHid);
-                
-                String sqlFragaHBMalTasBort = "DELETE FROM proj_hallbarhet WHERE pid = " + projektId + " AND hid = " + hid + ""; 
+
+                String sqlFragaHBMalTasBort = "DELETE FROM proj_hallbarhet WHERE pid = " + projektId + " AND hid = " + hid + "";
                 idb.delete(sqlFragaHBMalTasBort);
             }
             hbMalSomTasBortLista.clear();
-            
-            
+
             JOptionPane.showMessageDialog(null, "Ändring sparad");
 
             //laddar om listan
