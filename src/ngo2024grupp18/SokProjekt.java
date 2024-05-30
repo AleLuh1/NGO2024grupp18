@@ -182,7 +182,7 @@ public class SokProjekt extends javax.swing.JFrame {
                             + "Status: " + resultatListaProjekt.get(i).get("status") + "\n "
                             + "Prioritet: " + resultatListaProjekt.get(i).get("prioritet") + "\n "
                             + "Projektchef: " + chef + "\n "
-                            + "Land(lid): " + land + "\n " + "------------------- \n");
+                            + "Land: " + land + "\n " + "------------------- \n");
                 }
                 taResultatSoktaProjekt.setCaretPosition(0);
             } catch (Exception ex) {
