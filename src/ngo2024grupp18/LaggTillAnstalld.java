@@ -326,16 +326,19 @@ public class LaggTillAnstalld extends javax.swing.JFrame {
         String nyAnstalldEpost = tfEpostNyAnstalld.getText();
         String nyAnstalldTelefon = tfTelefonNyAnstalld.getText();
         if (!Validering.isKorrektFormatTelnr(nyAnstalldTelefon)) {
-                    return;
-                }
+            return;
+        }
         String NyAnstalldAnstallningsDatum = tfAnstallningsdatumNyAnstalld.getText();
+        if (!Validering.isKorrektFormatDatum(NyAnstalldAnstallningsDatum)) {
+            return;
+        }
         //String NyAnstalldLosenord = skapaSlumpatLosenord();
         String NyAnstalldLosenord = tfLosenordNyAnstalld.getText();
         //tfLosenordNyAnstalld.setText(NyAnstalldLosenord);
 
         String nyAnstalldAvd = cbAvdNyAnstalld.getSelectedItem().toString();
 
-        if (Validering.isKorrektFormatEpostPartner(tfEpostNyAnstalld)) {
+        if (Validering.isKorrektFormatEpostTF(tfEpostNyAnstalld)) {
             try {
                 String sqlFragaAvdNamn = "SELECT avdid FROM avdelning WHERE namn = '" + nyAnstalldAvd + "'";
                 System.out.println(sqlFragaAvdNamn);

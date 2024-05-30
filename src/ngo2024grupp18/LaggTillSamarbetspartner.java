@@ -270,7 +270,7 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
     private void btnSparaLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaLaggTillPartnerActionPerformed
 
         if (isKorrektKontaktPerson(tfKontaktpersonLaggTillPartner) &&
-            isKorrektFormatEpostPartner(tfEpostLaggTillPartner) &&
+            isKorrektFormatEpostPartnerTF(tfEpostLaggTillPartner) &&
             isKorrektTelefon(tfTelefonLaggTillPartner) &&
             isKorrektAdress(tfAdressLaggTillPartner)) {
 
@@ -297,7 +297,9 @@ public class LaggTillSamarbetspartner extends javax.swing.JFrame {
                 if (laggTillKontaktEpost.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
                 }
-
+                if (!Validering.isKorrektFormatEpostString(laggTillKontaktEpost)) {
+                    return;
+                }
                 String laggTillTelefonnummer = tfTelefonLaggTillPartner.getText();
                 if (laggTillTelefonnummer.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");

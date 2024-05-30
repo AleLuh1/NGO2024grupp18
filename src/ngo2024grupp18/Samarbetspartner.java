@@ -268,7 +268,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaSamarbetspartnerActionPerformed
 
     private void btnSparAndringarSamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparAndringarSamActionPerformed
-        if (Validering.isKorrektFormatEpostPartner(tfEpostSam)) {
+        if (Validering.isKorrektFormatEpostPartnerTF(tfEpostSam)) {
             try {
                 String partnerIDStr = tfPartnerIDSam.getText();
                 int partnerID = Integer.parseInt(partnerIDStr);
