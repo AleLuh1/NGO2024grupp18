@@ -517,12 +517,16 @@ public class LaggTillProjekt extends javax.swing.JFrame {
         if (laggTillStartdatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en startdatum");
         }
-
+        if (!Validering.isKorrektFormatDatum(laggTillStartdatum)) {
+            return;
+        }
         String laggTillSlutdatum = tfSlutdatumLaggTIllProjekt.getText();
         if (laggTillSlutdatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i en slutdatum");
         }
-
+        if (!Validering.isKorrektFormatDatum(laggTillSlutdatum)) {
+            return;
+        }
         String laggTillKostnadStr = tfKostnadLaggTIllProjekt.getText();
         //Gör om kostnad till en double så kan lägga in i db
         double laggTillKostnad = Double.parseDouble(laggTillKostnadStr);

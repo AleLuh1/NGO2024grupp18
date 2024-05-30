@@ -299,21 +299,22 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
         if (laggTillAdress.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i adress");
         }
-
         String laggTillEpost = tfEpostLaggTillAvd.getText();
 
         if (laggTillEpost.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i E-post");
         }
-
+        if (!Validering.isKorrektFormatEpostString(laggTillEpost)) {
+            return;
+        }
         String laggTillTelefonnummer = tfTnrLaggTillAvd.getText();
 
         if (laggTillTelefonnummer.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i telefonnummer");
         }
         if (!Validering.isKorrektFormatTelnr(laggTillTelefonnummer)) {
-                    return;
-                }
+            return;
+        }
 
         String laggTillStad = cbStadLaggTillPartner.getSelectedItem().toString();
 
@@ -332,7 +333,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                 //Gör om avdID till en int för att kunna lägga in i db
                 String avdIDStr = tfAvdIDLaggTillAvd.getText();
                 int avdid = Integer.parseInt(avdIDStr);
-                
+
                 String namn = tfNamnLaggTillAvd.getText();
                 String beskrivning = tfBeskrivningLaggTillAvd.getText();
                 String adress = tfAdressLaggTillAvd.getText();
@@ -367,7 +368,7 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                 String sqlFraga2 = "INSERT INTO avd_hallbarhet (avdid, hid)"
                         + "VALUES (" + avdid + ", " + hid + ")";
                 idb.insert(sqlFraga2);
-                
+
                 JOptionPane.showMessageDialog(null, "Avdelning tillagd");
             } catch (Exception ex) {
                 ex.printStackTrace();
