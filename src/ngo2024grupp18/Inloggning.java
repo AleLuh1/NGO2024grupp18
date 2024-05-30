@@ -14,7 +14,6 @@ import oru.inf.InfException;
  * @author alex
  */
 public class Inloggning extends javax.swing.JFrame {
-
     private InfDB idb;
 
     /**
@@ -130,10 +129,8 @@ public class Inloggning extends javax.swing.JFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
