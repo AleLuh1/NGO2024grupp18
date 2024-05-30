@@ -173,7 +173,7 @@ public class SokProjekt extends javax.swing.JFrame {
                     String fragaLand = "SELECT namn FROM land WHERE lid="+resultatListaProjekt.get(i).get("land");
                     String land = idb.fetchSingle(fragaLand);
                     
-                    taResultatSoktaProjekt.append("Pid: " + resultatListaProjekt.get(i).get("pid") + "\n "
+                    taResultatSoktaProjekt.append("ProjektID: " + resultatListaProjekt.get(i).get("pid") + "\n "
                             + "Namn: " + resultatListaProjekt.get(i).get("projektnamn") + "\n "
                             + "Beskrivning: " + resultatListaProjekt.get(i).get("beskrivning") + "\n "
                             + "Startdatum: " + resultatListaProjekt.get(i).get("startdatum") + "\n "
@@ -181,7 +181,7 @@ public class SokProjekt extends javax.swing.JFrame {
                             + "Kostnad: " + resultatListaProjekt.get(i).get("kostnad") + "\n "
                             + "Status: " + resultatListaProjekt.get(i).get("status") + "\n "
                             + "Prioritet: " + resultatListaProjekt.get(i).get("prioritet") + "\n "
-                            + "Projektchef(aid): " + chef + "\n "
+                            + "Projektchef: " + chef + "\n "
                             + "Land(lid): " + land + "\n " + "------------------- \n");
                 }
                 taResultatSoktaProjekt.setCaretPosition(0);
