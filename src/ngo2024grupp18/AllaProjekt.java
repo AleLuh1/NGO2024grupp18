@@ -622,7 +622,13 @@ public class AllaProjekt extends javax.swing.JFrame {
 
             String beskrivning = tfBeskrivningAllaProjekt.getText();
             String startdatum = tfStartdatumAllaProjekt.getText();
+            if (!Validering.isKorrektFormatDatum(startdatum)) {
+            return;
+        }
             String slutdatum = tfSlutDatumAllaProjekt.getText();
+            if (!Validering.isKorrektFormatDatum(slutdatum)) {
+            return;
+        }
             String kostnadStr = tfKostnadAllaProjekt.getText();
             double kostnad = Double.parseDouble(kostnadStr);
             String status = cbStatusAllaProjekt.getSelectedItem().toString();

@@ -149,14 +149,12 @@ public class SokProjekt extends javax.swing.JFrame {
         int avdelning = Integer.parseInt(this.avdid);
         System.out.println(avdelning);
         taResultatSoktaProjekt.setText("");
-        if (sokStartDatum.isEmpty() && sokSlutDatum.isEmpty()) {
+        if (sokStartDatum.isEmpty() || sokSlutDatum.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vänligen fyll i båda fälten");
         }
-        //if (!Validering.isKorrektFormatDatum(sokStartDatum)) || (!Validering.isKorrektFormatDatum(sokSlutDatum)) {
-          //          return;
-        //        }
-        //}
-        else {
+        if (!Validering.isKorrektFormatDatum(sokStartDatum) || !Validering.isKorrektFormatDatum(sokSlutDatum)) {
+            return;
+        } else {
             String sqlFraga = "select distinct projekt.pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land FROM projekt "
                     + "join ans_proj on ans_proj.pid = projekt.pid "
                     + "join anstalld on anstalld.aid = ans_proj.aid "
@@ -165,14 +163,14 @@ public class SokProjekt extends javax.swing.JFrame {
             try {
                 ArrayList<HashMap<String, String>> resultatListaProjekt = idb.fetchRows(sqlFraga);
                 for (int i = 0; i < resultatListaProjekt.size(); i++) {
-                    
-                    String fragaChef = "SELECT fornamn, efternamn FROM anstalld WHERE aid="+resultatListaProjekt.get(i).get("projektchef");
-                    HashMap<String,String> chefNamnEfternamn = idb.fetchRow(fragaChef);
-                    String chef = chefNamnEfternamn.get("fornamn")+" "+chefNamnEfternamn.get("efternamn");
-                    
-                    String fragaLand = "SELECT namn FROM land WHERE lid="+resultatListaProjekt.get(i).get("land");
+
+                    String fragaChef = "SELECT fornamn, efternamn FROM anstalld WHERE aid=" + resultatListaProjekt.get(i).get("projektchef");
+                    HashMap<String, String> chefNamnEfternamn = idb.fetchRow(fragaChef);
+                    String chef = chefNamnEfternamn.get("fornamn") + " " + chefNamnEfternamn.get("efternamn");
+
+                    String fragaLand = "SELECT namn FROM land WHERE lid=" + resultatListaProjekt.get(i).get("land");
                     String land = idb.fetchSingle(fragaLand);
-                    
+
                     taResultatSoktaProjekt.append("ProjektID: " + resultatListaProjekt.get(i).get("pid") + "\n "
                             + "Namn: " + resultatListaProjekt.get(i).get("projektnamn") + "\n "
                             + "Beskrivning: " + resultatListaProjekt.get(i).get("beskrivning") + "\n "
