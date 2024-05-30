@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author alex
  */
 public class Avdelning extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
     private String avdid;

@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author ellenor
  */
 public class AvdelningAdmin extends javax.swing.JFrame {
+
     private InfDB idb;
     private String aid;
     private String avdid;
