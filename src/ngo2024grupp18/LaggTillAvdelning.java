@@ -367,6 +367,8 @@ public class LaggTillAvdelning extends javax.swing.JFrame {
                 String sqlFraga2 = "INSERT INTO avd_hallbarhet (avdid, hid)"
                         + "VALUES (" + avdid + ", " + hid + ")";
                 idb.insert(sqlFraga2);
+                
+                JOptionPane.showMessageDialog(null, "Avdelning tillagd");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
