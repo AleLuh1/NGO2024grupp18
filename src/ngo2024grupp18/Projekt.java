@@ -31,6 +31,9 @@ public class Projekt extends javax.swing.JFrame {
         btnAllaProjekt.setVisible(false);
         if(ny.isAdmin()) {
              btnAllaProjekt.setVisible(true);
+             btnSamarbetsPartnersProjekt.setVisible (true);
+        } else {
+            btnSamarbetsPartnersProjekt.setVisible(false);
         }
     }
 
