@@ -41,7 +41,7 @@ public class AvdelningAdmin extends javax.swing.JFrame {
         // Delar upp en textrad i flera rader. 
         taBeskrivningAvdAdmin.setLineWrap(true);
         taBeskrivningAvdAdmin.setWrapStyleWord(true);
-        taBeskrivningAvdAdmin.setEditable(false);
+        taBeskrivningAvdAdmin.setEditable(true);
     }
 
     //fyller list model för anställda list genom att hämta alla aid (och därefter fornam och efternamn) från projekt id i ans_proj tabel
