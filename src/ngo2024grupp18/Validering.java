@@ -133,11 +133,11 @@ public class Validering {
         boolean resultat = true;
         String valuta = kontrolleraRuta.getText();
         //Regex för att kontrollera så att när en admin skapar ett nytt land så blir formatet på valutan rätt ex. xx.xxx, eller att det kan variera på siffror framför och efter punkten
-        String regex = "^\\d+\\.\\d$";
+        String regex = "^\\d+\\.\\d+$";
         Pattern mall = Pattern.compile(regex);
         Matcher valutaMatchar = mall.matcher(valuta);
         if (!valutaMatchar.matches()) {
-            JOptionPane.showMessageDialog(null, "Vänligen ange en korrekt valuta i detta format xx.xx");
+            JOptionPane.showMessageDialog(null, "Valutaformatet är felaktigt. Använd formatet X.XX");
             resultat = false;
         }
         return resultat;
