@@ -26,19 +26,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSokHandlaggare" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAvdelning" min="-2" pref="125" max="-2" attributes="0"/>
                   <Component id="lblMeny" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btnProjekt" max="32767" attributes="0"/>
                           <Component id="btnMinAvdelning" max="32767" attributes="0"/>
                           <Component id="btnMinaUppgifter" pref="125" max="32767" attributes="0"/>
+                          <Component id="btnSokHandlaggare" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnLaggTillAnstalld" pref="127" max="32767" attributes="0"/>
                           <Component id="btnTaBortAnstalld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAvdelning" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -62,12 +62,13 @@
                   <Component id="btnTaBortAnstalld" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnMinAvdelning" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnMinAvdelning" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAvdelning" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnAvdelning" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnSokHandlaggare" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace pref="90" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
