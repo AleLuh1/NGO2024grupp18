@@ -36,7 +36,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
     // Lägger till alla samarbetspartner i combobox
     public void fyllCBValjSamarbetspartner() {
         try {
-            String sqlFraga = "SELECT DISTINCT namn FROM partner";
+            String sqlFraga = "SELECT  namn FROM partner";
             System.out.println(sqlFraga);
             ArrayList<String> partnerLista = idb.fetchColumn(sqlFraga);
 
@@ -50,7 +50,7 @@ public class Samarbetspartner extends javax.swing.JFrame {
 
     public void fyllCBStad() {
         try {
-            String sqlFraga = "SELECT DISTINCT namn FROM stad";
+            String sqlFraga = "SELECT  namn FROM stad";
             System.out.println(sqlFraga);
             ArrayList<String> stadNamnLista = idb.fetchColumn(sqlFraga);
 
